@@ -1,0 +1,282 @@
+ CREATE TABLE [SETTING] (
+[id] INT identity NOT NULL PRIMARY KEY,
+[tipo] VARCHAR(256) NOT NULL,
+[valore] VARCHAR(256) NOT NULL, 
+[attivo] CHAR(1) not null default 'Y' constraint SETTING_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null);
+
+CREATE TABLE [LINGUE] (
+[id] INT NOT NULL PRIMARY KEY,
+[sigla] VARCHAR(256) NOT NULL,
+[lingua] VARCHAR(256) NOT NULL, 
+[attivo] CHAR(1) not null default 'Y' constraint LINGUE_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null) ;
+
+CREATE TABLE [GROUP_TIPO_POI] (
+[id] INT NOT NULL PRIMARY KEY,
+[value] INT,
+[attivo] CHAR(1) not null default 'Y' constraint GROUP_TIPO_POI_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null) ;
+
+
+CREATE TABLE [POI] (
+[id] INT NOT NULL PRIMARY KEY,
+[indirizzo] VARCHAR(1024),
+[visitabile] VARCHAR(1024),
+[latitudine] float NULL,
+[longitudine] float NULL,
+[distanza_dal_centro] float NULL,
+[nome] VARCHAR(256)  NOT NULL,
+[webPage] VARCHAR(1024),
+[facebook] VARCHAR(1024),
+[instagram] VARCHAR(1024),
+[telefono] VARCHAR(1024),
+[mail] VARCHAR(1024),
+[comune_id] INT,
+[valido_da] DATETIME null,
+[valido_a] DATETIME null,
+[attivo] CHAR(1) not null default 'Y' constraint POI_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null) ;
+
+
+CREATE TABLE [POI_TEXT] (
+[id] INT NOT NULL PRIMARY KEY,
+[poi_id] int  NOT NULL,
+[descrizione_breve] VARCHAR(4096),
+[descrizione] BLOB,
+[lingua_id] INT,
+[attivo] CHAR(1) not null default 'Y' constraint POI_TEXT_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint POI_TEXT_POI_FK1    foreign key (poi_id)        references POI      (id),
+constraint POI_TEXT_LINGUE_FK1 foreign key (lingua_id)     references LINGUE   (id)
+) ;
+
+CREATE TABLE [POI_IMMAGINI] (
+[id] INT NOT NULL PRIMARY KEY,
+[poi_id] int  NOT NULL,
+[image] BLOB,
+[descrizione] VARCHAR(4096),
+[principale] INT,
+[attivo] CHAR(1) not null default 'Y' constraint POI_IMMAGINI_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint POI_IMMAGINI_POI_FK1    foreign key (poi_id)        references POI      (id)
+) ;
+
+
+CREATE TABLE [TIPO_POI] (
+[id] INT NOT NULL PRIMARY KEY,
+[tag] VARCHAR(256)  NOT NULL,
+[group_id] INT,
+[limite_zoom] INT,
+[attivo] CHAR(1) not null default 'Y' constraint TIPO_POIChk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint TIPO_POI_TIPO_GROUP_TIPO_POI_FK1    foreign key (group_id)        references GROUP_TIPO_POI (id)
+) ;
+
+CREATE TABLE [TIPO_POI_TEXT] (
+[id] INT NOT NULL PRIMARY KEY,
+[tipo_poi_id] int  NOT NULL,
+[descrizione] varchar(4096),
+[lingua_id] INT,
+[attivo] CHAR(1) not null default 'Y' constraint TIPO_POI_TEXT_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint TIPO_POI_TEXT_TIPO_POI_FK1    foreign key (tipo_poi_id)        references TIPO_POI      (id)
+) ;
+
+
+CREATE TABLE [GROUP_TIPO_POI_TEXT] (
+[id] INT NOT NULL PRIMARY KEY,
+[group_tipo_poi_id] int  NOT NULL,
+[descrizione] varchar(4096),
+[lingua_id] INT,
+[attivo] CHAR(1) not null default 'Y' constraint GROUP_TIPO_POI_TEXT_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint GROUP_TIPO_POI_TEXT_GROUP_TIPO_POI_FK1    foreign key (group_tipo_poi_id)        references GROUP_TIPO_POI (id)
+) ;
+
+CREATE TABLE [POIXTIPO] (
+[id] INT NOT NULL PRIMARY KEY,
+[poi_id] int  NOT NULL,
+[tipo_id] int  NOT NULL,
+[attivo] CHAR(1) not null default 'Y' constraint POIXTIPO_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint POIXTIPO_POI_FK1        foreign key (poi_id)        references POI (id),
+constraint POIXTIPO_TIPO_POI_FK1   foreign key (tipo_id)       references TIPO_POI (id)
+) ;
+
+CREATE TABLE [COMUNI] (
+[id] INT NOT NULL PRIMARY KEY,
+[istat] VARCHAR(256)  NOT NULL,
+[nome_comune] VARCHAR(256)  NOT NULL,
+[regione] VARCHAR(256)  NULL,
+[provincia] VARCHAR(256)  NOT NULL,
+[latitudine] float NULL,
+[longitudine] float NULL,
+[altitudine] float NULL,
+[abitanti] int NULL,
+[attivo] CHAR(1) not null default 'Y' constraint COMUNI_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null) ;
+
+CREATE TABLE [COMUNI_TEXT] (
+[id] INT NOT NULL PRIMARY KEY,
+[comune_id] int  NOT NULL,
+[descrizione_breve] VARCHAR(1024),
+[descrizione] VARCHAR(4096),
+[lingua_id] INT,
+[attivo] CHAR(1) not null default 'Y' constraint COMUNI_TEXT_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint COMUNI_TEXT_COMUNI_FK1   foreign key (comune_id) references COMUNI (id),
+constraint COMUNI_TEXT_LINGUE_FK1   foreign key (lingua_id) references LINGUE (id)
+) ;
+
+CREATE TABLE [COMUNI_IMMAGINI] (
+[id] INT NOT NULL PRIMARY KEY,
+[comune_id] int  NOT NULL,
+[image] BLOB,
+[descrizione] VARCHAR(4096),
+[principale] INT,
+[attivo] CHAR(1) not null default 'Y' constraint COMUNI_IMMAGINI_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint COMUNI_IMMAGINI_COMUNI_FK1   foreign key (comune_id) references COMUNI (id)
+) ;
+
+
+CREATE TABLE [PERCORSI] (
+[id] INT NOT NULL PRIMARY KEY,
+[codice] varchar(256) NOT NULL,
+[tipo_navigazione] VARCHAR(256) NOT NULL,
+[tipo_percorso] VARCHAR(256) NOT NULL,
+[poi_id] INT NOT NULL,
+[nome_percorso] VARCHAR(256) NOT NULL,
+[colore] VARCHAR(256),
+[lingua_id] INT NOT NULL,
+[percorso] BLOB,
+[valido_da] DATETIME null,
+[valido_a] DATETIME null,
+[lunghezza] VARCHAR(256),
+[dislivello] VARCHAR(256),
+[pendenza] VARCHAR(256),
+[adatto_a] VARCHAR(256),
+[accessibilita] VARCHAR(256),
+[tempo_percorrenza] VARCHAR(256),
+[attivo] CHAR(1) not null default 'Y' constraint PERCORSI_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint PERCORSI_POI_FK1   foreign key (poi_id) references POI (id),
+constraint PERCORSI_LINGUE_FK1   foreign key (lingua_id) references LINGUE (id)
+) ;
+
+CREATE TABLE [PERCORSI_TEXT] (
+[id] INT NOT NULL PRIMARY KEY,
+[percorso_id] int  NOT NULL,
+[descrizione_breve] VARCHAR(1024),
+[descrizione] VARCHAR(4096),
+[lingua_id] INT,
+[attivo] CHAR(1) not null default 'Y' constraint PERCORSI_TEXT_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint PERCORSI_TEXT_PERCORSI_FK1   foreign key (percorso_id) references PERCORSI (id),
+constraint PERCORSI_TEXT_LINGUE_FK1   foreign key (lingua_id) references LINGUE (id)
+) ;
+
+CREATE TABLE [PERCORSI_IMMAGINI] (
+[id] INT NOT NULL PRIMARY KEY,
+[percorso_id] int  NOT NULL,
+[image] BLOB,
+[descrizione] VARCHAR(4096),
+[principale] INT,
+[attivo] CHAR(1) not null default 'Y' constraint PERCORSI_IMMAGINI_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint PERCORSI_IMMAGINI_PERCORSI_FK1   foreign key (percorso_id) references PERCORSI (id)
+) ;
+
+
+CREATE TABLE [TAPPE] (
+[id] INT NOT NULL PRIMARY KEY,
+[nome_tappa] VARCHAR(256) NOT NULL,
+[colore] VARCHAR(256),
+[latitudine] float NULL,
+[longitudine] float NULL,
+[attivo] CHAR(1) not null default 'Y' constraint TAPPE_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null
+) ;
+
+
+CREATE TABLE [POIXTAPPE] (
+[id] INT NOT NULL PRIMARY KEY,
+[poi_id] INT NOT NULL,
+[tappa_id] INT NOT NULL,
+[attivo] CHAR(1) not null default 'Y' constraint POIXTAPPE_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint POIXTAPPE_POI_FK1   foreign key (poi_id) references POI (id),
+constraint POIXTAPPE_TAPPE_FK1   foreign key (tappa_id) references TAPPE (id)
+) ;
+
+
+CREATE TABLE [TAPPE_TEXT] (
+[id] INT NOT NULL PRIMARY KEY,
+[tappa_id] int  NOT NULL,
+[descrizione_breve] VARCHAR(1024),
+[descrizione] VARCHAR(4096),
+[lingua_id] INT,
+[attivo] CHAR(1) not null default 'Y' constraint TAPPE_TEXT_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint TAPPE_TEXT_TAPPE_FK1   foreign key (tappa_id) references TAPPE (id),
+constraint TAPPE_TEXT_LINGUE_FK1   foreign key (lingua_id) references LINGUE (id)
+) ;
+
+CREATE TABLE [TAPPE_IMMAGINI] (
+[id] INT NOT NULL PRIMARY KEY,
+[tappa_id] int  NOT NULL,
+[image] BLOB,
+[descrizione] VARCHAR(4096),
+[principale] INT,
+[attivo] CHAR(1) not null default 'Y' constraint TAPPE_IMMAGINI_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint TAPPE_IMMAGINI_TAPPE_FK1   foreign key (tappa_id) references TAPPE (id)
+) ;
+
+CREATE TABLE [TAPPEXPERCORSI] (
+[id] INT NOT NULL PRIMARY KEY,
+[tappa_id] INT NOT NULL,
+[percorso_id] INT NOT NULL,
+[attivo] CHAR(1) not null default 'Y' constraint TAPPEXPERCORSI_Chk check (attivo in ('Y','N')),
+[mod_dte] DATETIME not null,
+[uuid] TEXT not null,
+
+constraint TAPPEXPERCORSI_TAPPE_FK1   foreign key (tappa_id) references TAPPE (id),
+constraint TAPPEXPERCORSI_PERCORSI_FK1   foreign key (percorso_id) references PERCORSI (id)
+) ;
+

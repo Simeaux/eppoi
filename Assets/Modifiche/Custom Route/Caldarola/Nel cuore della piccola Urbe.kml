@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Caldarola</name>
+	<gx:CascadingStyle kml:id="__managed_style_1802997A6E34835B855F">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_007A9DC72F34835B855F">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0A2636C2AE34835B855E">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_007A9DC72F34835B855F</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_1802997A6E34835B855F</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="0CEB0AEA6C3465466E81">
+		<name>Nel cuore della piccola Urbe</name>
+		<LookAt>
+			<longitude>13.22565557828509</longitude>
+			<latitude>43.13834866193738</latitude>
+			<altitude>317.8276695772408</altitude>
+			<heading>9.012900918496426</heading>
+			<tilt>6.318612048655713</tilt>
+			<gx:fovy>30.00000073</gx:fovy>
+			<range>753.0680626733374</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0A2636C2AE34835B855E</styleUrl>
+		<LineString>
+			<coordinates>
+				13.22640256001975,43.13806673542426,0 13.2261170750919,43.13845547212861,0 13.22541754757952,43.13824736877043,0 13.22422662034205,43.13791758952784,0 13.22270484921644,43.13753409455706,0 13.222570566124,43.1372996319976,0 13.22267770852027,43.13710915574754,0 13.22314211842457,43.1369646889842,0 13.22395424425109,43.13673147129549,0 13.22384046094284,43.13683014521225,0 13.22386764601145,43.13714998994433,0 13.22395393632856,43.1373707843957,0 13.2246495395592,43.13779340690184,0 13.2248843898924,43.13769394101087,0 13.22511815388622,43.13758723966929,0 13.22502310831989,43.13776830520479,0 13.22614538152493,43.13808301937269,0 13.22604084005669,43.13826694279707,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+</Document>
+</kml>
