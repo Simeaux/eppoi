@@ -24,7 +24,9 @@ EditorBuildSettings:
     path: Assets/Plugins/GoodEnough/iOS TTS Example/ExampleScene.unity
     guid: 5151d6fd614114869b0b76e9491cc83d
   m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 477cc1d504b8041e7933d7c7a13261a2, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 941884aaa39524c61a3a84adf6a8ad1a, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 1e9ca8e8488724e829c6671555df4c59, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 4093471db796e4c91876f439ea2ef145, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: eece67b60de73400694472ec3365da16, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: a259c503a683e4a249a88f4109267b2e, type: 2}
