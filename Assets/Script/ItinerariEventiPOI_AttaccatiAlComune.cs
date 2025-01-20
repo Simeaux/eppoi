@@ -674,7 +674,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             if (delta > w)
             { 
                 delta -= w;
-                content_list_oggetti.GetComponent<RectTransform>().sizeDelta = new Vector2(0, delta);
+                content_list_oggetti.GetComponent<RectTransform>().sizeDelta = new Vector2(0, delta + altezza_prefab);
             }
             else
                 content_list_oggetti.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
