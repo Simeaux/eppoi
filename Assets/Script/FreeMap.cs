@@ -63,6 +63,7 @@ public class FreeMap : MonoBehaviour
 
     public Material MinimapLineMaterial;
     public GameObject[] _gameobject;
+    public GameObject _billboard;
     public GameObject GOObject;
 
     private string[] styleStr = new string[] { "light-v10", "dark-v10", "streets-v11", "outdoors-v11", "satellite-v9", "satellite-streets-v11" };
@@ -489,7 +490,6 @@ public class FreeMap : MonoBehaviour
         {
             if (_p != null)
             {
-                //"43.25659609773222,13.00896889545388"
                 foreach (var _tipo in _p.tipoList)
                 {
                     if (_tipo.tipo != null)
@@ -502,6 +502,8 @@ public class FreeMap : MonoBehaviour
                                 var _go = _gameobject[_tipo.tipo.group_id];// GameObject.FindGameObjectsWithTag(_p.tag).FirstOrDefault();
                                 if (_go != null)
                                 {
+                                    
+
                                     var apgo = Instantiate(_go, abstractMap.GeoToWorldPosition(_DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine), true), Quaternion.identity);
                                     apgo.tag = _p.tag;
                                     apgo.name = _p.ID.ToString();
@@ -589,7 +591,25 @@ public class FreeMap : MonoBehaviour
             meshRenderer.sharedMaterial = newmaterial;
             _minimapRouteGo.transform.SetParent(GOObject.transform, false);
             minimapRouteGo.Add(_minimapRouteGo);
-
+            //estraggo le tappe
+            foreach (var txp in _extract?.getTappeXPercorsiList().Where(p => p.percorso_id == percorsi.ToList()[i].id))
+            {
+                var _plist = _DBClass.getTAPPE(txp.tappa_id);
+                if (_plist != null)
+                {
+                    foreach (var _p in _plist)
+                    {
+                        var apgo1 = Instantiate(_billboard, abstractMap.GeoToWorldPosition(_DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine), true), Quaternion.identity);
+                        apgo1.transform.Rotate(90, 90, 90);
+                        foreach (var ap in apgo1.GetComponentsInChildren<TestoTappa>())
+                        {
+                            ap.SetText(_p.nome_tappa);
+                        }
+                        apgo1.transform.SetParent(GOObject.transform, false);
+                        POIGo.Add(apgo1);
+                    }
+                }
+            }
             i++;
         }
     }

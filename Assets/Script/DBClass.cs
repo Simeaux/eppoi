@@ -367,7 +367,11 @@ public class DBClass : MonoBehaviour
         return ct.getTAPPEXPERCORSI(id, tappa_id, percorso_id);
     }
 
-
+    public List<TAPPE> getTAPPE(int? id = null)
+    {
+        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
+        return ct.getTAPPE(id);
+    }
     public List<GROUP_TIPO_POI> getGROUP_TIPO_POI(int? id = null)
     {
         CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();

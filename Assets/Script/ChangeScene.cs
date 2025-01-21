@@ -134,7 +134,7 @@ public class ChangeScene : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log("_target " + _target);
+//        Debug.Log("_target " + _target);
         if(_progressBar != null)
             _progressBar.fillAmount = Mathf.MoveTowards(_progressBar.fillAmount, _target, 3 * Time.deltaTime);
     }
