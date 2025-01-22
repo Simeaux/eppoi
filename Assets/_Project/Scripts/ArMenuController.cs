@@ -198,6 +198,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
             public Button BtnRestart;
             public Button BtnLineRender;
             public Button BtnResizeMinimap;
+            public GameObject PanelBackgroundMenu;
             public Button BtnNFC;
             public Button BtnClose;
 
@@ -462,12 +463,21 @@ namespace ARLocation.MapboxRoutes.SampleProject
                             res.waypoints = route.GetWaypoints();
                     }
                     List<POI> _poi = new List<POI>();
+                    List<TAPPE> _tappe = new List<TAPPE>();
                     List<int> _comuni = new List<int>();
                     // prendo in considerazione solo le tappe collegate ai comuni compresi nel percorso
                     foreach (var _tappexperxorso in _DBClass.getTAPPEXPERCORSI(null, null, n))
                     {
                         if (_tappexperxorso != null)
                         {
+                            var _tappa = _DBClass.getTAPPE(1, _tappexperxorso.tappa_id);
+                            if (_tappa != null && _tappa.Count > 0)
+                            {
+                                foreach (var _ppp in _tappa)
+                                {
+                                    _tappe.Add(_ppp);
+                                }
+                            }
                             var _poixtappa = _DBClass.getPOIXTAPPE(null, null, _tappexperxorso.tappa_id);
                             if (_poixtappa != null && _poixtappa.Count > 0)
                             {
@@ -489,7 +499,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
                             }
                         }
                     }
-                    Settings.MenuController.CustomRoute(res, _poi);
+                    Settings.MenuController.CustomRoute(res, _poi, _tappe);
                 }
 
             }
@@ -859,7 +869,8 @@ namespace ARLocation.MapboxRoutes.SampleProject
             {
                 default_zoom = Settings.MenuController.Map.Zoom;
                 Settings.MenuController.Map.SetZoom(Settings.MenuController.Map.Zoom - 4.0f);
-                Settings.MenuController.MapSize = Screen.height - 220;
+
+                Settings.MenuController.MapSize = (int)(Screen.height - (Elements.PanelBackgroundMenu.GetComponentInChildren<RectTransform>().rect.height - Elements.PanelBackgroundMenu.GetComponentInChildren<RectTransform>().rect.y ));// 220;
                 Settings.MenuController.Map.UpdateMap();
                 Elements.BtnClose.gameObject.SetActive(false);
             }

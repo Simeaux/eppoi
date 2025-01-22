@@ -168,6 +168,7 @@ public class DBClass : MonoBehaviour
         public string colore;
         public double latitudine;
         public double longitudine;
+        public List<TAPPE_TEXT> tappe_text;
     }
     public class TAPPE_TEXT
     {
@@ -194,6 +195,7 @@ public class DBClass : MonoBehaviour
         public int id;
         public int tappa_id;
         public int percorso_id;
+        public int ordine;
     }
     public class COMUNE
     {
@@ -367,10 +369,10 @@ public class DBClass : MonoBehaviour
         return ct.getTAPPEXPERCORSI(id, tappa_id, percorso_id);
     }
 
-    public List<TAPPE> getTAPPE(int? id = null)
+    public List<TAPPE> getTAPPE(int lingua_id, int? id = null)
     {
         CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getTAPPE(id);
+        return ct.getTAPPE(lingua_id, id);
     }
     public List<GROUP_TIPO_POI> getGROUP_TIPO_POI(int? id = null)
     {

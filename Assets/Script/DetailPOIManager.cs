@@ -18,6 +18,10 @@ public class DetailPOIManager : MonoBehaviour
     //public GameObject PanelDownOfPanlMap;
 
     public bool _from_search_filter = false;
+
+
+
+
     private double _latitudine_scelta;
     private double _longitudine_scelta;
     private PERCORSO _percorso_associato;
@@ -65,6 +69,7 @@ public class DetailPOIManager : MonoBehaviour
             {
                 Pois.descrizione.text = string.Empty;
                 Pois.scrollview_list_img.gameObject.SetActive(true);
+                //POI
                 if (tipo == 3)
                 {
                     List<POI> _POI = _DBClass.getPOI(ID);
@@ -151,7 +156,6 @@ public class DetailPOIManager : MonoBehaviour
                                 if (!string.IsNullOrEmpty(lunga))
                                     Pois.descrizione.text += lunga;
                             }
-
                             Pois.img_webpage.color = Color.black;
                             Pois.img_facebook.color = Color.black;
                             Pois.img_instagramm.color = Color.black;
@@ -320,7 +324,40 @@ public class DetailPOIManager : MonoBehaviour
                             Pois.tipo.text = _lingua_selezionata == 1 ? "Itinerario": "Itinerary";
                             if(_p.descrizione != null && _p.descrizione.Count > 0)
                                 Pois.descrizione.text += _p.descrizione[0].descrizione + "\n\n\n\n";
-
+                            // Aggiungo le tappe
+                            bool tappe = false;
+                            foreach( var txp in _DBClass.getTAPPEXPERCORSI(null, null, _p.id))
+                            {
+                                foreach(var _t in  _DBClass.getTAPPE(_lingua_selezionata, txp.tappa_id))
+                                {
+                                    Pois.descrizione.text += "<br><b><sprite name=\"tappa\"><color=#E8531E>" + _t.nome_tappa + "</color></b>"+ "\n";
+                                    if (_t.tappe_text != null && _t.tappe_text.Count > 0)
+                                    {
+                                        tappe = true;
+                                        TAPPE_TEXT _tt = _t.tappe_text[0];
+                                        if (!string.IsNullOrEmpty(_tt.descrizione_breve))
+                                            Pois.descrizione.text +=  "<i>" + _tt.descrizione_breve + "</i>" + "\n";
+                                        if (!string.IsNullOrEmpty(_tt.descrizione))
+                                            Pois.descrizione.text += _tt.descrizione + "\n";
+                                        foreach(var _pxt in _DBClass.getPOIXTAPPE(null, null, _t.id))
+                                        {
+                                            foreach(var _poi in _DBClass.getPOI(_pxt.id))
+                                            {
+                                                if (!string.IsNullOrEmpty(_poi.nome))
+                                                {
+                                                    Pois.descrizione.text += "<br><sprite name=\"poi\"><color=#E8531E><b>" + _poi.nome + "</b></color><br>";
+                                                    if (!string.IsNullOrEmpty(_poi.descrizione_breve()))
+                                                        Pois.descrizione.text += "<i>" + _poi.descrizione_breve() + "</i>" + "\n";
+                                                    if (!string.IsNullOrEmpty(_poi.descrizione()))
+                                                        Pois.descrizione.text += _poi.descrizione() + "\n";
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if(tappe)
+                                Pois.descrizione.text += "\n\n\n\n";
                             Pois.img_webpage.color = Color.white;
                             Pois.img_facebook.color = Color.white;
                             Pois.img_instagramm.color = Color.white;
@@ -423,14 +460,14 @@ public class DetailPOIManager : MonoBehaviour
                                 //Debug.Log((Pois.dettaglioItinerario.transform.localPosition.y - 2.0));
                                 int tab = 150;
                                 int altezza_pageslider = -402;
-#if UNITY_IOS
-			                    altezza_pageslider = -802;
-#endif
+//#if UNITY_IOS
+//			                    altezza_pageslider = -802;
+//#endif
 
                                 Pois.dettaglioItinerario.transform.localPosition = new Vector3(0, 0 + tab, 0);// .Translate(new Vector3(0, -1 * (Pois.dettaglioItinerario.transform.localPosition.y), 0));
-                                if (_p.Listimages == null || _p.Listimages.Count == 0)
-                                    Pois.dettaglioItinerario.transform.localPosition = new Vector3(0, -2 + tab, 0);// .Translate(new Vector3(0, -2, 0));
-                                else
+                                if (_p.Listimages != null && _p.Listimages.Count != 0)
+                                //    Pois.dettaglioItinerario.transform.localPosition = new Vector3(0, 0, 0);// .Translate(new Vector3(0, -2, 0));
+                                //else
                                     Pois.dettaglioItinerario.transform.localPosition = new Vector3(0, altezza_pageslider + tab, 0);// Pois.dettaglioItinerario.transform.position = new Vector3(0, -802, 0);
 
                                 int indice_dettaglio = 0;

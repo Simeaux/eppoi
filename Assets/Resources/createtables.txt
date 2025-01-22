@@ -272,6 +272,7 @@ CREATE TABLE [TAPPEXPERCORSI] (
 [id] INT NOT NULL PRIMARY KEY,
 [tappa_id] INT NOT NULL,
 [percorso_id] INT NOT NULL,
+[ordine] INT NOT NULL,
 [attivo] CHAR(1) not null default 'Y' constraint TAPPEXPERCORSI_Chk check (attivo in ('Y','N')),
 [mod_dte] DATETIME not null,
 [uuid] TEXT not null,

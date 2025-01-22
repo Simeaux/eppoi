@@ -38,11 +38,13 @@ namespace ARLocation.MapboxRoutes.SampleProject
         public float BaseLineWidth = 20;
         public float MinimapStepSize = 0.5f;
         public GameObject[] _gameobject1234;
-
+        public GameObject GoTappa;
+        
 
         private AbstractRouteRenderer currentPathRenderer => s.LineType == LineType.Route ? RoutePathRenderer : NextTargetPathRenderer;
         private DBClass _DBClass;
         private List<POI> _POI = new List<POI>();
+        private List<TAPPE> _TAPPE = new List<TAPPE>();
         public LineType PathRendererType
         {
             get => s.LineType;
@@ -380,7 +382,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
         private RouteResponse currentResponse;
         private List<GameObject> POIGo = new List<GameObject>();
 
-        public void CustomRoute(RouteResponse res, List<POI> poiList)
+        public void CustomRoute(RouteResponse res, List<POI> poiList, List<TAPPE>tappeList)
         {
             custom_route = true;
             ARSession.SetActive(true);
@@ -395,6 +397,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
             currentResponse = res;
             buildMinimapRoute(res);
             _POI = poiList;
+            _TAPPE = tappeList;
         }
 
         private void buildMinimapRoute(RouteResponse res)
@@ -477,6 +480,36 @@ namespace ARLocation.MapboxRoutes.SampleProject
                                 POIGo.Add(apgo);
                             }
                         }
+                    }
+                }
+            }
+            
+            foreach (DBClass.TAPPE _t in _TAPPE)
+            {
+                //"43.25659609773222,13.00896889545388"
+                if (_t != null)
+                {
+                    var _go = GoTappa;
+                    if (_go != null)
+                    {
+                        Debug.Log("Caricate tappe n." + _TAPPE.Count);
+                        //Debug.Log($"POI :{_p.nome} lon:{_p.longitudine} lat:{_p.latitudine}");
+                        var apgo = Instantiate(_go, Map.GeoToWorldPosition(_DBClass.VectorFromLonLat(_t.longitudine, _t.latitudine), true), Quaternion.identity);
+                        //apgo.tag = _t.tag;
+                        apgo.name = _t.id.ToString();
+                        //apgo.transform.Rotate(90, 0, 0);
+                        apgo.transform.localPosition = new Vector3(
+            apgo.transform.position.x,
+            10,
+            apgo.transform.position.z);
+                        if (MapSize > 512)
+                            apgo.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                        //apgo.transform.Rotate(90, 90, 90);
+                        foreach (var ap in apgo.GetComponentsInChildren<TestoTappa>())
+                        {
+                            ap.SetText(_t.nome_tappa);
+                        }
+                        POIGo.Add(apgo);
                     }
                 }
             }

@@ -594,7 +594,7 @@ public class FreeMap : MonoBehaviour
             //estraggo le tappe
             foreach (var txp in _extract?.getTappeXPercorsiList().Where(p => p.percorso_id == percorsi.ToList()[i].id))
             {
-                var _plist = _DBClass.getTAPPE(txp.tappa_id);
+                var _plist = _DBClass.getTAPPE(1, txp.tappa_id);
                 if (_plist != null)
                 {
                     foreach (var _p in _plist)
