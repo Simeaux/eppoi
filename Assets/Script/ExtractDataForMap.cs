@@ -7,7 +7,7 @@ public class ExtractDataForMap : MonoBehaviour
 {
     private List<POI> PoiList;
     private List<PERCORSO> PercorsoList;
-    private List<TAPPEXPERCORSI> TappeXPercorsi;
+    private List<TAPPEXPERCORSI> TappeXPercorsiList;
     private DBClass _DBClass;
     // Start is called before the first frame update
     public void getstart()
@@ -16,7 +16,7 @@ public class ExtractDataForMap : MonoBehaviour
         Debug.Log("Extract");
         PoiList = _DBClass.getPOI();
         PercorsoList = _DBClass.GetPERCORSO(null, null, true);
-        TappeXPercorsi = _DBClass.getTAPPEXPERCORSI(null, null, null);
+        TappeXPercorsiList = _DBClass.getTAPPEXPERCORSI(null, null, null);
     }
 
     public List<POI> getPoiList()
@@ -41,11 +41,11 @@ public class ExtractDataForMap : MonoBehaviour
     }
     public List<TAPPEXPERCORSI> getTappeXPercorsiList()
     {
-        return TappeXPercorsi;
+        return TappeXPercorsiList;
     }
     public void setTappeXPercorsiList(List<TAPPEXPERCORSI> _TappeXPercorsi)
     {
-        TappeXPercorsi = new List<TAPPEXPERCORSI>();
-        TappeXPercorsi = _TappeXPercorsi;
+        TappeXPercorsiList = new List<TAPPEXPERCORSI>();
+        TappeXPercorsiList = _TappeXPercorsi;
     }
 }

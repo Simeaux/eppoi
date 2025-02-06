@@ -1,8 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using System.Xml.Linq;
 using ARLocation;
+using ARLocation.Utils;
+using Mapbox.Json.Linq;
 using UnityEngine;
+using UnityEngine.Diagnostics;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 using static DBClass;
 using static TouchScript.Behaviors.Cursors.UI.GradientTexture;
@@ -43,6 +48,8 @@ public class Select_language : MonoBehaviour
         _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
 
         txtNonChiedereNuovamente.text = _lingua_selezionata == 1 ? "Non chiedere nuovamente" : "Don't ask again";
+
+
     }
 
     private void OnEnable()

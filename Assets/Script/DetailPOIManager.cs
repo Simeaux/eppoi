@@ -1,14 +1,16 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using TS.PageSlider.Demo;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 using static ARLocation.MapboxRoutes.SampleProject.ArMenuController;
 using static DBClass;
 
-public class DetailPOIManager : MonoBehaviour
+public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
 {
 
     public Canvas DetailPOI;
@@ -253,6 +255,8 @@ public class DetailPOIManager : MonoBehaviour
                 }
                 else if (tipo == 1)
                 {
+                    var _pxtList = _DBClass.getPOIXTAPPE(null, null, null);
+                    var _poiList = _DBClass.getPOI(null);
                     List<PERCORSO> _PERCORSO = _DBClass.GetPERCORSO(ID);
                     foreach (DBClass.PERCORSO _p in _PERCORSO)
                     {
@@ -339,13 +343,13 @@ public class DetailPOIManager : MonoBehaviour
                                             Pois.descrizione.text +=  "<i>" + _tt.descrizione_breve + "</i>" + "\n";
                                         if (!string.IsNullOrEmpty(_tt.descrizione))
                                             Pois.descrizione.text += _tt.descrizione + "\n";
-                                        foreach(var _pxt in _DBClass.getPOIXTAPPE(null, null, _t.id))
+                                        foreach(var _pxt in _pxtList.FindAll(p=> p.tappa_id == _t.id))
                                         {
-                                            foreach(var _poi in _DBClass.getPOI(_pxt.id))
+                                            foreach(var _poi in _poiList.FindAll(p=> p.ID == _pxt.id))
                                             {
                                                 if (!string.IsNullOrEmpty(_poi.nome))
                                                 {
-                                                    Pois.descrizione.text += "<br><sprite name=\"poi\"><color=#E8531E><b>" + _poi.nome + "</b></color><br>";
+                                                    Pois.descrizione.text += "<br><link=\""+ _poi.ID +"\"><sprite name=\"poi\"><color=#E8531E><b>" + _poi.nome + "</b></color></link><br>";
                                                     if (!string.IsNullOrEmpty(_poi.descrizione_breve()))
                                                         Pois.descrizione.text += "<i>" + _poi.descrizione_breve() + "</i>" + "\n";
                                                     if (!string.IsNullOrEmpty(_poi.descrizione()))
@@ -534,7 +538,7 @@ public class DetailPOIManager : MonoBehaviour
                                 foreach (var aptext in Pois.ItemsItinerari)
                                     aptext.gameObject.SetActive(false);
                                 foreach (var aptext in Pois.ItemsItinerari)
-                                    {
+                                {
 
                                     if (indice_dettaglio < dettagli_da_scrivere.Count)
                                     {
@@ -625,4 +629,26 @@ public class DetailPOIManager : MonoBehaviour
         }
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        // First, get the index of the link clicked. Each of the links in the text has its own index.
+        var linkIndex = TMP_TextUtilities.FindIntersectingLink(Pois.descrizione, Input.mousePosition, null);
+        if (linkIndex >= 0)
+        {
+            // As the order of the links can vary easily (e.g. because of multi-language support),
+            // you need to get the ID assigned to the links instead of using the index as a base for our decisions.
+            // you need the LinkInfo array from the textInfo member of the TextMesh Pro object for that.
+            var linkId = Pois.descrizione.textInfo.linkInfo[linkIndex].GetLinkID();
+
+            // Now finally you have the ID in hand to decide what to do. Don't forget,
+            // you don't need to make it act like an actual link, instead of opening a web page,
+            // any kind of functions can be called.
+
+            Debug.Log($"URL clicked: linkInfo[{linkIndex}].id={linkId}");
+
+            // Let's see that web page!
+            //Application.OpenURL(url);
+            PlayerPrefs.SetInt("poi_selezionato_collegato_ad_un_percorso", int.Parse(linkId));
+        }
+    }
 }

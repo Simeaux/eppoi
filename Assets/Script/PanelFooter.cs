@@ -83,6 +83,23 @@ public class PanelFooter : MonoBehaviour
             btnNavigatore.gameObject.GetComponentInChildren<Image>().color = Color.black;
             txtNavigatore.color = Color.black;
         }
+        if (txtMap != null)
+        {
+            string label_map = "Mappa";
+            if (_lingua_selezionata == 2)
+            {
+                label_map = "Map";
+            }
+            if (SceneManager.GetActiveScene().name == "Map")
+            {
+                if (_lingua_selezionata == 1)
+                    label_map = "Dove sono";
+                else
+                    label_map = "I'm Here";
+            }
+            if (label_map != txtMap.text)
+                txtMap.text = label_map;
+        }
     }
 
     private void btnHomeCliccked()

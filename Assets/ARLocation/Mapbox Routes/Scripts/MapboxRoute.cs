@@ -307,7 +307,7 @@ namespace ARLocation.MapboxRoutes
             //Debug.Log($"{index} - {user} - {target}");
             float distance = MathUtils.HorizontalDistance(user, target);
             //Debug.Log($"{index} - {distance}");
-            double distance_to_next_Step_With_Instruction = distance + CalculateDistanceToNextStepWhitInstruction(0, index);
+            double distance_to_next_POI = distance + CalculateDistanceToNextPOI(0, index);
             return new SignPostEventArgs
             {
                 Route = this,
@@ -316,7 +316,7 @@ namespace ARLocation.MapboxRoutes
                 NextTargetPos = (index + 1) < NumberOfSteps ? s.StepsPlaceAtInstances[index + 1].transform.position : (Vector3?)null,
                 PrevTargetPos = (index) > 0 ? s.StepsPlaceAtInstances[index - 1].transform.position : (Vector3?)null,
                 Distance = distance,
-                DistanceToNextInstruction = (float)(distance_to_next_Step_With_Instruction),
+                DistanceToNextPOI = (float)(distance_to_next_POI),
                 IsCurrentTarget = (index == s.CurrentTargetIndex),
                 StepIndex = index,
                 Instruction = $"{index}. {instruction}",
@@ -325,10 +325,10 @@ namespace ARLocation.MapboxRoutes
         }
 
         //calcolo la distanza tra il prossimo step e il primo che ha il valore instruction != null e quella totale
-        private float CalculateDistanceToNextStepWhitInstruction(float distance, int index)
+        private float CalculateDistanceToNextPOI(float distance, int index)
         {
             float ret = distance;
-            if (string.IsNullOrEmpty(s.RouteSteps[index].maneuver.instruction.Trim()))
+            if (string.IsNullOrEmpty(s.RouteSteps[index].maneuver.location.Label.Trim()))
             {
                 // prendo in considerazione il prossimo step
                 //index++;
@@ -339,7 +339,7 @@ namespace ARLocation.MapboxRoutes
                     for (int i = index; i < s.RouteSteps.Count - 1; i++)
                     {
                         //se lo step ha il label posso uscire dal for perchè ho trovato un POI
-                        if (!string.IsNullOrEmpty(s.RouteSteps[i].maneuver.instruction.Trim()))
+                        if (!string.IsNullOrEmpty(s.RouteSteps[i].maneuver.location.Label.Trim()))
                             continue;
                         //Debug.Log(s.RouteSteps[i].maneuver.instruction);
                         var a_loc = s.StepsPlaceAtInstances[i].LocationOptions.LocationInput.Location;

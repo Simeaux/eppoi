@@ -672,12 +672,16 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             GUILayout.EndVertical();
             float delta = (altezza_prefab * (_TotalRowToExtract < _NumberOfItemsToShow ? _TotalRowToExtract : iep.Count +1));
             if (delta > w)
-            { 
+            {
+                Debug.Log("1");
                 delta -= w;
                 content_list_oggetti.GetComponent<RectTransform>().sizeDelta = new Vector2(0, delta + altezza_prefab);
             }
             else
-                content_list_oggetti.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+            {
+                Debug.Log("2");
+                content_list_oggetti.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0 + altezza_prefab);
+            }
         }
     }
 }

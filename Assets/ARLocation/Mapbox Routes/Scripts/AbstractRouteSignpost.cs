@@ -10,7 +10,7 @@ namespace ARLocation.MapboxRoutes
         public Vector3? PrevTargetPos;
         public Vector3 UserPos;
         public float Distance;
-        public float DistanceToNextInstruction;
+        public float DistanceToNextPOI;
         public bool IsCurrentTarget;
         public int StepIndex;
 

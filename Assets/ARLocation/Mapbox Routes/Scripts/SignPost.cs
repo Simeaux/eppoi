@@ -350,7 +350,7 @@ namespace ARLocation.MapboxRoutes
                 Utils.Misc.SetTransformPositionY(SignContainer.transform, Camera.main.transform.position.y + RoadSignSettings.Height);
             }
             _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
-            string testo = _lingua_selezionata == 1 ? "Prossime indicazioni" : "Next directions";
+            string testo = _lingua_selezionata == 1 ? "Prossimo POI" : "Next POI";
             if (state.Type != StateType.Hidden)
             {
                 if (RoadSignSettings.DistanceLabel != null)
@@ -365,18 +365,18 @@ namespace ARLocation.MapboxRoutes
                     // scrivo la distanza fino al prossimo step
                     RoadSignSettings.DistanceLabel.text = $"{t} {m}";
                     // se esiste la distanza fino al prossimo POI la segno se è differente dalla distanza fino al prossimo step altrimenti aggiungo la dicitura SOSTA
-                    if (args.DistanceToNextInstruction > 0 && args.Distance != args.DistanceToNextInstruction)
+                    if (args.DistanceToNextPOI > 0 && args.Distance != args.DistanceToNextPOI)
                     {
-                        t = args.DistanceToNextInstruction.ToString("N0").Replace(",", ".");
+                        t = args.DistanceToNextPOI.ToString("N0").Replace(",", ".");
                         m = "m";
-                        if (args.DistanceToNextInstruction > 100)
+                        if (args.DistanceToNextPOI > 100)
                         {
-                            t = (args.DistanceToNextInstruction/1000).ToString("N2").Replace(",", ".");
+                            t = (args.DistanceToNextPOI/1000).ToString("N2").Replace(",", ".");
                             m = "km";
                         }
                         RoadSignSettings.DistanceLabel.text += $". {testo} {t} {m}";
                     }
-                    else if (args.DistanceToNextInstruction > 0)
+                    else if (args.DistanceToNextPOI > 0)
                         RoadSignSettings.DistanceLabel.text = $"{testo} {RoadSignSettings.DistanceLabel.text}";
 
                 }

@@ -44,7 +44,7 @@ public class Panel_POI : MonoBehaviour
         if (PlayerPrefs.GetInt("percorso_selezionato_collegato_ad_un_poi") > 0)
         {
             Debug.Log("percorso_selezionato_collegato_ad_un_poi = " + PlayerPrefs.GetInt("percorso_selezionato_collegato_ad_un_poi"));
-            PlayerPrefs.SetInt("poi_selezionato", 0);
+            PlayerPrefs.SetInt("poi_selezionato", PlayerPrefs.GetInt("poi_selezionato") * -1);
             PlayerPrefs.SetInt("percorso_selezionato", PlayerPrefs.GetInt("percorso_selezionato_collegato_ad_un_poi"));
             PlayerPrefs.SetInt("percorso_selezionato_collegato_ad_un_poi", 0);
             id_selected.text = PlayerPrefs.GetInt("percorso_selezionato").ToString();
@@ -55,7 +55,7 @@ public class Panel_POI : MonoBehaviour
         {
             Debug.Log("poi_selezionato_collegato_ad_un_percorso = " + PlayerPrefs.GetInt("poi_selezionato_collegato_ad_un_percorso"));
             PlayerPrefs.SetInt("poi_selezionato", PlayerPrefs.GetInt("poi_selezionato_collegato_ad_un_percorso"));
-            PlayerPrefs.SetInt("percorso_selezionato", 0);
+            PlayerPrefs.SetInt("percorso_selezionato", PlayerPrefs.GetInt("percorso_selezionato") * -1);
             PlayerPrefs.SetInt("poi_selezionato_collegato_ad_un_percorso", 0);
             id_selected.text = PlayerPrefs.GetInt("poi_selezionato").ToString();
             if (!string.IsNullOrEmpty(id_selected.text))
@@ -91,13 +91,25 @@ public class Panel_POI : MonoBehaviour
     private void BtnBackCliccked()
     {
         Debug.Log("BtnBackCliccked");
-        PlayerPrefs.SetInt("percorso_selezionato", 0);
-        PlayerPrefs.SetInt("evento_selezionato", 0);
-        PlayerPrefs.SetInt("poi_selezionato", 0);
+        if (PlayerPrefs.GetInt("percorso_selezionato") < 0)
+            PlayerPrefs.SetInt("percorso_selezionato", PlayerPrefs.GetInt("percorso_selezionato") * -1);
+        else
+            PlayerPrefs.SetInt("percorso_selezionato", 0);
+
+        if (PlayerPrefs.GetInt("evento_selezionato") < 0)
+            PlayerPrefs.SetInt("evento_selezionato", PlayerPrefs.GetInt("evento_selezionato") * -1);
+        else
+            PlayerPrefs.SetInt("evento_selezionato", 0);
+
+        if (PlayerPrefs.GetInt("poi_selezionato") < 0)
+            PlayerPrefs.SetInt("poi_selezionato", PlayerPrefs.GetInt("poi_selezionato") * -1);
+        else
+            PlayerPrefs.SetInt("poi_selezionato", 0);
+
         selected_tab.text = "0";
         //PlayerPrefs.SetString("istat", "");
         _panel_poi.SetActive(false);
-        if(_panel_comune != null)
+        if (_panel_comune != null)
             _panel_comune.SetActive(true);
     }
 }
