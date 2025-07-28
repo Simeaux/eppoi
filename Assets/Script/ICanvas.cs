@@ -356,21 +356,22 @@ public class ICanvas : MonoBehaviour
                         {
                             if (_component2.name == "ImagePOI")
                             {
-                                Debug.Log("ci passo " + _iep.immagine_poi);
-                                if (_iep.immagine_poi == 1)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/enogastronomico");
-                                if (_iep.immagine_poi == 2)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/manifatturiero");
-                                if (_iep.immagine_poi == 3)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/naturalistico");
-                                if (_iep.immagine_poi == 4)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/religioso_spirituale");
-                                if (_iep.immagine_poi == 5)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/sensoriale");
-                                if (_iep.immagine_poi == 6)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/storico");
-                                if (_iep.immagine_poi == 7)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/storico_artistico");
+                                var _gruppo = _DBClass.getGROUP_TIPO_POI(_iep.immagine_poi).FirstOrDefault();
+                                if (_gruppo != null)
+                                {
+                                    if (_gruppo.value == "accoglienza-e-ricettivita")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/manifatturiero");
+                                    if (_gruppo.value == "enogastronomico")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/enogastronomico");
+                                    if (_gruppo.value == "naturalistico")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/naturalistico");
+                                    if (_gruppo.value == "religioso")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/religioso_spirituale");
+                                    if (_gruppo.value == "storico-artistico")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/storico_artistico");
+                                    if (_gruppo.value == "tempo-libero-e-sport")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/sensoriale");
+                                }
                             }
                         }
                     }
@@ -399,17 +400,50 @@ public class ICanvas : MonoBehaviour
                     {
                         Color c = Color.black;
                         Color _c = Color.black;
-                        if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
-                            c = _c;
-                        if (_iep.immagine_poi > 0 && _iep.immagine_poi < 4)
+                        Debug.Log(_iep.immagine_poi);
+                        var _gruppo = _DBClass.getGROUP_TIPO_POI(_iep.immagine_poi).FirstOrDefault();
+                        if (_gruppo != null)
                         {
-                            if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                            //4456A3 - blu
+                            //009366 - verde
+                            //E8531E - arancione
+                            if (_gruppo.value == "accoglienza-e-ricettivita")
+                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                    c = _c;
+                            if (_gruppo.value == "enogastronomico")
+                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                    c = _c;
+                            if (_gruppo.value == "manifatturiero")
+                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                    c = _c;
+
+                            if (_gruppo.value == "naturalistico")
+                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                    c = _c;
+                            if (_gruppo.value == "religioso")
+                                if (ColorUtility.TryParseHtmlString("#4456A3", out _c))
+                                    c = _c;
+
+                            if (_gruppo.value == "storico-artistico")
+                                if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
+                                    c = _c;
+                            if (_gruppo.value == "tempo-libero-e-sport")
+                                if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
+                                    c = _c;
+                            /*
+                            if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
                                 c = _c;
-                        }
-                        else if (_iep.immagine_poi > 0 && _iep.immagine_poi < 6)
-                        {
-                            if (ColorUtility.TryParseHtmlString("#4456A3", out _c))
-                                c = _c;
+                            if(_iep.immagine_poi > 0 && _iep.immagine_poi < 4)
+                            {
+                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                    c = _c;
+                            }
+                            else if(_iep.immagine_poi > 0 && _iep.immagine_poi < 6)
+                            {
+                                if (ColorUtility.TryParseHtmlString("#4456A3", out _c))
+                                    c = _c;
+                            }
+                            */
                         }
                         _component.color = c;
                     }
@@ -441,7 +475,7 @@ public class ICanvas : MonoBehaviour
                     {
                         if (_iep.tipo == 1)
                         {
-                            if (!string.IsNullOrEmpty(_iep.tipo_navigazione) && _iep.tipo_navigazione == "AR")
+                            if (!string.IsNullOrEmpty(_iep.tipo_navigazione) && _iep.tipo_navigazione == "ar-vr")
                             {
                                 _component.sprite = Resources.Load<Sprite>("Icone/AR");
                             }
@@ -546,7 +580,7 @@ public class ICanvas : MonoBehaviour
                 tipo_percorso = "Piedi";
             string tipo_navigazione = "";
             if (_AR.isOn)
-                tipo_navigazione = "AR";
+                tipo_navigazione = "ar-vr";
             if (_IOT.isOn)
                 tipo_navigazione = "IOT";
             _listPercorsi = _DBClass.GetPERCORSO(null, null, true, comune_id, QueryText.text, tipo_percorso, tipo_navigazione);

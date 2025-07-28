@@ -1,0 +1,317 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: Caldarola_AR
+  m_EditorClassIdentifier: 
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.13826775203636
+      Longitude: 13.22625871087092
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13838740544508
+      Longitude: 13.22619027294214
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 1
+    Instruction: Gira a Sinistra;Turn left
+  - Location:
+      Latitude: 43.13803133489949
+      Longitude: 13.22472163823357
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13773744925857
+      Longitude: 13.22359198368483
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13770101446951
+      Longitude: 13.22338201738004
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 2
+    Instruction: All'incrocio gira a sinistra;At the crossroads turn left
+  - Location:
+      Latitude: 43.13764255710169
+      Longitude: 13.22330289248093
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13751512447372
+      Longitude: 13.22273922148148
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13743043343841
+      Longitude: 13.22261801083959
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13722096208761
+      Longitude: 13.22258462387778
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13706482848464
+      Longitude: 13.22269969978468
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13672834614887
+      Longitude: 13.22395352404896
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 3
+    Instruction: Entra nella piazza;Enter the square
+  - Location:
+      Latitude: 43.13684885969992
+      Longitude: 13.22416643171433
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13688572192063
+      Longitude: 13.22411887999695
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 4
+    Instruction: Torna indietro;Go back
+  - Location:
+      Latitude: 43.13677111117067
+      Longitude: 13.22394332532247
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 5
+    Instruction: "Gia a destra a prendi Via Colc\xF9;Turn right and take Via Colc\xF9"
+  - Location:
+      Latitude: 43.13683014521225
+      Longitude: 13.22384046094284
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13714958088973
+      Longitude: 13.22381652151628
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13734204983535
+      Longitude: 13.22391562234422
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13747137833878
+      Longitude: 13.22417960685585
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13763331603432
+      Longitude: 13.22448501481042
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 6
+    Instruction: Gira a Sinistra;Turn left
+  - Location:
+      Latitude: 43.13771930606102
+      Longitude: 13.22433395101526
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13768204945031
+      Longitude: 13.22407017681576
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13762620865587
+      Longitude: 13.2238019700834
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 7
+    Instruction: Gira tutto a destra e scendi verso piazza;Turn right and go down
+      towards the square
+  - Location:
+      Latitude: 43.13773939663829
+      Longitude: 13.22415609321769
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1377953636188
+      Longitude: 13.22432285007654
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 8
+    Instruction: Gira a destra, Turn right
+  - Location:
+      Latitude: 43.13772368701053
+      Longitude: 13.22462242534025
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13768469761058
+      Longitude: 13.22489356061013
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 9
+    Instruction: Gira a destra ed entra nella piazza;Turn right and enter the square
+  - Location:
+      Latitude: 43.13750176133914
+      Longitude: 13.22508814785592
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13752800463005
+      Longitude: 13.22512824170514
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 10
+    Instruction: Torna indietro; Go back
+  - Location:
+      Latitude: 43.1377232838411
+      Longitude: 13.22495463739488
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 11
+    Instruction: Gira a destra in Via de Magistris;Turn right onto Via de Magistris
+  - Location:
+      Latitude: 43.13778242253915
+      Longitude: 13.22520653175968
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13786144748156
+      Longitude: 13.22553439616261
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13800407130856
+      Longitude: 13.2260959215194
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 12
+    Instruction: Attraversa la strada e vsi verso la Collegiata;Cross the road and
+      go towards the Collegiate Church
+  - Location:
+      Latitude: 43.13802318686318
+      Longitude: 13.22641893120942
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  SceneViewScale: 1
+  Color: 

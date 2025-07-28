@@ -183,10 +183,13 @@ namespace ARLocation.MapboxRoutes
             }
 
             var placemarkNodeList = documentNode.GetElementsByTagName("Placemark");
+            var customRoute = ScriptableObject.CreateInstance<MapboxRoutes.CustomRoute>();
             for (var i = 0; i < placemarkNodeList.Count; i++)
             {
                 var placemarkNode = placemarkNodeList[i];
                 var name = placemarkNode["name"]?.Name;
+
+                var PointNode = placemarkNode["Point"];
                 var lineStringNode = placemarkNode["LineString"];
                 if (lineStringNode != null)
                 {
@@ -198,10 +201,10 @@ namespace ARLocation.MapboxRoutes
                         var split = txt.Split(new char[] { ',', ' ' });
                         foreach (var s in split)
                         {
-                            Debug.Log($":{s}:");
+                            //Debug.Log($":{s}:");
                         }
 
-                        var customRoute = ScriptableObject.CreateInstance<MapboxRoutes.CustomRoute>();
+
                         customRoute.Points = new List<CustomRoute.Point>();
                         for (var k = 0; k < split.Length; k += 3)
                         {
@@ -224,23 +227,81 @@ namespace ARLocation.MapboxRoutes
                             var location = new Location(lat, lon);
                             var point = new MapboxRoutes.CustomRoute.Point();
                             point.Location = location;
+                            point.IsStep = true;
                             //point.Name = "pluto";
                             //point.Instruction = "Pippo";
                             customRoute.Points.Add(point);
                         }
 
-                        customRoute.Points[0].IsStep = true;
-                        customRoute.Points[customRoute.Points.Count - 1].IsStep = true;
+                        //customRoute.Points[0].IsStep = true;
+                        //customRoute.Points[customRoute.Points.Count - 1].IsStep = true;
 
-                        var dirPath = System.IO.Path.GetDirectoryName(path);
-                        var baseName = System.IO.Path.GetFileNameWithoutExtension(path);
-                        var filename = System.IO.Path.Combine(dirPath, baseName + (placemarkNodeList.Count == 0 ? "": $"({i})") + ".asset");
+                    }
+                }
+                else if (PointNode != null)
+                {
+                    var coordinatesNode = PointNode["coordinates"];
+                    double longitude = 0;
+                    double latitude = 0;
 
-                        AssetDatabase.CreateAsset(customRoute, filename);
+                    if (coordinatesNode != null)
+                    {
+                        // var txt = coordinatesNode.Value.TrimStart();
+                        var txt = coordinatesNode.InnerText.TrimStart().TrimEnd();
+                        var split = txt.Split(new char[] { ',', ' ' });
+                        for (var k = 0; k < split.Length; k += 3)
+                        {
+                            var lonString = split[k];
+                            var latString = split[k + 1];
+
+                            if (!double.TryParse(lonString, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out longitude))
+                            {
+                                Debug.LogError("Failed to parse float number");
+                                return;
+                            }
+
+                            if (!double.TryParse(latString, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out latitude))
+                            {
+                                Debug.LogError("Failed to parse float number");
+                                return;
+                            }
+                        }
+                    }
+                    var nameNode = placemarkNode["name"];
+                    var descriptionNode = placemarkNode["description"];
+
+                    var min_distance = 999999999.99;
+                    int num = 0;
+                    int indice = -1;
+                    
+                    foreach (var point in customRoute.Points)
+                    {
+                        if (point.Location != null && point.Location.Latitude > 0 && point.Location.Longitude > 0)
+                        {
+                            var distanza = distance(latitude, longitude, point.Location.Latitude, point.Location.Longitude, 'K');
+                            if (distanza < min_distance)
+                            {
+                                min_distance = distanza;
+                                indice = num;
+                            }
+                        }
+                        num++;
+                    }
+                    if (indice != -1)
+                    {
+                        if (nameNode != null)
+                            customRoute.Points[indice].Name = nameNode.InnerText;
+                        if (descriptionNode != null)
+                            customRoute.Points[indice].Instruction = descriptionNode.InnerText;
                     }
                 }
             }
-
+            var dirPath = System.IO.Path.GetDirectoryName(path);
+            var baseName = System.IO.Path.GetFileNameWithoutExtension(path);
+            var filename = System.IO.Path.Combine(dirPath, baseName + ".asset");
+            AssetDatabase.CreateAsset(customRoute, filename);
+            
+            
         }
 
         [MenuItem("Assets/AR+GPS/Custom Route From KML", true)]
@@ -251,5 +312,53 @@ namespace ARLocation.MapboxRoutes
 
             return ext.ToLower(System.Globalization.CultureInfo.InvariantCulture) == ".kml";
         }
+
+
+
+
+        private static double distance(double lat1, double lon1, double lat2, double lon2, char unit)
+        {
+            if ((lat1 == lat2) && (lon1 == lon2))
+            {
+                return 0;
+            }
+            else
+            {
+                double theta = lon1 - lon2;
+                double dist = Math.Sin(deg2rad(lat1)) * Math.Sin(deg2rad(lat2)) + Math.Cos(deg2rad(lat1)) * Math.Cos(deg2rad(lat2)) * Math.Cos(deg2rad(theta));
+                dist = Math.Acos(dist);
+                dist = rad2deg(dist);
+                dist = dist * 60 * 1.1515;
+                if (unit == 'K')
+                {
+                    dist = dist * 1.609344;
+                }
+                else if (unit == 'N')
+                {
+                    dist = dist * 0.8684;
+                }
+                return (dist);
+            }
+        }
+
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //::  This function converts decimal degrees to radians             :::
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        private static double deg2rad(double deg)
+        {
+            return (deg * Math.PI / 180.0);
+        }
+
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //::  This function converts radians to decimal degrees             :::
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        private static double rad2deg(double rad)
+        {
+            return (rad / Math.PI * 180.0);
+        }
+
+
+
+
     }
 }

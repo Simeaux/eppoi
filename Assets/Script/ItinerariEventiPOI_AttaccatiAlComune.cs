@@ -223,7 +223,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             tipo_percorso = "Cicloturistico";
         string tipo_navigazione = "";
         if (_ar)
-            tipo_navigazione = "AR";
+            tipo_navigazione = "ar-vr";
         if (_iot)
             tipo_navigazione = "IOT";
         if (_poi_selezionato > 0)
@@ -254,7 +254,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             {
                 foreach (var _poixtappe in _DBClass.getPOIXTAPPE(null, null, _tappexpercorso.tappa_id))
                 {
-                    var _poi = _DBClass.getPOI(_poixtappe.poi_id, null, _filterName, _NumberOfItemsToShow, _gruppo_tipo_poi, _tipo_poi).FirstOrDefault();
+                    var _poi = _DBClass.getPOI(_poixtappe.poi_id, null, _filterName, _NumberOfItemsToShow, _gruppo_tipo_poi, _tipo_poi, true).FirstOrDefault();
                     if (!POIList.Contains(_poi))
                         POIList.Add(_poi);
                 }
@@ -274,7 +274,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     {
                         if (_tipo_dettaglio_da_vedere == 0 || _tipo_dettaglio_da_vedere == 3)
                         {
-                            foreach (var pOIs in _DBClass.getPOI(null, _selected_comune.id, _filterName, _NumberOfItemsToShow, _gruppo_tipo_poi, _tipo_poi))
+                            foreach (var pOIs in _DBClass.getPOI(null, _selected_comune.id, _filterName, _NumberOfItemsToShow, _gruppo_tipo_poi, _tipo_poi, true))
                             {
                                 if (!POIList.Contains(pOIs))
                                     POIList.Add(pOIs);
@@ -304,7 +304,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                 _TotalRowToExtract = 0;
                 if (_tipo_dettaglio_da_vedere == 3)
                 {
-                    foreach (var pOIs in _DBClass.getPOI(null, null, _filterName, _NumberOfItemsToShow, _gruppo_tipo_poi, _tipo_poi))
+                    foreach (var pOIs in _DBClass.getPOI(null, null, _filterName, _NumberOfItemsToShow, _gruppo_tipo_poi, _tipo_poi, true))
                     {
                         if (!POIList.Contains(pOIs))
                             POIList.Add(pOIs);
@@ -411,7 +411,11 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     _IEP.testo = _poi.nome;
                     _IEP.logo_bici = false;
                     _IEP.tipo_poi = _poi.tipo_list_descrizione();
-                    _IEP.immagine_poi = _poi.tipoList[0].tipo.group_id;
+                    if (_poi.tipoList.Count > 0)
+                    {
+                        if(_poi.tipoList[0].tipo != null)
+                            _IEP.immagine_poi = _poi.tipoList[0].tipo.group_id;
+                    }
                     _IEP.tipo_percorso = "";
                     _IEP.tipo_navigazione = "";
                     _IEP.lunghezza = "";
@@ -540,21 +544,22 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                         {
                             if (_component2.name == "ImagePOI")
                             {
-                                Debug.Log("ci passo " + _iep.immagine_poi);
-                                if (_iep.immagine_poi == 1)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/enogastronomico");
-                                if (_iep.immagine_poi == 2)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/manifatturiero");
-                                if (_iep.immagine_poi == 3)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/naturalistico");
-                                if (_iep.immagine_poi == 4)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/religioso_spirituale");
-                                if (_iep.immagine_poi == 5)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/sensoriale");
-                                if (_iep.immagine_poi == 6)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/storico");
-                                if (_iep.immagine_poi == 7)
-                                    _component2.sprite = Resources.Load<Sprite>("Icone/storico_artistico");
+                                var _gruppo = _DBClass.getGROUP_TIPO_POI(_iep.immagine_poi).FirstOrDefault();
+                                if (_gruppo != null)
+                                {
+                                    if (_gruppo.value == "accoglienza-e-ricettivita")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/manifatturiero");
+                                    if (_gruppo.value == "enogastronomico")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/enogastronomico");
+                                    if (_gruppo.value == "naturalistico")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/naturalistico");
+                                    if (_gruppo.value == "religioso")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/religioso_spirituale");
+                                    if (_gruppo.value == "storico-artistico")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/storico_artistico");
+                                    if (_gruppo.value == "tempo-libero-e-sport")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/sensoriale");
+                                }
                             }
                         }
                     }
@@ -585,17 +590,49 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                         Color c = Color.black;
                         Color _c = Color.black;
                         Debug.Log(_iep.immagine_poi);
-                        if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
-                            c = _c;
-                        if(_iep.immagine_poi > 0 && _iep.immagine_poi < 4)
+                        var _gruppo = _DBClass.getGROUP_TIPO_POI(_iep.immagine_poi).FirstOrDefault();
+                        if (_gruppo != null)
                         {
-                            if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                            //4456A3 - blu
+                            //009366 - verde
+                            //E8531E - arancione
+                            if (_gruppo.value == "accoglienza-e-ricettivita")
+                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                    c = _c;
+                            if (_gruppo.value == "enogastronomico")
+                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                    c = _c;
+                            if (_gruppo.value == "manifatturiero")
+                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                    c = _c;
+
+                            if (_gruppo.value == "naturalistico")
+                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                    c = _c;
+                            if (_gruppo.value == "religioso")
+                                if (ColorUtility.TryParseHtmlString("#4456A3", out _c))
+                                    c = _c;
+
+                            if (_gruppo.value == "storico-artistico")
+                                if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
+                                    c = _c;
+                            if (_gruppo.value == "tempo-libero-e-sport")
+                                if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
+                                    c = _c;
+                            /*
+                            if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
                                 c = _c;
-                        }
-                        else if(_iep.immagine_poi > 0 && _iep.immagine_poi < 6)
-                        {
-                            if (ColorUtility.TryParseHtmlString("#4456A3", out _c))
-                                c = _c;
+                            if(_iep.immagine_poi > 0 && _iep.immagine_poi < 4)
+                            {
+                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                    c = _c;
+                            }
+                            else if(_iep.immagine_poi > 0 && _iep.immagine_poi < 6)
+                            {
+                                if (ColorUtility.TryParseHtmlString("#4456A3", out _c))
+                                    c = _c;
+                            }
+                            */
                         }
                         _component.color = c;
                     }
@@ -627,7 +664,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     {
                         if (_tipo_dettaglio_da_vedere == 1)
                         {
-                            if (!string.IsNullOrEmpty(_iep.tipo_navigazione) && _iep.tipo_navigazione == "AR")
+                            if (!string.IsNullOrEmpty(_iep.tipo_navigazione) && _iep.tipo_navigazione == "ar-vr")
                             {
                                 _component.sprite = Resources.Load<Sprite>("Icone/AR");
                             }

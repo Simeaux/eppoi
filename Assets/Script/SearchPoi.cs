@@ -36,30 +36,40 @@ public class SearchPoi : MonoBehaviour
         {
             string t = "0";
             string testo = string.Empty;
+            List<DBClass.GROUP_TIPO_POI> _group_tipo_poi = _DBClass.getGROUP_TIPO_POI();
             if (t_Enogastronomia.isOn)
             {
-                t = "1";
+                var ap = _group_tipo_poi.Find(p => p.value == "enogastronomico");
+                if(ap != null)
+                    t = ap.id.ToString();
                 var text  = t_Enogastronomia.GetComponentInChildren<Text>();
                 if(text != null)
                     testo = text.text;
             }
             if (t_Manifatturiero.isOn)
-            { 
-                t = "2";
+            {
+                var ap = _group_tipo_poi.Find(p => p.value == "manifatturiero");
+                if (ap != null)
+                    t = ap.id.ToString();
                 var text = t_Manifatturiero.GetComponentInChildren<Text>();
                 if (text != null)
                     testo = text.text;
             }
             if (t_Naturalistico.isOn)
             {
-                t = "3";
+                var ap = _group_tipo_poi.Find(p => p.value == "naturalistico");
+                if (ap != null)
+                    t = ap.id.ToString();
+
                 var text = t_Naturalistico.GetComponentInChildren<Text>();
                 if (text != null)
                     testo = text.text;
             }
             if (t_Religioso.isOn)
             {
-                t = "4";
+                var ap = _group_tipo_poi.Find(p => p.value == "religioso");
+                if (ap != null)
+                    t = ap.id.ToString();
                 var text = t_Religioso.GetComponentInChildren<Text>();
                 if (text != null)
                     testo = text.text;
@@ -73,14 +83,18 @@ public class SearchPoi : MonoBehaviour
             }
             if (t_Storico.isOn)
             {
-                t = "6";
+                var ap = _group_tipo_poi.Find(p => p.value == "storico-artistico");
+                if (ap != null)
+                    t = ap.id.ToString();
                 var text = t_Storico.GetComponentInChildren<Text>();
                 if (text != null)
                     testo = text.text;
             }
             if (t_Artistico.isOn)
             {
-                t = "7";
+                var ap = _group_tipo_poi.Find(p => p.value == "tempo-libero-e-sport");
+                if (ap != null)
+                    t = ap.id.ToString();
                 var text = t_Artistico.GetComponentInChildren<Text>();
                 if (text != null)
                     testo = text.text;

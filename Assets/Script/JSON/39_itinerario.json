@@ -1,0 +1,567 @@
+{
+    "PERCORSI": [
+        {
+            "id": "3900001",
+            "codice": "3900001",
+            "tipo_navigazione": "ar-vr",
+            "tipo_percorso": "storico-artistico",
+            "poi_id": "00390062857",
+            "nome_percorso": "Il cuore di Mogliano",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": "3900002",
+            "codice": "3900002",
+            "tipo_navigazione": "iot",
+            "tipo_percorso": "artigianale",
+            "poi_id": "00390062857",
+            "nome_percorso": "Tipicit\u00e0 di lusso",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_TEXT": [
+        {
+            "id": 39000011,
+            "percorso_id": "3900001",
+            "descrizione_breve": "Addentrati per le vie di Mogliano tra arte, storia, monumenti e una pausa rilassante immersa nella natura.",
+            "descrizione": "Parti alla scoperta di Mogliano con un itinerario che ti guider\u00e0 tra musei, chiese storiche e monumenti, raccontandoti la storia del paese e dei suoi protagonisti. Potrai ammirare opere d\u2019arte di grande valore, degustare l\u2019olio locale e rilassarti nel parco fluviale, godendo di una giornata all\u2019insegna della cultura e del contatto con la natura.",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 39000012,
+            "percorso_id": "3900001",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 39000021,
+            "percorso_id": "3900002",
+            "descrizione_breve": "Un paese lo riconosci dalle persone che lo abitano, un artista dall\u2019uso che fa della propria abilit\u00e0.\r\nIn ogni gesto, in ogni trama, in ogni intaglio, a Mogliano si percepisce l\u2019anima di chi crea.\r\n",
+            "descrizione": "<span style=\"font-weight: 400\">Questo itinerario ti guider\u00e0 attraverso le botteghe, i laboratori e i racconti degli artigiani che mantengono viva la memoria del \u201cfare con le mani\u201d \u2013 un viaggio tra intrecci di vimini o giunco, lavorazioni in pelle e la storica arte della maglieria.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Le tappe sono state costruite per <strong>tematica<\/strong> e <strong>tipologia di azienda<\/strong> per facilitare il visitatore nella scelta del percorso pi\u00f9 in linea con i propri interessi, passioni o curiosit\u00e0 artigianali.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 39000022,
+            "percorso_id": "3900002",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_IMMAGINI": [],
+    "TAPPE": [
+        {
+            "id": 390000101,
+            "nome_tappa": "Museo delle Terre Artigiane",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000102,
+            "nome_tappa": "Rocca Medievale",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000103,
+            "nome_tappa": "Chiesa di San Gregorio Magno",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000104,
+            "nome_tappa": "Chiesa di San Nicol\u00f2 - Auditorium",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000105,
+            "nome_tappa": "Chiesa di Santa Maria di Piazza",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000106,
+            "nome_tappa": "Museo di Arte Sacra",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000107,
+            "nome_tappa": "Teatro Apollo",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000108,
+            "nome_tappa": "Santuario del Santissimo Crocifisso",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000201,
+            "nome_tappa": "L'arte dell'intreccio",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000202,
+            "nome_tappa": "Dettagli di cuoio",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000203,
+            "nome_tappa": "Design naturale",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000204,
+            "nome_tappa": "Fili di stile",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_TEXT": [
+        {
+            "id": 3900001011,
+            "tappa_id": 390000101,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Il percorso inizia dal <\/span><b>Museo delle Terre Artigiane<\/b><span style=\"font-weight: 400\">, centro culturale dedicato alla promozione dell\u2019artigianato e del patrimonio storico-artistico di Mogliano, Loro Piceno, Petriolo e Urbisaglia. Al suo interno vengono svolti laboratori, esposizioni e attivit\u00e0 didattiche che mirano a coinvolgere attivamente la comunit\u00e0 e a valorizzare il territorio. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Oggi la sede del Museo ospita anche il Municipio di Mogliano.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001012,
+            "tappa_id": 390000101,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001021,
+            "tappa_id": 390000102,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Prosegui in direzione del centro, lungo Piazzale Diaz, per ammirare il punto pi\u00f9 alto del paese e lasciarti incantare dalla vista sui Monti Sibillini. La <\/span><b>Rocca Medievale<\/b><span style=\"font-weight: 400\">, di cui restano visibili solo i bastioni, non \u00e8 soltanto una finestra aperta su uno scenario naturale spettacolare, ma anche custode di un prezioso tesoro artistico e culturale: la <\/span><b>Chiesa di Santa Maria del Suffragio<\/b><span style=\"font-weight: 400\">.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001022,
+            "tappa_id": 390000102,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001031,
+            "tappa_id": 390000103,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Imponente e maestosa, la <\/span><b>Chiesa di San Gregorio Magno<\/b><span style=\"font-weight: 400\"> si erge lungo via Roma in direzione di Piazza Garibaldi. Risalente al XIV secolo, \u00e8 una delle chiese pi\u00f9 importanti del paese.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Nella sagrestia \u00e8 affissa la tela di Giambattista Fabiani, proveniente dalla Chiesa del Suffragio. Quest\u2019opera \u00e8 particolarmente interessante perch\u00e9 raffigura Mogliano in tutto il suo splendore del Settecento, facendo emergere dettagli che nel corso dei secoli si sono persi, come il campanile della chiesa, demolito negli anni \u201850 del Novecento.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001032,
+            "tappa_id": 390000103,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001041,
+            "tappa_id": 390000104,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Il fascino barocco della <\/span><b>Chiesa di San Nicol\u00f2<\/b><span style=\"font-weight: 400\"> colpisce subito l\u2019occhio del visitatore. La costruzione, risalente al XVI secolo, \u00e8 entrata a far parte dei beni del Comune nei primi anni \u201870 del Novecento e, una volta restaurata, \u00e8 stata trasformata in Auditorium per ospitare eventi culturali e rassegne musicali.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001042,
+            "tappa_id": 390000104,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001051,
+            "tappa_id": 390000105,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">La <\/span><b>Chiesa di Santa Maria di Piazza<\/b><span style=\"font-weight: 400\">, con il suo aspetto austero e superbo, si affaccia maestosa su <\/span><b>Piazza Garibaldi<\/b><span style=\"font-weight: 400\">. Originariamente la facciata disponeva di un portale, ora murato e di una lunetta dipinta. Il piano terra \u00e8 adibito a sagrestia e cappella, mentre il primo piano ospita il <\/span><b>Museo d\u2019Arte Sacra di Mogliano (MASM)<\/b><span style=\"font-weight: 400\">.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Particolarit\u00e0 della chiesa \u00e8 la <\/span><b>pala di Lorenzo Lotto<\/b><span style=\"font-weight: 400\">, raffigurante la Madonna Assunta con i Santi, commissionata dall'allora sindaco di Mogliano nel 1547 e consegnata al comune dall\u2019allievo di Lotto, Durante Nobili, nel 1548.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001052,
+            "tappa_id": 390000105,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001061,
+            "tappa_id": 390000106,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Il <\/span><b>Museo di Arte Sacra<\/b><span style=\"font-weight: 400\">, inaugurato nel 1979 e restaurato nel 2016, custodisce al suo interno opere sacre provenienti da chiese locali, offrendo un suggestivo percorso nella storia artistico-religiosa del territorio.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001062,
+            "tappa_id": 390000106,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001071,
+            "tappa_id": 390000107,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Degno di nota \u00e8 anche il <\/span><b>Teatro Apollo<\/b><span style=\"font-weight: 400\">, elegante esempio di architettura neoclassica, che merita senza dubbio una visita. Al suo interno, lo sguardo \u00e8 subito catturato dal magnifico soffitto affrescato con il dipinto \u201cMuse danzanti in cerchio con Apollo\u201d, circondato da quattro medaglioni che rendono omaggio ai grandi protagonisti della musica italiana, Verdi, Rossini, Bellini e Donizetti. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Un luogo che racchiude bellezza, storia e arte in un\u2019unica e raffinata cornice.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Nei pressi del teatro puoi gustarti un tranquillo aperitivo presso il Caff\u00e8 del Teatro o, in alternativa, fare una piccola degustazione del rinomato olio locale, il Piantone di Mogliano.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001072,
+            "tappa_id": 390000107,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001081,
+            "tappa_id": 390000108,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Luogo di fede e devozione, il Santuario del Santissimo Crocifisso sorge su un\u2019antica edicola votiva del XV secolo. \u00c8 stato edificato nel XIX secolo su progetto di Giuseppe Lucatelli<\/span>\r\n\r\n<span style=\"font-weight: 400\">La chiesa presenta una facciata sobria e simmetrica in elegante stile neoclassico, con un grande portale centrale. Accanto alla facciata si erge il campanile, costruito nella met\u00e0 del XX secolo. L'interno \u00e8 suddiviso in tre navate, separate da colonne imponenti. Al centro della navata principale si trova un altare maggiore riccamente decorato, dove \u00e8 custodita l'immagine del Crocifisso miracoloso, fulcro della devozione del santuario.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Ritagliati un momento di pace nel parco fluviale del paese, circondato dal verde e dalla tranquillit\u00e0 del paesaggio, ideale per passeggiare, pranzare all\u2019aperto o semplicemente respirare aria pulita.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900001082,
+            "tappa_id": 390000108,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900002011,
+            "tappa_id": 390000201,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">A Mogliano l\u2019<b>arte dell\u2019intreccio<\/b> affonda le sue radici nel XIX secolo, quando la lavorazione del giunco e del vimine rappresentava un\u2019attivit\u00e0 complementare al lavoro agricolo. Da allora, questa tradizione si \u00e8 tramandata di generazione in generazione, diventando parte integrante dell\u2019identit\u00e0 dei suoi abitanti.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Nel corso del tempo l\u2019abilit\u00e0 degli artigiani si \u00e8 evoluta: nuove tecniche e nuovi materiali, come la canna di bamb\u00f9, si sono uniti al sapere tradizionale, dando vita a creazioni che coniugano <\/span><b>manualit\u00e0 antica<\/b><span style=\"font-weight: 400\"> e <\/span><b>design contemporaneo<\/b><span style=\"font-weight: 400\">. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Oggi l\u2019intreccio \u00e8 uno dei fiori all\u2019occhiello del paese, conosciuto e apprezzato sia in Italia che all\u2019estero.<\/span>\r\n\r\n<span style=\"font-weight: 400\">I <\/span><b>maestri intrecciatori<\/b><span style=\"font-weight: 400\"> ti aspettano per mostrarti le loro opere e accompagnarti in un piacevole viaggio alla scoperta di un sapere autentico, dove ogni intreccio racconta una storia. <b><\/b><\/span>\r\n\r\n<span style=\"font-weight: 400\">Di seguito alcune delle aziende che hanno fatto di quest\u2019arte la loro professione, <\/span><b>Bottega Intreccio<\/b><span style=\"font-weight: 400\">, <\/span><b>Intreccio Vivo<\/b><span style=\"font-weight: 400\">, <\/span><b>Corradini Mauro<\/b><span style=\"font-weight: 400\">, <strong>Creazioni Sara<\/strong>, <\/span><b>Ennedue<\/b><span style=\"font-weight: 400\">, <\/span><b>Astolfi Alfredo.<\/b>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900002012,
+            "tappa_id": 390000201,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900002021,
+            "tappa_id": 390000202,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">La<\/span><b> lavorazione della pelle<\/b><span style=\"font-weight: 400\"> \u00e8 un\u2019attivit\u00e0 che ha preso sempre pi\u00f9 piede nel paese, soprattutto grazie all\u2019unione con l\u2019arte dell\u2019intreccio, dando vita a prodotti finiti di notevole qualit\u00e0 e valore artigianale.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Trasformare la pelle in creazioni di alta qualit\u00e0 richiede ispirazione, originalit\u00e0 e una grande attenzione ai dettagli: caratteristiche che da sempre contraddistinguono le aziende del territorio attive in questo settore.<\/span>\r\n\r\n<b>Elda Trade<\/b><span style=\"font-weight: 400\"> \u00e8 un\u2019azienda con oltre 3.000 punti vendita in 44 Paesi, specializzata nella produzione di borse e piccoli accessori in vera pelle. La scelta di utilizzare pelle conciata al vegetale \u00e8 un tratto distintivo che rispetta l\u2019ambiente e valorizza le qualit\u00e0 naturali del cuoio, garantendo prodotti sostenibili e di alta qualit\u00e0.<\/span>\r\n\r\n<b>Candria Tommaso<\/b><span style=\"font-weight: 400\">, dal 1974, realizza borse intrecciate a mano, impreziosite da dettagli ornamentali. Ogni creazione nasce da un processo interamente artigianale: i pezzi vengono cuciti a mano su forme in legno e rifiniti con particolari in pelle o bamb\u00f9.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Se sei in cerca di un regalo unico, queste due eccellenze del territorio ti accoglieranno a braccia aperte, pronte a raccontarti la loro storia attraverso oggetti fatti con passione e maestria.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900002022,
+            "tappa_id": 390000202,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900002031,
+            "tappa_id": 390000203,
+            "descrizione_breve": "",
+            "descrizione": "<b>Arredare significa prendersi cura dell\u2019ambiente in cui viviamo.<\/b><span style=\"font-weight: 400\"> Ogni spazio dovrebbe essere progettato per rispondere ai nostri bisogni, offrendo comfort e funzionalit\u00e0, senza mai rinunciare allo stile.<\/span>\r\n\r\n<b>Braid Company<\/b><span style=\"font-weight: 400\"> \u00e8 un'azienda che realizza arredi da esterno, combinando la tradizione artigianale con l'uso di materiali innovativi. Grazie a prestigiose collaborazioni, crea soluzioni eleganti e funzionali che arricchiscono ogni ambiente.<\/span>\r\n\r\n<b>Tamburrini Emilio<\/b><span style=\"font-weight: 400\"> \u00e8 un\u2019eccellenza nella produzione artigianale di mobili in giunco, adatti a soddisfare qualsiasi esigenza.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900002032,
+            "tappa_id": 390000203,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900002041,
+            "tappa_id": 390000204,
+            "descrizione_breve": "",
+            "descrizione": "<b>\"Dimmi cosa indossi e ti dir\u00f2 chi sei.\"<\/b><b>\r\n<\/b><span style=\"font-weight: 400\">Nel mondo della moda, il cappello \u00e8 molto pi\u00f9 di un semplice accessorio: \u00e8 un segno distintivo, un dettaglio che racconta chi siamo, esprimendo personalit\u00e0, gusto e stile. Un cappello ben scelto sa valorizzare la figura, completare un look, dare carattere e originalit\u00e0 a ogni occasione.<\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Da oltre cinquant\u2019anni, <\/span><b>Olimpia Srl<\/b><span style=\"font-weight: 400\"> realizza con passione e competenza pregiati copricapi pensati per ogni momento della giornata, dalle serate eleganti alle avventure all\u2019aria aperta.<\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">L\u2019eccellenza dell\u2019azienda si riflette nei brevetti <\/span><b>KNITFEL<\/b><span style=\"font-weight: 400\"> e <\/span><b>KNITCAP<\/b><span style=\"font-weight: 400\">, frutto dell\u2019abilit\u00e0 artigianale e dell\u2019innovazione applicata all\u2019arte della maglieria: un savoir-faire unico che trasforma cappelli e berretti in capolavori di stile e funzionalit\u00e0.<\/span>\r\n\r\n<b>Minicucci Fausto e Laura S.r.l.<\/b><span style=\"font-weight: 400\">, azienda specializzata nella <\/span><b>maglieria di lusso<\/b><span style=\"font-weight: 400\">, fonda la sua identit\u00e0 su due valori cardine: <\/span><b>esclusivit\u00e0<\/b><span style=\"font-weight: 400\"> e <\/span><b>versatilit\u00e0<\/b><span style=\"font-weight: 400\">.<\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Grazie a un sistema produttivo efficiente e all\u2019avanguardia, \u00e8 in grado di realizzare <\/span><b>grandi volumi<\/b><span style=\"font-weight: 400\"> senza mai rinunciare all\u2019<\/span><b>unicit\u00e0<\/b><span style=\"font-weight: 400\"> che contraddistingue ogni singolo capo.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Ogni collezione nasce da un processo attento e curato nei minimi dettagli, in cui <\/span><b>design e idee<\/b><span style=\"font-weight: 400\"> vengono tutelati e valorizzati, preservando l\u2019essenza creativa da cui tutto prende forma, un aspetto imprescindibile nel panorama della moda contemporanea.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 3900002042,
+            "tappa_id": 390000204,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_IMMAGINI": [],
+    "POIXTAPPE": [],
+    "TAPPEXPERCORSI": [
+        {
+            "id": 390000101,
+            "tappa_id": 390000101,
+            "percorso_id": "3900001",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000102,
+            "tappa_id": 390000102,
+            "percorso_id": "3900001",
+            "ordine": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000103,
+            "tappa_id": 390000103,
+            "percorso_id": "3900001",
+            "ordine": 3,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000104,
+            "tappa_id": 390000104,
+            "percorso_id": "3900001",
+            "ordine": 4,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000105,
+            "tappa_id": 390000105,
+            "percorso_id": "3900001",
+            "ordine": 5,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000106,
+            "tappa_id": 390000106,
+            "percorso_id": "3900001",
+            "ordine": 6,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000107,
+            "tappa_id": 390000107,
+            "percorso_id": "3900001",
+            "ordine": 7,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000108,
+            "tappa_id": 390000108,
+            "percorso_id": "3900001",
+            "ordine": 8,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000201,
+            "tappa_id": 390000201,
+            "percorso_id": "3900002",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000202,
+            "tappa_id": 390000202,
+            "percorso_id": "3900002",
+            "ordine": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000203,
+            "tappa_id": 390000203,
+            "percorso_id": "3900002",
+            "ordine": 3,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        },
+        {
+            "id": 390000204,
+            "tappa_id": 390000204,
+            "percorso_id": "3900002",
+            "ordine": 4,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:38:35",
+            "uuid": ""
+        }
+    ]
+}

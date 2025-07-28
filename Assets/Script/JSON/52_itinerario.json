@@ -1,0 +1,549 @@
+{
+    "PERCORSI": [
+        {
+            "id": "5200001",
+            "codice": "5200001",
+            "tipo_navigazione": "iot",
+            "tipo_percorso": "artigianale",
+            "poi_id": "00520075204",
+            "nome_percorso": "Le vie dell'artigianato",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": "5200002",
+            "codice": "5200002",
+            "tipo_navigazione": "ar-vr",
+            "tipo_percorso": "storico-artistico",
+            "poi_id": "00520075204",
+            "nome_percorso": "Un weekend tra le colline maceratesi",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_TEXT": [
+        {
+            "id": 52000011,
+            "percorso_id": "5200001",
+            "descrizione_breve": "Assapora la storia, sfiora i mestieri e osserva l\u2019arte prendere vita.\r\nNei luoghi in cui i materiali vengono plasmati, gli artigiani custodiscono la memoria dei gesti antichi.\r\n",
+            "descrizione": "<span style=\"font-weight: 400\">Il percorso ti accompagner\u00e0 a conoscere le principali botteghe degli artigiani locali che si renderanno disponibili a raccontare tutto ci\u00f2 che caratterizza la loro arte, in alcuni casi tramandata di generazione in generazione.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 52000012,
+            "percorso_id": "5200001",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 52000021,
+            "percorso_id": "5200002",
+            "descrizione_breve": "Rendi il tuo soggiorno un viaggio indimenticabile: passeggia tra le vie di un grazioso borgo, lasciati sorprendere da scorci inaspettati e perditi tra le campagne rigogliose del territorio maceratese.\r\n",
+            "descrizione": "<span style=\"font-weight: 400\">Un weekend all\u2019insegna del relax, dell\u2019arte e della natura. Il percorso ti guider\u00e0 attraverso il cuore storico di Pollenza, tra chiese, palazzi, musei e vedute panoramiche, con una seconda giornata dedicata all\u2019esplorazione dei paesi vicini.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 52000022,
+            "percorso_id": "5200002",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_IMMAGINI": [
+        {
+            "id": 52000011,
+            "percorso_id": "5200001",
+            "image": "",
+            "descrizione": "",
+            "principale": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 52000021,
+            "percorso_id": "5200002",
+            "image": "",
+            "descrizione": "",
+            "principale": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        }
+    ],
+    "TAPPE": [
+        {
+            "id": 520000101,
+            "nome_tappa": "Negozio di Antiquariato",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000102,
+            "nome_tappa": "La Bottega 4.0",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000103,
+            "nome_tappa": "Laboratorio di restauro",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000104,
+            "nome_tappa": "Laboratorio di ceramiche",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000201,
+            "nome_tappa": "Chiesa della Madonna della Pace",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000202,
+            "nome_tappa": "Collegiata San Biagio",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000203,
+            "nome_tappa": "Chiesa dei Santi Francesco e Antonio",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000204,
+            "nome_tappa": "Teatro Giuseppe Verdi",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000205,
+            "nome_tappa": "Palazzo Ricci Petrocchini e Studio Failla",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000206,
+            "nome_tappa": "Palazzo Cento",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000207,
+            "nome_tappa": "Abbazia di Rambona",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_TEXT": [
+        {
+            "id": 5200001011,
+            "tappa_id": 520000101,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Il passato racconta chi eravamo, come conserviamo i suoi lasciti racconta chi siamo. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Nel <\/span><b>Negozio di Antiquariato di Marinozzi Caterina<\/b><span style=\"font-weight: 400\">, in Piazza della Libert\u00e0, i ricordi sono tangibili: mobili, arredi, opere d\u2019arte, giochi per bambini di un\u2019epoca che ci appare lontana. Ogni dettaglio narra la storia di chi ha vissuto in un tempo in cui i gesti spontanei, i costumi e i mestieri artigianali erano l\u2019anima del borgo. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Un tempo in cui il saper fare non era solo abilit\u00e0, ma identit\u00e0 condivisa.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200001012,
+            "tappa_id": 520000101,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200001021,
+            "tappa_id": 520000102,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Il legno \u00e8 da sempre la materia con cui diamo forma a idee, emozioni e spazi da vivere.<\/span>\r\n\r\n<b>La Bottega 4.0<\/b><span style=\"font-weight: 400\"> progetta e realizza arredi su misura per rendere la tua casa ancora pi\u00f9 accogliente, rispecchiando il gusto estetico di tutta la famiglia e portando il calore autentico del legno negli ambienti interni.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200001022,
+            "tappa_id": 520000102,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200001031,
+            "tappa_id": 520000103,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Nel <\/span><b>laboratorio di Marinozzi Cav. Prof. Andrea<\/b><span style=\"font-weight: 400\">, esperti restauratori restituiscono nuova vita a opere e mobili antichi, unendo sapientemente l\u2019innovazione a tecniche tradizionali. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Ogni esigenza viene presa a cuore e trasformata in un manufatto di pregio. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Nella sala espositiva del laboratorio puoi ammirare le creazioni di questi abili artigiani.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200001032,
+            "tappa_id": 520000103,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200001041,
+            "tappa_id": 520000104,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">L\u2019arte della ceramica pollentina affonda le sue radici nel XVI secolo, con l\u2019arrivo di vasai forestieri come Gerolamo da Ancona, giunto nel 1509.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Il Cinquecento segn\u00f2 l\u2019inizio di una fioritura straordinaria: la lavorazione della ceramica si diffuse nelle fabbriche locali, rendendo Pollenza un punto di riferimento per tutto il Centro Italia per oltre quattro secoli.<\/span>\r\n\r\n<b>GM Ceramiche<\/b><span style=\"font-weight: 400\"> raccoglie e rinnova questa tradizione, realizzando oggetti unici in ceramica, che vanno dall\u2019arredo casa al vasellame da esterno, dalle bomboniere alle decorazioni floreali. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Puoi ammirare gli oggetti esposti direttamente nel laboratorio artigianale in via Ciccioli.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200001042,
+            "tappa_id": 520000104,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002011,
+            "tappa_id": 520000201,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Il viaggio comincia con una splendida vista panoramica sul paese. La <\/span><b>Chiesa della Madonna della Pace<\/b><span style=\"font-weight: 400\">, edificata nel 1644 su un\u2019antica torre per volere di Antonio Maria Malvezzi, \u00e8 oggi visitabile solo esternamente, ma regala uno dei punti panoramici pi\u00f9 suggestivi di Pollenza. Al suo interno \u00e8 custodito un prezioso affresco cinquecentesco, proveniente dalla demolita Chiesa di Pi\u00e8 di Terra, che ritrae una Madonna dai colori delicati ed eterei.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002012,
+            "tappa_id": 520000201,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002021,
+            "tappa_id": 520000202,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Prosegui lungo la Strada Provinciale Cegli fino alla <\/span><b>Collegiata di San Biagio<\/b><span style=\"font-weight: 400\">, costruita nel 1834 su progetto dell\u2019architetto De Mattia di Treia, ispirato alla chiesa di Valadier di Monte San Pietrangeli. L\u2019imponente struttura neoclassica ospita tele e affreschi di notevole valore artistico.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002022,
+            "tappa_id": 520000202,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002031,
+            "tappa_id": 520000203,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Continua su Via Roma per osservare un vero gioiello storico-artistico: la <\/span><b>Chiesa dei Santi Francesco e Antonio<\/b><span style=\"font-weight: 400\">. Costruita in stile romanico, nel tempo sub\u00ec diverse migliorie e ristrutturazioni. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">La facciata, che attira subito l\u2019occhio dei visitatori per i vivaci mosaici e le sculture teologiche con cui \u00e8 abbellita, \u00e8 stata costruita tra il 1907 e il 1931 dall\u2019ing. Cesare Bazzani per omaggiare l\u2019Ordine Francescano e il santo protettore.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002032,
+            "tappa_id": 520000203,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002041,
+            "tappa_id": 520000204,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Raggiungi <\/span><b>Piazza della Libert\u00e0<\/b><span style=\"font-weight: 400\"> e concediti una sosta al <\/span><b>Caff\u00e8 del Teatro<\/b><span style=\"font-weight: 400\">, locale storico elegante e raffinato. A pochi passi si trova il <\/span><b>Teatro Giuseppe Verdi<\/b><span style=\"font-weight: 400\">, progettato dall\u2019ing. Ireneo Aleandri, noto anche per lo Sferisterio di Macerata e il Teatro Nuovo di Spoleto.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002042,
+            "tappa_id": 520000204,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002051,
+            "tappa_id": 520000205,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Sulla piccola piazzetta lungo via Roma sorge <\/span><b>Palazzo Ricci Petrocchini<\/b><span style=\"font-weight: 400\">, dimora appartenuta alla famiglia omonima, di cui faceva parte anche Padre Matteo Ricci. L\u2019interno presenta elementi architettonici di grande rilievo, come eleganti scale voltate, stanze in enfilade con pavimenti in cotto, smalto o marmi.\u00a0<\/span>\r\n\r\n<span style=\"font-weight: 400\">Il Palazzo ebbe diversi proprietari, tra cui il pittore pollentino Fabio Failla, noto per le sue opere raffiguranti personaggi di diverso status culturale e sociale, come monache e prelati, ma anche comari, amici d\u2019infanzia e bagnanti. Tra i suoi album sono stati ritrovati anche disegni di nudo artistico, paesaggi marchigiani e spiagge. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Nel 2017, dopo un attento restauro, \u00e8 stato riaperto al pubblico lo <\/span><b>Studio Failla<\/b><span style=\"font-weight: 400\">, luogo interno al Palazzo in cui l\u2019artista trovava la sua ispirazione.<\/span>\r\n\r\n<span style=\"font-weight: 400\">La visita \u00e8 possibile<\/span><b> solo su prenotazione<\/b><span style=\"font-weight: 400\">.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002052,
+            "tappa_id": 520000205,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002061,
+            "tappa_id": 520000206,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Dirimpetto a Palazzo Ricci sorge <\/span><b>Palazzo Cento<\/b><span style=\"font-weight: 400\">, residenza nobiliare del XVI secolo. Oggi ospita il <\/span><b>Museo Civico<\/b><span style=\"font-weight: 400\">, il <\/span><b>Museo della Vespa<\/b><span style=\"font-weight: 400\">, la <\/span><b>Biblioteca comunale<\/b><span style=\"font-weight: 400\"> e la <\/span><b>Pinacoteca<\/b><span style=\"font-weight: 400\">. Sebbene abbia sub\u00ecto trasformazioni architettoniche nel tempo, la facciata monumentale ne conserva il prestigio.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002062,
+            "tappa_id": 520000206,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002071,
+            "tappa_id": 520000207,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Termina la giornata con una visita all\u2019esterno dell\u2019<\/span><b>Abbazia di Rambona<\/b><span style=\"font-weight: 400\">, tra gli edifici religiosi pi\u00f9 suggestivi della provincia. Fondata probabilmente nel VII secolo con l\u2019arrivo dei monaci benedettini, visse il suo massimo splendore nel IX secolo.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 5200002072,
+            "tappa_id": 520000207,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_IMMAGINI": [],
+    "POIXTAPPE": [],
+    "TAPPEXPERCORSI": [
+        {
+            "id": 520000101,
+            "tappa_id": 520000101,
+            "percorso_id": "5200001",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000102,
+            "tappa_id": 520000102,
+            "percorso_id": "5200001",
+            "ordine": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000103,
+            "tappa_id": 520000103,
+            "percorso_id": "5200001",
+            "ordine": 3,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000104,
+            "tappa_id": 520000104,
+            "percorso_id": "5200001",
+            "ordine": 4,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000201,
+            "tappa_id": 520000201,
+            "percorso_id": "5200002",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000202,
+            "tappa_id": 520000202,
+            "percorso_id": "5200002",
+            "ordine": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000203,
+            "tappa_id": 520000203,
+            "percorso_id": "5200002",
+            "ordine": 3,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000204,
+            "tappa_id": 520000204,
+            "percorso_id": "5200002",
+            "ordine": 4,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000205,
+            "tappa_id": 520000205,
+            "percorso_id": "5200002",
+            "ordine": 5,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000206,
+            "tappa_id": 520000206,
+            "percorso_id": "5200002",
+            "ordine": 6,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        },
+        {
+            "id": 520000207,
+            "tappa_id": 520000207,
+            "percorso_id": "5200002",
+            "ordine": 7,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:56",
+            "uuid": ""
+        }
+    ]
+}

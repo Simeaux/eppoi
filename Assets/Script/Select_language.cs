@@ -17,6 +17,7 @@ public class Select_language : MonoBehaviour
     public Button BtnItaliano;
     public Button BtnInglese;
     public Toggle conferma;
+    public Slider slider;
 
     public GameObject panel_select_language;
     public GameObject panel_benvenuto;
@@ -35,15 +36,19 @@ public class Select_language : MonoBehaviour
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
         try
         {
+            //if(slider != null)
+            //    _DBClass.UpdateDB(slider);
             if (_DBClass.getSetting_LinguaSelezionata() > 0)
             {
                 PlayerPrefs.SetInt("lingua_selezionata", _DBClass.getSetting_LinguaSelezionata());
+                
                 goOn();
             }
         }
         catch
         {
-            _DBClass.CreateDB(true);
+            //if (slider != null)
+            //    _DBClass.CreateDB(slider);
         }
         _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
 

@@ -10,12 +10,20 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using Mapbox.Utils;
 using static DBClass;
+using UnityEngine.UI;
 
 public class DBClass : MonoBehaviour
 {
-
+    private static GameObject _createTable;
+    private static CreateTable createTable;
     private void Start()
     {
+        
+    }
+    private void Awake()
+    {
+        _createTable = new GameObject("Cool GameObject made from Code");
+        createTable = _createTable.AddComponent<CreateTable>();
         StartCoroutine(GetLatLonUsingGPS());
     }
     public class POI
@@ -45,35 +53,39 @@ public class DBClass : MonoBehaviour
         public string provincia;
         public bool percorsi_associati;
         public double distanza_aria;
+        public DateTime mod_dte;
 
         public string descrizione()
         {
-            CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-            var ap = ct.getPOI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.ID);
+            
+            var ap = createTable.getPOI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.ID);
             if (ap == null)
-                ap = ct.getPOI_TEXT(1, this.ID);
+                ap = createTable.getPOI_TEXT(1, this.ID);
             return ap.FirstOrDefault()?.descrizione;
         }
         public string descrizione_breve()
         {
-            CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-            var ap = ct.getPOI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.ID);
+            
+            var ap = createTable.getPOI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.ID);
             if (ap == null)
-                ap = ct.getPOI_TEXT(1, this.ID);
+                ap = createTable.getPOI_TEXT(1, this.ID);
             return ap.FirstOrDefault()?.descrizione_breve;
         }
         public string tipo_list_descrizione()
         {
             string ret = "";
-            CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
+            
             var _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
             foreach (var ap in this.tipoList)
             {
-                if (!string.IsNullOrEmpty(ret))
-                    ret = ret + ", ";
-                var _ap = ct.getTIPO_POI_TEXT(_lingua_selezionata, ap.tipo.id);
-                if (_ap != null && _ap.Count > 0)
-                    ret = ret + _ap[0].descrizione;
+                if (ap.tipo != null)
+                {
+                    if (!string.IsNullOrEmpty(ret))
+                        ret = ret + ", ";
+                    var _ap = createTable.getTIPO_POI_TEXT(_lingua_selezionata, ap.tipo.id);
+                    if (_ap != null && _ap.Count > 0)
+                        ret = ret + _ap[0].descrizione;
+                }
             }
             return ret;
         }
@@ -114,7 +126,8 @@ public class DBClass : MonoBehaviour
     public class GROUP_TIPO_POI
     {
         public int id;
-        public int value;
+        public int indice;
+        public string value;
     }
     public class GROUP_TIPO_POI_TEXT
     {
@@ -173,6 +186,7 @@ public class DBClass : MonoBehaviour
     public class TAPPE_TEXT
     {
         public int id;
+        public int tappa_id;
         public string descrizione_breve;
         public string descrizione;
         public int lingua_id;
@@ -180,6 +194,7 @@ public class DBClass : MonoBehaviour
     public class TAPPE_IMMAGINI
     {
         public int id;
+        public int tappa_id;
         public byte[] image;
         public string descrizione;
         public bool principale;
@@ -207,7 +222,7 @@ public class DBClass : MonoBehaviour
         
         public double latitudine;
         public double longitudine;
-        public double altitudine;
+        public float altitudine;
         public int abitanti;
         public List<COMUNE_IMMAGINI> Listimages;
 
@@ -217,10 +232,10 @@ public class DBClass : MonoBehaviour
         public string descrizione()
         {
             string ret = string.Empty;
-            CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-            var ap = ct.getCOMUNI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.id);
+            
+            var ap = createTable.getCOMUNI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.id);
             if (ap == null)
-                ap = ct.getCOMUNI_TEXT(1, this.id);
+                ap = createTable.getCOMUNI_TEXT(1, this.id);
             if(ap != null && ap.Count > 0)
                 ret = ap.FirstOrDefault().descrizione;
             return ret;
@@ -228,15 +243,16 @@ public class DBClass : MonoBehaviour
         public string descrizioneBreve()
         {
             string ret = string.Empty;
-            CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-            var ap = ct.getCOMUNI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.id);
+            
+            var ap = createTable.getCOMUNI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.id);
             if (ap == null)
-                ap = ct.getCOMUNI_TEXT(1, this.id);
+                ap = createTable.getCOMUNI_TEXT(1, this.id);
             if (ap != null && ap.Count > 0)
                 ret = ap.FirstOrDefault().descrizione_breve;
             return ret;
 
         }
+        public DateTime mod_dte;
     }
     public class COMUNE_TEXT
     {
@@ -260,50 +276,50 @@ public class DBClass : MonoBehaviour
         public string valore;
     }
 
-    public List<POI> getPOI(int? id = null, int? comune_id = null, string nome = null, int maxrow = 0, int? group_tipo_poi = null, int? tipo_poi = null)
+    public List<POI> getPOI(int? id = null, int? comune_id = null, string nome = null, int maxrow = 0, int? group_tipo_poi = null, int? tipo_poi = null, bool? get_images = null, bool? get_max_date_update = null)
     {
         //Debug.Log(DateTime.Now);
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
+        
         StartCoroutine(GetLatLonUsingGPS());
-        var ap = ct.getPOI(PlayerPrefs.GetInt("lingua_selezionata"), id, comune_id, nome, maxrow, (float?)_latitudine, (float?)_longitudine, group_tipo_poi, tipo_poi);
+        var ap = createTable.getPOI(PlayerPrefs.GetInt("lingua_selezionata"), id, comune_id, nome, maxrow, (float?)_latitudine, (float?)_longitudine, group_tipo_poi, tipo_poi, get_images, get_max_date_update);
         //Debug.Log(DateTime.Now);
         return ap;
     }
     public int getPOI_Count(int? id = null, int? comune_id = null, string nome = null, int? group_tipo_poi = null, int? tipo_poi = null)
     {
         //Debug.Log(DateTime.Now);
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        var ap = ct.getPOI_Count(PlayerPrefs.GetInt("lingua_selezionata"), id, comune_id, nome, group_tipo_poi, tipo_poi);
+        
+        var ap = createTable.getPOI_Count(PlayerPrefs.GetInt("lingua_selezionata"), id, comune_id, nome, group_tipo_poi, tipo_poi);
         //Debug.Log(DateTime.Now);
         return ap;
     }
     public List<POI_TEXT> getPOI_TEXT(int? poi_id = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getPOI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), poi_id);
+        
+        return createTable.getPOI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), poi_id);
     }
 
-    public List<TIPO_POI> getTIPO_POI(int? id = null, int? group_id = null)
+    public List<TIPO_POI> getTIPO_POI(string tag = null, int? group_id = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getTIPO_POI(id, group_id);
+        
+        return createTable.getTIPO_POI(tag, group_id);
     }
 
     public List<TIPO_POI_TEXT> getTIPO_POI_TEXT(int? id = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getTIPO_POI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), id);
+        
+        return createTable.getTIPO_POI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), id);
     }
 
     public List<SETTING> getSETTING(string tipo)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getSETTING(tipo);
+        
+        return createTable.getSETTING(tipo);
     }
     public int SetSetting(string tipo, string valore)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.InsertUpdateSETTING(tipo, valore);
+        
+        return createTable.InsertUpdateSETTING(tipo, valore);
     }
 
     //lingua selezionata
@@ -329,69 +345,76 @@ public class DBClass : MonoBehaviour
 
     public List<PERCORSO> GetPERCORSO(int? id = null, int? poi_id = null, bool? groupedByCodice = null, int? comune_id = null, string nome = null, string tipo_percorso = null, string tipo_navigazione = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getPERCORSI(PlayerPrefs.GetInt("lingua_selezionata"), id, poi_id, groupedByCodice, comune_id, nome, tipo_percorso, tipo_navigazione);
+        
+        return createTable.getPERCORSI(PlayerPrefs.GetInt("lingua_selezionata"), id, poi_id, groupedByCodice, comune_id, nome, tipo_percorso, tipo_navigazione);
     }
     public List<PERCORSO_IMMAGINI> getPERCORSI_IMMAGINI(int? id = null, int? percorso_id = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getPERCORSI_IMMAGINI(id, percorso_id);
+        
+        return createTable.getPERCORSI_IMMAGINI(id, percorso_id);
     }
     public List<COMUNE> GetCOMUNI(string istat, string nome = null, int? id = null, bool? checkuserposition = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
+        
         //Debug.Log(checkuserposition);
         if (checkuserposition.HasValue && checkuserposition.Value)
         {
             StartCoroutine(GetLatLonUsingGPS());
         }
-        return ct.getCOMUNI(PlayerPrefs.GetInt("lingua_selezionata"), istat, nome, id, (float?)_latitudine, (float?)_longitudine);
+        return createTable.getCOMUNI(PlayerPrefs.GetInt("lingua_selezionata"), istat, nome, id, (float?)_latitudine, (float?)_longitudine);
     }
     public List<COMUNE_IMMAGINI> getCOMUNI_IMMAGINI(int? id = null, int? comune_id = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getCOMUNI_IMMAGINI(id, comune_id);
+        
+        return createTable.getCOMUNI_IMMAGINI(id, comune_id);
     }
     public List<POI_IMMAGINI> getPOI_IMMAGINI(int? id = null, int? poi_id = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getPOI_IMMAGINI(id, poi_id);
+        
+        return createTable.getPOI_IMMAGINI(id, poi_id);
     }
-    public List<POIXTAPPE> getPOIXTAPPE(int? id = null, int? poi_id = null, int? tappa_id = null)
+    public List<POIXTAPPE> getPOIXTAPPE(int? id = null, double? poi_id = null, int? tappa_id = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getPOIXTAPPE(id, poi_id, tappa_id);
+        
+        return createTable.getPOIXTAPPE(id, poi_id, tappa_id);
     }
 
     public List<TAPPEXPERCORSI> getTAPPEXPERCORSI(int? id = null, int? tappa_id = null, int? percorso_id = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getTAPPEXPERCORSI(id, tappa_id, percorso_id);
+        
+        return createTable.getTAPPEXPERCORSI(id, tappa_id, percorso_id);
     }
 
     public List<TAPPE> getTAPPE(int lingua_id, int? id = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getTAPPE(lingua_id, id);
+        
+        return createTable.getTAPPE(lingua_id, id);
     }
     public List<GROUP_TIPO_POI> getGROUP_TIPO_POI(int? id = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getGROUP_TIPO_POI(id);
+        
+        return createTable.getGROUP_TIPO_POI(id);
     }
     public List<GROUP_TIPO_POI_TEXT> getGROUP_TIPO_POI_TEXT(int? id = null, int? value = null)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        return ct.getGROUP_TIPO_POI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), id, value);
+        
+        return createTable.getGROUP_TIPO_POI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), id, value);
     }
 
 
-    public void CreateDB(bool reset_db)
+    public void CreateDB(Slider slider)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        ct.CreateDB(reset_db);
+        _createTable = new GameObject("Cool GameObject made from Code");
+        createTable = _createTable.AddComponent<CreateTable>();
+        createTable.CreateDB(true, slider);
     }
-    
+    public void UpdateDB(Slider slider)
+    {
+        _createTable = new GameObject("Cool GameObject made from Code");
+        createTable = _createTable.AddComponent<CreateTable>();
+        createTable.CreateDB(false, slider);
+    }
+
 
     public List<CustomRoute> ListOfCustomRoute(int? id = null, int? poi_id = null, bool? groupedByCodice = null)
     {
@@ -441,7 +464,7 @@ public class DBClass : MonoBehaviour
                             }
                             if (ListOfElements.Contains("Instruction:"))
                             {
-                                _point.Instruction = "";
+                                _point.Instruction =  "";
                                 var Instruction = Regex.Split(ListOfElements, "Instruction:");
                                 _point.Instruction = Instruction[1];
                             }
@@ -522,18 +545,18 @@ public class DBClass : MonoBehaviour
 
     public void setImageTOComuni(byte[] arr, int comune_id)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        ct.setImageTOTable("COMUNI_IMMAGINI", arr, comune_id);
+        
+        createTable.setImageTOTable("COMUNI_IMMAGINI", arr, comune_id);
     }
     public void setImageTOPOI(byte[] arr, int poi_id)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        ct.setImageTOTable("POI_IMMAGINI", arr, poi_id);
+        
+        createTable.setImageTOTable("POI_IMMAGINI", arr, poi_id);
     }
     public void setImageTOPERCORSI(byte[] arr, int percorso_id)
     {
-        CreateTable ct = ScriptableObject.CreateInstance<CreateTable>();
-        ct.setImageTOTable("PERCORSI_IMMAGINI", arr, percorso_id);
+        
+        createTable.setImageTOTable("PERCORSI_IMMAGINI", arr, percorso_id);
     }
 
     public double _longitudine;

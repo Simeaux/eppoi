@@ -1,4 +1,4 @@
- CREATE TABLE [SETTING] (
+CREATE TABLE [SETTING] (
 [id] INT identity NOT NULL PRIMARY KEY,
 [tipo] VARCHAR(256) NOT NULL,
 [valore] VARCHAR(256) NOT NULL, 
@@ -16,7 +16,8 @@ CREATE TABLE [LINGUE] (
 
 CREATE TABLE [GROUP_TIPO_POI] (
 [id] INT NOT NULL PRIMARY KEY,
-[value] INT,
+[indice] INT,
+[value] VARCHAR(256) NOT NULL, 
 [attivo] CHAR(1) not null default 'Y' constraint GROUP_TIPO_POI_Chk check (attivo in ('Y','N')),
 [mod_dte] DATETIME not null,
 [uuid] TEXT not null) ;

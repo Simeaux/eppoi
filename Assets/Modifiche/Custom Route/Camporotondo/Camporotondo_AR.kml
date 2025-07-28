@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Camporotondo_AR.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<color>ff0701fc</color>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<color>ff0701fc</color>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.2</scale>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>AR</name>
+		<open>1</open>
+		<Placemark id="0620E186AC374A6F22B2">
+			<name>AR Croce di Colvenale [1:LineString]</name>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<LineString>
+				<coordinates>
+					13.26534,43.13196,319.64 13.26559054578828,43.13198000617578,323.1244964599609 13.26558297398812,43.13212551345954,324.0500030517578 13.26552062395816,43.13237433043057,324.2224884033203 13.26547940531594,43.13247240898454,322.2444915771484 13.26572076405782,43.13261408467969,323.4620056152344 13.26601459209186,43.13196313958539,323.4620056152344 13.26603033287896,43.13184060796874,323.2194976806641 13.26593331292342,43.13164337910584,323.1360015869141 13.26596150258528,43.13158858982212,323.1360015869141 13.26673510488442,43.13153967399052,334.8014984130859 13.26735850582075,43.13161359299088,337.9640045166016 13.26763024392935,43.13173976659284,337.9640045166016 13.26823039941384,43.13234872335214,346.4900054931641 13.26895134724737,43.13258432524703,355.8894958496094 13.27035892555166,43.13252547200643,355.8894958496094 13.2710486926053,43.13239145522797,379.9494934082031 13.27129220136789,43.13266886857671,379.9494934082031 13.27145475327509,43.13317367932029,379.9494934082031 13.2718965013122,43.13425370500177,357.94 13.27199246545903,43.13434775097485,355.46 13.27207,43.13444,353.23 13.27223,43.13448,351.65 13.27252,43.13447,351.93 13.27303,43.13454,352.89 13.27344,43.13455,353.65 13.27394,43.1347,351.87 13.27448,43.13493,349.79 13.27499,43.13523,349.86 13.27534,43.13551,351.82 13.27556,43.13558,352.71 13.27594173053033,43.13580444804084,354.55 13.27618149817871,43.13598182408938,353.07 13.27628412099062,43.13621533179776,351.69 13.27642519644528,43.13635786417748,350.76 13.27657187911249,43.13644746479588,349.98 13.27671,43.13662,348.67 13.27687,43.13677,347.45 13.27719,43.13689,345.82 13.27762,43.13691,345.9 13.27813878299254,43.13687172509316,350.01 13.27855016938956,43.13688121879247,354.12 13.27862967544714,43.13677385550172,354.12 13.27852,43.13648,357.53 13.27872,43.1363,360.25 13.27890893562978,43.13635151817901,362.37 13.2790367069054,43.13642023421641,360.02 13.27914506028942,43.13668881181615,355.43 13.27914503222755,43.13674215526994,351.7 13.27880405840637,43.13697942628194,351.44 13.27883557268242,43.1371103392617,348.99 13.27887,43.13725,346.54 13.27897,43.1375,340.78 13.27932644448555,43.13768929990557,331.55 13.27955175813347,43.13788355991578,326.52 13.2798117615079,43.13807439684354,326.63 13.27996247685648,43.13809619208465,326.06 13.28044194456905,43.13792794645041,325.3 13.28080670517297,43.13774396320829,324.82 13.28105263350495,43.13780054082441,324.54 13.28156,43.13796,323.76 13.28201082926229,43.13811348965731,306.674 13.2820264577366,43.13822594560153,307.093 13.28163796942484,43.13870107302823,304.161 13.28132266047084,43.13878929948591,304.161 13.281163,43.138879,303.813 13.28082398995478,43.13920745757128,304.593 13.2807285636288,43.13946002122788,304.593 13.28069770484925,43.13978081918178,312.43 13.28084011175617,43.13989035828076,318.327 13.28077225601203,43.13996737569169,318.327 13.28049613032721,43.13999667399894,318.327 13.28025785002864,43.13998602774453,318.327 13.27975209493883,43.14015913030205,324.068 13.2797844552775,43.14019702959378,324.068 13.28066759499691,43.14043488488593,330.814 13.28086416821903,43.14060768912219,330.814 13.2809661679687,43.14108220047974,330.814 13.28113605882754,43.14162424406373,361.709 13.2811325253591,43.14182352034439,366.544 13.28123197196477,43.14222699298619,377.232 13.28115,43.142556,385.832 13.280456,43.14375,416.338 13.28048442746057,43.14407639196176,421.987 13.28045965810501,43.14434449821845,425.7169999999999 13.28063468528066,43.14443156352033,425.7169999999999 13.28066798454767,43.14461785764233,422.417 13.28045976761613,43.14499950574001,422.417 13.28029198990604,43.1452298459062,438.384 13.2804068482013,43.14607220531191,438.384 13.28034353164652,43.14648992983704,438.384 13.28037962128638,43.14660905603637,439.9839999999999 13.2809067653198,43.14726164515933,439.9839999999999 13.28122675670777,43.14764484685166,439.9839999999999 13.28156194724008,43.1479122686296,430.207 13.28178895634207,43.1479863031216,430.207 13.28205030915954,43.14802514476883,428.917 13.28358183335205,43.14783474589336,428.917 13.28413317085436,43.14780821406514,428.6089999999999 13.28479534203954,43.14792971751021,423.8199999999999 13.28535048847107,43.1481627232227,424.318 13.285649,43.148738,424.218 13.28612097463312,43.14902182895598,423.5439999999999 13.2875620499195,43.14934919245731,423.5439999999999 13.2881926852238,43.1496444168876,423.5439999999999 13.28877275360874,43.14970213234895,416.733 13.28877130117957,43.14976487489536,416.733 13.28868224707372,43.14994524835057,420.2909999999999 13.28857603147248,43.15036891443949,420.2909999999999 13.28872004985444,43.15108530524886,420.2909999999999 13.288588,43.151708,431.363 13.28874186172599,43.15223023027865,430.863 13.28878637016689,43.15265292035166,435.01 13.28875308124485,43.15295879507401,435.01 13.28855783209032,43.15296052890598,435.01 13.2881117762999,43.1526772901244,435.01 13.28693367164075,43.15266952742954,462.712 13.28671818638067,43.15287450971711,469.432 13.28639181950993,43.15300147271982,469.432 13.28611639543864,43.15298882595112,469.432 13.28602225333348,43.15263042561517,469.432 13.28605581401728,43.15223832089671,469.432 13.285799,43.151952,477.205 13.28486430479171,43.15175214041893,478.909 13.284018,43.151391,492.553 13.28273,43.15112,492.187 13.282727,43.151114,491.821 13.28199396173451,43.15063717350129,493.191 13.28142373594891,43.15051971426713,492.717 13.2805972903167,43.15010076907332,485.776 13.28007062104376,43.1499318930327,485.776 13.27973132898739,43.14988591470442,487.284 13.27879746121608,43.14919921201943,503.1559999999999 13.27832359966298,43.1500986967045,503.1559999999999 13.277393,43.150771,511.186 13.276666,43.150498,516.253 13.27648,43.14982,518.789 13.275809,43.149458,501.9059999999998 13.275672,43.149476,499.426 13.275579,43.149717,503.4089999999999 13.274463,43.149709,486.2099999999999 13.27416,43.1498,481.7280000000001 13.273822,43.150132,473.058 13.27143855797439,43.15065727870985,443.754 13.27116017129002,43.1506533863296,443.754 13.27083089690193,43.15060367521776,443.754 13.27060307731657,43.15059728119882,436.833 13.26976280132227,43.15027021062865,419.571 13.26944680565058,43.15019517217807,419.571 13.2687487497602,43.1503401731751,419.571 13.26818145250553,43.15039333379615,399.0430000000001 13.26797851707165,43.15031685039867,386.1 13.26790450102129,43.15018949111492,382.47 13.267848780993,43.15003574032777,377.89 13.26820564169992,43.14942441807394,381.14 13.26822197680855,43.14927314945827,377.67 13.26769087810109,43.1487684046734,367.39 13.26755008877086,43.14845072079716,361.14 13.26748844080814,43.14818494913304,355.78 13.26757,43.14801,355.41 13.26788294777842,43.14763128035793,354.41 13.26817,43.14712,353.07 13.26851,43.14675,352.03 13.26902398012073,43.14647169364822,351.04 13.26898360450312,43.14641689886965,350.73 13.26823471610788,43.14643175184609,344.64 13.26802748110414,43.14645265543873,342.15 13.26773939607873,43.14655302495042,340.42 13.26767244531176,43.14665475903341,340.96 13.26768346717316,43.14684173240221,341.42 13.26762627587662,43.1470190813615,341.95 13.26748342674924,43.14714100520766,342.26 13.26724706143875,43.14710418157478,342.26 13.267189227621,43.14666947726783,342.26 13.26736326625496,43.1462066952272,333.28 13.26758065090918,43.14590646265632,332.55 13.2679877238867,43.1454682431614,331.17 13.26808710698735,43.14528814204949,329.51 13.26807707163776,43.14501228441516,327.64 13.2678946313054,43.14455621827645,313.36 13.26778697529274,43.1440765750865,311.57 13.26789089026374,43.14383154371656,311.57 13.26808701498311,43.14365209365516,310.23 13.26824955073603,43.14348061886581,309.36 13.26830782804055,43.14330602696022,307.14 13.26820212767869,43.14315838411134,304.64 13.26807393167373,43.14309475051684,304.64 13.26789979571714,43.14310865482885,302.12 13.26773089164425,43.14320077902923,300.77 13.26748527383158,43.14340607638644,302.77 13.26713523175672,43.14356013021602,302.6 13.26668282426945,43.14366352378769,299.12 13.26625300808796,43.14365082468207,294.8 13.26595822152562,43.14348335699842,291.08 13.26580129343849,43.14328312445438,286.08 13.26576976215327,43.1429929465581,283.35 13.2658039280315,43.14276540267162,282.2 13.26588,43.14252,281.54 13.26607,43.14202,279.48 13.26618801478424,43.14142045376668,277.27 13.26638042122322,43.1411406699586,277.63 13.26663,43.14089,278.01 13.26677937034887,43.14067851170369,280.58 13.26680330447859,43.14042907741718,280.58 13.26669,43.14018,283.48 13.26646,43.13974,286.7 13.26627,43.13954,284.89 13.26552954126731,43.13921090994319,280.27 13.26544049351486,43.13910653362898,280.27 13.26536690813257,43.13894064467399,280.67 13.26534052964302,43.13865769717304,281.2 13.26530573416769,43.13825914890995,281.91 13.26519785795763,43.13786518036977,282.49 13.26515721009867,43.13770836136977,283.77 13.26517907569442,43.13751589680722,285.14 13.26546112299858,43.1371719842438,288.01 13.26558944459005,43.137021921231,289.01 13.26584714567002,43.13672092614576,288.3 13.26594119915015,43.1365201373214,287.87 13.26598736730871,43.13634983675508,287.52 13.2659853935606,43.13615296223786,287.11 13.26595571423962,43.13594959947985,286.7 13.26586255325373,43.13581919941913,286.23 13.26578198106082,43.13580325480394,286.23 13.26582092927011,43.13541844889946,285.14 13.26555045718514,43.13525402268159,285.39 13.26525805670552,43.13516678790401,285.79 13.26474,43.13501,286.36 13.2645301628789,43.13488996678892,287.83 13.26408562267969,43.13448472613749,289.25 13.26381077599776,43.13433697349237,289.37 13.26332,43.13418,291.02 13.26295,43.13411,292.79 13.26275,43.1341,294.89 13.26227,43.13423,301.06 13.262,43.13425,304.35 13.26134,43.13422,311.99 13.26053,43.13429,322.33 13.26022,43.13421,324.74 13.26,43.13421,327.05 13.25976919756611,43.13430577755656,330.86 13.25972875887872,43.13441317290302,332.61 13.25973810470481,43.13472708098389,336.33 13.25966468114298,43.13489803200724,338.76 13.25946167921063,43.1351617490152,342.8 13.25934078453588,43.13524741842492,344.37 13.25922404498044,43.13520636731724,345.68 13.2591723469514,43.13507027566617,345.82 13.25916443915396,43.13483885117244,345.44 13.25907427795608,43.13465347748605,344.86 13.25885966067669,43.13442850280791,344.14 13.25864783773994,43.13432450340255,343.68 13.25835,43.1343,346.85 13.25775,43.13427,353.57 13.25728,43.13427,361.04 13.25699484077953,43.13434571494978,366.0599999999999 13.25666082749098,43.13445115410083,374.17 13.25585,43.13461,382.1 13.25523,43.13471,390.2699999999999 13.25466,43.13478,397.85 13.25395586640432,43.13475902414969,406.9399999999999 13.25314821722928,43.13454382371209,418.34 13.25296837856362,43.13451791584765,421.0899999999999 13.25282056104406,43.13396800605744,417.7599999999999 13.25271598787176,43.13375620792034,415.43 13.25256334595327,43.13344039019607,418.54 13.25255566038653,43.13327638627321,420 13.25261830737928,43.13309854395358,417.4900000000001 13.25273,43.13298,415.33 13.25292,43.1329,413 13.25306,43.13277,410.95 13.25320671354661,43.13245343437479,411.6 13.25339311596803,43.13204207471981,412.52 13.25357552993948,43.13189513494289,412.8799999999999 13.2540522197022,43.13172984498666,407.24 13.25457758085672,43.13159091060263,407.24 13.25514612446645,43.13149509748298,393.46 13.2557208857295,43.1313562770362,391.01 13.25637017541929,43.13130049616794,388.38 13.25684741819561,43.13131190809153,388.38 13.25724,43.13128,380.47 13.25747920204872,43.13123143847489,378.49 13.25774871155903,43.1310611413243,371.0644989013672 13.25828859232011,43.13026764438456,371.0644989013672 13.25844561133821,43.13000438153581,349.281005859375 13.25867437275658,43.12989201129862,349.281005859375 13.25939316707087,43.12975859759177,343.0685119628906 13.25972813531142,43.12981428269265,335.2000122070312 13.25986443049388,43.12992921615088,335.2000122070312 13.26000222804571,43.13030450500849,335.2000122070312 13.26014598095295,43.13081475675296,334.5355072021484 13.2602639846707,43.13105814528961,334.5355072021484 13.26042142395373,43.13129396073061,325.2725067138672 13.26056278059956,43.13131456490037,325.2725067138672 13.26068827934482,43.13125985058493,322.2044982910156 13.2608309752913,43.13110564935578,322.2044982910156 13.26110665853705,43.1305884310547,322.2044982910156 13.26117160909632,43.13036873059065,322.2044982910156 13.26132997242779,43.13010370793465,306.7010040283203 13.26141069180129,43.13000096455681,306.7010040283203 13.26156689627545,43.12999926925963,305.7900085449219 13.26169381652162,43.13012175777487,305.7900085449219 13.26178627877098,43.13030732159454,303.0395050048828 13.26186676959802,43.1303599003743,303.0395050048828 13.26196872003094,43.13038023067381,303.0395050048828 13.26231948570652,43.13036803152184,303.0395050048828 13.2627650154208,43.13041614029736,294.7100067138672 13.2633858643143,43.13089296419278,291.0135040283203 13.2635436481229,43.13101711022379,291.2285003662109 13.26360043903155,43.13115302764761,291.2285003662109 13.26352576822224,43.13142412274065,291.6799926757812 13.26358085889442,43.13158302166199,291.9804992675781 13.26397350255107,43.1321201373691,299.3085021972656 13.26403558408075,43.13209245615666,299.3085021972656 13.26386330543446,43.13171349393784,296.7430114746094 13.26390841120039,43.1315489063926,294.0019989013672 13.26416100348919,43.13122631351851,294.4994964599609 13.26420610925516,43.13104197396913,294.9830017089844 13.2642662502644,43.13069722240022,295.2279968261719 13.26438051820526,43.1307235568039,295.4849853515625 13.26435345474516,43.13098031664688,298.9794921875 13.26458199062594,43.13100884545173,298.9794921875 13.26493381559897,43.13107248658392,302.4779968261719 13.26518658386425,43.13127708851714,306.9669952392578 13.26506937083003,43.13134813764381,306.9669952392578 13.26483895884856,43.13144003540015,306.9669952392578 13.2642993963189,43.13150568185046,298.7254943847656 13.2643121345416,43.13158771382493,299.4029998779297 13.26446299631641,43.13158708500029,299.8499908447266 13.2645499474072,43.13172409134981,307.7154998779297 13.2645717036274,43.13176555298507,312.1830139160156 13.26464417026835,43.13175599111423,312.1830139160156 13.26475315681362,43.13171976568802,312.4630126953125 13.2648453624592,43.13168728079319,312.9040069580078 13.26509141556673,43.13165919364366,312.9040069580078 13.26520159443434,43.13169497995408,314.7260131835938 13.26519227411908,43.13190980968099,318.2960052490234 13.26534260014978,43.13191165061548,319.3509979248047 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<description>Esci dalla piazza e imbocca via Roma;Exit the square and take Via Roma</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26571816720224</longitude>
+				<latitude>43.13201284466736</latitude>
+				<altitude>0</altitude>
+				<heading>7.366749968047423</heading>
+				<tilt>45.15227572601112</tilt>
+				<range>84.76564434896029</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26559724793148,43.13198330873865,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Prendi le scale in discesa sulla destra;Take the stairs down on the right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26565671300257</longitude>
+				<latitude>43.13224861788816</latitude>
+				<altitude>0</altitude>
+				<heading>7.366707953776961</heading>
+				<tilt>45.15227572601114</tilt>
+				<range>84.76564434949057</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26547770400546,43.13248774942365,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Gira a destra su via Circonvallazione;Turn right onto Circonvallazione Street</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26565671300257</longitude>
+				<latitude>43.13224861788816</latitude>
+				<altitude>0</altitude>
+				<heading>7.366707953776961</heading>
+				<tilt>45.15227572601114</tilt>
+				<range>84.76564434949057</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26574168738434,43.13261244680585,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Allo stop gira a sinistra su via Tullio Pascucci Colsalvatico;At the stop turn left onto via Tullio Pascucci Colsalvatico</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26611476245745</longitude>
+				<latitude>43.1316096627895</latitude>
+				<altitude>0</altitude>
+				<heading>7.367021118580991</heading>
+				<tilt>45.15227572601113</tilt>
+				<range>84.7656443510018</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26593349958738,43.13165121696424,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<description>Continua su Via Tullio Pascucci Colsalvatico;Continue on Via Tullio Pascucci Colsalvatico</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26611476245745</longitude>
+				<latitude>43.1316096627895</latitude>
+				<altitude>0</altitude>
+				<heading>7.367021118580991</heading>
+				<tilt>45.15227572601113</tilt>
+				<range>84.7656443510018</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.2659841353105,43.13159318992619,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>6</name>
+			<description>Imbocca la strada sterrata sulla sinistra;Take the dirt road on the left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.27091193304988</longitude>
+				<latitude>43.13231051213685</latitude>
+				<altitude>0</altitude>
+				<heading>7.370300856722761</heading>
+				<tilt>45.15227572601113</tilt>
+				<range>84.76564434781569</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.27107017770356,43.13238937531143,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>7</name>
+			<description>Continua lungo il percorso;Continue along the path</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.27617389335012</longitude>
+				<latitude>43.13604662759082</latitude>
+				<altitude>0</altitude>
+				<heading>7.373898513930987</heading>
+				<tilt>45.15227572601108</tilt>
+				<range>84.76564434659687</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.27630913792814,43.1362106456883,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>8</name>
+			<description>Costeggia l&apos;immobile;Skirt the property</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.27836930259946</longitude>
+				<latitude>43.1365453140642</latitude>
+				<altitude>0</altitude>
+				<heading>7.375399598757742</heading>
+				<tilt>45.15227572601114</tilt>
+				<range>84.76564435130263</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.27851403813134,43.13648695857658,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>9</name>
+			<description>Gira a Sinistra e prendi la strada sterrata;Turn left and take the dirt road</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.27873994080986</longitude>
+				<latitude>43.13652682606457</latitude>
+				<altitude>0</altitude>
+				<heading>7.375653018697921</heading>
+				<tilt>45.1522757260111</tilt>
+				<range>84.76564434753851</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.27872326142968,43.13630794320565,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>10</name>
+			<description>Gira a destra;Turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.27893577581599</longitude>
+				<latitude>43.13696692910958</latitude>
+				<altitude>0</altitude>
+				<heading>7.375786918174875</heading>
+				<tilt>45.15227572601115</tilt>
+				<range>84.76564435342929</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.27882428499212,43.13698603894606,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>11</name>
+			<description>Congiungiti con la strada principale e continua verso destra;Join the main road and continue to the right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.27914851421347</longitude>
+				<latitude>43.13740816655652</latitude>
+				<altitude>0</altitude>
+				<heading>7.375932377624395</heading>
+				<tilt>45.15227572601114</tilt>
+				<range>84.76564435036975</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.27931825932664,43.13765818732267,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>12</name>
+			<description>Continua sulla sinistra;Continue on the left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.2805002358852</longitude>
+				<latitude>43.13766951352189</latitude>
+				<altitude>0</altitude>
+				<heading>7.376856638166641</heading>
+				<tilt>42.75679723603162</tilt>
+				<range>107.8951410611616</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.2808246049339,43.13776204205958,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>13</name>
+			<description>All&apos;incrocio gira a destra;At the crossroads turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.28033236509705</longitude>
+				<latitude>43.13956287353058</latitude>
+				<altitude>0</altitude>
+				<heading>7.376741879179066</heading>
+				<tilt>42.75730294010219</tilt>
+				<range>190.8462610267757</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.27975818734949,43.1401273609828,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>14</name>
+			<description>Alla biforcazione tieni la sinistra;At the fork, keep left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.28098749590162</longitude>
+				<latitude>43.14013612539125</latitude>
+				<altitude>0</altitude>
+				<heading>7.377189843966216</heading>
+				<tilt>42.75730294010219</tilt>
+				<range>190.846261027774</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.2806938512329,43.14043008294843,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>15</name>
+			<description>Prendi la strada principale tenrendo la destra;Take the main road keeping to the right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.28090067036534</longitude>
+				<latitude>43.14374123157647</latitude>
+				<altitude>0</altitude>
+				<heading>7.377130450961519</heading>
+				<tilt>42.75730294010216</tilt>
+				<range>190.8462610248975</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.28049533133084,43.14430499800648,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>16</name>
+			<description>Prendi la strada principale tenrendo la destra;Take the main road keeping to the right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.28065940398295</longitude>
+				<latitude>43.14444750125131</latitude>
+				<altitude>0</altitude>
+				<heading>7.376965463874597</heading>
+				<tilt>42.75730294010217</tilt>
+				<range>190.8462610263739</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.28031997902251,43.14523539034165,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>17</name>
+			<description>Tieni la Sinistra;Keep Left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.28385413178035</longitude>
+				<latitude>43.14777796749194</latitude>
+				<altitude>0</altitude>
+				<heading>7.379150220416248</heading>
+				<tilt>42.75730294009793</tilt>
+				<range>190.8462615745611</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.28360964716198,43.14785934033161,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>18</name>
+			<description>Gira a Sinistra;Turn Left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.28811682353661</longitude>
+				<latitude>43.14983981800179</latitude>
+				<altitude>0</altitude>
+				<heading>7.382065392660603</heading>
+				<tilt>42.75730294009747</tilt>
+				<range>190.8462619703854</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.28880540488581,43.14971900861721,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>19</name>
+			<description>Prendi la strada secondaria sulla sinistra;Take the secondary road on the left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.28799865983314</longitude>
+				<latitude>43.15280809500027</latitude>
+				<altitude>0</altitude>
+				<heading>7.381984583268366</heading>
+				<tilt>42.75730294009503</tilt>
+				<range>190.8462620577794</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.28874434008865,43.15297840174019,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>20</name>
+			<description>Gira a destra;Turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.27948615237828</longitude>
+				<latitude>43.14975826097758</latitude>
+				<altitude>0</altitude>
+				<heading>7.376194273686694</heading>
+				<tilt>42.75730855977304</tilt>
+				<range>191.0808916495385</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.27881523244864,43.14923049472484,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>21</name>
+			<description>Continua su questa strada;Continue on this path</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.27833095414938</longitude>
+				<latitude>43.14999850498616</latitude>
+				<altitude>0</altitude>
+				<heading>7.375372655054556</heading>
+				<tilt>42.75730294008743</tilt>
+				<range>190.8462624083921</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.2783454122236,43.1501270181148,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>22</name>
+			<description>All&apos;edicola votiva gira a sinistra;At the votive shrine turn left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.277585436731</longitude>
+				<latitude>43.15045897329981</latitude>
+				<altitude>0</altitude>
+				<heading>7.374862787807673</heading>
+				<tilt>42.75730294008737</tilt>
+				<range>190.8462624100756</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.2773648444494,43.15077409580238,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>23</name>
+			<description>Gira a destra;Turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.27409878825868</longitude>
+				<latitude>43.14965186278229</latitude>
+				<altitude>0</altitude>
+				<heading>7.372471961481909</heading>
+				<tilt>40.34595690557246</tilt>
+				<range>171.9298857028085</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.27452422034672,43.14970739987177,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>24</name>
+			<description>Tieni la destra e prendi la strada principale;Keep right and take the main road</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.27030249337853</longitude>
+				<latitude>43.1504176859087</latitude>
+				<altitude>0</altitude>
+				<heading>7.369865133372062</heading>
+				<tilt>36.77716290343681</tilt>
+				<range>161.4350314430706</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.27087700458378,43.15062949256193,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>25</name>
+			<description>Tinei la sinistra;Keep left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26801687574224</longitude>
+				<latitude>43.14983878343939</latitude>
+				<altitude>0</altitude>
+				<heading>7.368301957447348</heading>
+				<tilt>36.77716290343676</tilt>
+				<range>161.4350314391397</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26781960752385,43.15006295509859,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>26</name>
+			<description>Gira a destra;Turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26801678012296</longitude>
+				<latitude>43.14897243578954</latitude>
+				<altitude>0</altitude>
+				<heading>7.368301894287974</heading>
+				<tilt>36.77716290343675</tilt>
+				<range>161.4350314375382</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26824520006792,43.14934650373831,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>27</name>
+			<description>Allo stop gira a destra;At the stop sign turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26852677024863</longitude>
+				<latitude>43.14618897773802</latitude>
+				<altitude>0</altitude>
+				<heading>7.368650667742261</heading>
+				<tilt>36.77716290343673</tilt>
+				<range>161.435031436712</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26904538854272,43.14647636744974,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<description>Continua su Contrada Colvenale;Continue on Contrada Colvenale</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26852677024863</longitude>
+				<latitude>43.14618897773802</latitude>
+				<altitude>0</altitude>
+				<heading>7.368650667742261</heading>
+				<tilt>36.77716290343673</tilt>
+				<range>161.435031436712</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26896253715002,43.14638740004066,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<description>Continua su questa strada;Continue on this path</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26630826727616</longitude>
+				<latitude>43.1408975532435</latitude>
+				<altitude>0</altitude>
+				<heading>7.367133588179329</heading>
+				<tilt>36.77716290343673</tilt>
+				<range>161.435031438922</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.2662220438073,43.14142782476532,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<description>Tieni la destra;Keep right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26630826727616</longitude>
+				<latitude>43.1408975532435</latitude>
+				<altitude>0</altitude>
+				<heading>7.367133588179329</heading>
+				<tilt>36.77716290343673</tilt>
+				<range>161.435031438922</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26653005419126,43.14103357298832,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>31</name>
+			<description>Allo STOP gira a sinistra;At the STOP sign turn left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.2659694379158</longitude>
+				<latitude>43.13589256229016</latitude>
+				<altitude>0</altitude>
+				<heading>7.36690192032459</heading>
+				<tilt>36.77716290343675</tilt>
+				<range>161.4350314407982</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26588192439135,43.13581745877449,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>32</name>
+			<description>Continua su Strada Provinciale 49;Continue on Provincial Road 49</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.2659694379158</longitude>
+				<latitude>43.13589256229016</latitude>
+				<altitude>0</altitude>
+				<heading>7.36690192032459</heading>
+				<tilt>36.77716290343675</tilt>
+				<range>161.4350314407982</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26576077883828,43.13580628425021,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>33</name>
+			<description>Gira sulla Destra;Turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26576297254194</longitude>
+				<latitude>43.13525620610742</latitude>
+				<altitude>0</altitude>
+				<heading>7.36676075750539</heading>
+				<tilt>36.7771629034368</tilt>
+				<range>161.4350314409815</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26584558767229,43.13542865418868,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<description>Continua su questa strada;Continue on this path</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.25906556159656</longitude>
+				<latitude>43.13477182165093</latitude>
+				<altitude>0</altitude>
+				<heading>7.362174797328928</heading>
+				<tilt>34.13687644224631</tilt>
+				<range>114.9454262413448</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.25933010014455,43.1352169747683,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>35</name>
+			<description>All&apos;incrocio tieni la destra;At the crossroads keep right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.25587544534732</longitude>
+				<latitude>43.13442079475667</latitude>
+				<altitude>0</altitude>
+				<heading>7.359993550942276</heading>
+				<tilt>34.13710559089746</tilt>
+				<range>160.4487508244699</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.25591753558739,43.13463587350854,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>36</name>
+			<description>All&apos;incrocio gira a sinistra;At the crossroads turn left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.25358289764992</longitude>
+				<latitude>43.13444313048865</latitude>
+				<altitude>0</altitude>
+				<heading>7.358426105295615</heading>
+				<tilt>34.13710559089743</tilt>
+				<range>160.4487508241746</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.25297091631247,43.13452788222831,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>37</name>
+			<description>All&apos;incrocio tieni la sinistra;At the crossroads keep left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.25631969833514</longitude>
+				<latitude>43.13137003093053</latitude>
+				<altitude>0</altitude>
+				<heading>7.36029717700595</heading>
+				<tilt>34.13710559089748</tilt>
+				<range>160.4487508253245</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.25637264603466,43.13131945052627,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>38</name>
+			<description>Allo STOP gira a destra;At the STOP sign turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26326470380166</longitude>
+				<latitude>43.13180962459742</latitude>
+				<altitude>0</altitude>
+				<heading>7.365045163360509</heading>
+				<tilt>34.13710559089003</tilt>
+				<range>160.4487509232743</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26398030925669,43.13214290037131,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>39</name>
+			<description>Gira a Sinistra in Via Campo Fiera;Turn left onto Via Campo Fiera</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26381547221317</longitude>
+				<latitude>43.13095307400738</latitude>
+				<altitude>0</altitude>
+				<heading>7.365421704107518</heading>
+				<tilt>34.13710559088784</tilt>
+				<range>160.4487509714767</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26426685917956,43.13068876306136,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>40</name>
+			<description>Gira a Destra;Turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26381547221317</longitude>
+				<latitude>43.13095307400738</latitude>
+				<altitude>0</altitude>
+				<heading>7.365421704107518</heading>
+				<tilt>34.13710559088784</tilt>
+				<range>160.4487509714767</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26435943346715,43.13098612166742,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>41</name>
+			<description>All&apos;incrocio gira a sinistra;At the crossroads turn left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26450690246321</longitude>
+				<latitude>43.13107104522566</latitude>
+				<altitude>0</altitude>
+				<heading>7.365894414373892</heading>
+				<tilt>34.13710559088785</tilt>
+				<range>160.4487509722339</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26521786159296,43.13128912521294,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>42</name>
+			<description>Allo STOP gira a destra;At the STOP sign turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26450690246321</longitude>
+				<latitude>43.13107104522566</latitude>
+				<altitude>0</altitude>
+				<heading>7.365894414373892</heading>
+				<tilt>34.13710559088785</tilt>
+				<range>160.4487509722339</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26427939986159,43.13151435238947,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>43</name>
+			<description>Prendi le scale sulla destra;Take the stairs on the right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26450690246321</longitude>
+				<latitude>43.13107104522566</latitude>
+				<altitude>0</altitude>
+				<heading>7.365894414373892</heading>
+				<tilt>34.13710559088785</tilt>
+				<range>160.4487509722339</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26431330387085,43.13161351444259,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>44</name>
+			<description>Continua verso Piazza;Continue towards Piazza</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26465742818312</longitude>
+				<latitude>43.1312896040667</latitude>
+				<altitude>0</altitude>
+				<heading>7.365997324951968</heading>
+				<tilt>34.13710559088783</tilt>
+				<range>160.448750970767</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26458193745597,43.13176889533592,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>45</name>
+			<description>Gira a Sinistra;Turn Left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.26512912243855</longitude>
+				<latitude>43.13151044409199</latitude>
+				<altitude>0</altitude>
+				<heading>7.366328692661898</heading>
+				<tilt>29.30589521373181</tilt>
+				<range>122.7625021067075</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.26521619357615,43.13170546513905,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10201"></atom:link>
+	</Folder>
+</Document>
+</kml>

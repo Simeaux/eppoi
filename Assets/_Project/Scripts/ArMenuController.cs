@@ -696,7 +696,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
 
                 if (ID > 0)
                 {
-                    List<POI> _POI = _DBClass.getPOI(ID);
+                    List<POI> _POI = _DBClass.getPOI(ID, null, null, 0, null, null, true);
                     foreach (DBClass.POI _p in _POI)
                     {
                         if (_p.ID.CompareTo(ID) == 0)

@@ -1,0 +1,489 @@
+{
+    "PERCORSI": [
+        {
+            "id": "9500001",
+            "codice": "9500001",
+            "tipo_navigazione": "ar-vr",
+            "tipo_percorso": "naturalistico",
+            "poi_id": "00950029454",
+            "nome_percorso": "Natura e specchi d'acqua",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": "21.6 Km",
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": "9500002",
+            "codice": "9500002",
+            "tipo_navigazione": "iot",
+            "tipo_percorso": "storico-artistico",
+            "poi_id": "00950029454",
+            "nome_percorso": "Tra storia e cultura",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": "7.8 Km",
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_TEXT": [
+        {
+            "id": 95000011,
+            "percorso_id": "9500001",
+            "descrizione_breve": "Acqua che calma, natura che cura. ",
+            "descrizione": "<span style=\"font-weight: 400\">Il potere calmante dell\u2019acqua e la forza curativa della natura. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Un percorso immersivo che ti condurr\u00e0 nel cuore della fauna e della flora locali. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Respira profondamente, lascia indietro i pensieri e ritrova il tuo benessere interiore.<\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Itinerario pensato per chi ama conoscere nuovi luoghi in sella a una mountain bike.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 95000012,
+            "percorso_id": "9500001",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 95000021,
+            "percorso_id": "9500002",
+            "descrizione_breve": "A piedi o in sella a un\u2019e-bike per scoprire Pievebovigliana e la natura che la circonda.",
+            "descrizione": "<span style=\"font-weight: 400\">Un itinerario ad anello pensato per tutti coloro che desiderano scoprire la storia, la cultura e la natura del territorio di <strong>Valfornace<\/strong>, con particolare attenzione al quieto borgo di <strong>Pievebovigliana<\/strong>. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Adatto sia a chi ama i percorsi intensi e le lunghe camminate, sia a chi preferisce assaporare il territorio in sella a una e-bike, per godersi appieno le bellezze paesaggistiche e culturali che caratterizzano questa zona.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 95000022,
+            "percorso_id": "9500002",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_IMMAGINI": [],
+    "TAPPE": [
+        {
+            "id": 950000101,
+            "nome_tappa": "Lago di Polverina",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000102,
+            "nome_tappa": "Lago di Boccafornace",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000103,
+            "nome_tappa": "Chiesa di San Nicol\u00f2 in Isola",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000104,
+            "nome_tappa": "Chiesa di San Giusto",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000201,
+            "nome_tappa": "Chiesa di Santa Maria Assunta e Cripta Romanica",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000202,
+            "nome_tappa": "Museo Civico \"Raffaele Campelli\"",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000203,
+            "nome_tappa": "Castello di Beldiletto",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000204,
+            "nome_tappa": "Chiesa e convento di San Francesco",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000205,
+            "nome_tappa": "Palazzo Fani",
+            "colore": "",
+            "latitudine": "",
+            "longitudine": "",
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000206,
+            "nome_tappa": "Gualchiera Tintoria Cianni",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_TEXT": [
+        {
+            "id": 9500001011,
+            "tappa_id": 950000101,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Il percorso prende avvio dal <\/span><b>Lago di Polverina, <\/b><span style=\"font-weight: 400\">un bacino artificiale che si trova all'interno dell'<\/span><b>Oasi Naturalistica di Polverina<\/b><span style=\"font-weight: 400\">, un prezioso ecosistema che ospita numerose specie di uccelli acquatici e migratori. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Tra le presenze pi\u00f9 frequenti si segnalano l\u2019airone cenerino, lo svasso maggiore e il cormorano, facilmente osservabili lungo le rive e tra la vegetazione palustre.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Durante la primavera e l\u2019autunno, l\u2019Oasi diventa un'importante area di sosta e riposo per specie come il falco pescatore e il falco di palude, che scelgono questo luogo tranquillo e poco disturbato come sito ideale per la nidificazione o come tappa durante le rotte migratorie.<\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Un luogo perfetto per gli appassionati di birdwatching e di fotografia naturalistica.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500001012,
+            "tappa_id": 950000101,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500001021,
+            "tappa_id": 950000102,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Proseguendo lungo il sentiero, il paesaggio si fa sempre pi\u00f9 incantevole, tra il cinguettio degli uccelli e il profumo di resina e terra bagnata che accompagna ogni passo.\r\nDopo circa 5 chilometri di cammino immerso nella natura, si apre davanti agli occhi un'altra meraviglia paesaggistica: il <\/span><b>Lago di Boccafornace<\/b><span style=\"font-weight: 400\">. <\/span><span style=\"font-weight: 400\">Si tratta di un bacino artificiale, alimentato da una sorgente carsica a flusso intermittente, che ne regola il livello idrico in maniera del tutto spontanea.\r\nIl lago \u00e8 incastonato in un ambiente silenzioso e rilassante, perfetto per gli sportivi, per gli amanti del <em>nordic walking<\/em>, ma anche per chi desidera fermarsi a leggere un libro cullato dal suono dell\u2019acqua.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Ci\u00f2 che rende questo luogo davvero unico \u00e8 l'iniziativa culturale che lo anima: lungo le sponde sono state installate bacheche in legno contenenti guide storico-artistiche dedicate all\u2019entroterra maceratese e libri provenienti dalla Biblioteca Comunale. Un invito a scoprire non solo il paesaggio, ma anche la storia e l\u2019identit\u00e0 del territorio attraverso la lettura.<\/span>\r\n\r\n\u00c8 in primavera e in autunno per\u00f2 che il lago offre il suo volto pi\u00f9 suggestivo: in primavera la fioritura dona colori e profumi delicati, mentre in autunno il <em>foliage<\/em> infiamma il paesaggio con tonalit\u00e0 accese di rosso, giallo e arancio, regalando scorci degni di un dipinto impressionista.\r\n\r\nIl perimetro del lago, lungo circa 2,7 chilometri, \u00e8 facilmente percorribile sia a piedi che in bicicletta, a seconda delle propensioni di ognuno.",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500001022,
+            "tappa_id": 950000102,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500001031,
+            "tappa_id": 950000103,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Dal Lago risali verso Isola, piccola frazione di Valfornace, dove si trova la <\/span><b>Chiesa di San Nicol\u00f2<\/b><span style=\"font-weight: 400\">. L\u2019edificio, costruito attorno al XIX secolo, \u00e8 al centro dell\u2019abitato ed \u00e8 caratterizzato da un campanile a vela.<\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">L\u2019interno \u00e8 illuminato da due piccole finestre centinate aperte sul lato sinistro e da una finestra lunettata situata proprio dietro all\u2019altare.\u00a0<\/span>\r\n\r\n<span style=\"font-weight: 400\">Non ci sono tante altre informazioni su questo luogo, perch\u00e9 gran parte dei documenti degli archivi comunali \u00e8 andata perduta negli anni \u201820 del Novecento.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500001032,
+            "tappa_id": 950000103,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500001041,
+            "tappa_id": 950000104,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Da Isola prosegui in direzione di <\/span><b>San Giusto in San Maroto<\/b><span style=\"font-weight: 400\">, altra frazione di Valfornace che domina dall\u2019alto la vallata del fiume Chienti. Questo luogo \u00e8 conosciuto per la presenza della monumentale chiesa romanica di San Giusto, una delle testimonianze architettoniche pi\u00f9 affascinanti della zona.<\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Secondo alcune ricerche storiografiche, la chiesa risalirebbe al periodo siriaco-carolingio e avrebbe svolto un duplice ruolo: padiglione di caccia e osservatorio astronomico per l\u2019imperatore Carlo Magno.<\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Altre ipotesi invece la identificano come cappella privata dei Conti di San Maroto, sebbene le prime testimonianze documentate di questa famiglia risultino successive alla presunta edificazione dell\u2019edificio.<\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">La chiesa conserva un\u2019aura di mistero e fascino, immersa in un paesaggio che invita alla contemplazione e al silenzio.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Prima di tornare al lago di Polverina, recupera le energie in uno degli agriturismi di zona, come l\u2019Agriturismo \u201cIl cardellino\u201d o l\u2019Hotel-ristorante \u201cIl cavaliere\u201d che sapranno deliziare il tuo palato con ottime specialit\u00e0 locali.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500001042,
+            "tappa_id": 950000104,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002011,
+            "tappa_id": 950000201,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Il percorso ha inizio dalla <\/span><b>Chiesa di Santa Maria Assunta<\/b><span style=\"font-weight: 400\">, che svetta maestosa sul borgo di Pievebovigliana. Le sue origini medievali sono testimoniate dalla suggestiva cripta e da una lapide datata 1162. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Nel corso del Settecento, l\u2019edificio fu oggetto di un'importante ristrutturazione su progetto dell\u2019architetto Giovanni Ricchini, che ne rinnov\u00f2 l\u2019aspetto originario.<\/span>\r\n\r\n<span style=\"font-weight: 400\">I reperti archeologici rinvenuti (capitelli, colonne, lapidi) suggeriscono che la chiesa fu edificata sui resti di un tempio pagano. Curiosamente, la cripta venne utilizzata come cantina fino al 1922.<\/span>\r\n\r\n<span style=\"font-weight: 400\">A causa dei gravi danni riportati durante il terremoto del 2016, oggi l\u2019edificio non \u00e8 accessibile al pubblico, ma la sua imponente bellezza resta ben visibile dall\u2019esterno, offrendo comunque un\u2019esperienza suggestiva a chi si trovi a visitare il borgo.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002012,
+            "tappa_id": 950000201,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002021,
+            "tappa_id": 950000202,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Il <\/span><b>Museo Civico \u201cRaffaele Campelli\u201d<\/b><span style=\"font-weight: 400\"> prende il nome dal suo fondatore, che lo istitu\u00ec nel 1936 con l\u2019intento di preservare e raccontare la storia e l\u2019arte del territorio comunale. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Il percorso espositivo accompagna i visitatori attraverso i secoli, a partire dall\u2019era preistorica fino all\u2019et\u00e0 moderna, offrendo uno sguardo approfondito sul ricco patrimonio storico e culturale di Pievebovigliana.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Le collezioni del museo comprendono opere di vario genere e provenienza. Tra i capolavori pi\u00f9 significativi spiccano la Madonna di Loreto e Santi del pittore Simone de Magistris e una preziosa scultura lignea raffigurante San Sebastiano, finemente intagliata.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Sebbene il museo sia attualmente inagibile a causa dei danni riportati nel sisma del 2016, le sue opere continuano a vivere grazie a guide interattive che ne raccontano la storia e il valore, permettendo al pubblico di scoprirle in forma virtuale.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002022,
+            "tappa_id": 950000202,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002031,
+            "tappa_id": 950000203,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Prosegui lungo la strada principale fino a raggiungere il <\/span><b>Castello di Beldiletto<\/b><span style=\"font-weight: 400\">, un affascinante edificio privato immerso nella quiete delle campagne circostanti. Costruito nel XIV secolo da Giovanni da Varano, il castello fu successivamente trasformato nel corso del Quattrocento in una raffinata villa rinascimentale, senza perdere per\u00f2 il suo carattere austero e difensivo.<\/span>\r\n\r\n<span style=\"font-weight: 400\">L\u2019interno \u00e8 riccamente decorato da affreschi che raffigurano la vita rurale, a cui si affiancano scene ispirate ai poemi cavallereschi medievali.\u00a0<\/span>\r\n\r\n<span style=\"font-weight: 400\">In origine il castello era protetto da un ampio fossato in cui sgorgavano le acque del fiume Chienti. Sebbene oggi sia chiuso al pubblico a causa dei danni provocati dal terremoto, rimane un importante punto di riferimento storico e culturale per il territorio.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002032,
+            "tappa_id": 950000203,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002041,
+            "tappa_id": 950000204,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Prima di ripartire, puoi approfittare di una sosta rigenerante presso la stazione di ricarica per e-bike, dove troverai anche una piccola fontanella per rinfrescarti e riempire la borraccia prima di continuare il cammino.\r\nLungo il percorso ti troverai di fronte al suggestivo <strong>ponte romanico<\/strong> di Pontelatrave, un tempo via di collegamento tra il versante adriatico e quello tirrenico. In epoca medievale, questo ponte rappresentava un importante crocevia commerciale tra Pievebovigliana e Fiordimonte, testimoniando il ruolo strategico della zona nei traffici e negli scambi dell\u2019epoca.<\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Prosegui per circa 300 metri e alla tua destra potrai apprezzare la costruzione della <\/span><b>Chiesa e Convento di San Francesco<\/b><span style=\"font-weight: 400\">, risalente al XIV secolo. L\u2019interno \u00e8 abbellito da numerosi affreschi attribuiti a diversi artisti del tempo, come Orazio Orazi, Cola di Pietro, Niccol\u00f2 da Bolognola.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002042,
+            "tappa_id": 950000204,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002051,
+            "tappa_id": 950000205,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Riprendi la strada principale e continua per circa 2 Km in direzione di Campi, frazione di Valfornace. Poco pi\u00f9 avanti si erge <\/span><b>Palazzo Fani<\/b><span style=\"font-weight: 400\">, villa signorile ottocentesca dotata di scuderia, rimessa e giardino.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002052,
+            "tappa_id": 950000205,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002061,
+            "tappa_id": 950000206,
+            "descrizione_breve": "",
+            "descrizione": "<span style=\"font-weight: 400\">Concludi l\u2019anello tornando a Pievebovigliana. <\/span><span style=\"font-weight: 400\">\r\n<\/span><span style=\"font-weight: 400\">Ai piedi del centro storico sorge la <\/span><b>Gualchiera Tintoria Cianni<\/b><span style=\"font-weight: 400\">, una rara testimonianza di archeologia industriale e unico esempio del genere in tutta Italia.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Gli scavi hanno riportato alla luce gli ambienti destinati alle attivit\u00e0 produttive, i canali di adduzione e lo scolo delle acque, in parte interrati in suggestivi cunicoli con volta in pietra, vere e proprie opere d\u2019arte architettonica.\u00a0<\/span>\r\n\r\n<span style=\"font-weight: 400\">La storia di questo antico opificio \u00e8 ben documentata presso l\u2019Archivio dell\u2019ex Comune di Pievebovigliana e presso l\u2019Archivio di Stato di Camerino.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 9500002062,
+            "tappa_id": 950000206,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_IMMAGINI": [],
+    "POIXTAPPE": [],
+    "TAPPEXPERCORSI": [
+        {
+            "id": 950000101,
+            "tappa_id": 950000101,
+            "percorso_id": "9500001",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000102,
+            "tappa_id": 950000102,
+            "percorso_id": "9500001",
+            "ordine": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000103,
+            "tappa_id": 950000103,
+            "percorso_id": "9500001",
+            "ordine": 3,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000104,
+            "tappa_id": 950000104,
+            "percorso_id": "9500001",
+            "ordine": 4,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000201,
+            "tappa_id": 950000201,
+            "percorso_id": "9500002",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000202,
+            "tappa_id": 950000202,
+            "percorso_id": "9500002",
+            "ordine": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000203,
+            "tappa_id": 950000203,
+            "percorso_id": "9500002",
+            "ordine": 3,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000204,
+            "tappa_id": 950000204,
+            "percorso_id": "9500002",
+            "ordine": 4,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000205,
+            "tappa_id": 950000205,
+            "percorso_id": "9500002",
+            "ordine": 5,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        },
+        {
+            "id": 950000206,
+            "tappa_id": 950000206,
+            "percorso_id": "9500002",
+            "ordine": 6,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:14:57",
+            "uuid": ""
+        }
+    ]
+}

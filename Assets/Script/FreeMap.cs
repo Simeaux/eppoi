@@ -386,8 +386,8 @@ public class FreeMap : MonoBehaviour
         double planeWidthScale = planeHeightScale * Camera.main.aspect;
         //abstractMap.transform.localScale = new Vector3((float)planeWidthScale, 1, (float)planeHeightScale);
         abstractMap.transform.localScale = new Vector3(1, 1, 1);
-        mapWidthMeter = planeWidthScale * 10.0; // Prendo buono che ogni unità in unity è 1 metro nel mondo reale. Il plane è impostato si 100 unità in x e z
-        mapHeightMeter = planeHeightScale * 10.0; // Prendo buono che ogni unità in unity è 1 metro nel mondo reale. Il plane è impostato si 100 unità in x e z
+        mapWidthMeter = planeWidthScale * 20.0; // Prendo buono che ogni unità in unity è 1 metro nel mondo reale. Il plane è impostato si 100 unità in x e z
+        mapHeightMeter = planeHeightScale * 20.0; // Prendo buono che ogni unità in unity è 1 metro nel mondo reale. Il plane è impostato si 100 unità in x e z
         //Set map width and height in pixel based on view aspec ratio
         if (Camera.main.aspect > 1) //Width is bigger than height
         {
@@ -485,7 +485,7 @@ public class FreeMap : MonoBehaviour
         if(GameObject.FindObjectOfType<Panel_POI>() != null)
             ID_selected = GameObject.FindObjectOfType<Panel_POI>().id_selected.text;
         //Questo array serve per non inserire gli oggetti doppi
-        List<int> already_inserted = new List<int>();
+        List<double> already_inserted = new List<double>();
         foreach (POI _p in _extract.getPoiList().Where(o=> Between(o.longitudine, tmp_boundingBox[0], tmp_boundingBox[2]) && Between(o.latitudine, tmp_boundingBox[1], tmp_boundingBox[3]) || (!string.IsNullOrEmpty(ID_selected) && ID_selected == o.ID.ToString())))
         {
             if (_p != null)
@@ -499,13 +499,20 @@ public class FreeMap : MonoBehaviour
                             already_inserted.Add(_p.ID);
                             if (_p.limite_zoom <= (int)selectedzoom)
                             {
-                                var _go = _gameobject[_tipo.tipo.group_id];// GameObject.FindGameObjectsWithTag(_p.tag).FirstOrDefault();
+                                var group_tipo = _DBClass.getGROUP_TIPO_POI(_tipo.tipo.group_id).FirstOrDefault();
+                                GameObject _go = null;
+                                if(group_tipo != null)
+                                    _go = _gameobject[group_tipo.indice];// GameObject.FindGameObjectsWithTag(_p.tag).FirstOrDefault();
+                                else
+                                    _go = _gameobject[1];
+
                                 if (_go != null)
                                 {
                                     
 
                                     var apgo = Instantiate(_go, abstractMap.GeoToWorldPosition(_DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine), true), Quaternion.identity);
-                                    apgo.tag = _p.tag;
+                                    //Simone punto da ricordare
+                                    apgo.tag = "A";
                                     apgo.name = _p.ID.ToString();
                                     apgo.transform.Rotate(180, 0, 0);
                                     if (!string.IsNullOrEmpty(ID_selected) && ID_selected == apgo.name)
@@ -579,7 +586,7 @@ public class FreeMap : MonoBehaviour
 
             var mesh = _minimapRouteGo.AddComponent<MeshFilter>().mesh;
 
-            var lineWidth = 2 * Mathf.Pow(2.0f, abstractMap.Zoom - 18);
+            var lineWidth = 10 * Mathf.Pow(2.0f, abstractMap.Zoom - 18);
             if (lineWidth < 0.5)
                 lineWidth = 0.5f;
             LineBuilder.BuildLineMesh(worldPositions, mesh, lineWidth);

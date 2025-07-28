@@ -1,0 +1,177 @@
+{
+    "PERCORSI": [
+        {
+            "id": "5400001",
+            "codice": "5400001",
+            "tipo_navigazione": "ar-vr",
+            "tipo_percorso": "storico-artistico",
+            "poi_id": "00540033097",
+            "nome_percorso": "Arte nascosta",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        },
+        {
+            "id": "5400002",
+            "codice": "5400002",
+            "tipo_navigazione": "iot",
+            "tipo_percorso": "storico-artistico",
+            "poi_id": "00540033097",
+            "nome_percorso": "Per le vie di Ripe",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_TEXT": [
+        {
+            "id": 54000011,
+            "percorso_id": "5400001",
+            "descrizione_breve": "Scopri opere d'arte nascoste nei luoghi pi\u00f9 significativi del paese",
+            "descrizione": "<span style=\"font-weight: 400\">Percorso con realt\u00e0 aumentata: l\u2019itinerario accompagner\u00e0 il visitatore a scoprire opere e quadri d\u2019arte contemporanea esposti non solo nella Pinacoteca cittadina ma anche nei luoghi pi\u00f9 significativi del paese, tra cui le botteghe artigiane.\u00a0<\/span><span style=\"font-weight: 400\">\r\n<\/span>\r\n\r\n<span style=\"font-weight: 400\">(Pinacoteca comunale, Bar Silio, Centro Culturale \u201cE. Pasquali, E\u2019tico Sartoria marchigiana, Laboratorio \u201cTerre d\u2019Arte\u201d, Misidia, Qui Vago- Ospitalit\u00e0 diffusa, Samuela Salvucci Creativa di Gioie)\u00a0<\/span>\r\n\r\n&nbsp;",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        },
+        {
+            "id": 54000012,
+            "percorso_id": "5400001",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        },
+        {
+            "id": 54000021,
+            "percorso_id": "5400002",
+            "descrizione_breve": "Visita il centro storico e ammira i maestri artigiani all'opera",
+            "descrizione": "<span style=\"font-weight: 400\">L\u2019itinerario porter\u00e0 il visitatore a conoscere e a percorrere le principali vie del paese partendo dall\u2019Arena \u201cLa cava\u201d, nata da un recupero di uno spazio dismesso e ora sede di eventi e spettacoli, per proseguire in direzione della chiesa di San Silvestro. Il percorso continuer\u00e0 verso il centro storico ponendo particolare attenzione alla Chiesa di San Michele Arcangelo e alla Torre Leonina. Passeggiando per il borgo si potr\u00e0 inoltre approfittare e dare uno sguardo ai vari laboratori artigianali presenti e acquistare particolari manufatti.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        },
+        {
+            "id": 54000022,
+            "percorso_id": "5400002",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_IMMAGINI": [],
+    "TAPPE": [
+        {
+            "id": 540000101,
+            "nome_tappa": "x",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        },
+        {
+            "id": 540000201,
+            "nome_tappa": "x",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_TEXT": [
+        {
+            "id": 5400001011,
+            "tappa_id": 540000101,
+            "descrizione_breve": "",
+            "descrizione": "x",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        },
+        {
+            "id": 5400001012,
+            "tappa_id": 540000101,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        },
+        {
+            "id": 5400002011,
+            "tappa_id": 540000201,
+            "descrizione_breve": "",
+            "descrizione": "x",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        },
+        {
+            "id": 5400002012,
+            "tappa_id": 540000201,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_IMMAGINI": [],
+    "POIXTAPPE": [],
+    "TAPPEXPERCORSI": [
+        {
+            "id": 540000101,
+            "tappa_id": 540000101,
+            "percorso_id": "5400001",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        },
+        {
+            "id": 540000201,
+            "tappa_id": 540000201,
+            "percorso_id": "5400002",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:03:36",
+            "uuid": ""
+        }
+    ]
+}

@@ -1,0 +1,177 @@
+{
+    "PERCORSI": [
+        {
+            "id": "5900001",
+            "codice": "5900001",
+            "tipo_navigazione": "ar-vr",
+            "tipo_percorso": "storico-artistico",
+            "poi_id": "0059002125",
+            "nome_percorso": "Nel cuore del borgo",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        },
+        {
+            "id": "5900002",
+            "codice": "5900002",
+            "tipo_navigazione": "iot",
+            "tipo_percorso": "cicloturistico",
+            "poi_id": "0059002125",
+            "nome_percorso": "Tra religione e misticismo",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_TEXT": [
+        {
+            "id": 59000011,
+            "percorso_id": "5900001",
+            "descrizione_breve": "x",
+            "descrizione": "<span style=\"font-weight: 400\">Il percorso accompagner\u00e0 il visitatore nel cuore di Serravalle partendo dalla visita alla Botte dei Varano e al condotto romano. Proseguendo poi in direzione del Parco Fluviale, lungo il quale si potranno fare rilassanti passeggiate, si continuer\u00e0 verso il Museo Paleontologico, che presenta un\u2019esposizione di mammiferi risalenti a 900-700.000 anni fa. Il percorso si concluder\u00e0 con la visita alla Chiesa di Santa Lucia. <\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        },
+        {
+            "id": 59000012,
+            "percorso_id": "5900001",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        },
+        {
+            "id": 59000021,
+            "percorso_id": "5900002",
+            "descrizione_breve": "L\u2019itinerario porter\u00e0 alla scoperta delle chiese del paese disseminate tra il centro e le sue 15 frazioni",
+            "descrizione": "X",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        },
+        {
+            "id": 59000022,
+            "percorso_id": "5900002",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_IMMAGINI": [],
+    "TAPPE": [
+        {
+            "id": 590000101,
+            "nome_tappa": "x",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        },
+        {
+            "id": 590000201,
+            "nome_tappa": "x",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_TEXT": [
+        {
+            "id": 5900001011,
+            "tappa_id": 590000101,
+            "descrizione_breve": "",
+            "descrizione": "x",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        },
+        {
+            "id": 5900001012,
+            "tappa_id": 590000101,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        },
+        {
+            "id": 5900002011,
+            "tappa_id": 590000201,
+            "descrizione_breve": "",
+            "descrizione": "x",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        },
+        {
+            "id": 5900002012,
+            "tappa_id": 590000201,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_IMMAGINI": [],
+    "POIXTAPPE": [],
+    "TAPPEXPERCORSI": [
+        {
+            "id": 590000101,
+            "tappa_id": 590000101,
+            "percorso_id": "5900001",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        },
+        {
+            "id": 590000201,
+            "tappa_id": 590000201,
+            "percorso_id": "5900002",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:12:38",
+            "uuid": ""
+        }
+    ]
+}

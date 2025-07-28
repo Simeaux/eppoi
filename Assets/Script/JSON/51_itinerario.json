@@ -1,0 +1,177 @@
+{
+    "PERCORSI": [
+        {
+            "id": "5100001",
+            "codice": "5100001",
+            "tipo_navigazione": "ar-vr",
+            "tipo_percorso": "storico-artistico",
+            "poi_id": "00510012593",
+            "nome_percorso": "Le piazze della resistenza",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        },
+        {
+            "id": "5100002",
+            "codice": "5100002",
+            "tipo_navigazione": "iot",
+            "tipo_percorso": "naturalistico",
+            "poi_id": "00510012593",
+            "nome_percorso": "Via dei Mulini",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_TEXT": [
+        {
+            "id": 51000011,
+            "percorso_id": "5100001",
+            "descrizione_breve": "Il percorso promuover\u00e0 un turismo di riqualificazione territoriale, accompagnando il visitatore a scoprire le piazze e le installazioni del paese che sono state realizzate e convertite in luoghi di notevole importanza sociale.",
+            "descrizione": "<span style=\"font-weight: 400\">Visiterai la piazza dedicata alle vittime di guerra, la piazza dedicata alle donne impiegate nella manifattura del paese e il Parco dedicato ai bambini vittime di guerra, specialmente al bambino Poggio, deceduto per via di una mina inesplosa.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        },
+        {
+            "id": 51000012,
+            "percorso_id": "5100001",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        },
+        {
+            "id": 51000021,
+            "percorso_id": "5100002",
+            "descrizione_breve": "L\u2019itinerario porter\u00e0 il visitatore a scoprire i mulini del territorio attraverso un percorso di trekking suggestivo ed estremamente caratteristico. ",
+            "descrizione": "x",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        },
+        {
+            "id": 51000022,
+            "percorso_id": "5100002",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_IMMAGINI": [],
+    "TAPPE": [
+        {
+            "id": 510000101,
+            "nome_tappa": "x",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        },
+        {
+            "id": 510000201,
+            "nome_tappa": "x",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_TEXT": [
+        {
+            "id": 5100001011,
+            "tappa_id": 510000101,
+            "descrizione_breve": "",
+            "descrizione": "x",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        },
+        {
+            "id": 5100001012,
+            "tappa_id": 510000101,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        },
+        {
+            "id": 5100002011,
+            "tappa_id": 510000201,
+            "descrizione_breve": "",
+            "descrizione": "x",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        },
+        {
+            "id": 5100002012,
+            "tappa_id": 510000201,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_IMMAGINI": [],
+    "POIXTAPPE": [],
+    "TAPPEXPERCORSI": [
+        {
+            "id": 510000101,
+            "tappa_id": 510000101,
+            "percorso_id": "5100001",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        },
+        {
+            "id": 510000201,
+            "tappa_id": 510000201,
+            "percorso_id": "5100002",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-21 09:02:43",
+            "uuid": ""
+        }
+    ]
+}

@@ -86,7 +86,10 @@ namespace ARLocation.MapboxRoutes
 
             route.geometry = new Route.Geometry();
             route.legs = new List<Route.RouteLeg> { leg };
-            route.name = Name; ;
+            route.name = Name;
+            int _lingua_selezionata = 1;
+
+            _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
 
             foreach (var p in Points)
             {
@@ -100,7 +103,16 @@ namespace ARLocation.MapboxRoutes
                     step.name = p.Name;
                     step.maneuver = new Route.Maneuver();
                     step.maneuver.location = p.Location.Clone();
-                    step.maneuver.instruction = p.Instruction;
+                     var t = p.Instruction;
+                    if (t.Contains(";"))
+                    {
+                        var t_split = t.Split(";");
+                        if (_lingua_selezionata == 1)
+                            t = t_split[0];
+                        else
+                            t = t_split[1] ?? t_split[0];
+                    }
+                    step.maneuver.instruction = t;
 
                     leg.steps.Add(step);
                 }

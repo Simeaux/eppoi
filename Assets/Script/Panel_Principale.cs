@@ -116,7 +116,9 @@ public class Panel_Principale : MonoBehaviour
                     {
                         byte[] foto = null;
                         if (_comune.Listimages != null && _comune.Listimages.Count > 0 && _comune.Listimages[0].image != null && _comune.Listimages[0].image.Length > 0)
+                        {
                             foto = _comune.Listimages[0].image;
+                        }
                         _component.sprite = _DBClass.getSpriteFromByteArray(foto);
                     }
 

@@ -1,0 +1,177 @@
+{
+    "PERCORSI": [
+        {
+            "id": "3500001",
+            "codice": "3500001",
+            "tipo_navigazione": "ar-vr",
+            "tipo_percorso": "naturalistico",
+            "poi_id": "00350025834",
+            "nome_percorso": "Itinerario naturalistico ad anello",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        },
+        {
+            "id": "3500002",
+            "codice": "3500002",
+            "tipo_navigazione": "iot",
+            "tipo_percorso": "storico-artistico",
+            "poi_id": "00350025834",
+            "nome_percorso": "Passeggiando per Spindoli",
+            "colore": "#FF000",
+            "lingua_id": 1,
+            "percorso": [],
+            "valido_da": [],
+            "valido_a": [],
+            "lunghezza": [],
+            "dislivello": [],
+            "pendenza": "",
+            "adatto_a": "",
+            "accessibilita": "",
+            "tempo_percorrenza": [],
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_TEXT": [
+        {
+            "id": 35000011,
+            "percorso_id": "3500001",
+            "descrizione_breve": "Dalla Chiesa di San Giovanni Battista alla Fonte delle cocce",
+            "descrizione": "<span style=\"font-weight: 400\">Il percorso partir\u00e0 dalla Chiesa di San Giovanni Battista, situata in localit\u00e0 Castello e proseguir\u00e0 in direzione della Fonte delle cocce, dove sar\u00e0 possibile riempire le proprie borracce con acqua potabile. Da qui si continuer\u00e0 in direzione della Fonte del Piscio, luogo ameno circondato da faggete con piante secolari in cui poter sostare e fare un picnic. Al ritorno, passando per Pontile, si potr\u00e0 visitare la Chiesa di San Pietro, proseguendo per San Cassiano.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        },
+        {
+            "id": 35000012,
+            "percorso_id": "3500001",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        },
+        {
+            "id": 35000021,
+            "percorso_id": "3500002",
+            "descrizione_breve": "L\u2019itinerario porter\u00e0 il visitatore alla scoperta della localit\u00e0 di Spindoli, partendo dalla Rocca omonima e proseguendo in direzione della Chiesa di Santa Barnaba e, a seguire, della fonte di Spindoli.",
+            "descrizione": "<span style=\"font-weight: 400\">L\u2019itinerario porter\u00e0 il visitatore alla scoperta della localit\u00e0 di Spindoli, partendo dalla Rocca omonima e proseguendo in direzione della Chiesa di Santa Barnaba e, a seguire, della fonte di Spindoli.<\/span>\r\n\r\n<span style=\"font-weight: 400\">Lungo il percorso sar\u00e0 possibile fare una sosta al bar \u201cLa ginestra\u201d per poi continuare verso la Chiesa della Madonna de \u201cLa Salette\u201d di Vallibbia e verso l\u2019Eremo della Madonna della Valcora. Da questa posizione sar\u00e0 possibile intraprendere altri itinerari alla scoperta del comune e delle sue frazioni.<\/span>",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        },
+        {
+            "id": 35000022,
+            "percorso_id": "3500002",
+            "descrizione_breve": [],
+            "descrizione": [],
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        }
+    ],
+    "PERCORSI_IMMAGINI": [],
+    "TAPPE": [
+        {
+            "id": 350000101,
+            "nome_tappa": "x",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        },
+        {
+            "id": 350000201,
+            "nome_tappa": "x",
+            "colore": "",
+            "latitudine": null,
+            "longitudine": null,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_TEXT": [
+        {
+            "id": 3500001011,
+            "tappa_id": 350000101,
+            "descrizione_breve": "",
+            "descrizione": "x",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        },
+        {
+            "id": 3500001012,
+            "tappa_id": 350000101,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        },
+        {
+            "id": 3500002011,
+            "tappa_id": 350000201,
+            "descrizione_breve": "",
+            "descrizione": "x",
+            "lingua_id": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        },
+        {
+            "id": 3500002012,
+            "tappa_id": 350000201,
+            "descrizione_breve": "",
+            "descrizione": null,
+            "lingua_id": 2,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        }
+    ],
+    "TAPPE_IMMAGINI": [],
+    "POIXTAPPE": [],
+    "TAPPEXPERCORSI": [
+        {
+            "id": 350000101,
+            "tappa_id": 350000101,
+            "percorso_id": "3500001",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        },
+        {
+            "id": 350000201,
+            "tappa_id": 350000201,
+            "percorso_id": "3500002",
+            "ordine": 1,
+            "attivo": "Y",
+            "mod_dte": "2025-07-17 14:27:53",
+            "uuid": ""
+        }
+    ]
+}
