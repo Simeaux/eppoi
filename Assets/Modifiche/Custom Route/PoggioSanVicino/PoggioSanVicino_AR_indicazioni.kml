@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>PoggioSanVicino_AR_indicazioni.kml</name>
+	<StyleMap id="__managed_style_0A8D322BFB39D8014529">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed16</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed15</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed15">
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="failed16">
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Folder>
+		<name>AR</name>
+		<open>1</open>
+		<Placemark id="56B5B04E8A000004">
+			<name>AR</name>
+			<styleUrl>#__managed_style_0A8D322BFB39D8014529</styleUrl>
+			<LineString>
+				<coordinates>
+					13.07855286001913,43.37468652929975,505.3369999999999 13.0784321874942,43.37501611058521,505.3369999999999 13.07843,43.37557,504.613 13.07844,43.37568,504.009 13.07853,43.37605,502.7649999999998 13.07856,43.37608,502.535 13.07861,43.37611,502.069 13.07868,43.37608,500.0570000000001 13.07879,43.37587,497.154 13.07892,43.3754,495.95 13.07905,43.37493,493.5199999999999 13.07907,43.37484,493.583 13.07899694900178,43.37474659118963,491.9350000000001 13.07897981210288,43.37460846746124,491.9350000000001 13.07882699384725,43.37456642471255,491.9350000000001 13.07877600164918,43.37464413214705,491.9350000000001 13.07855344612092,43.37459928067796,491.9350000000001 13.07848326306577,43.37477059052569,491.9350000000001 13.07840667904686,43.37503786429774,491.9350000000001 13.07841658736423,43.37533570258753,491.9350000000001 13.07836436962945,43.37534102723647,491.9350000000001 13.0782959722626,43.37501960328903,491.9350000000001 13.07815367355341,43.37467581919987,491.9350000000001 13.07800727187075,43.37466258047419,491.9350000000001 13.07799158290139,43.37475616692925,503.291 13.07795467246916,43.37500905615725,502.175 13.07797127868934,43.37539772671705,503.628 13.07799073015599,43.37555449368922,503.628 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<description>Procedi in direzione nord su Via Giacomo Leopardi verso Via Borgo Garibaldi;Proceed north on Via Giacomo Leopardi towards Via Borgo Garibaldi</description>
+			<LookAt>
+				<longitude>13.07839100282196</longitude>
+				<latitude>43.37513865051723</latitude>
+				<altitude>0</altitude>
+				<heading>-2.993132802910111</heading>
+				<tilt>27.01945658259701</tilt>
+				<range>154.4469232610595</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07856591057223,43.3746871860134,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Svolta a destra per rimanere su Via Giacomo Leopardi;Turn right to stay on Via Giacomo Leopardi</description>
+			<LookAt>
+				<longitude>13.07839290079692</longitude>
+				<latitude>43.37513872265549</latitude>
+				<altitude>0</altitude>
+				<heading>-2.993131499442781</heading>
+				<tilt>27.01945658259701</tilt>
+				<range>154.4469232574239</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07851818368257,43.37609816147327,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Svolta a destra e prendi le scale per la piazza;Turn right and take the stairs to the square</description>
+			<LookAt>
+				<longitude>13.07897601969361</longitude>
+				<latitude>43.37502842308327</latitude>
+				<altitude>0</altitude>
+				<heading>-2.992731031804189</heading>
+				<tilt>27.01945658259698</tilt>
+				<range>154.4469232575149</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07909609645992,43.37483426402159,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Gira a destra;Turn right</description>
+			<LookAt>
+				<longitude>13.07834577760999</longitude>
+				<latitude>43.37478735169539</latitude>
+				<altitude>0</altitude>
+				<heading>-2.993163023691288</heading>
+				<tilt>27.01967640692691</tilt>
+				<range>208.1408494068217</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07855519399081,43.37458657944786,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<description>Svolta tutto a sinistra;Turn hard left</description>
+			<LookAt>
+				<longitude>13.07805983876653</longitude>
+				<latitude>43.37493590910926</latitude>
+				<altitude>0</altitude>
+				<heading>-2.993359397091526</heading>
+				<tilt>27.0196764069269</tilt>
+				<range>208.1408494057428</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.0784025428752,43.37535783299015,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>6</name>
+			<description>Gira a destra;Turn right</description>
+			<LookAt>
+				<longitude>13.07800576420144</longitude>
+				<latitude>43.37495955180023</latitude>
+				<altitude>0</altitude>
+				<heading>-2.993379305660117</heading>
+				<tilt>30.00058446067393</tilt>
+				<range>128.0518112819726</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07814284982925,43.37468289738674,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

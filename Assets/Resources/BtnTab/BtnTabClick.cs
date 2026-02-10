@@ -9,6 +9,8 @@ public class BtnTabClick : MonoBehaviour
     public bool _clicked = false;
     public Image _img;
     public Text _text;
+    public GameObject _browserPanel;
+    public GameObject _webPanel;
     private void Start()
     {
         changes();
@@ -29,6 +31,19 @@ public class BtnTabClick : MonoBehaviour
                 Color _c = new Color();
                 if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
                     c = _c;
+                if (_browserPanel != null)
+                    _browserPanel.SetActive(true);
+                if (_webPanel != null)
+                    _webPanel.SetActive(true);
+
+            }
+            else
+            {
+                if (_browserPanel != null)
+                    _browserPanel.SetActive(false);
+                if (_webPanel != null)
+                    _webPanel.SetActive(false);
+
             }
         }
         _text.color = c;

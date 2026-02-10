@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>RipeSanGinesio_AR_indicazioni.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>AR</name>
+		<open>1</open>
+		<Placemark>
+			<name>AR</name>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					13.36672674471668,43.14309539481698,0 13.36670447766418,43.14300165130302,0 13.36677044154617,43.14290239426669,0 13.36677514012338,43.14280947980049,0 13.3668185026354,43.14275102877975,0 13.3668720053984,43.14268638316125,0 13.36710719448433,43.142878340534,0 13.36709293202012,43.14299891736679,0 13.3671170908398,43.14316141558743,0 13.3671448602256,43.14327758443286,0 13.3672449866298,43.14343243999464,0 13.36732266196996,43.14351579186958,0 13.36741882989928,43.14355120766488,0 13.3674724076507,43.14364864481865,0 13.36744384988163,43.14354521754536,0 13.3674559835738,43.14350327566913,0 13.36734263287293,43.14333377383537,0 13.36729093478428,43.14321363657612,0 13.36723746201803,43.14310604726906,0 13.36718546023535,43.14297752925943,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<description>Procedi in direzione sud su Via Dante Alighieri;Proceed south on Via Dante Alighieri</description>
+			<LookAt>
+				<longitude>13.36677686087035</longitude>
+				<latitude>43.14308508667484</latitude>
+				<altitude>0</altitude>
+				<heading>1.936847472831689</heading>
+				<tilt>10.2710577924826</tilt>
+				<range>178.8649063209552</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36677686087035,43.14308508667486,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Alla rotonda prendi la 2ª uscita e prendi Viale della Resistenza;At the roundabout, take the 2nd exit onto Viale della Resistenza</description>
+			<LookAt>
+				<longitude>13.36691570947378</longitude>
+				<latitude>43.14297485083689</latitude>
+				<altitude>0</altitude>
+				<heading>-3.754453430868712</heading>
+				<tilt>45.2591869811623</tilt>
+				<range>98.53877184696726</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.3667598694683,43.14280766349416,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Svolta a sinistra e prendi Via Roma;Turn left and take Via Roma</description>
+			<LookAt>
+				<longitude>13.36687702139826</longitude>
+				<latitude>43.14298491957401</latitude>
+				<altitude>0</altitude>
+				<heading>-3.754462951770589</heading>
+				<tilt>39.70257371617998</tilt>
+				<range>76.36596325193877</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36688932588151,43.14268925675795,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Torna indietro e prosegui verso il municipio;Go back and continue towards the town hall</description>
+			<LookAt>
+				<longitude>13.36713882348739</longitude>
+				<latitude>43.14320230823613</latitude>
+				<altitude>0</altitude>
+				<heading>-3.754283925732472</heading>
+				<tilt>39.70257371617998</tilt>
+				<range>76.36596324954148</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36748611111111,43.14361111111111,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

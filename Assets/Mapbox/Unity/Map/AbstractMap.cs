@@ -725,6 +725,7 @@ namespace Mapbox.Unity.Map
             _centerLatitudeLongitude = Conversions.StringToLatLon(options.locationOptions.latitudeLongitude);
             _initialZoom = (int)options.locationOptions.zoom;
 
+
             options.scalingOptions.scalingStrategy.SetUpScaling(this);
             options.placementOptions.placementStrategy.SetUpPlacement(this);
 

@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
+using Vuforia;
+using Image = UnityEngine.UI.Image;
 
 public class ChangeScene : MonoBehaviour
 {
@@ -25,25 +27,29 @@ public class ChangeScene : MonoBehaviour
 
     private void Awake()
     {
-       /* if(Instance ==  null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-       */
+        /* if(Instance ==  null)
+         {
+             Instance = this;
+             DontDestroyOnLoad(gameObject);
+         }
+         else
+         {
+             Destroy(gameObject);
+         }
+        */
     }
-    
+
     public void ResetPlayer()
     {
         PlayerPrefs.SetInt("show_grid_poi", 0);
-        PlayerPrefs.SetString("istat", "");
+        if (!(PlayerPrefs.GetString("apri_direttamente_il_poi_selezionato") != ""))
+            PlayerPrefs.SetString("istat", "");
         PlayerPrefs.SetInt("percorso_selezionato", 0);
         PlayerPrefs.SetInt("evento_selezionato", 0);
-        PlayerPrefs.SetInt("poi_selezionato", 0);
+        PlayerPrefs.SetString("poi_selezionato", "");
+        // 1. Spegne Vuforia
+        if (VuforiaBehaviour.Instance != null)
+            VuforiaBehaviour.Instance.enabled = false;
     }
     public void Load_ARRoute(int score)
     {
@@ -69,6 +75,13 @@ public class ChangeScene : MonoBehaviour
         Debug.Log("Load_Map");
         ActiveSceneAndDeactivateTheActiveOne("Map");
     }
+    public void Load_QR()
+    {
+        ResetPlayer();
+        Debug.Log("Load_QR");
+        ActiveSceneAndDeactivateTheActiveOne("QR");
+
+    }
     public void Load_NFCTools()
     {
         ResetPlayer();
@@ -86,11 +99,11 @@ public class ChangeScene : MonoBehaviour
         Load_Menu_Without_reset_Player();
     }
     public void Load_Menu_Without_reset_Player()
-    { 
+    {
         Debug.Log("Load_Menu");
         ActiveSceneAndDeactivateTheActiveOne("Menu");
     }
-    
+
     public void Quit()
     {
         ResetPlayer();
@@ -100,10 +113,10 @@ public class ChangeScene : MonoBehaviour
     private async void ActiveSceneAndDeactivateTheActiveOne(string scene_name)
     {
         ARSession session = FindObjectOfType<ARSession>();
-        if(session != null)
+        if (session != null)
             session.Reset();
         ARLocationManager aRLocationManager = FindObjectOfType<ARLocationManager>();
-        if(aRLocationManager != null)
+        if (aRLocationManager != null)
             aRLocationManager.ResetARSession();
         if (_loaderCanvas != null)
             _loaderCanvas.SetActive(true);
@@ -127,15 +140,15 @@ public class ChangeScene : MonoBehaviour
         //if (!string.IsNullOrEmpty(scene_to_unload))
         //    SceneManager.UnloadSceneAsync(scene_to_unload);
 
-        
+
 
         //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         //SceneManager.LoadScene(scene_name);
     }
     private void Update()
     {
-//        Debug.Log("_target " + _target);
-        if(_progressBar != null)
-            _progressBar.fillAmount = Mathf.MoveTowards(_progressBar.fillAmount, _target, 3 * Time.deltaTime);
+        //        Debug.Log("_target " + _target);
+        if (_progressBar != null)
+            _progressBar.fillAmount = Mathf.MoveTowards(_progressBar.fillAmount, _target, 0.3f * Time.deltaTime);
     }
 }

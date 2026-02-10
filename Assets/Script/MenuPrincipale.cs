@@ -10,7 +10,7 @@ public class MenuPrincipale : MonoBehaviour
    public void ButtonCliccked(Text button)
     {
         PlayerPrefs.SetString("istat", button.text);
-        PlayerPrefs.SetInt("poi_selezionato", 0);
+        PlayerPrefs.SetString("poi_selezionato", "");
         PlayerPrefs.SetInt("percorso_selezionato", 0);
 
     }
@@ -29,7 +29,7 @@ public class MenuPrincipale : MonoBehaviour
 
 
                 int id = int.Parse(listText[1]);
-                if (tipo == 1 && !(PlayerPrefs.GetInt("poi_selezionato") > 0))
+                if (tipo == 1 && !(PlayerPrefs.GetString("poi_selezionato") != ""))
                 {
                     var _comune = GameObject.FindObjectOfType<DBClass>().GetCOMUNI(null, null, GameObject.FindObjectOfType<DBClass>().getPOI(GameObject.FindObjectOfType<DBClass>().GetPERCORSO(id)?[0]?.poi_id)?[0].comune_id);
                     if (_comune != null && _comune.Count > 0)
@@ -38,7 +38,7 @@ public class MenuPrincipale : MonoBehaviour
                     if (sceneName == "Map")
                         PlayerPrefs.SetInt("show_grid_poi", 2);
                 }
-                else if (tipo == 1 && (PlayerPrefs.GetInt("poi_selezionato") > 0))
+                else if (tipo == 1 && (PlayerPrefs.GetString("poi_selezionato") != ""))
                 {
                     PlayerPrefs.SetInt("percorso_selezionato_collegato_ad_un_poi", id);
                     if (sceneName == "Map")
@@ -56,7 +56,7 @@ public class MenuPrincipale : MonoBehaviour
                     var _comune = GameObject.FindObjectOfType<DBClass>().GetCOMUNI(null, null, GameObject.FindObjectOfType<DBClass>().getPOI(id)?[0]?.comune_id);
                     if (_comune != null && _comune.Count > 0)
                         PlayerPrefs.SetString("istat", _comune[0].istat);
-                    PlayerPrefs.SetInt("poi_selezionato", id);
+                    PlayerPrefs.SetString("poi_selezionato", long.Parse(listText[1]).ToString());
                     if (sceneName == "Map")
                         PlayerPrefs.SetInt("show_grid_poi", 2);
                 }
@@ -73,7 +73,7 @@ public class MenuPrincipale : MonoBehaviour
     public void ButtonClicckedPOI(Text ID)
     {
         PlayerPrefs.SetInt("show_grid_poi", 2);
-        PlayerPrefs.SetInt("poi_selezionato", int.Parse(ID.text));
+        PlayerPrefs.SetString("poi_selezionato", ID.text);
     }
 
 }

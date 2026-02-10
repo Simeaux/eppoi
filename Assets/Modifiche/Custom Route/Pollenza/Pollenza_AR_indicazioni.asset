@@ -1,0 +1,549 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: Pollenza_AR_indicazioni
+  m_EditorClassIdentifier: 
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.2725959408472
+      Longitude: 13.34461127333604
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 1
+    Instruction: Procedi in direzione sudest su Strada Comunale Cegli verso Contrada
+      Fontangela;Proceed southeast on Strada Comunale Cegli towards Contrada Fontangela
+  - Location:
+      Latitude: 43.27184109613706
+      Longitude: 13.34528895811839
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.27185569098715
+      Longitude: 13.34549677244759
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.27023597705285
+      Longitude: 13.34664701449906
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 2
+    Instruction: Prosegui dritto su Borgo G. Murat/Strada Provinciale Stazione di
+      Pollenza-Passo di Treia/SP124;Continue straight on Borgo G. Murat/Provincial
+      Road Pollenza Station-Treia Pass/SP124
+  - Location:
+      Latitude: 43.26980810637902
+      Longitude: 13.34688949324942
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26942035632625
+      Longitude: 13.34695558499569
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 3
+    Instruction: Svolta a destra verso Via Roma;Turn right onto Via Roma
+  - Location:
+      Latitude: 43.26912306253102
+      Longitude: 13.3468396650132
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26893379140234
+      Longitude: 13.34675665057398
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26841966416973
+      Longitude: 13.34714839060759
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.2679094146877
+      Longitude: 13.34768904947818
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26768242583761
+      Longitude: 13.34787426045274
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26690516834738
+      Longitude: 13.348414382211
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26667414795128
+      Longitude: 13.34860045595531
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26573795992817
+      Longitude: 13.34876447529153
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 4
+    Instruction: Svolta a destra e prendi Via Mura di Levante;Turn right and take
+      Via Mura di Levante
+  - Location:
+      Latitude: 43.26563693889167
+      Longitude: 13.34864444268065
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 5
+    Instruction: Svolta leggermente e prendi Via S. Spirito;Turn slightly and take
+      Via S. Spirito
+  - Location:
+      Latitude: 43.26545550101433
+      Longitude: 13.3480054017787
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26525427105145
+      Longitude: 13.3474262280272
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26483708432734
+      Longitude: 13.34682556557063
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 6
+    Instruction: Svolta a destra verso Strada Comunale Rambona;Turn right onto Strada
+      Comunale Rambona
+  - Location:
+      Latitude: 43.26506558373749
+      Longitude: 13.34601597752556
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 7
+    Instruction: Svolta a sinistra e prendi Strada Comunale Rambona;Turn left and
+      take Strada Comunale Rambona
+  - Location:
+      Latitude: 43.26472684039428
+      Longitude: 13.34387865484303
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26440009544783
+      Longitude: 13.34295888257662
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26380625586219
+      Longitude: 13.34197824130839
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26369015495275
+      Longitude: 13.34158425750151
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26371138986897
+      Longitude: 13.34116850318659
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26402531477865
+      Longitude: 13.33994354099377
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26449828626485
+      Longitude: 13.33915064762615
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 8
+    Instruction: Continua su Contrada Morazzano;Continue on Contrada Morazzano
+  - Location:
+      Latitude: 43.26494601828407
+      Longitude: 13.33832289526322
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26513641047068
+      Longitude: 13.33757447839602
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26532244284891
+      Longitude: 13.3364311277404
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26545543844676
+      Longitude: 13.33618272436599
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26592030754162
+      Longitude: 13.33584237038254
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26645006776128
+      Longitude: 13.33496064321144
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26697306548983
+      Longitude: 13.33357851830758
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26700418735118
+      Longitude: 13.33323654534175
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 9
+    Instruction: Svolta a sinistra e prendi Contrada Campetella;Turn left and take
+      Contrada Campetella
+  - Location:
+      Latitude: 43.26693462268115
+      Longitude: 13.3329596518694
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26640821500588
+      Longitude: 13.33116913068084
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26563384053734
+      Longitude: 13.32817646081482
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26560415523568
+      Longitude: 13.32794497665968
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26562386497442
+      Longitude: 13.32772538850794
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26588412707916
+      Longitude: 13.32669773401122
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26584856228917
+      Longitude: 13.32606293349848
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26576531258402
+      Longitude: 13.32556803495951
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 10
+    Instruction: Prosegui dritto su Contrada Morazzano;Continue straight on Contrada
+      Morazzano
+  - Location:
+      Latitude: 43.26530079414318
+      Longitude: 13.32431065337996
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26448636197955
+      Longitude: 13.3207687420677
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26370456585717
+      Longitude: 13.31888074475888
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26369820863139
+      Longitude: 13.31866821509663
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26399072719997
+      Longitude: 13.31821904680977
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 11
+    Instruction: Continua su Contrada Rambona;Continue on Contrada Rambona
+  - Location:
+      Latitude: 43.26593165130411
+      Longitude: 13.31522346774479
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26624341502237
+      Longitude: 13.31420150870645
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26617792644145
+      Longitude: 13.31369631895518
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26594173482245
+      Longitude: 13.31349741677905
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.2655773917203
+      Longitude: 13.31338539251758
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26523361819132
+      Longitude: 13.31306845867024
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26514391822607
+      Longitude: 13.31284480550635
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.2651388447111
+      Longitude: 13.31154191035924
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26538290458537
+      Longitude: 13.31126580914667
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 12
+    Instruction: Svolta a destra;Turn right
+  - Location:
+      Latitude: 43.26548873018046
+      Longitude: 13.31144412953838
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26562986387943
+      Longitude: 13.31202610231813
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  SceneViewScale: 1
+  Color: 

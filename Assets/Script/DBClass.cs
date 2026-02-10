@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using static UnityEngine.XR.ARSubsystems.XRCpuImage;
-using static TouchScript.Behaviors.Cursors.UI.GradientTexture;
+//using static TouchScript.Behaviors.Cursors.UI.GradientTexture;
 using ARLocation;
 using ARLocation.MapboxRoutes;
 using System.Text.RegularExpressions;
@@ -11,6 +11,7 @@ using System.Linq;
 using Mapbox.Utils;
 using static DBClass;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 
 public class DBClass : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class DBClass : MonoBehaviour
     private static CreateTable createTable;
     private void Start()
     {
-        
+
     }
     private void Awake()
     {
@@ -28,7 +29,7 @@ public class DBClass : MonoBehaviour
     }
     public class POI
     {
-        public int ID;
+        public long ID;
         public string indirizzo;
         public string visitabile;
         public string tag;
@@ -57,7 +58,7 @@ public class DBClass : MonoBehaviour
 
         public string descrizione()
         {
-            
+
             var ap = createTable.getPOI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.ID);
             if (ap == null)
                 ap = createTable.getPOI_TEXT(1, this.ID);
@@ -65,7 +66,7 @@ public class DBClass : MonoBehaviour
         }
         public string descrizione_breve()
         {
-            
+
             var ap = createTable.getPOI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.ID);
             if (ap == null)
                 ap = createTable.getPOI_TEXT(1, this.ID);
@@ -74,17 +75,19 @@ public class DBClass : MonoBehaviour
         public string tipo_list_descrizione()
         {
             string ret = "";
-            
+
             var _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
             foreach (var ap in this.tipoList)
             {
                 if (ap.tipo != null)
                 {
-                    if (!string.IsNullOrEmpty(ret))
-                        ret = ret + ", ";
                     var _ap = createTable.getTIPO_POI_TEXT(_lingua_selezionata, ap.tipo.id);
-                    if (_ap != null && _ap.Count > 0)
+                    if (_ap != null && _ap.Count > 0 && !ret.Contains(_ap[0].descrizione))
+                    {
+                        if (!string.IsNullOrEmpty(ret))
+                            ret = ret + ", ";
                         ret = ret + _ap[0].descrizione;
+                    }
                 }
             }
             return ret;
@@ -219,11 +222,12 @@ public class DBClass : MonoBehaviour
         public string nome_comune;
         public string provincia;
         public string regione;
-        
+
         public double latitudine;
         public double longitudine;
         public float altitudine;
         public int abitanti;
+        public string sito_turistico;
         public List<COMUNE_IMMAGINI> Listimages;
 
 
@@ -232,18 +236,18 @@ public class DBClass : MonoBehaviour
         public string descrizione()
         {
             string ret = string.Empty;
-            
+
             var ap = createTable.getCOMUNI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.id);
             if (ap == null)
                 ap = createTable.getCOMUNI_TEXT(1, this.id);
-            if(ap != null && ap.Count > 0)
+            if (ap != null && ap.Count > 0)
                 ret = ap.FirstOrDefault().descrizione;
             return ret;
         }
         public string descrizioneBreve()
         {
             string ret = string.Empty;
-            
+
             var ap = createTable.getCOMUNI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), this.id);
             if (ap == null)
                 ap = createTable.getCOMUNI_TEXT(1, this.id);
@@ -276,49 +280,76 @@ public class DBClass : MonoBehaviour
         public string valore;
     }
 
-    public List<POI> getPOI(int? id = null, int? comune_id = null, string nome = null, int maxrow = 0, int? group_tipo_poi = null, int? tipo_poi = null, bool? get_images = null, bool? get_max_date_update = null)
+    public string getLastUpdatedFromTable(string table)
     {
-        //Debug.Log(DateTime.Now);
-        
+        var ret = "";
+        if (table != "VERSIONE")
+        {
+            DateTime p = createTable.getLastUpdatedFromTable(table);
+            ret = p.ToString("yyyy-MM-ddTHH:mm:ss");
+        }
+        else
+            ret = createTable.getversione();
+        return ret;
+    }
+    public List<POI> getPOIxMap(string? not_in = "", double[] punti = null)
+    {
         StartCoroutine(GetLatLonUsingGPS());
-        var ap = createTable.getPOI(PlayerPrefs.GetInt("lingua_selezionata"), id, comune_id, nome, maxrow, (float?)_latitudine, (float?)_longitudine, group_tipo_poi, tipo_poi, get_images, get_max_date_update);
-        //Debug.Log(DateTime.Now);
+        int? comune_id = null;
+        if (PlayerPrefs.HasKey("comune_selected") && PlayerPrefs.GetInt("comune_selected") > 0)
+            comune_id = PlayerPrefs.GetInt("comune_selected");
+        var ap = createTable.getPOIxMap(not_in, punti, comune_id);
+        return ap;
+    }
+    public List<POI> getPOIGeneralita(long? id = null)
+    {
+        var ap = createTable.getPOIGeneralita(id);
+        return ap;
+    }
+    public List<POI> getPOI(long? id = null, int? comune_id = null, string nome = null, int maxrow = 0, int? group_tipo_poi = null, int? tipo_poi = null, bool? get_images = null, bool? get_max_date_update = null, int? percorso_id = null, string? uuid = null)
+    {
+        StartCoroutine(GetLatLonUsingGPS());
+        if (PlayerPrefs.HasKey("comune_selected") && PlayerPrefs.GetInt("comune_selected") > 0)
+            comune_id = PlayerPrefs.GetInt("comune_selected");
+
+        var ap = createTable.getPOI(PlayerPrefs.GetInt("lingua_selezionata"), id, comune_id, nome, maxrow, (float?)_latitudine, (float?)_longitudine, group_tipo_poi, tipo_poi, get_images, get_max_date_update, percorso_id, uuid);
+
         return ap;
     }
     public int getPOI_Count(int? id = null, int? comune_id = null, string nome = null, int? group_tipo_poi = null, int? tipo_poi = null)
     {
         //Debug.Log(DateTime.Now);
-        
+
         var ap = createTable.getPOI_Count(PlayerPrefs.GetInt("lingua_selezionata"), id, comune_id, nome, group_tipo_poi, tipo_poi);
         //Debug.Log(DateTime.Now);
         return ap;
     }
     public List<POI_TEXT> getPOI_TEXT(int? poi_id = null)
     {
-        
+
         return createTable.getPOI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), poi_id);
     }
 
     public List<TIPO_POI> getTIPO_POI(string tag = null, int? group_id = null)
     {
-        
+
         return createTable.getTIPO_POI(tag, group_id);
     }
 
     public List<TIPO_POI_TEXT> getTIPO_POI_TEXT(int? id = null)
     {
-        
+
         return createTable.getTIPO_POI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), id);
     }
 
     public List<SETTING> getSETTING(string tipo)
     {
-        
+
         return createTable.getSETTING(tipo);
     }
     public int SetSetting(string tipo, string valore)
     {
-        
+
         return createTable.InsertUpdateSETTING(tipo, valore);
     }
 
@@ -334,7 +365,7 @@ public class DBClass : MonoBehaviour
                 PlayerPrefs.SetInt("lingua_selezionata", ret);
             }
         }
-        
+
         return ret;
     }
     public void setSetting_LinguaSelezionata(int lingua_selezionata)
@@ -343,19 +374,24 @@ public class DBClass : MonoBehaviour
         PlayerPrefs.SetInt("lingua_selezionata", lingua_selezionata);
     }
 
-    public List<PERCORSO> GetPERCORSO(int? id = null, int? poi_id = null, bool? groupedByCodice = null, int? comune_id = null, string nome = null, string tipo_percorso = null, string tipo_navigazione = null)
+    public List<PERCORSO> GetPERCORSO(int? id = null, long? poi_id = null, bool? groupedByCodice = null, int? comune_id = null, string nome = null, string tipo_percorso = null, string tipo_navigazione = null, bool? get_images = null)
     {
-        
-        return createTable.getPERCORSI(PlayerPrefs.GetInt("lingua_selezionata"), id, poi_id, groupedByCodice, comune_id, nome, tipo_percorso, tipo_navigazione);
+        if (PlayerPrefs.HasKey("comune_selected") && PlayerPrefs.GetInt("comune_selected") > 0)
+            comune_id = PlayerPrefs.GetInt("comune_selected");
+        return createTable.getPERCORSI(PlayerPrefs.GetInt("lingua_selezionata"), id, poi_id, groupedByCodice, comune_id, nome, tipo_percorso, tipo_navigazione, get_images);
     }
     public List<PERCORSO_IMMAGINI> getPERCORSI_IMMAGINI(int? id = null, int? percorso_id = null)
     {
-        
+
         return createTable.getPERCORSI_IMMAGINI(id, percorso_id);
     }
-    public List<COMUNE> GetCOMUNI(string istat, string nome = null, int? id = null, bool? checkuserposition = null)
+    public List<COMUNE> GetCOMUNI(string istat, string nome = null, int? id = null, bool? checkuserposition = null, bool? check_all = null)
     {
-        
+        if (check_all == null || check_all == false)
+        {
+            if (PlayerPrefs.HasKey("comune_selected") && PlayerPrefs.GetInt("comune_selected") > 0)
+                id = PlayerPrefs.GetInt("comune_selected");
+        }
         //Debug.Log(checkuserposition);
         if (checkuserposition.HasValue && checkuserposition.Value)
         {
@@ -365,39 +401,39 @@ public class DBClass : MonoBehaviour
     }
     public List<COMUNE_IMMAGINI> getCOMUNI_IMMAGINI(int? id = null, int? comune_id = null)
     {
-        
+
         return createTable.getCOMUNI_IMMAGINI(id, comune_id);
     }
-    public List<POI_IMMAGINI> getPOI_IMMAGINI(int? id = null, int? poi_id = null)
+    public List<POI_IMMAGINI> getPOI_IMMAGINI(int? id = null, long? poi_id = null, bool? solo_principale = null)
     {
-        
-        return createTable.getPOI_IMMAGINI(id, poi_id);
+
+        return createTable.getPOI_IMMAGINI(id, poi_id, solo_principale);
     }
-    public List<POIXTAPPE> getPOIXTAPPE(int? id = null, double? poi_id = null, int? tappa_id = null)
+    public List<POIXTAPPE> getPOIXTAPPE(int? id = null, long? poi_id = null, int? tappa_id = null, int? percorso_id = null)
     {
-        
-        return createTable.getPOIXTAPPE(id, poi_id, tappa_id);
+
+        return createTable.getPOIXTAPPE(id, poi_id, tappa_id, percorso_id);
     }
 
     public List<TAPPEXPERCORSI> getTAPPEXPERCORSI(int? id = null, int? tappa_id = null, int? percorso_id = null)
     {
-        
+
         return createTable.getTAPPEXPERCORSI(id, tappa_id, percorso_id);
     }
 
     public List<TAPPE> getTAPPE(int lingua_id, int? id = null)
     {
-        
+
         return createTable.getTAPPE(lingua_id, id);
     }
     public List<GROUP_TIPO_POI> getGROUP_TIPO_POI(int? id = null)
     {
-        
+
         return createTable.getGROUP_TIPO_POI(id);
     }
     public List<GROUP_TIPO_POI_TEXT> getGROUP_TIPO_POI_TEXT(int? id = null, int? value = null)
     {
-        
+
         return createTable.getGROUP_TIPO_POI_TEXT(PlayerPrefs.GetInt("lingua_selezionata"), id, value);
     }
 
@@ -407,6 +443,19 @@ public class DBClass : MonoBehaviour
         _createTable = new GameObject("Cool GameObject made from Code");
         createTable = _createTable.AddComponent<CreateTable>();
         createTable.CreateDB(true, slider);
+    }
+    public void RemovePersistent_DB(Slider slider, Button italiano, Button inglese, Toggle NonChiedereNuovamente)
+    {
+        _createTable = new GameObject("Cool GameObject made from Code");
+        createTable = _createTable.AddComponent<CreateTable>();
+        createTable.RemovePersistent_DB();
+        createTable.copyDB(slider, italiano, inglese, NonChiedereNuovamente);
+    }
+    public void PersistentToStraming_DB()
+    {
+        _createTable = new GameObject("Cool GameObject made from Code");
+        createTable = _createTable.AddComponent<CreateTable>();
+        createTable.PersistentToStraming_DB();
     }
     public void UpdateDB(Slider slider)
     {
@@ -425,7 +474,7 @@ public class DBClass : MonoBehaviour
     public List<CustomRoute> GetCustomRoute(List<PERCORSO> _PERCORSOList)
     {
         List<CustomRoute> _ret = new List<CustomRoute>();
-        if(_PERCORSOList != null)
+        if (_PERCORSOList != null)
         {
             foreach (var _PERCORSO in _PERCORSOList)
             {
@@ -464,7 +513,7 @@ public class DBClass : MonoBehaviour
                             }
                             if (ListOfElements.Contains("Instruction:"))
                             {
-                                _point.Instruction =  "";
+                                _point.Instruction = "";
                                 var Instruction = Regex.Split(ListOfElements, "Instruction:");
                                 _point.Instruction = Instruction[1];
                             }
@@ -541,22 +590,27 @@ public class DBClass : MonoBehaviour
     {
         return new Vector2d(latitudine, longitudine);
     }
-    
+
 
     public void setImageTOComuni(byte[] arr, int comune_id)
     {
-        
+
         createTable.setImageTOTable("COMUNI_IMMAGINI", arr, comune_id);
     }
     public void setImageTOPOI(byte[] arr, int poi_id)
     {
-        
+
         createTable.setImageTOTable("POI_IMMAGINI", arr, poi_id);
     }
     public void setImageTOPERCORSI(byte[] arr, int percorso_id)
     {
-        
+
         createTable.setImageTOTable("PERCORSI_IMMAGINI", arr, percorso_id);
+    }
+
+    public void exec_sql(string sql)
+    {
+        createTable.exec_sql(sql);
     }
 
     public double _longitudine;
@@ -579,17 +633,28 @@ public class DBClass : MonoBehaviour
         _latitudine = Input.location.lastData.latitude;
 
         //AddLocation(latitude, longitude);
-        
+
         if (Input.location.status == LocationServiceStatus.Stopped && _latitudine == 0)
         {
-            _latitudine = 43.2534828186035 ;
+            _latitudine = 43.2534828186035;
             _longitudine = 13.0091695785522;
         }
-//        Debug.Log(Input.location.status + "  lat:" + _latitudine + "  long:" + _longitudine);
+        //        Debug.Log(Input.location.status + "  lat:" + _latitudine + "  long:" + _longitudine);
         //Stop retrieving location
         //Input.location.Stop();
     }
 
-
+    public string pulisciHTML(string testo)
+    {
+        testo = testo.Replace("<strong>", "<b>");
+        testo = testo.Replace("</strong>", "</b>");
+        return testo;
+    }
+    public void copyDB(Slider loadingBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente)
+    {
+        _createTable = new GameObject("Cool GameObject made from Code");
+        createTable = _createTable.AddComponent<CreateTable>();
+        createTable.copyDB(loadingBar, italiano, inglese, NonChiedereNuovamente);
+    }
 }
 

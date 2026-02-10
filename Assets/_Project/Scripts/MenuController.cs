@@ -452,7 +452,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
 
             
             //Debug.Log($"sono :{_POI.Count()}");
-            List<int> already_inserted = new List<int>();
+            List<long> already_inserted = new List<long>();
             foreach (DBClass.POI _p in _POI)
             {
                 //"43.25659609773222,13.00896889545388"

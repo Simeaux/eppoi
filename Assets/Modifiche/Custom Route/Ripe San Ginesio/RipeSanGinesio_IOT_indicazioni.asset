@@ -1,0 +1,675 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: RipeSanGinesio_IOT_indicazioni
+  m_EditorClassIdentifier: 
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.14109689629866
+      Longitude: 13.36548645812695
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 1
+    Instruction: Procedi in direzione nordest verso Via Giuseppe Garibaldi;Proceed
+      northeast towards Via Giuseppe Garibaldi
+  - Location:
+      Latitude: 43.14124781779958
+      Longitude: 13.36572108676043
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14155049960251
+      Longitude: 13.36614461212333
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14180183199296
+      Longitude: 13.36625525178732
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14250813143664
+      Longitude: 13.36636687925727
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1425885285397
+      Longitude: 13.36641283619053
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14257465731876
+      Longitude: 13.36644959071945
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 2
+    Instruction: Svolta a destra e prendi Via Giuseppe Garibaldi;Turn right and take
+      Via Giuseppe Garibaldi
+  - Location:
+      Latitude: 43.14251507592166
+      Longitude: 13.36644410546901
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14234479859287
+      Longitude: 13.3664181644197
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14203795082447
+      Longitude: 13.36643890949922
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14173717712293
+      Longitude: 13.36654490389656
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14162214907216
+      Longitude: 13.36652256699065
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14121140086615
+      Longitude: 13.36632522771122
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 3
+    Instruction: Procedi in direzione sud su Via Giuseppe Garibaldi verso Viale della
+      Resistenza;Proceed south on Via Giuseppe Garibaldi towards Viale della Resistenza
+  - Location:
+      Latitude: 43.14090014471955
+      Longitude: 13.36619404002998
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14081
+      Longitude: 13.36625
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14074
+      Longitude: 13.36636
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14067
+      Longitude: 13.36659
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14060817435754
+      Longitude: 13.3671058478871
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14063497690477
+      Longitude: 13.36718567615735
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14081838350167
+      Longitude: 13.36723320659012
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14130246724596
+      Longitude: 13.36733277882244
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14150676599674
+      Longitude: 13.36733544005171
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14188571531735
+      Longitude: 13.36726141532405
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14202440266266
+      Longitude: 13.36728570578803
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 4
+    Instruction: Svolta a sinistra e prendi Viale della Resistenza;Turn left and
+      take Viale della Resistenza
+  - Location:
+      Latitude: 43.14212132631973
+      Longitude: 13.3672286517435
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14224303156305
+      Longitude: 13.36713515529378
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14241336295892
+      Longitude: 13.36705762218974
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1425941494166
+      Longitude: 13.36701394871858
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 5
+    Instruction: "Alla rotonda prendi la 2\xAA uscita e prendi Via Roma;At the roundabout
+      take the 2nd exit and take Via Roma"
+  - Location:
+      Latitude: 43.14271
+      Longitude: 13.36704
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14293743492891
+      Longitude: 13.36723444500821
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1429903854524
+      Longitude: 13.3671798014043
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 6
+    Instruction: Procedi in direzione nord su Via Roma;Proceed north on Via Roma
+  - Location:
+      Latitude: 43.14333438063927
+      Longitude: 13.36731764166343
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14352576842206
+      Longitude: 13.36747420004405
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14352321895235
+      Longitude: 13.36759689944825
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14375572798991
+      Longitude: 13.36771959316745
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 7
+    Instruction: Tornare indietro passando per via Roma o per la parallela;Go back
+      via Roma or the parallel road
+  - Location:
+      Latitude: 43.14374067494794
+      Longitude: 13.36775516061812
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14349230288972
+      Longitude: 13.36762179624805
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14337926161301
+      Longitude: 13.36758723537903
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14324934352229
+      Longitude: 13.36755412223857
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14304639593365
+      Longitude: 13.36745457151485
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1429899183087
+      Longitude: 13.36735072914772
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14284445532319
+      Longitude: 13.36728218776262
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 8
+    Instruction: "Alla rotonda prendi la 1\xAA uscita e prendi Via Giacomo Leopardi;At
+      the roundabout, take the 1st exit onto Via Giacomo Leopardi"
+  - Location:
+      Latitude: 43.14283307933239
+      Longitude: 13.36736541622997
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14302316113402
+      Longitude: 13.36751300274604
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14312443548188
+      Longitude: 13.3675489047407
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14338710077831
+      Longitude: 13.36771523542011
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14346055275885
+      Longitude: 13.36781983241517
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14351891381098
+      Longitude: 13.36792374905978
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1435689713195
+      Longitude: 13.36802084697531
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 9
+    Instruction: Procedi in direzione nord su Via Dante Alighieri;Proceed north on
+      Via Dante Alighieri
+  - Location:
+      Latitude: 43.14371113358286
+      Longitude: 13.3679828936673
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14384591106643
+      Longitude: 13.36791710602017
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14390314576771
+      Longitude: 13.36780070939523
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14389576128389
+      Longitude: 13.36766406888102
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14390314662819
+      Longitude: 13.36755779316815
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14392160949593
+      Longitude: 13.36745404788547
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14388063362775
+      Longitude: 13.36734426300742
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14379486628069
+      Longitude: 13.36726199712869
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14371482867127
+      Longitude: 13.36705930979018
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14350620133891
+      Longitude: 13.36687965492595
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14317941344531
+      Longitude: 13.36670506268369
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14293386132775
+      Longitude: 13.36674807992706
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14286739607931
+      Longitude: 13.36677844425205
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 10
+    Instruction: "Alla rotonda, prendi la 1\xAA uscita;At the roundabout, take the
+      1st exit"
+  - Location:
+      Latitude: 43.14278985298989
+      Longitude: 13.36674555031322
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1427475270842
+      Longitude: 13.36668987638731
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14270136691665
+      Longitude: 13.36658707405119
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14263179180149
+      Longitude: 13.36642227967214
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14253630509192
+      Longitude: 13.36633743428659
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14180310054925
+      Longitude: 13.36621452906169
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14157824561953
+      Longitude: 13.36611765588295
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14124741430953
+      Longitude: 13.36566468833634
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14117895315701
+      Longitude: 13.36555888416525
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14109627087292
+      Longitude: 13.36544307978429
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  SceneViewScale: 1
+  Color: 

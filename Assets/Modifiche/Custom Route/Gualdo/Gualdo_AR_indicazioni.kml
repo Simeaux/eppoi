@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Gualdo_AR_indicazioni.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>AR</name>
+		<open>1</open>
+		<Placemark>
+			<name>AR</name>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					13.3377275910888,43.06668353424121,0 13.33787193268622,43.0667048766256,0 13.33794959377246,43.06704804290269,0 13.33815220153393,43.06712169484749,0 13.33838945772744,43.06728188413554,0 13.33831403631364,43.06739096334201,0 13.33981196140093,43.0684032508384,0 13.34013990731458,43.06809842595238,0 13.34032315522446,43.06793345773907,0 13.34041454394391,43.06775363593013,0 13.34042113040963,43.06765271068014,0 13.34035605577009,43.06755655908584,0 13.33939678380989,43.06702556828059,0 13.3392165310551,43.06692961874557,0 13.33900720226154,43.06686166074645,0 13.33870768380417,43.06684413326525,0 13.33824268754505,43.06674831794079,0 13.33773642040028,43.06666024161446,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<description>Procedi in direzione nordest su Via Guglielmo Oberdan verso Piazza Vittorio Emanuele;Proceed northeast on Via Guglielmo Oberdan towards Piazza Vittorio Emanuele</description>
+			<LookAt>
+				<longitude>13.33789166032086</longitude>
+				<latitude>43.06682877281395</latitude>
+				<altitude>0</altitude>
+				<heading>-3.977183414180487</heading>
+				<tilt>20.11545415660034</tilt>
+				<range>176.7383720811513</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.33774926940374,43.06671337984067,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Svolta a sinistra e prendi Piazza Vittorio Emanuele;Turn left and take Piazza Vittorio Emanuele</description>
+			<LookAt>
+				<longitude>13.33789166032086</longitude>
+				<latitude>43.06682877281395</latitude>
+				<altitude>0</altitude>
+				<heading>-3.977183414180487</heading>
+				<tilt>20.11545415660034</tilt>
+				<range>176.7383720811513</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.33790270530267,43.06672770963917,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Svolta leggermente a sinistra e prendi Viale Vittorio Veneto;Turn slightly left and take Viale Vittorio Veneto</description>
+			<LookAt>
+				<longitude>13.33791228048474</longitude>
+				<latitude>43.06698638366426</latitude>
+				<altitude>0</altitude>
+				<heading>-3.977588948629787</heading>
+				<tilt>18.10457792949336</tilt>
+				<range>149.609215689897</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.33814234202124,43.06708672738539,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Procedi in direzione sudest su Viale Vittorio Veneto verso Via Aldo Moro;Proceed southeast on Viale Vittorio Veneto towards Via Aldo Moro</description>
+			<LookAt>
+				<longitude>13.33949599885233</longitude>
+				<latitude>43.06759505587591</latitude>
+				<altitude>0</altitude>
+				<heading>-3.976507498564618</heading>
+				<tilt>18.10457792949338</tilt>
+				<range>149.6092156909885</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.33976471621387,43.06840026865772,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<description>Continua dritto;Continue straight</description>
+			<LookAt>
+				<longitude>13.33979792390019</longitude>
+				<latitude>43.0673429492067</latitude>
+				<altitude>0</altitude>
+				<heading>-3.976301324578013</heading>
+				<tilt>18.10457792949343</tilt>
+				<range>149.6092156899703</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34024126860955,43.06803194573941,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>6</name>
+			<description>Tieni la destra;Keep right</description>
+			<LookAt>
+				<longitude>13.33880438352488</longitude>
+				<latitude>43.0667884309625</latitude>
+				<altitude>0</altitude>
+				<heading>-3.976979771334627</heading>
+				<tilt>18.10457792949341</tilt>
+				<range>149.6092156919159</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.33942295775004,43.06707350867541,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>7</name>
+			<description>Gira leggermente a destra;Turn slightly to the right</description>
+			<LookAt>
+				<longitude>13.33867977370657</longitude>
+				<latitude>43.06669998692997</latitude>
+				<altitude>0</altitude>
+				<heading>-3.977064861209972</heading>
+				<tilt>18.10457792949332</tilt>
+				<range>149.6092156924725</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.33902990066736,43.06688536155616,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>8</name>
+			<description>Continua dritto;Continue straight</description>
+			<LookAt>
+				<longitude>13.33867748405802</longitude>
+				<latitude>43.06669837967664</latitude>
+				<altitude>0</altitude>
+				<heading>-3.977066424667289</heading>
+				<tilt>18.1045779294933</tilt>
+				<range>149.6092156919535</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.33875833333334,43.06686111111112,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

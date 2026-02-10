@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using GoodEnough.TextToSpeech;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static DBClass;
+
+using System.Runtime.InteropServices;
 
 public class ReadForMe : MonoBehaviour
 {
@@ -17,6 +20,23 @@ public class ReadForMe : MonoBehaviour
 
     private Color lightgray = new Color(0.8f, 0.8f, 0.8f, 1.0f);
 
+#if UNITY_ANDROID
+    AndroidJavaObject _tts;
+    TTSListener listener;
+#endif
+    public void Start()
+    {
+#if UNITY_ANDROID
+        using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+        {
+            AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+            AndroidJavaObject context = currentActivity.Call<AndroidJavaObject>("getApplicationContext");
+
+            listener = new TTSListener();
+            _tts = new AndroidJavaObject("android.speech.tts.TextToSpeech", context, listener);
+        }
+#endif
+    }
     private void OnEnable()
     {
         Container.enabled = true;
@@ -55,27 +75,92 @@ public class ReadForMe : MonoBehaviour
         if (!TTS.IsSpeaking && !Btn_play.gameObject.activeSelf)
             setPlayButton(true);
     }
+    private Process ttsProcess;
+
+#if UNITY_IOS
+    [DllImport("__Internal")]
+    private static extern void _iosSpeak(string text, string language);
+    [DllImport("__Internal")]
+    private static extern void _iosStopSpeak();
+#endif
+
     public void Speak()
     {
-        var speechParameters = new SpeechUtteranceParameters();
-        speechParameters.PitchMultiplier = 1f;
-        speechParameters.SpeechRate = 0.5f;
-        speechParameters.Volume = 1f;
-        speechParameters.PreUtteranceDelay = 0.1f;
-        speechParameters.PreUtteranceDelay = 0.3f;
-        speechParameters.Voice = TTS.GetVoiceForLanguage(PlayerPrefs.GetInt("lingua_selezionata") == 1 ? "it-IT" : "en-UK");
 
-        TTS.Speak(testo.text, speechParameters);
+#if UNITY_IOS        
+        var lingua_selezionata = @"it-IT";
+        if (PlayerPrefs.GetInt("lingua_selezionata") == 2)
+            lingua_selezionata = "en-US";
+        _iosSpeak(testo.text, lingua_selezionata);
+#elif UNITY_ANDROID
+        SpeakAndroid(testo.text, 0);
+#else
+        // Esempio rapido per testare l'audio su Mac Editor
+        StopSpeak();
+
+        ttsProcess = new Process();
+        ttsProcess.StartInfo.FileName = "say";
+        ttsProcess.StartInfo.Arguments = testo.text;
+        ttsProcess.Start();
+        //System.Diagnostics.Process.Start("say", testo.text);
+
+#endif
         setPlayButton(false);
     }
+
+    private void SpeakAndroid(string message, int tipo_chiamata)
+    {
+#if UNITY_ANDROID
+        if (listener != null)
+        {
+            _tts.Call<int>("speak", message, tipo_chiamata, null, "uniqueId");
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("TTS non ancora inizializzato!");
+        }
+#endif
+    }
+
+    // Listener necessario per l'inizializzazione Android
+    class TTSListener : AndroidJavaProxy
+    {
+        public TTSListener() : base("android.speech.tts.TextToSpeech$OnInitListener") { }
+        void onInit(int status) { }
+    }
+
+
     public void StopSpeak()
     {
-        TTS.Stop();
+#if UNITY_IOS
+        _iosStopSpeak();
+#elif UNITY_ANDROID
+        StopAndroid();
+#else
+        if (ttsProcess != null && !ttsProcess.HasExited)
+        {
+            ttsProcess.Kill(); // Chiude istantaneamente il processo 'say'
+            ttsProcess.Dispose();
+            ttsProcess = null;
+        }
+#endif
+        //TTS.Stop();
         setPlayButton(true);
+    }
+    // Metodo Stop per Android
+    private void StopAndroid()
+    {
+#if UNITY_ANDROID
+        _tts.Call<int>("stop");
+#endif
     }
     public void PauseSpeak()
     {
-        TTS.Pause();
+        if (ttsProcess != null && !ttsProcess.HasExited)
+        {
+            Process.Start("kill", "-STOP " + ttsProcess.Id);
+        }
+        //   TTS.Pause();
         setPlayButton(true);
     }
     private void setPlayButton(bool set)

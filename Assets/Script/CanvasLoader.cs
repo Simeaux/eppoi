@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CanvasLoader : MonoBehaviour
 {
     public Text lblCaricamento;
+    public Image logo;
 
     private int _lingua_selezionata = 1;
     // Start is called before the first frame update
@@ -13,6 +14,10 @@ public class CanvasLoader : MonoBehaviour
     {
         _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
         lblCaricamento.text = _lingua_selezionata == 1 ? "Caricamento ..." : "Loading ...";
+    }
+    private void Update()
+    {
+        logo.transform.Rotate(0, 0, -0.4f);
     }
 
 }

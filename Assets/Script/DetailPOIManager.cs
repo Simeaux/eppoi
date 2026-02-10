@@ -60,203 +60,208 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
         if (GameObject.FindObjectOfType<ItinerariEventiPOI_AttaccatiAlComune>() != null)
             GameObject.FindObjectOfType<ItinerariEventiPOI_AttaccatiAlComune>().BtnIDescrizioneClicked();
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
-        int ID = int.Parse(_ID);
+        
         _from_search_filter = from_search_filter;
         //Debug.Log($"Arrivo qui con id: {ID} tipo: {tipo}");
         if (PlayerPrefs.GetInt("show_grid_poi") == 2)
             PlayerPrefs.SetInt("show_grid_poi", 1);
         if (!DetailPOI.enabled || from_comune)
         {
-            if (ID > 0)
+            if (_ID  != "")
             {
                 Pois.descrizione.text = string.Empty;
                 Pois.scrollview_list_img.gameObject.SetActive(true);
                 //POI
                 if (tipo == 3)
                 {
-                    List<POI> _POI = _DBClass.getPOI(ID);
-                    if (Pois.dettaglioItinerario != null)
-                        Pois.dettaglioItinerario.SetActive(false);
-                    if (Pois.Btn_percorso_associato != null)
-                        Pois.Btn_percorso_associato.gameObject.SetActive(false);
-                    foreach (DBClass.POI _p in _POI)
+                    long lID;
+                    if (long.TryParse(_ID, out lID))
                     {
-                        if (_p != null)
+                        List<POI> _POI = _DBClass.getPOI(lID, null, null, 0, null, null, true);
+                        if (Pois.dettaglioItinerario != null)
+                            Pois.dettaglioItinerario.SetActive(false);
+                        if (Pois.Btn_percorso_associato != null)
+                            Pois.Btn_percorso_associato.gameObject.SetActive(false);
+                        foreach (DBClass.POI _p in _POI)
                         {
-                            
-                            ID_selected.text = _ID;
-                            DetailPOI.enabled = true;
-                            if(portami_la != null)
-                                portami_la.gameObject.SetActive(true);
-                            //if (PanelDownOfPanlMap != null)
-                            //    PanelDownOfPanlMap.SetActive(false
-
-                            Pois.immagine.gameObject.SetActive(true);
-                            float _dimensione_foto = 1240;
-                            if (_p._images != null && _p._images.Count > 0)
+                            if (_p != null)
                             {
-                                Pois.descrizione.text = "\n\n\n\n\n\n\n";
 
-                                Debug.Log($"foto da visualizzare {_p._images.Count}");
-                                int _i = 0;
-                                foreach (var _img in _p._images)
+                                ID_selected.text = _ID;
+                                DetailPOI.enabled = true;
+                                if (portami_la != null)
+                                    portami_la.gameObject.SetActive(true);
+                                //if (PanelDownOfPanlMap != null)
+                                //    PanelDownOfPanlMap.SetActive(false);
+
+                                Pois.immagine.gameObject.SetActive(true);
+                                float _dimensione_foto = 1240;
+                                if (_p._images != null && _p._images.Count > 0)
                                 {
+                                    Pois.descrizione.text = "\n\n\n\n\n\n\n";
 
-                                    var goApp = Instantiate(Pois.immagine);
-                                    goApp.gameObject.SetActive(true);
-                                    var pos = Pois.immagine.transform.position;
-                                    goApp.transform.position = new Vector3(0 + (_dimensione_foto * _i), -400, pos.z);
-                                    goApp.transform.localScale = new Vector3(1, 1, 1);
-                                    //descrizione dell'immagine
-                                    if (!string.IsNullOrEmpty(_img.descrizione) && goApp.GetComponentsInChildren<Text>() != null)
+                                    Debug.Log($"foto da visualizzare {_p._images.Count}");
+                                    int _i = 0;
+                                    foreach (var _img in _p._images)
                                     {
-                                        foreach (var aptext in goApp.GetComponentsInChildren<Text>())
+
+                                        var goApp = Instantiate(Pois.immagine);
+                                        goApp.gameObject.SetActive(true);
+                                        var pos = Pois.immagine.transform.position;
+                                        goApp.transform.position = new Vector3(0 + (_dimensione_foto * _i), -400, pos.z);
+                                        goApp.transform.localScale = new Vector3(1, 1, 1);
+                                        //descrizione dell'immagine
+                                        if (!string.IsNullOrEmpty(_img.descrizione) && goApp.GetComponentsInChildren<Text>() != null)
                                         {
-                                            if (aptext.name == "descrizione")
-                                                aptext.text = _img.descrizione;
-                                            if (aptext.name == "count" && _p._images.Count > 1)
-                                                aptext.text = (_i + 1) + "/" + _p._images.Count;
+                                            foreach (var aptext in goApp.GetComponentsInChildren<Text>())
+                                            {
+                                                if (aptext.name == "descrizione")
+                                                    aptext.text = _img.descrizione;
+                                                if (aptext.name == "count" && _p._images.Count > 1)
+                                                    aptext.text = (_i + 1) + "/" + _p._images.Count;
+                                            }
                                         }
+                                        goApp._Image = _DBClass.getSpriteFromByteArray(_img.image);
+                                        Pois.scrollview_list_img.AddPage((RectTransform)goApp.transform);
+                                        _i++;
                                     }
-                                    goApp._Image = _DBClass.getSpriteFromByteArray(_img.image);
-                                    Pois.scrollview_list_img.AddPage((RectTransform)goApp.transform);
-                                    _i++;
-                                }
-                                //float delta = 0;
-                                //if(_i > 1)
-                                //    delta = (_dimensione_foto * (_i - 1));
-                                //Pois.content_list_img.GetComponent<RectTransform>().sizeDelta = new Vector2(delta, 0);
-                                Pois.immagine.gameObject.SetActive(false);
-                                Pois.scrollview_list_img.transform.SetParent(Pois.descrizione.transform, false);
+                                    //float delta = 0;
+                                    //if(_i > 1)
+                                    //    delta = (_dimensione_foto * (_i - 1));
+                                    //Pois.content_list_img.GetComponent<RectTransform>().sizeDelta = new Vector2(delta, 0);
+                                    Pois.immagine.gameObject.SetActive(false);
+                                    Pois.scrollview_list_img.transform.SetParent(Pois.descrizione.transform, false);
 
 
-                            }
-                            else
-                            {
-                                //var texture = Resources.Load<Texture2D>("Foto/no_images");
-                                //texture.Apply();
-                                //Pois.immagine._Image = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
-                                //Pois.content_list_img.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
-                                //Pois.scrollview_list_img.transform.SetParent(Pois.descrizione.transform, false);
-                                Pois.scrollview_list_img.gameObject.SetActive(false);
-                            }
-                            //Location loc = new Location(_p.latitudine, _p.longitudine);
-                            if (Pois.name != null)
-                                Pois.name.text = _p.nome;
-                            if (Pois.nameComune != null)
-                            {
-                                Pois.nameComune.text = $"{_p.comune}";
-                            }
-                            if (Pois.tipo != null)
-                                Pois.tipo.text = _p.tipo_list_descrizione();
-                            if (Pois.descrizione != null)
-                            {
-                                var breve = _p.descrizione_breve();
-                                var lunga = _p.descrizione();
-                                if (!string.IsNullOrEmpty(breve))
-                                    Pois.descrizione.text += $"<i>{breve}</i>\n\n\n\n";
-                                if (!string.IsNullOrEmpty(lunga))
-                                    Pois.descrizione.text += lunga;
-                            }
-                            Pois.img_webpage.color = Color.black;
-                            Pois.img_facebook.color = Color.black;
-                            Pois.img_instagramm.color = Color.black;
-                            Pois.img_telefono.color = Color.black;
-                            Pois.img_mail.color = Color.black;
-
-                            Pois.webpage.enabled = true;
-                            Pois.facebook.enabled = true;
-                            Pois.instagramm.enabled = true;
-                            Pois.telefono.enabled = true;
-                            Pois.mail.enabled = true;
-
-
-                            if (!string.IsNullOrEmpty(_p.webPage))
-                                Pois.webpage.text = _p.webPage;
-                            else
-                            {
-                                Pois.webpage.text = string.Empty;
-                                Pois.img_webpage.color = lightgray;
-                                Pois.webpage.enabled = false;
-                            }
-                            if (!string.IsNullOrEmpty(_p.facebook))
-                                Pois.facebook.text = _p.facebook;
-                            else
-                            {
-                                Pois.facebook.text = string.Empty;
-                                Pois.img_facebook.color = lightgray;
-                                Pois.facebook.enabled = false;
-                            }
-                            if (!string.IsNullOrEmpty(_p.instagram))
-                                Pois.instagramm.text = _p.instagram;
-                            else
-                            {
-                                Pois.instagramm.text = string.Empty;
-                                Pois.img_instagramm.color = lightgray;
-                                Pois.instagramm.enabled = false;
-                            }
-                            if (!string.IsNullOrEmpty(_p.telefono))
-                                Pois.telefono.text = _p.telefono;
-                            else
-                            {
-                                Pois.telefono.text = string.Empty;
-                                Pois.img_telefono.color = lightgray;
-                                Pois.telefono.enabled = false;
-                            }
-                            if (!string.IsNullOrEmpty(_p.mail))
-                                Pois.mail.text = _p.mail;
-                            else
-                            {
-                                Pois.mail.text = string.Empty;
-                                Pois.img_mail.color = lightgray;
-                                Pois.mail.enabled = false;
-                            }
-                            foreach (var _poixtappe in _DBClass.getPOIXTAPPE(null, _p.ID, null))
-                            {
-                                var ListTappexPercorsi = _DBClass.getTAPPEXPERCORSI(null, _poixtappe.tappa_id);
-
-                                if (Pois.percorso_associato != null || (ListTappexPercorsi != null && ListTappexPercorsi.Count > 0))
-                                {
-
-                                    if (_p.percorsi_associati)
-                                    {
-                                        Debug.Log("percorso associato tramite GetPERCORSO");
-                                        List<PERCORSO> _PERCORSOList = _DBClass.GetPERCORSO(null, ID);
-                                        if (_PERCORSOList != null && _PERCORSOList.Count > 0)
-                                        {
-                                            _percorso_associato = _PERCORSOList[0];
-                                        }
-                                    }
-                                    else if (ListTappexPercorsi.Count > 0)
-                                    {
-                                        Debug.Log("percorso associato tramite getPOIXTAPPE e getTAPPEXPERCORSI");
-                                        var _percorso = _DBClass.GetPERCORSO(ListTappexPercorsi[0].id);
-                                        if (_percorso != null && _percorso.Count > 0)
-                                            _percorso_associato = _percorso[0];
-                                    }
-                                    else
-                                    {
-                                        Debug.Log("percorso non associato 2");
-                                    }
                                 }
                                 else
                                 {
-                                    Debug.Log("percorso non associato 1");
+                                    //var texture = Resources.Load<Texture2D>("Foto/no_images");
+                                    //texture.Apply();
+                                    //Pois.immagine._Image = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
+                                    //Pois.content_list_img.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+                                    //Pois.scrollview_list_img.transform.SetParent(Pois.descrizione.transform, false);
+                                    Pois.scrollview_list_img.gameObject.SetActive(false);
                                 }
+                                //Location loc = new Location(_p.latitudine, _p.longitudine);
+                                if (Pois.name != null)
+                                    Pois.name.text = _p.nome;
+                                if (Pois.nameComune != null)
+                                {
+                                    Pois.nameComune.text = $"{_p.comune}";
+                                }
+                                if (Pois.tipo != null)
+                                    Pois.tipo.text = _p.tipo_list_descrizione();
+                                if (Pois.descrizione != null)
+                                {
+                                    var breve = _p.descrizione_breve();
+                                    var lunga = _p.descrizione();
+                                    if (!string.IsNullOrEmpty(breve))
+                                        Pois.descrizione.text += $"<i>{breve}</i>\n\n\n\n";
+                                    if (!string.IsNullOrEmpty(lunga))
+                                        Pois.descrizione.text += lunga;
+                                }
+                                Pois.img_webpage.color = Color.black;
+                                Pois.img_facebook.color = Color.black;
+                                Pois.img_instagramm.color = Color.black;
+                                Pois.img_telefono.color = Color.black;
+                                Pois.img_mail.color = Color.black;
+
+                                Pois.webpage.enabled = true;
+                                Pois.facebook.enabled = true;
+                                Pois.instagramm.enabled = true;
+                                Pois.telefono.enabled = true;
+                                Pois.mail.enabled = true;
+
+
+                                if (!string.IsNullOrEmpty(_p.webPage))
+                                    Pois.webpage.text = _p.webPage;
+                                else
+                                {
+                                    Pois.webpage.text = string.Empty;
+                                    Pois.img_webpage.color = lightgray;
+                                    Pois.webpage.enabled = false;
+                                }
+                                if (!string.IsNullOrEmpty(_p.facebook))
+                                    Pois.facebook.text = _p.facebook;
+                                else
+                                {
+                                    Pois.facebook.text = string.Empty;
+                                    Pois.img_facebook.color = lightgray;
+                                    Pois.facebook.enabled = false;
+                                }
+                                if (!string.IsNullOrEmpty(_p.instagram))
+                                    Pois.instagramm.text = _p.instagram;
+                                else
+                                {
+                                    Pois.instagramm.text = string.Empty;
+                                    Pois.img_instagramm.color = lightgray;
+                                    Pois.instagramm.enabled = false;
+                                }
+                                if (!string.IsNullOrEmpty(_p.telefono))
+                                    Pois.telefono.text = _p.telefono;
+                                else
+                                {
+                                    Pois.telefono.text = string.Empty;
+                                    Pois.img_telefono.color = lightgray;
+                                    Pois.telefono.enabled = false;
+                                }
+                                if (!string.IsNullOrEmpty(_p.mail))
+                                    Pois.mail.text = _p.mail;
+                                else
+                                {
+                                    Pois.mail.text = string.Empty;
+                                    Pois.img_mail.color = lightgray;
+                                    Pois.mail.enabled = false;
+                                }
+                                foreach (var _poixtappe in _DBClass.getPOIXTAPPE(null, _p.ID, null))
+                                {
+                                    var ListTappexPercorsi = _DBClass.getTAPPEXPERCORSI(null, _poixtappe.tappa_id);
+
+                                    if (Pois.percorso_associato != null || (ListTappexPercorsi != null && ListTappexPercorsi.Count > 0))
+                                    {
+
+                                        if (_p.percorsi_associati)
+                                        {
+                                            Debug.Log("percorso associato tramite GetPERCORSO");
+                                            List<PERCORSO> _PERCORSOList = _DBClass.GetPERCORSO(null, lID);
+                                            if (_PERCORSOList != null && _PERCORSOList.Count > 0)
+                                            {
+                                                _percorso_associato = _PERCORSOList[0];
+                                            }
+                                        }
+                                        else if (ListTappexPercorsi.Count > 0)
+                                        {
+                                            Debug.Log("percorso associato tramite getPOIXTAPPE e getTAPPEXPERCORSI");
+                                            var _percorso = _DBClass.GetPERCORSO(ListTappexPercorsi[0].id);
+                                            if (_percorso != null && _percorso.Count > 0)
+                                                _percorso_associato = _percorso[0];
+                                        }
+                                        else
+                                        {
+                                            Debug.Log("percorso non associato 2");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Debug.Log("percorso non associato 1");
+                                    }
+                                }
+                                _latitudine_scelta = _p.longitudine;
+                                _longitudine_scelta = _p.latitudine;
+                                DetailPOI.gameObject.SetActive(true);
+                                var ap = Pois.scrollview.GetComponent<RectTransform>().offsetMin;
+                                ap.y = 208;
+                                Pois.scrollview.GetComponent<RectTransform>().offsetMin = ap;
                             }
-                            _latitudine_scelta = _p.longitudine;
-                            _longitudine_scelta = _p.latitudine;
-                            DetailPOI.gameObject.SetActive(true);
-                            var ap = Pois.scrollview.GetComponent<RectTransform>().offsetMin;
-                            ap.y = 208;
-                            Pois.scrollview.GetComponent<RectTransform>().offsetMin = ap;
                         }
                     }
                 }
                 else if (tipo == 1)
                 {
-                    var _pxtList = _DBClass.getPOIXTAPPE(null, null, null);
-                    var _poiList = _DBClass.getPOI(null);
+                    int ID = int.Parse(_ID);
+                    var _pxtList = _DBClass.getPOIXTAPPE(null, null, null, ID);
+                    var _poiList = _DBClass.getPOI(null, null, null, 0, null, null, null, null, ID);
                     List<PERCORSO> _PERCORSO = _DBClass.GetPERCORSO(ID);
                     foreach (DBClass.PERCORSO _p in _PERCORSO)
                     {
@@ -362,6 +367,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                             }
                             if(tappe)
                                 Pois.descrizione.text += "\n\n\n\n";
+                            Pois.descrizione.text = _DBClass.pulisciHTML(Pois.descrizione.text);
                             Pois.img_webpage.color = Color.white;
                             Pois.img_facebook.color = Color.white;
                             Pois.img_instagramm.color = Color.white;

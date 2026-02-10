@@ -231,7 +231,7 @@ namespace Mapbox.Unity.MeshGeneration.Data
 			if (HeightDataState != TilePropertyState.Unregistered)
 			{
 				//reset height data
-				if(data == null)
+				if (data == null)
 				{
 					HeightData = new float[256 * 256];
 					HeightDataState = TilePropertyState.None;
@@ -291,7 +291,7 @@ namespace Mapbox.Unity.MeshGeneration.Data
 
 				if (_rasterData == null)
 				{
-					_rasterData = new Texture2D(0, 0, TextureFormat.RGB24, useMipMap);
+					_rasterData = new Texture2D(1, 1, TextureFormat.RGB24, useMipMap);
 					_rasterData.wrapMode = TextureWrapMode.Clamp;
 				}
 

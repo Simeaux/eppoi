@@ -28,6 +28,8 @@ using static ARLocation.MapboxRoutes.CustomRoute;
 using UnityEngine.UIElements;
 using System.Drawing;
 using System.Globalization;
+using Mapbox.Examples;
+using Mapbox.Unity.Location;
 
 public class FreeMap : MonoBehaviour
 {
@@ -37,6 +39,7 @@ public class FreeMap : MonoBehaviour
     public Text zoom;
     public Text Dx;
     public Text Dy;
+    public double Valore = 1.4;
     public GameObject PanelMAP;
     public GameObject PanelPOI;
     public GameObject PanelGrid;
@@ -101,8 +104,8 @@ public class FreeMap : MonoBehaviour
         lat.text = 43.144215900691755.ToString();
         lon.text = 13.196735039064533.ToString();
         FindLatLon();
-        zoom.text = "15";
-        
+        zoom.text = "10";
+
 
         double.TryParse(lon.text, out centerLongitude);
         double.TryParse(lat.text, out centerLatitude);
@@ -173,6 +176,26 @@ public class FreeMap : MonoBehaviour
     //Update è chiamato a ogni frame
     private void Update()
     {
+        // Verifica che la factory e il provider siano pronti
+        if (LocationProviderFactory.Instance != null &&
+            LocationProviderFactory.Instance.DefaultLocationProvider != null)
+        {
+            // 1. Accedi al provider predefinito (GPS su device, simulato su Editor)
+            var locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
+
+            // 2. Recupera i dati della posizione attuale
+            var location = locationProvider.CurrentLocation;
+
+            // 3. Estrai le coordinate Lat/Lon
+            Vector2d latLon = location.LatitudeLongitude;
+
+            // 4. Stampa i risultati
+            // x = Latitudine, y = Longitudine
+            Debug.Log($"Lat: {latLon.x}, Lon: {latLon.y}");
+
+            // Opzionale: Accuratezza in metri (utile per capire se il GPS sta sballando)
+            Debug.Log($"Accuratezza: {location.Accuracy} metri");
+        }
         /*
         if (!string.IsNullOrEmpty(PlayerPrefs.GetString("SpostaCentro_freemap")))
         {
@@ -238,11 +261,19 @@ public class FreeMap : MonoBehaviour
                     var p = hit.transform.gameObject as GameObject;
                     if (p.CompareTag("Close_Detail"))
                         PanelPOI.GetComponent<DetailPOIManager>().CloseDetailPOI();
-                    else
+                    else if (long.TryParse(p.name, out var _app))
                     {
-                        if(!string.IsNullOrEmpty(p.name))
-                            PlayerPrefs.SetInt("poi_selezionato", int.Parse(p.name));
+                        if (!string.IsNullOrEmpty(p.name))
+                            PlayerPrefs.SetString("poi_selezionato", p.name);
                         PanelPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(p.name, false, false, 3);
+                        PanelMAP.SetActive(false);
+                        GameObject.FindObjectOfType<ItinerariEventiPOI_AttaccatiAlComune>().Reload();
+                    }
+                    else if (int.TryParse(p.name.Replace("(Clone)", ""), out var _app2))
+                    {
+                        if (!string.IsNullOrEmpty(p.name))
+                            PlayerPrefs.SetInt("percorso_selezionato", _app2);
+                        PanelPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(_app2.ToString(), false, false, 1);
                         PanelMAP.SetActive(false);
                         GameObject.FindObjectOfType<ItinerariEventiPOI_AttaccatiAlComune>().Reload();
                     }
@@ -255,54 +286,75 @@ public class FreeMap : MonoBehaviour
                 if (!canvasPoi.enabled)
                 {
                     double.TryParse(zoom.text, out selectedzoom);
+                    //if (selectedzoom > 11)
+                    //{
                     if (Dx.text != "0" || Dy.text != "0" || selectedzoom != selectedzoomLast)
                     {
-
-                        Ricalcola_Centro(true);
                         if (selectedzoomLast != selectedzoom)
+                        {
+                            GOObject.transform.position = new Vector3(0, 0, 0);
+                            Ricalcola_Centro(false);
                             selectedzoomLast = selectedzoom;
+                        }
+                        else
+                            Ricalcola_Centro(false);
                     }
+                    //}
+                    /*else
+                    {
+                        selectedzoom = 12;
+                        zoom.text = "12";
+                    }
+                    */
                 }
 
             }
         }
     }
 
-    void pinch_zoom (float increment)
+    void pinch_zoom(float increment)
     {
         //Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, 5, 20);
         double.TryParse(zoom.text, out selectedzoom);
         zoom.text = (selectedzoom + increment).ToString();
     }
-    
+
     public void Ricalcola_Centro(bool needredrawMap)
     {
         boundingBox = GetRectMinMaxLonLat(centerLongitude, centerLatitude, mapWidthMeter, mapHeightMeter);
-        var maxX = Screen.width;
-        double deltax = 0;
-        double.TryParse(Dx.text, out deltax);
-        double calcolo_x = (((boundingBox[2] - boundingBox[0]) / maxX) * deltax) * Math.Pow(2, (19 - selectedzoom));
-        var maxY = Screen.height;
-        double deltay = 0;
-        double.TryParse(Dy.text, out deltay);
-        double calcolo_y = (((boundingBox[3] - boundingBox[1]) / Screen.height) * deltay) * Math.Pow( 2, (19 - selectedzoom));
-        centerLongitude = (centerLongitude - calcolo_x);
-        centerLatitude = (centerLatitude - calcolo_y);
-        lon.text = centerLongitude.ToString();
-        lat.text = centerLatitude.ToString();
+        if (!needredrawMap)
+        {
+            var maxX = Screen.width;
+            double deltax = 0;
+            double.TryParse(Dx.text, out deltax);
+            double calcolo_x = (((boundingBox[2] - boundingBox[0]) / maxX) * deltax) * Math.Pow(2, (19 - selectedzoom));
+            var maxY = Screen.height;
+            double deltay = 0;
+            double.TryParse(Dy.text, out deltay);
+            double calcolo_y = (((boundingBox[3] - boundingBox[1]) / Screen.height) * deltay) * Math.Pow(2, (19 - selectedzoom));
+            centerLongitude = (centerLongitude - calcolo_x);
+            centerLatitude = (centerLatitude - calcolo_y);
+            lon.text = centerLongitude.ToString();
+            lat.text = centerLatitude.ToString();
+
+            //GOObject.transform.Translate((float)(deltax / Valore), 0, (float)(deltay / Valore));
+        }
         double.TryParse(zoom.text, out selectedzoom);
+
+
+
         //HP 2: sposto semopllicemente il centro della mappa
-        //abstractMap.SetCenterLatitudeLongitude(new Vector2d(centerLatitude, centerLongitude));
-        //Debug.Log($"{centerLatitude} {centerLongitude} {selectedzoom}");
         abstractMap.UpdateMap(new Vector2d(centerLatitude, centerLongitude), ((float)selectedzoom));
+
         //abstractMap.
         Dx.text = "-1";
         Dy.text = "-1";
-        
-        //double valore = 2.575;
-        //GOObject.transform.Translate((float)(deltax / valore), 0,  (float)(deltay / valore));
-        if(needredrawMap)
+
+
+
+        if (needredrawMap)
             DrawCustomRoute();
+        //GOObject.transform.Translate(new Vector3((float)deltax/valore, 0, (float)deltay));
 
     }
 
@@ -334,42 +386,43 @@ public class FreeMap : MonoBehaviour
         else
         {
         */
-            //Debug.Log("WWW OK!!!");
-            //Destroy(gameObject.GetComponent<MeshRenderer>().material.GetTexture("_MainTex"));
-            //gameObject.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", ((DownloadHandlerTexture)www.downloadHandler).texture);
-            //abstractMap.SetLoadingTexture(((DownloadHandlerTexture)www.downloadHandler).texture);
-            abstractMap.UpdateMap(new Vector2d(centerLatitude, centerLongitude), (float)selectedzoom);
-            /*
-            _markerPrefab.layer = 99;
-            foreach (GameObject g in FindObjectsOfType(typeof(GameObject)))
-            {
-                if (g.layer == 99)
-                    Destroy(g);
-            }
-            */
-            //abstractMap.UpdateMap((float)selectedzoom);
+        //Debug.Log("WWW OK!!!");
+        //Destroy(gameObject.GetComponent<MeshRenderer>().material.GetTexture("_MainTex"));
+        //gameObject.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", ((DownloadHandlerTexture)www.downloadHandler).texture);
+        //abstractMap.SetLoadingTexture(((DownloadHandlerTexture)www.downloadHandler).texture);
+        abstractMap.UpdateMap(new Vector2d(centerLatitude, centerLongitude), (float)selectedzoom);
+
+        /*
+        _markerPrefab.layer = 99;
+        foreach (GameObject g in FindObjectsOfType(typeof(GameObject)))
+        {
+            if (g.layer == 99)
+                Destroy(g);
+        }
+        */
+        //abstractMap.UpdateMap((float)selectedzoom);
 
 
 
-            /*
-            Vector2d position = new Vector2d(x, y);
+        /*
+        Vector2d position = new Vector2d(x, y);
 
-            GameObject go = FindObjectOfType<GameObject>();
-            var instance = Instantiate(go, abstractMap.transform);
-            instance.transform.localPosition = abstractMap.GeoToWorldPosition(position, true);
-            instance.transform.localScale = new Vector3(.2f, .2f, .2f);
-            */
-            ////////
+        GameObject go = FindObjectOfType<GameObject>();
+        var instance = Instantiate(go, abstractMap.transform);
+        instance.transform.localPosition = abstractMap.GeoToWorldPosition(position, true);
+        instance.transform.localScale = new Vector3(.2f, .2f, .2f);
+        */
+        ////////
 
-            //Aggiorno le variabili *Last per tenere traccia dei cambiamenti
-            accessTokenLast = accessToken;
-            centerLongitudeLast = centerLongitude;
-            centerLatitudeLast = centerLatitude;
-            selectedzoomLast = selectedzoom;
-            mapStyleLast = mapStyle;
-            mapResolutionLast = mapResolution;
-           // updateMap = true;
-           // ResetMap = false;
+        //Aggiorno le variabili *Last per tenere traccia dei cambiamenti
+        accessTokenLast = accessToken;
+        centerLongitudeLast = centerLongitude;
+        centerLatitudeLast = centerLatitude;
+        selectedzoomLast = selectedzoom;
+        mapStyleLast = mapStyle;
+        mapResolutionLast = mapResolution;
+        // updateMap = true;
+        // ResetMap = false;
         //}
         Dx.text = "0";
         Dy.text = "0";
@@ -431,7 +484,7 @@ public class FreeMap : MonoBehaviour
         return min < num && num < max;
     }
 
-    
+    private int old_already_inserted = 0;
     private UnityEngine.Color FromHex(string hex)
     {
         if (hex.StartsWith("#"))
@@ -453,6 +506,7 @@ public class FreeMap : MonoBehaviour
     }
     private void DrawCustomRoute()
     {
+        Debug.Log("DrawCustomRoute in " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
         if (_extract == null)
         {
             Debug.Log("ricreo ExtractDataForMap");
@@ -477,69 +531,119 @@ public class FreeMap : MonoBehaviour
                 ap.Destroy();
             POIGo = new List<GameObject>();
         }
-        
-       
 
+
+        Debug.Log("DrawCustomRoute cancellazione  " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
 
         string ID_selected = "";
-        if(GameObject.FindObjectOfType<Panel_POI>() != null)
+        if (GameObject.FindObjectOfType<Panel_POI>() != null)
             ID_selected = GameObject.FindObjectOfType<Panel_POI>().id_selected.text;
         //Questo array serve per non inserire gli oggetti doppi
         List<double> already_inserted = new List<double>();
-        foreach (POI _p in _extract.getPoiList().Where(o=> Between(o.longitudine, tmp_boundingBox[0], tmp_boundingBox[2]) && Between(o.latitudine, tmp_boundingBox[1], tmp_boundingBox[3]) || (!string.IsNullOrEmpty(ID_selected) && ID_selected == o.ID.ToString())))
+        List<POI> _poi_list = _extract.getPoiList();//.Where(o => Between(o.longitudine, tmp_boundingBox[0], tmp_boundingBox[2]) && Between(o.latitudine, tmp_boundingBox[1], tmp_boundingBox[3]) || (!string.IsNullOrEmpty(ID_selected) && ID_selected == o.ID.ToString())).ToList();
+
+        foreach (POI _p in _poi_list)
         {
             if (_p != null)
             {
-                foreach (var _tipo in _p.tipoList)
+                //foreach (var _tipo in _p.tipoList) 
+                //{
+                //if (_tipo.tipo != null)
+                //{
+                if (!already_inserted.Contains(_p.ID))
                 {
-                    if (_tipo.tipo != null)
+                    already_inserted.Add(_p.ID);
+                    if (_p.limite_zoom <= (int)selectedzoom)
                     {
-                        if (!already_inserted.Contains(_p.ID))
+                        GameObject _go = GOImhere;
+                        var xAngleRotate = 90;
+                        var _tipo = _p.tipoList.FirstOrDefault();
+                        if (_tipo != null && _tipo.tipo != null)
                         {
-                            already_inserted.Add(_p.ID);
-                            if (_p.limite_zoom <= (int)selectedzoom)
+                            var group_tipo = _DBClass.getGROUP_TIPO_POI(_tipo.tipo.group_id).FirstOrDefault();
+                            if (group_tipo != null)
                             {
-                                var group_tipo = _DBClass.getGROUP_TIPO_POI(_tipo.tipo.group_id).FirstOrDefault();
-                                GameObject _go = null;
-                                if(group_tipo != null)
-                                    _go = _gameobject[group_tipo.indice];// GameObject.FindGameObjectsWithTag(_p.tag).FirstOrDefault();
-                                else
-                                    _go = _gameobject[1];
+                                _go = _gameobject[group_tipo.indice];// GameObject.FindGameObjectsWithTag(_p.tag).FirstOrDefault();
 
-                                if (_go != null)
-                                {
-                                    
 
-                                    var apgo = Instantiate(_go, abstractMap.GeoToWorldPosition(_DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine), true), Quaternion.identity);
-                                    //Simone punto da ricordare
-                                    apgo.tag = "A";
-                                    apgo.name = _p.ID.ToString();
-                                    apgo.transform.Rotate(180, 0, 0);
-                                    if (!string.IsNullOrEmpty(ID_selected) && ID_selected == apgo.name)
-                                    {
-                                        var x = apgo.transform.localScale.x;
-                                        apgo.transform.localScale = new Vector3(x * 1.2f, x * 1.2f, x * 1.2f);
+                                xAngleRotate = 180;
+                            }
+                        }
+                        if (_go != null)
+                        {
 
-                                    }
-                                    apgo.transform.SetParent(GOObject.transform, false);
-                                    POIGo.Add(apgo);
-                                }
+                            var apgo = Instantiate(_go, abstractMap.GeoToWorldPosition(_DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine), true), Quaternion.identity);
+                            Obj_x_Map_Prefab _ap = apgo.GetComponentInChildren<Obj_x_Map_Prefab>();
+                            if (_ap != null)
+                            {
+                                _ap._map = abstractMap;
+                                _ap._latLong = _DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine);
+                                _ap.Enable();
+                                _ap.UpdatePosition();
                             }
 
+
+                            //Simone punto da ricordare
+                            //apgo.tag = "A";
+                            apgo.name = _p.ID.ToString();
+                            apgo.transform.Rotate(xAngleRotate, 0, 0);
+                            if (!string.IsNullOrEmpty(ID_selected) && ID_selected == apgo.name)
+                            {
+                                var x = apgo.transform.localScale.x;
+                                apgo.transform.localScale = new Vector3(x * 1.2f, x * 1.2f, x * 1.2f);
+
+                            }
+                            apgo.transform.SetParent(GOObject.transform, false);
+                            POIGo.Add(apgo);
                         }
                     }
+
                 }
+                //}
+                //}
             }
         }
+        Debug.Log("DrawCustomRoute POI  " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
+
         try
-        {
+        {/*
             //Location l = ARLocationManager.Instance.GetLocationForWorldPosition(Camera.main.transform.position);
             //var imhere = Instantiate(GOImhere, abstractMap.GeoToWorldPosition(new Vector2d(l.Latitude, l.Longitude), true), Quaternion.identity);
-            var imhere = Instantiate(GOImhere, abstractMap.GeoToWorldPosition(new Vector2d(_DBClass._latitudine, _DBClass._longitudine), true), Quaternion.identity);
-            imhere.transform.Rotate(90, 0, 0);
-            //apgo.tag = _p.tag;
-            imhere.transform.SetParent(GOObject.transform, false);
-            POIGo.Add(imhere);
+
+            // 1. Ottieni la posizione attuale dal provider predefinito di Mapbox
+            var locationProvider = LocationProviderFactory.Instance.DeviceLocationProvider;
+            Vector2d currentLatLon = locationProvider.CurrentLocation.LatitudeLongitude;
+
+            // 2. Converti Lat/Lon in coordinate Unity World Space
+            // Il parametro 'true' serve per scalare correttamente la posizione sulla mappa
+            Vector3 worldPosition = abstractMap.GeoToWorldPosition(currentLatLon, true);
+
+            // 3. Assegna la posizione al GameObject "GOImhere"
+            GOImhere.transform.position = worldPosition;
+            var imhere = Instantiate(GOImhere, abstractMap.GeoToWorldPosition(new Vector2d(worldPosition.x, worldPosition.y), true), Quaternion.identity);
+            /-*
+            */
+
+            getPosition();
+
+            /*
+                        var imhere = Instantiate(GOImhere, abstractMap.GeoToWorldPosition(new Vector2d(_DBClass._latitudine, _DBClass._longitudine), true), Quaternion.identity);
+                        Obj_x_Map_Prefab _ap = imhere.GetComponentInChildren<Obj_x_Map_Prefab>();
+                        if (_ap != null)
+                        {
+                            _ap._map = abstractMap;
+                            _ap._latLong = _DBClass.VectorFromLonLat(_DBClass._longitudine, _DBClass._latitudine);
+                            _ap.Enable();
+                            _ap.UpdatePosition();
+                        }
+
+                        imhere.transform.Rotate(90, 0, 0);
+
+                        //apgo.tag = _p.tag;
+                        imhere.transform.SetParent(GOObject.transform, false);
+                        imhere.name = "IO";
+                        POIGo.Add(imhere);
+                        */
         }
         catch
         {
@@ -547,16 +651,18 @@ public class FreeMap : MonoBehaviour
         }
         finally
         { }
+
+        Debug.Log("DrawCustomRoute IO  " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
         int i = 0;
         List<PERCORSO> percorsi = new List<PERCORSO>();
 
-        if(already_inserted != null && already_inserted.Count > 0)
+        if (already_inserted != null && already_inserted.Count > 0)
             percorsi = _extract?.getPercorsoList()?.Where(p => already_inserted.Contains(p.poi_id)).ToList<PERCORSO>();
         else
             percorsi = _extract?.getPercorsoList();
         foreach (var customroute in _DBClass.GetCustomRoute(percorsi?.ToList()))
         {
-            
+
             var res = new RouteResponse();
 
             res.routes = new List<Route> { customroute.ToMapboxRoute() };
@@ -566,14 +672,15 @@ public class FreeMap : MonoBehaviour
             var vertices = new List<Vector3>();
             var indices = new List<int>();
 
-            var worldPositions = new List<Vector2>();
+            var worldPositions = new List<Vector2d>();
             //Vector3 firstPosition = Vector3.zero;
             foreach (var p in geo.coordinates)
             {
                 // Mapbox.Unity.Utilities.Conversions.GeoToWorldPosition
-                var pos = abstractMap.GeoToWorldPosition(new Vector2d(p.Latitude, p.Longitude), true);
+                //var pos = abstractMap.GeoToWorldPosition(new Vector2d(p.Latitude, p.Longitude), true);
 
-                worldPositions.Add(new Vector2(pos.x, pos.z));
+                //worldPositions.Add(new Vector2d(p.Longitude, p.Latitude));
+                worldPositions.Add(new Vector2d(p.Latitude, p.Longitude));
             }
 
 
@@ -581,8 +688,38 @@ public class FreeMap : MonoBehaviour
             //questa parte serve per fare il percorso nella mappa piccola
             var _minimapRouteGo = new GameObject($"percorso_{percorsi.ToList()[i].id}");
             _minimapRouteGo.layer = 6;
+            _minimapRouteGo.AddComponent<LineRenderer>();
+            LineRenderer lr_ap = _minimapRouteGo.GetComponentInChildren<LineRenderer>();
+            lr_ap.useWorldSpace = true;
+            lr_ap.startWidth = 1.5f;
+            lr_ap.endWidth = 2.0f;
 
-
+            Material newmaterial = new Material(MinimapLineMaterial);
+            if (!string.IsNullOrEmpty(customroute.Color))
+                newmaterial.SetColor("_Color", FromHex(customroute.Color));
+            lr_ap.material = newmaterial;
+            _minimapRouteGo.AddComponent<Obj_x_Map_Prefab>();
+            Obj_x_Map_Prefab r_ap = _minimapRouteGo.GetComponentInChildren<Obj_x_Map_Prefab>();
+            if (r_ap != null)
+            {
+                r_ap._map = abstractMap;
+                r_ap.Waypoints = worldPositions;
+                r_ap.Enable();
+                r_ap.UpdatePosition();
+            }
+            _minimapRouteGo.transform.SetParent(GOObject.transform, false);
+            minimapRouteGo.Add(_minimapRouteGo);
+            /*
+            _minimapRouteGo.AddComponent<Obj_x_Map_Prefab>();
+            Obj_x_Map_Prefab _ap = _minimapRouteGo.GetComponentInChildren<Obj_x_Map_Prefab>();
+            if (_ap != null)
+            {
+                _ap._map = abstractMap;
+                _ap._latLong = _DBClass.VectorFromLonLat(_DBClass._longitudine, _DBClass._latitudine);
+                _ap.Enable();
+                _ap.UpdatePosition();
+            }
+            
 
             var mesh = _minimapRouteGo.AddComponent<MeshFilter>().mesh;
 
@@ -598,6 +735,7 @@ public class FreeMap : MonoBehaviour
             meshRenderer.sharedMaterial = newmaterial;
             _minimapRouteGo.transform.SetParent(GOObject.transform, false);
             minimapRouteGo.Add(_minimapRouteGo);
+            */
             //estraggo le tappe
             foreach (var txp in _extract?.getTappeXPercorsiList().Where(p => p.percorso_id == percorsi.ToList()[i].id))
             {
@@ -606,11 +744,20 @@ public class FreeMap : MonoBehaviour
                 {
                     foreach (var _p in _plist)
                     {
+                        _billboard.name = txp.percorso_id.ToString();
                         var apgo1 = Instantiate(_billboard, abstractMap.GeoToWorldPosition(_DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine), true), Quaternion.identity);
+                        Obj_x_Map_Prefab _ap = apgo1.GetComponentInChildren<Obj_x_Map_Prefab>();
+                        if (_ap != null)
+                        {
+                            _ap._map = abstractMap;
+                            _ap._latLong = _DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine);
+                            _ap.Enable();
+                            _ap.UpdatePosition();
+                        }
                         apgo1.transform.Rotate(90, 90, 90);
                         foreach (var ap in apgo1.GetComponentsInChildren<TestoTappa>())
                         {
-                            ap.SetText(_p.nome_tappa);
+                            ap.SetText(txp.ordine.ToString());// _p.nome_tappa);
                         }
                         apgo1.transform.SetParent(GOObject.transform, false);
                         POIGo.Add(apgo1);
@@ -619,21 +766,67 @@ public class FreeMap : MonoBehaviour
             }
             i++;
         }
+        /*
+        if ((already_inserted.Count() < 100) && (already_inserted.Count() != old_already_inserted))
+        {
+            _extract.aggiornaPoiList(tmp_boundingBox);
+            old_already_inserted = already_inserted.Count();
+            DrawCustomRoute();
+                
+        }
+        */
+        Debug.Log("DrawCustomRoute out " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
     }
 
-    
+    public IEnumerator getPosition()
+    {
+        Debug.Log("getPosition in " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
+        // 1. Controlla se l'utente ha il GPS attivo
+        if (!Input.location.isEnabledByUser)
+        {
+            Debug.Log("GPS non attivo sul device");
+            yield break;
+        }
+
+        // 2. Avvia il servizio (accuratezza desiderata 5 metri, aggiornamento ogni 5 metri)
+        Input.location.Start(5, 5);
+
+        // 3. Attendi l'inizializzazione
+        int maxWait = 20;
+        while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
+        {
+            yield return new WaitForSeconds(1);
+            maxWait--;
+        }
+
+        if (maxWait < 1 || Input.location.status == LocationServiceStatus.Failed)
+        {
+            Debug.Log("Impossibile determinare la posizione");
+            yield break;
+        }
+
+        // 4. Posizione ottenuta!
+        _DBClass._latitudine = Input.location.lastData.latitude;
+        _DBClass._longitudine = Input.location.lastData.longitude;
+        var accuracy = Input.location.lastData.horizontalAccuracy;
+
+        Debug.Log($"Coordinate: {_DBClass._latitudine}, {_DBClass._longitudine} (Precisione: {accuracy}m)");
+        Debug.Log("getPosition out " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
+    }
+
     public void OnBtnHere()
     {
         //Location l = ARLocationManager.Instance.GetLocationForWorldPosition(Camera.main.transform.position);
         //Location l = ARLocationProvider.Instance.CurrentLocation.ToLocation();
         StartCoroutine(_DBClass.GetLatLonUsingGPS());
-
+        StartCoroutine(getPosition());
         SpostaCentro(_DBClass._latitudine, _DBClass._longitudine);
+        Ricalcola_Centro(false);
     }
     public void SpostaCentro(double latitudine, double longitudine)
     {
         centerLatitude = latitudine;
         centerLongitude = longitudine;
-        Ricalcola_Centro(true);
+        Ricalcola_Centro(false);
     }
 }

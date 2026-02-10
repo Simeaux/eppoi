@@ -8,7 +8,7 @@ namespace GoodEnough.TextToSpeech
     {
         #region Import DLL
 
-        #if UNITY_IOS
+#if UNITY_IOS
         [DllImport("__Internal")]
         private static extern void _SetupCallbacks(SpeechUtteranceCallback speechUtteranceCancelled,
             SpeechUtteranceCallback speechUtteranceContinued, SpeechUtteranceCallback speechUtteranceFinished,
@@ -69,7 +69,7 @@ namespace GoodEnough.TextToSpeech
 
         [DllImport("__Internal")]
         private static extern string _CurrentLanguageCode();
-        #endif
+#endif
 
         #endregion
 
@@ -82,7 +82,7 @@ namespace GoodEnough.TextToSpeech
         {
 #if UNITY_IOS
             if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.tvOS)
-                Try(()=> _SetupCallbacks(speechUtteranceCancelled, speechUtteranceContinued, speechUtteranceFinished,
+                Try(() => _SetupCallbacks(speechUtteranceCancelled, speechUtteranceContinued, speechUtteranceFinished,
                     speechUtterancePaused, speechUtteranceStarted, willSpeakPartOfString),
                     "Error setting up callbacks");
 #endif
@@ -94,13 +94,13 @@ namespace GoodEnough.TextToSpeech
 #if UNITY_IOS
             //if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.tvOS)
             //{
-                var rate = Mathf.Clamp(speechRate, UtteranceMinimumSpeechRate, UtteranceMaximumSpeechRate);
-                var pitch = Mathf.Clamp(pitchMultiplier, 0.5f, 2f);
-                var clampedVolume = Mathf.Clamp(volume, 0f, 1f);
+            var rate = Mathf.Clamp(speechRate, UtteranceMinimumSpeechRate, UtteranceMaximumSpeechRate);
+            var pitch = Mathf.Clamp(pitchMultiplier, 0.5f, 2f);
+            var clampedVolume = Mathf.Clamp(volume, 0f, 1f);
 
-                Try(() => _Speak(textToSpeak, pitch, preUtteranceDelay, postUtteranceDelay, rate, voiceIdentifier,
-                    clampedVolume),
-                    "Error synthesizing speech");
+            Try(() => _Speak(textToSpeak, pitch, preUtteranceDelay, postUtteranceDelay, rate, voiceIdentifier,
+                clampedVolume),
+                "Error synthesizing speech");
             //}
 #endif
         }
@@ -267,7 +267,7 @@ namespace GoodEnough.TextToSpeech
         }
 
         public static string GetVoiceIdentifierFromLanguageCode(string languageCode)
-        { 
+        {
 #if UNITY_IOS
             if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.tvOS)
                 return Try(() => _GetVoiceIdentifierFromLanguageCode(languageCode), string.Empty, "Error getting voice identifier from Language Code " + languageCode);

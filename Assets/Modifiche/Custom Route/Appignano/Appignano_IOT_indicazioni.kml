@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Appignano_IOT_indicazioni.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff00f8ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff00f8ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>IOT</name>
+		<open>1</open>
+		<Placemark>
+			<name>IoT</name>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					13.34605437233823,43.36388830931242,0 13.34570441959495,43.36423893327827,0 13.34515596624326,43.36411668634743,0 13.34520004863647,43.36384736099678,0 13.34537061319591,43.36314257295541,0 13.3457923172294,43.36337860580003,0 13.345890849575,43.3633911375047,0 13.34627175873176,43.36361143834461,0 13.3462962663643,43.36375006114463,0 13.34647640115501,43.36382749086148,0 13.34666137121448,43.36394014708569,0 13.34669775372734,43.36399470370413,0 13.34673076958657,43.36403327193205,0 13.34675043539289,43.36403985880036,0 13.34676357365277,43.36403744806076,0 13.3466933324729,43.36364760974156,0 13.34674057344471,43.36351130276574,0 13.34673668943929,43.36324228066449,0 13.34647646108423,43.36299912693369,0 13.34594948050693,43.36297645539032,0 13.3456603955,43.3630193672856,0 13.34543112474568,43.3629577604264,0 13.34563645698201,43.36203667955528,0 13.34568647340715,43.36185615053439,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<description>Procedi in direzione nordovest su Piazza Umberto I&apos; verso Via Vittorio Veneto;Proceed northwest on Piazza Umberto I&apos; towards Via Vittorio Veneto</description>
+			<LookAt>
+				<longitude>13.34584652863858</longitude>
+				<latitude>43.36320750529281</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001897815725536993</heading>
+				<tilt>23.65805943607235</tilt>
+				<range>265.6504184108629</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34606557406686,43.36394433580232,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Svolta a sinistra e prendi Via Monocchia;Turn left and take Via Monocchia</description>
+			<LookAt>
+				<longitude>13.34584652863858</longitude>
+				<latitude>43.36320750529281</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001897815725536993</heading>
+				<tilt>23.65805943607235</tilt>
+				<range>265.6504184108629</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34576132697092,43.36426005486715,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Gira a sinbistra verso Borgo XX Settembre;Turn left towards Borgo XX Settembre</description>
+			<LookAt>
+				<longitude>13.34584320450274</longitude>
+				<latitude>43.36321101495889</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001920640761282661</heading>
+				<tilt>23.65805943607235</tilt>
+				<range>265.6504184114502</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34514817799355,43.36411572568353,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Gira a sinistra in direzione nordest verso Borgo XX Settembre;Turn left heading northeast towards Borgo XX Settembre</description>
+			<LookAt>
+				<longitude>13.34584756484382</longitude>
+				<latitude>43.36321381534587</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001890702377175067</heading>
+				<tilt>23.65805943607234</tilt>
+				<range>265.6504184098513</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34533491067553,43.36315401925254,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<description>Svolta a sinistra e prendi Via Nicola Mei;Turn left and take Via Nicola Mei</description>
+			<LookAt>
+				<longitude>13.34585061029416</longitude>
+				<latitude>43.3632106073412</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001869790827039029</heading>
+				<tilt>23.65805943607232</tilt>
+				<range>265.650418409722</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34627063030925,43.36358154754373,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>6</name>
+			<description>Gira a destra;Turn right</description>
+			<LookAt>
+				<longitude>13.34585061029416</longitude>
+				<latitude>43.3632106073412</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001869790827039029</heading>
+				<tilt>23.65805943607232</tilt>
+				<range>265.650418409722</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.3462772426463,43.36374181428697,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>7</name>
+			<description>Svolta tutto a destra verso Borgo XX Settembre/Strada Provinciale Treiese;Turn sharp right towards Borgo XX Settembre/Strada Provinciale Treiese</description>
+			<LookAt>
+				<longitude>13.34585061029416</longitude>
+				<latitude>43.3632106073412</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001869790827039029</heading>
+				<tilt>23.65805943607232</tilt>
+				<range>265.650418409722</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34676605302959,43.36406869905009,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>8</name>
+			<description>Continua su Borgo XX Settembre/Strada Provinciale Treiese;Continue on Borgo XX Settembre/Treiese Provincial Road</description>
+			<LookAt>
+				<longitude>13.34585028417369</longitude>
+				<latitude>43.36320733196889</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001872029785345249</heading>
+				<tilt>23.6580594360723</tilt>
+				<range>265.6504184142283</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34675355235592,43.36364888801533,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>9</name>
+			<description>Svolta a sinistra e prendi Borgo Santa Croce/Strada Provinciale Treiese;Turn left and take Borgo Santa Croce/Strada Provinciale Treiese</description>
+			<LookAt>
+				<longitude>13.34585832008432</longitude>
+				<latitude>43.36320733205072</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001816853053996687</heading>
+				<tilt>23.65805943607232</tilt>
+				<range>265.6504184149936</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.3456653084591,43.36303981680831,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

@@ -1,0 +1,242 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: Appignano_IOT_indicazioni
+  m_EditorClassIdentifier: 
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.36388830931242
+      Longitude: 13.34605437233823
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 1
+    Instruction: Procedi in direzione nordovest su Piazza Umberto I' verso Via Vittorio
+      Veneto;Proceed northwest on Piazza Umberto I' towards Via Vittorio Veneto
+  - Location:
+      Latitude: 43.36423893327827
+      Longitude: 13.34570441959495
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 2
+    Instruction: Svolta a sinistra e prendi Via Monocchia;Turn left and take Via
+      Monocchia
+  - Location:
+      Latitude: 43.36411668634743
+      Longitude: 13.34515596624326
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 3
+    Instruction: Gira a sinbistra verso Borgo XX Settembre;Turn left towards Borgo
+      XX Settembre
+  - Location:
+      Latitude: 43.36384736099678
+      Longitude: 13.34520004863647
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36314257295541
+      Longitude: 13.34537061319591
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 4
+    Instruction: Gira a sinistra in direzione nordest verso Borgo XX Settembre;Turn
+      left heading northeast towards Borgo XX Settembre
+  - Location:
+      Latitude: 43.36337860580003
+      Longitude: 13.3457923172294
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.3633911375047
+      Longitude: 13.345890849575
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36361143834461
+      Longitude: 13.34627175873176
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 5
+    Instruction: Svolta a sinistra e prendi Via Nicola Mei;Turn left and take Via
+      Nicola Mei
+  - Location:
+      Latitude: 43.36375006114463
+      Longitude: 13.3462962663643
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 6
+    Instruction: Gira a destra;Turn right
+  - Location:
+      Latitude: 43.36382749086148
+      Longitude: 13.34647640115501
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36394014708569
+      Longitude: 13.34666137121448
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36399470370413
+      Longitude: 13.34669775372734
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36403327193205
+      Longitude: 13.34673076958657
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36403985880036
+      Longitude: 13.34675043539289
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 7
+    Instruction: Svolta tutto a destra verso Borgo XX Settembre/Strada Provinciale
+      Treiese;Turn sharp right towards Borgo XX Settembre/Strada Provinciale Treiese
+  - Location:
+      Latitude: 43.36403744806076
+      Longitude: 13.34676357365277
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36364760974156
+      Longitude: 13.3466933324729
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 8
+    Instruction: Continua su Borgo XX Settembre/Strada Provinciale Treiese;Continue
+      on Borgo XX Settembre/Treiese Provincial Road
+  - Location:
+      Latitude: 43.36351130276574
+      Longitude: 13.34674057344471
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36324228066449
+      Longitude: 13.34673668943929
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36299912693369
+      Longitude: 13.34647646108423
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36297645539032
+      Longitude: 13.34594948050693
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.3630193672856
+      Longitude: 13.3456603955
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 9
+    Instruction: Svolta a sinistra e prendi Borgo Santa Croce/Strada Provinciale
+      Treiese;Turn left and take Borgo Santa Croce/Strada Provinciale Treiese
+  - Location:
+      Latitude: 43.3629577604264
+      Longitude: 13.34543112474568
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36203667955528
+      Longitude: 13.34563645698201
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36185615053439
+      Longitude: 13.34568647340715
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    Name: 
+    Instruction: 
+  SceneViewScale: 1
+  Color: 

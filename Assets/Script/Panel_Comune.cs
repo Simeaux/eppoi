@@ -41,10 +41,11 @@ public class Panel_Comune : MonoBehaviour
     private void Update()
     {
 
-        if ((PlayerPrefs.GetInt("poi_selezionato") > 0 || PlayerPrefs.GetInt("percorso_selezionato") > 0 )&& !_panelPOI.activeSelf)
+        if ((PlayerPrefs.GetString("poi_selezionato") != "" || PlayerPrefs.GetInt("percorso_selezionato") > 0 )&& !_panelPOI.activeSelf)
         {
-            _panelComune.SetActive(false);
             _panelPOI.SetActive(true);
+            _panelComune.SetActive(false);
+            
         }
         // || PlayerPrefs.GetInt("evento_selezionato") > 0 || PlayerPrefs.GetInt("percorso_selezionato") > 0
     }
@@ -150,7 +151,7 @@ public class Panel_Comune : MonoBehaviour
     void backBtnPressed()
     {
         PlayerPrefs.SetString("istat", "");
-        PlayerPrefs.SetInt("poi_selezionato", 0);
+        PlayerPrefs.SetString("poi_selezionato", "");
         PlayerPrefs.SetInt("percorso_selezionato", 0);
         selected_tab.text = "0";
         _panelComune.SetActive(false);

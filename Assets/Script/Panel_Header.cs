@@ -38,7 +38,7 @@ public class Panel_Header : MonoBehaviour
     {
         if (!only_blank)
         {
-            if (PlayerPrefs.GetInt("percorso_selezionato") > 0 || PlayerPrefs.GetInt("poi_selezionato") > 0)
+            if (PlayerPrefs.GetInt("percorso_selezionato") > 0 || PlayerPrefs.GetString("poi_selezionato") != "")
             {
                 if (!CanvasPOI.activeSelf)
                 {

@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2560531756028054998, guid: 65e94d0357cf54d68868fb8909f4063b, type: 3}
@@ -60,4 +61,56 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5939393521290919645, guid: 65e94d0357cf54d68868fb8909f4063b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4145807923986440387}
+    - targetCorrespondingSourceObject: {fileID: 5939393521290919645, guid: 65e94d0357cf54d68868fb8909f4063b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7193109550064049673}
   m_SourcePrefab: {fileID: 100100000, guid: 65e94d0357cf54d68868fb8909f4063b, type: 3}
+--- !u!1 &3954231316488304857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5939393521290919645, guid: 65e94d0357cf54d68868fb8909f4063b, type: 3}
+  m_PrefabInstance: {fileID: 7245366694192842244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4145807923986440387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3954231316488304857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a38712e93231418a84665190b8473d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _desiredAccuracyInMeters: 1
+  _updateDistanceInMeters: 0
+  _updateTimeInMilliSeconds: 500
+  _userHeadingSmoothing: {fileID: 0}
+  _deviceOrientationSmoothing: {fileID: 0}
+  _editorDebuggingOnly:
+    _mockUnityInputLocation: 0
+    _locationLogFile: {fileID: 0}
+--- !u!114 &7193109550064049673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3954231316488304857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60712efc3153a4819b0c79437175846d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _accuracy: 0
+  _autoFireEvent: 0
+  _updateInterval: 0
+  _sendEvent: 0
+  _latitudeLongitude: 
+  _targetTransform: {fileID: 0}

@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class SearchPoi : MonoBehaviour
 {
-    public Toggle t_Enogastronomia;
+    public Toggle t_Accoglienza_e_Ricettivita;
+    public Toggle t_Enogastronomico;
     public Toggle t_Manifatturiero;
     public Toggle t_Naturalistico;
     public Toggle t_Religioso;
-    public Toggle t_Sensoriale;
-    public Toggle t_Storico;
-    public Toggle t_Artistico;
+    public Toggle t_Storico_Artistico;
+    public Toggle t_Tempo_libero_e_sport;
+    public Toggle t_Varie;
     public Text GruppoTipoPoi;
     public Text Label;
 
@@ -37,13 +38,22 @@ public class SearchPoi : MonoBehaviour
             string t = "0";
             string testo = string.Empty;
             List<DBClass.GROUP_TIPO_POI> _group_tipo_poi = _DBClass.getGROUP_TIPO_POI();
-            if (t_Enogastronomia.isOn)
+            if (t_Accoglienza_e_Ricettivita.isOn)
+            {
+                var ap = _group_tipo_poi.Find(p => p.value == "accoglienza-e-ricettivita");
+                if (ap != null)
+                    t = ap.id.ToString();
+                var text = t_Accoglienza_e_Ricettivita.GetComponentInChildren<Text>();
+                if (text != null)
+                    testo = text.text;
+            }
+            if (t_Enogastronomico.isOn)
             {
                 var ap = _group_tipo_poi.Find(p => p.value == "enogastronomico");
-                if(ap != null)
+                if (ap != null)
                     t = ap.id.ToString();
-                var text  = t_Enogastronomia.GetComponentInChildren<Text>();
-                if(text != null)
+                var text = t_Enogastronomico.GetComponentInChildren<Text>();
+                if (text != null)
                     testo = text.text;
             }
             if (t_Manifatturiero.isOn)
@@ -74,28 +84,30 @@ public class SearchPoi : MonoBehaviour
                 if (text != null)
                     testo = text.text;
             }
-            if (t_Sensoriale.isOn)
-            {
-                t = "5";
-                var text = t_Sensoriale.GetComponentInChildren<Text>();
-                if (text != null)
-                    testo = text.text;
-            }
-            if (t_Storico.isOn)
+            if (t_Storico_Artistico.isOn)
             {
                 var ap = _group_tipo_poi.Find(p => p.value == "storico-artistico");
                 if (ap != null)
                     t = ap.id.ToString();
-                var text = t_Storico.GetComponentInChildren<Text>();
+                var text = t_Storico_Artistico.GetComponentInChildren<Text>();
                 if (text != null)
                     testo = text.text;
             }
-            if (t_Artistico.isOn)
+            if (t_Tempo_libero_e_sport.isOn)
             {
                 var ap = _group_tipo_poi.Find(p => p.value == "tempo-libero-e-sport");
                 if (ap != null)
                     t = ap.id.ToString();
-                var text = t_Artistico.GetComponentInChildren<Text>();
+                var text = t_Tempo_libero_e_sport.GetComponentInChildren<Text>();
+                if (text != null)
+                    testo = text.text;
+            }
+            if (t_Varie.isOn)
+            {
+                var ap = _group_tipo_poi.Find(p => p.value == "varie");
+                if (ap != null)
+                    t = ap.id.ToString();
+                var text = t_Varie.GetComponentInChildren<Text>();
                 if (text != null)
                     testo = text.text;
             }

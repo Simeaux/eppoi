@@ -14,7 +14,7 @@ using UnityEditor;
 using Mapbox.Unity.MeshGeneration.Data;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
-using static TouchScript.Behaviors.Cursors.UI.GradientTexture;
+//using static TouchScript.Behaviors.Cursors.UI.GradientTexture;
 using TMPro;
 using static ItinerariEventiPOI_AttaccatiAlComune;
 using UnityEngine.SceneManagement;
@@ -31,6 +31,7 @@ public class ICanvas : MonoBehaviour
         public Button Btnless_zoom;
         public Button Btnfilter;
         public Button Btnremovefilter;
+        public UnityEngine.UI.Text testo_filtro;
         //public GameObject panelFilter;
         //public GameObject panelZoom;
         //public GameObject panelInfo;
@@ -45,8 +46,11 @@ public class ICanvas : MonoBehaviour
     public Toggle _togglePOI;
     public UnityEngine.UI.Text gruppo_tipo_poi;
     public Toggle _toggleitinerari;
-    public Toggle _bici;
-    public Toggle _piedi;
+    public Toggle _manifatturiero;
+    public Toggle _enogastronomico;
+    public Toggle _cicloturistico;
+    public Toggle _naturalistico;
+    public Toggle _storico_artistico;
     public Toggle _AR;
     public Toggle _IOT;
     public UnityEngine.UI.Text QueryText;
@@ -64,16 +68,18 @@ public class ICanvas : MonoBehaviour
     private int _NumberOfItemsToShow = 10;
     private ExtractDataForMap _extract;
     private List<IEP> Results = new List<IEP>();
-    
+
     private void Start()
     {
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
-        _btnIEP  = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI");
+        _DBClass._latitudine = 43.256187;
+        _DBClass._longitudine = 13.008713;
+        _btnIEP = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI");
         _btnSeeMore = (GameObject)Resources.Load("Button_SeeMore");
         _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
         _extract = GameObject.FindWithTag("SQLite").GetComponent<ExtractDataForMap>();
         ItinerariEventiPOI_AttaccatiAlComune _ap = new ItinerariEventiPOI_AttaccatiAlComune();
-        
+
         foreach (var _component in Cerca.GetComponentsInChildren<UnityEngine.UI.Text>())
         {
             if (_component.name == "Text")
@@ -81,14 +87,14 @@ public class ICanvas : MonoBehaviour
         }
         _togglePOI.GetComponentInChildren<UnityEngine.UI.Text>().text = _lingua_selezionata == 1 ? "Solo Punti di interesse" : "Only Points of interest";
         _toggleitinerari.GetComponentInChildren<UnityEngine.UI.Text>().text = _lingua_selezionata == 1 ? "Solo itinerari" : "Only Itineraries";
-       // Elements.Btnremovefilter.GetComponentInChildren<UnityEngine.UI.Text>().text = _lingua_selezionata == 1 ? "Mostra nella mappa" : "Show on map";
+        // Elements.Btnremovefilter.GetComponentInChildren<UnityEngine.UI.Text>().text = _lingua_selezionata == 1 ? "Mostra nella mappa" : "Show on map";
     }
     // Start is called before the first frame update
     private void Awake()
     {
         Elements.lat.text = 43.256187.ToString();
         Elements.lon.text = 13.008713.ToString();
-        Elements.zoom.text = "15";
+        Elements.zoom.text = "10";
         /*
         Elements.Btnmore_zoom.gameObject.SetActive(true);
         Elements.Btnless_zoom.gameObject.SetActive(true);
@@ -106,7 +112,7 @@ public class ICanvas : MonoBehaviour
     {
         ItinerariEventiPOI_AttaccatiAlComune _ap = new ItinerariEventiPOI_AttaccatiAlComune();
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
-            
+
         Elements.Btnmore_zoom.onClick.AddListener(OnBtnmore_zoom);
         Elements.Btnless_zoom.onClick.AddListener(OnBtnless_zoom);
         Elements.Btnfilter.onClick.AddListener(OnBtnShowHidefilter);
@@ -114,7 +120,7 @@ public class ICanvas : MonoBehaviour
 
         _comuni_id = new List<int>();
         _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
-        string testo = (_lingua_selezionata == 1) ? "Seleziona un comune" : "Select a municipality";
+        string testo = (_lingua_selezionata == 1) ? "Tutti i comuni" : "All municipalities";
         List<Dropdown.OptionData> _list_comuni = new List<Dropdown.OptionData>
         {
             new Dropdown.OptionData() { text = testo}
@@ -175,6 +181,18 @@ public class ICanvas : MonoBehaviour
     {
         search_filterPOI = !search_filterPOI;
         panel_all_White.SetActive(!panel_all_White.activeSelf);
+        if (panel_all_White.activeSelf)
+            Elements.testo_filtro.text = "";
+        else
+        {
+            var filter_text = "";
+            if (_togglePOI.isOn)
+                filter_text = _lingua_selezionata == 1 ? "Solo Punti di interesse" : "Only Points of interest";
+            if (_toggleitinerari.isOn)
+                filter_text = _lingua_selezionata == 1 ? "Solo itinerari" : "Only Itineraries";
+            Elements.testo_filtro.text = _grid_comune.captionText.text + " " + filter_text;
+        }
+
         // Create a temporary reference to the current scene.
         Scene currentScene = SceneManager.GetActiveScene();
         // Retrieve the name of this scene.
@@ -183,13 +201,13 @@ public class ICanvas : MonoBehaviour
         {
             Elements.Btnfilter.gameObject.SetActive(!panel_all_White.activeSelf);
         }
-        
+
         PlayerPrefs.SetInt("show_grid_poi", panel_all_White.activeSelf ? 1 : 0);
-        
+        Debug.Log("OnBtnShowHidefilter");
     }
-    
+
     private Vector2 scrollPosition = Vector2.zero;
-    
+
     private Vector3 MouseDownPosition = Vector3.zero;
     private void Update()
     {
@@ -197,14 +215,19 @@ public class ICanvas : MonoBehaviour
         {
             search_filterPOI = false;
             panel_all_White.SetActive(false);
-            if(PlayerPrefs.GetInt("poi_selezionato") > 0)
-                PanelPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(PlayerPrefs.GetInt("poi_selezionato").ToString(), true, false, 3);
+            if (PlayerPrefs.GetString("poi_selezionato") != "")
+                PanelPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(PlayerPrefs.GetString("poi_selezionato"), true, false, 3);
             else if (PlayerPrefs.GetInt("percorso_selezionato") > 0)
-                    PanelPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(PlayerPrefs.GetInt("percorso_selezionato").ToString(), true, false, 1);
+                PanelPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(PlayerPrefs.GetInt("percorso_selezionato").ToString(), true, false, 1);
             PanelMAP.SetActive(false);
         }
         if (PlayerPrefs.GetInt("show_grid_poi") == 0)
         {
+            if (search_filterPOI)
+            {
+                GameObject.FindObjectOfType<FreeMap>().Ricalcola_Centro(true);
+                GameObject.FindObjectOfType<FreeMap>().zoom.text = "10";
+            }
             search_filterPOI = false;
             panel_all_White.SetActive(false);
         }
@@ -217,7 +240,7 @@ public class ICanvas : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                    MouseDownPosition = Input.mousePosition;
+                MouseDownPosition = Input.mousePosition;
             }
             if (Input.GetMouseButton(0))
             {
@@ -316,7 +339,7 @@ public class ICanvas : MonoBehaviour
     #endregion
     private void OnGUI()
     {
-        
+
         if (search_filterPOI)
         {
             float h = Screen.height;// - 220;
@@ -329,10 +352,10 @@ public class ICanvas : MonoBehaviour
                     ap.Destroy();
                 POIGo = new List<GameObject>();
             }
-            
+
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(0.95f * w), GUILayout.Height(h));
             int _i = 0;
-            
+
 
             for (_i = 0; _i < Results.Count && _i < _NumberOfItemsToShow; _i++)
             {
@@ -360,17 +383,21 @@ public class ICanvas : MonoBehaviour
                                 if (_gruppo != null)
                                 {
                                     if (_gruppo.value == "accoglienza-e-ricettivita")
-                                        _component2.sprite = Resources.Load<Sprite>("Icone/manifatturiero");
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/ACCOGLIENZA-bianco");
                                     if (_gruppo.value == "enogastronomico")
                                         _component2.sprite = Resources.Load<Sprite>("Icone/enogastronomico");
+                                    if (_gruppo.value == "manifatturiero")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/manifatturiero");
                                     if (_gruppo.value == "naturalistico")
                                         _component2.sprite = Resources.Load<Sprite>("Icone/naturalistico");
                                     if (_gruppo.value == "religioso")
-                                        _component2.sprite = Resources.Load<Sprite>("Icone/religioso_spirituale");
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/religioso");
                                     if (_gruppo.value == "storico-artistico")
                                         _component2.sprite = Resources.Load<Sprite>("Icone/storico_artistico");
                                     if (_gruppo.value == "tempo-libero-e-sport")
-                                        _component2.sprite = Resources.Load<Sprite>("Icone/sensoriale");
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/tempo_libero_e_sport_bianco");
+                                    if (_gruppo.value == "varie")
+                                        _component2.sprite = Resources.Load<Sprite>("Icone/varie-bianco");
                                 }
                             }
                         }
@@ -407,11 +434,12 @@ public class ICanvas : MonoBehaviour
                             //4456A3 - blu
                             //009366 - verde
                             //E8531E - arancione
+                            //C51A1B - rosso
                             if (_gruppo.value == "accoglienza-e-ricettivita")
-                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
                                     c = _c;
                             if (_gruppo.value == "enogastronomico")
-                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
                                     c = _c;
                             if (_gruppo.value == "manifatturiero")
                                 if (ColorUtility.TryParseHtmlString("#009366", out _c))
@@ -425,30 +453,34 @@ public class ICanvas : MonoBehaviour
                                     c = _c;
 
                             if (_gruppo.value == "storico-artistico")
-                                if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
+                                if (ColorUtility.TryParseHtmlString("#C51A1B", out _c))
                                     c = _c;
                             if (_gruppo.value == "tempo-libero-e-sport")
-                                if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
-                                    c = _c;
-                            /*
-                            if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
-                                c = _c;
-                            if(_iep.immagine_poi > 0 && _iep.immagine_poi < 4)
-                            {
-                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
-                                    c = _c;
-                            }
-                            else if(_iep.immagine_poi > 0 && _iep.immagine_poi < 6)
-                            {
                                 if (ColorUtility.TryParseHtmlString("#4456A3", out _c))
                                     c = _c;
-                            }
-                            */
+                            if (_gruppo.value == "varie")
+                                if (ColorUtility.TryParseHtmlString("#009366", out _c))
+                                    c = _c;
+
+
+
                         }
                         _component.color = c;
                     }
                     if (_component.name == "Image")
                     {
+                        if (_iep.tipo == 3)
+                        {
+                            var _ap = _DBClass.getPOI_IMMAGINI(null, _iep.id, true).FirstOrDefault();
+                            if (_ap != null)
+                                _iep.immagine = _ap.image;
+                        }
+                        if (_iep.tipo == 1)
+                        {
+                            var _ap = _DBClass.getPERCORSI_IMMAGINI(null, (int?)_iep.id).FirstOrDefault();
+                            if (_ap != null)
+                                _iep.immagine = _ap.image;
+                        }
                         byte[] foto = null;
                         if (_iep.immagine != null && _iep.immagine != null && _iep.immagine.Length > 0)
                             foto = _iep.immagine;
@@ -459,13 +491,18 @@ public class ICanvas : MonoBehaviour
                         if (_iep.tipo == 1)
                         {
                             _component.gameObject.SetActive(true);
-                            if (!string.IsNullOrEmpty(_iep.tipo_percorso) && _iep.tipo_percorso != "Bici")
+                            if (!string.IsNullOrEmpty(_iep.tipo_percorso))
                             {
-                                _component.sprite = Resources.Load<Sprite>("Icone/camminata_dx");
-                            }
-                            else
-                            {
-                                _component.sprite = Resources.Load<Sprite>("Icone/bicicletta");
+                                if (_iep.tipo_percorso == "artigianale")
+                                    _component.sprite = Resources.Load<Sprite>("Icone/manifatturiero");
+                                else if (_iep.tipo_percorso == "cicloturistico")
+                                    _component.sprite = Resources.Load<Sprite>("Icone/ciclopedonale");
+                                else if (_iep.tipo_percorso == "enogastronomico")
+                                    _component.sprite = Resources.Load<Sprite>("Icone/enogastronomico");
+                                else if (_iep.tipo_percorso == "naturalistico")
+                                    _component.sprite = Resources.Load<Sprite>("Icone/naturalistico");
+                                else if (_iep.tipo_percorso == "storico-artistico")
+                                    _component.sprite = Resources.Load<Sprite>("Icone/storico_artistico");
                             }
                         }
                         else
@@ -514,23 +551,25 @@ public class ICanvas : MonoBehaviour
                 GUILayout.EndVertical();
                 POIGo.Add(btn);
             }
+
             GUILayout.EndScrollView();
-            GUILayout.EndVertical();
+            //GUILayout.EndVertical();
             float delta = (580 * (Results.Count < _NumberOfItemsToShow ? Results.Count : _NumberOfItemsToShow + 1));
             content_list_oggetti.GetComponent<RectTransform>().sizeDelta = new Vector2(0, delta);
 
             search_filterPOI = false;
         }
+
     }
 
-    
+
     private int _gruppo_tipo_poi = -1;
     private int _tipo_poi = -1;
     public void search()
     {
         ResetNumberOfRowToShow();
         StartCoroutine(_DBClass.GetLatLonUsingGPS());
-        
+
         List<DBClass.POI> POIList = new List<DBClass.POI>();
         int? comune_id = null;
         if (_grid_comune.value > 0)
@@ -549,7 +588,7 @@ public class ICanvas : MonoBehaviour
             _POI = _DBClass.getPOI(null, comune_id, QueryText.text, 0, _gruppo_tipo_poi, _tipo_poi);
         }
         float old_zoom = abstractMap.Zoom;
-        
+
         var posizione_attuale = abstractMap.GeoToWorldPosition(new Mapbox.Utils.Vector2d(_DBClass._latitudine, _DBClass._longitudine));
 
         foreach (POI _p in _POI)
@@ -563,26 +602,35 @@ public class ICanvas : MonoBehaviour
 
             }
         }
-        
+
         //Results = POIList;//.OrderBy(o => o.distanza_aria).ToList();
         abstractMap.SetZoom(old_zoom);
         search_filterPOI = true;
 
-        
+
         _extract.setPOIList(POIList);
         var _listPercorsi = new List<PERCORSO>();
-        if ((_toggleitinerari.isOn)||(!_toggleitinerari.isOn && !_togglePOI.isOn))
+        if ((_toggleitinerari.isOn) || (!_toggleitinerari.isOn && !_togglePOI.isOn))
         {
+
             string tipo_percorso = "";
-            if (_bici.isOn)
-                tipo_percorso = "Bici";
-            if (_piedi.isOn)
-                tipo_percorso = "Piedi";
+
+            if (_manifatturiero.isOn)
+                tipo_percorso = "artigianale";
+            if (_enogastronomico.isOn)
+                tipo_percorso = "enogastronomico";
+            if (_cicloturistico.isOn)
+                tipo_percorso = "cicloturistico";
+            if (_naturalistico.isOn)
+                tipo_percorso = "naturalistico";
+            if (_storico_artistico.isOn)
+                tipo_percorso = "storico-artistico";
+
             string tipo_navigazione = "";
             if (_AR.isOn)
                 tipo_navigazione = "ar-vr";
             if (_IOT.isOn)
-                tipo_navigazione = "IOT";
+                tipo_navigazione = "iot";
             _listPercorsi = _DBClass.GetPERCORSO(null, null, true, comune_id, QueryText.text, tipo_percorso, tipo_navigazione);
         }
         ItinerariEventiPOI_AttaccatiAlComune _ap = new ItinerariEventiPOI_AttaccatiAlComune();
@@ -590,5 +638,5 @@ public class ICanvas : MonoBehaviour
         _extract.setPercorsoList(_listPercorsi);
         GameObject.FindObjectOfType<FreeMap>().Ricalcola_Centro(true);
     }
-    
+
 }

@@ -14,11 +14,26 @@ public class ExtractDataForMap : MonoBehaviour
     {
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
         Debug.Log("Extract");
-        PoiList = _DBClass.getPOI();
+        //PoiList = _DBClass.getPOI(null, null, null, 100, null, null, false);
+        PoiList = _DBClass.getPOIxMap("");
         PercorsoList = _DBClass.GetPERCORSO(null, null, true);
         TappeXPercorsiList = _DBClass.getTAPPEXPERCORSI(null, null, null);
     }
 
+    public void aggiornaPoiList(double[] punti = null)
+    {
+        string not_in = "";
+        /*foreach (var _in in PoiList)
+        {
+            if (not_in != "")
+                not_in = not_in + ", ";
+            not_in = not_in + _in.ID;
+        }
+        */
+        setPOIList(new List<POI>());
+        setPOIList(_DBClass.getPOIxMap(not_in, punti));
+        
+    }
     public List<POI> getPoiList()
     {
         if (PoiList == null)

@@ -144,7 +144,14 @@ namespace Mapbox.Unity.Location
 		[System.Diagnostics.Conditional("UNITY_EDITOR")]
 		void InjectEditorLocationProvider()
 		{
-			Debug.LogFormat("LocationProviderFactory: Injected EDITOR Location Provider - {0}", _editorLocationProvider.GetType());
+            // AGGIUNGI QUESTA RIGA DI CONTROLLO:
+            if (mapManager == null) mapManager = FindObjectOfType<AbstractMap>();
+
+            if (_editorLocationProvider == null)
+            {
+                _editorLocationProvider = GetComponent<EditorLocationProvider>();
+            }
+            Debug.LogFormat("LocationProviderFactory: Injected EDITOR Location Provider - {0}", _editorLocationProvider.GetType());
 			DefaultLocationProvider = _editorLocationProvider;
 		}
 

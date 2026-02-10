@@ -40,7 +40,7 @@ namespace GoodEnough.TextToSpeech
                 var language = TTS_iOS.GetVoiceLanguage(voiceIndex);
                 var quality = TTS_iOS.GetVoiceQuality(voiceIndex);
                 availableVoices[voiceIndex] =
-                    new SpeechSynthesisVoice(identifier, name, language, (VoiceQuality) quality);
+                    new SpeechSynthesisVoice(identifier, name, language, (VoiceQuality)quality);
             }
 
             return new ReadOnlyCollection<ISpeechSynthesisVoice>(availableVoices);
@@ -270,7 +270,17 @@ namespace GoodEnough.TextToSpeech
         public static ISpeechSynthesisVoice GetVoiceForLanguage(string language)
         {
             var voiceId = TTS_iOS.GetVoiceIdentifierFromLanguageCode(language);
-            return AllAvailableVoices.FirstOrDefault(voice => voice.Identifier == voiceId);
+            ISpeechSynthesisVoice ret;
+            if (string.IsNullOrEmpty(voiceId))
+            {
+                // Se fallisce, usa il codice lingua come fallback diretto 
+                // (molti plugin TTS permettono di passare il codice lingua se l'ID è nullo)
+                voiceId = language;
+                ret = AllAvailableVoices.FirstOrDefault(voice => voice.Language == language);
+            }
+            else
+                ret = AllAvailableVoices.FirstOrDefault(voice => voice.Identifier == voiceId);
+            return ret;
         }
 
         /// <summary>

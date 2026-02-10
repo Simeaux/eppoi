@@ -44,7 +44,7 @@ public class Panel_POI : MonoBehaviour
         if (PlayerPrefs.GetInt("percorso_selezionato_collegato_ad_un_poi") > 0)
         {
             Debug.Log("percorso_selezionato_collegato_ad_un_poi = " + PlayerPrefs.GetInt("percorso_selezionato_collegato_ad_un_poi"));
-            PlayerPrefs.SetInt("poi_selezionato", PlayerPrefs.GetInt("poi_selezionato") * -1);
+            PlayerPrefs.SetString("poi_selezionato", (long.Parse(PlayerPrefs.GetString("poi_selezionato")) * -1).ToString());
             PlayerPrefs.SetInt("percorso_selezionato", PlayerPrefs.GetInt("percorso_selezionato_collegato_ad_un_poi"));
             PlayerPrefs.SetInt("percorso_selezionato_collegato_ad_un_poi", 0);
             id_selected.text = PlayerPrefs.GetInt("percorso_selezionato").ToString();
@@ -54,25 +54,27 @@ public class Panel_POI : MonoBehaviour
         if (PlayerPrefs.GetInt("poi_selezionato_collegato_ad_un_percorso") > 0)
         {
             Debug.Log("poi_selezionato_collegato_ad_un_percorso = " + PlayerPrefs.GetInt("poi_selezionato_collegato_ad_un_percorso"));
-            PlayerPrefs.SetInt("poi_selezionato", PlayerPrefs.GetInt("poi_selezionato_collegato_ad_un_percorso"));
+            PlayerPrefs.SetString("poi_selezionato", PlayerPrefs.GetInt("poi_selezionato_collegato_ad_un_percorso").ToString());
             PlayerPrefs.SetInt("percorso_selezionato", PlayerPrefs.GetInt("percorso_selezionato") * -1);
             PlayerPrefs.SetInt("poi_selezionato_collegato_ad_un_percorso", 0);
-            id_selected.text = PlayerPrefs.GetInt("poi_selezionato").ToString();
+            id_selected.text = PlayerPrefs.GetString("poi_selezionato");
             if (!string.IsNullOrEmpty(id_selected.text))
                 _panel_poi.GetComponent<DetailPOIManager>().OpenDetailAtID(id_selected.text, false, true, 3);
         }
     }
     private void OnEnable()
     {
+        BtnBack.onClick.AddListener(BtnBackCliccked);
         if (!string.IsNullOrEmpty(PlayerPrefs.GetString("id_select")))
         {
             id_selected.text = PlayerPrefs.GetString("id_select");
             PlayerPrefs.SetString("id_select", string.Empty);
         }
-        BtnBack.onClick.AddListener(BtnBackCliccked);
-        if (PlayerPrefs.GetInt("poi_selezionato") > 0)
+        //BtnBack.onClick.AddListener(BtnBackCliccked);
+        if (PlayerPrefs.GetString("poi_selezionato") != "")
         {
-            id_selected.text = PlayerPrefs.GetInt("poi_selezionato").ToString();
+            PlayerPrefs.SetString("apri_direttamente_il_poi_selezionato", "");
+            id_selected.text = PlayerPrefs.GetString("poi_selezionato");
             if (!string.IsNullOrEmpty(id_selected.text))
                 _panel_poi.GetComponent<DetailPOIManager>().OpenDetailAtID(id_selected.text, false, true, 3);
         }
@@ -100,11 +102,14 @@ public class Panel_POI : MonoBehaviour
             PlayerPrefs.SetInt("evento_selezionato", PlayerPrefs.GetInt("evento_selezionato") * -1);
         else
             PlayerPrefs.SetInt("evento_selezionato", 0);
-
-        if (PlayerPrefs.GetInt("poi_selezionato") < 0)
-            PlayerPrefs.SetInt("poi_selezionato", PlayerPrefs.GetInt("poi_selezionato") * -1);
-        else
-            PlayerPrefs.SetInt("poi_selezionato", 0);
+        long _app;
+        if (long.TryParse(PlayerPrefs.GetString("poi_selezionato"), out _app))
+        {
+            if (_app < 0)
+                PlayerPrefs.SetString("poi_selezionato", (long.Parse(PlayerPrefs.GetString("poi_selezionato")) * -1).ToString());
+            else
+                PlayerPrefs.SetString("poi_selezionato", "");
+        }
 
         selected_tab.text = "0";
         //PlayerPrefs.SetString("istat", "");

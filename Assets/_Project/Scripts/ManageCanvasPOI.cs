@@ -86,7 +86,7 @@ public class ManageCanvasPOI : MonoBehaviour
     {
         PlayerPrefs.SetInt("percorso_selezionato", 0);
         PlayerPrefs.SetInt("evento_selezionato", 0);
-        PlayerPrefs.SetInt("poi_selezionato", 0);
+        PlayerPrefs.SetString("poi_selezionato", "");
         PlayerPrefs.SetString("istat", "");
         selected_tab.text = "0";
         if (PlayerPrefs.GetInt("show_grid_poi") == 2)
@@ -160,7 +160,7 @@ public class ManageCanvasPOI : MonoBehaviour
             if (PlayerPrefs.GetInt("percorso_selezionato") > 0)
                 _PERCORSO = GameObject.FindObjectOfType<DBClass>().GetPERCORSO(_id_selected);
             //if (PlayerPrefs.GetInt("evento_selezionato")> 0)
-            if (PlayerPrefs.GetInt("poi_selezionato") > 0)
+            if (PlayerPrefs.GetString("poi_selezionato") != "")
             {
                 _PERCORSO = GameObject.FindObjectOfType<DBClass>().GetPERCORSO(null, _id_selected);
                 if (_PERCORSO == null || _PERCORSO.Count == 0)
@@ -180,10 +180,10 @@ public class ManageCanvasPOI : MonoBehaviour
     }
     public void Route_to_POI()
     {
-        if (PlayerPrefs.GetInt("poi_selezionato") > 0)
+        if (PlayerPrefs.GetString("poi_selezionato") != "")
         {
-            PlayerPrefs.SetInt("percorso_selezionato", PlayerPrefs.GetInt("poi_selezionato"));
-            PlayerPrefs.SetInt("poi_selezionato", 0);
+            PlayerPrefs.SetInt("percorso_selezionato", (int)long.Parse( PlayerPrefs.GetString("poi_selezionato")));
+            PlayerPrefs.SetString("poi_selezionato", "");
         }
 
         Debug.Log("Route_to_POI: " + Elements.ID_selected.text);

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>RipeSanGinesio_IOT_indicazioni.kml</name>
+	<StyleMap id="__managed_style_0FC49B2ED13840F1A3600">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed103</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed01</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed01">
+		<LineStyle>
+			<color>ff0affff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="failed103">
+		<LineStyle>
+			<color>ff0affff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Folder>
+		<name>IOT</name>
+		<open>1</open>
+		<Placemark id="551BC879D7000001">
+			<name>IOT</name>
+			<styleUrl>#__managed_style_0FC49B2ED13840F1A3600</styleUrl>
+			<LineString>
+				<coordinates>
+					13.36548645812695,43.14109689629866,404.8799999999999 13.36572108676043,43.14124781779958,412.54 13.36614461212333,43.14155049960251,417.89 13.36625525178732,43.14180183199296,416.3600000000001 13.36636687925727,43.14250813143664,405.88 13.36641283619053,43.1425885285397,406.91 13.36644959071945,43.14257465731876,408.51 13.36644410546901,43.14251507592166,408.7799999999999 13.3664181644197,43.14234479859287,413.36 13.36643890949922,43.14203795082447,420.7099999999999 13.36654490389656,43.14173717712293,423.7099999999999 13.36652256699065,43.14162214907216,425.6 13.36632522771122,43.14121140086615,424.15 13.36619404002998,43.14090014471955,418.9599999999999 13.36625,43.14081,417.9999999999998 13.36636,43.14074,418.9800000000001 13.36659,43.14067,422.11 13.3671058478871,43.14060817435754,427.79 13.36718567615735,43.14063497690477,428.6199999999998 13.36723320659012,43.14081838350167,430.1199999999999 13.36733277882244,43.14130246724596,433.31 13.36733544005171,43.14150676599674,432.39 13.36726141532405,43.14188571531735,430.77 13.36728570578803,43.14202440266266,430.44 13.3672286517435,43.14212132631973,430.09 13.36713515529378,43.14224303156305,426.45 13.36705762218974,43.14241336295892,423.35 13.36701394871858,43.1425941494166,420.8899999999999 13.36704,43.14271,418.7599999999999 13.36723444500821,43.14293743492891,422.4540100097656 13.3671798014043,43.1429903854524,422.4540100097656 13.36731764166343,43.14333438063927,417.1640014648439 13.36747420004405,43.14352576842206,416.7854919433593 13.36759689944825,43.14352321895235,416.5980072021484 13.36771959316745,43.14375572798991,416.5980072021484 13.36775516061812,43.14374067494794,416.8605041503906 13.36762179624805,43.14349230288972,416.8809967041016 13.36758723537903,43.14337926161301,417.4664916992188 13.36755412223857,43.14324934352229,418.3869934082031 13.36745457151485,43.14304639593365,421.1145019531249 13.36735072914772,43.1429899183087,421.6869964599609 13.36728218776262,43.14284445532319,422.9674987792969 13.36736541622997,43.14283307933239,423.0274963378907 13.36751300274604,43.14302316113402,421.7469940185546 13.3675489047407,43.14312443548188,420.6925048828125 13.36771523542011,43.14338710077831,420.6925048828125 13.36781983241517,43.14346055275885,420.7024993896484 13.36792374905978,43.14351891381098,420.7059936523438 13.36802084697531,43.1435689713195,420.7059936523438 13.3679828936673,43.14371113358286,420.7059936523438 13.36791710602017,43.14384591106643,420.7059936523438 13.36780070939523,43.14390314576771,420.7059936523438 13.36766406888102,43.14389576128389,420.7059936523438 13.36755779316815,43.14390314662819,420.7059936523438 13.36745404788547,43.14392160949593,420.7059936523438 13.36734426300742,43.14388063362775,420.7059936523438 13.36726199712869,43.14379486628069,420.7059936523438 13.36705930979018,43.14371482867127,420.7059936523438 13.36687965492595,43.14350620133891,420.7059936523438 13.36670506268369,43.14317941344531,420.7059936523438 13.36674807992706,43.14293386132775,420.7059936523438 13.36677844425205,43.14286739607931,410.8799999999999 13.36674555031322,43.14278985298989,410.8799999999999 13.36668987638731,43.1427475270842,409.69 13.36658707405119,43.14270136691665,408.51 13.36642227967214,43.14263179180149,406.91 13.36633743428659,43.14253630509192,406.91 13.36621452906169,43.14180310054925,406.91 13.36611765588295,43.14157824561953,406.91 13.36566468833634,43.14124741430953,406.91 13.36555888416525,43.14117895315701,406.91 13.36544307978429,43.14109627087292,405.9885594692994 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<description>Procedi in direzione nordest verso Via Giuseppe Garibaldi;Proceed northeast towards Via Giuseppe Garibaldi</description>
+			<LookAt>
+				<longitude>13.36556354331766</longitude>
+				<latitude>43.14124536242544</latitude>
+				<altitude>0</altitude>
+				<heading>-1.126293163867764</heading>
+				<tilt>26.33538466027174</tilt>
+				<range>54.6684777614454</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36551041494678,43.14109758302433,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Svolta a destra e prendi Via Giuseppe Garibaldi;Turn right and take Via Giuseppe Garibaldi</description>
+			<LookAt>
+				<longitude>13.36632388153293</longitude>
+				<latitude>43.1422408688337</latitude>
+				<altitude>0</altitude>
+				<heading>-1.125773245939723</heading>
+				<tilt>26.33538466027174</tilt>
+				<range>54.66847776217224</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36641457405866,43.14255600956444,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Procedi in direzione sud su Via Giuseppe Garibaldi verso Viale della Resistenza;Proceed south on Via Giuseppe Garibaldi towards Viale della Resistenza</description>
+			<LookAt>
+				<longitude>13.36575945402315</longitude>
+				<latitude>43.14163406277318</latitude>
+				<altitude>0</altitude>
+				<heading>-1.126152450236083</heading>
+				<tilt>26.8051411925398</tilt>
+				<range>235.8824369043967</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36633189128001,43.14117001416259,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Svolta a sinistra e prendi Viale della Resistenza;Turn left and take Viale della Resistenza</description>
+			<LookAt>
+				<longitude>13.36659464693407</longitude>
+				<latitude>43.14185470319688</latitude>
+				<altitude>0</altitude>
+				<heading>-1.125581345060028</heading>
+				<tilt>26.80514119253974</tilt>
+				<range>235.8824369028936</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36730733936843,43.1419875356258,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<description>Alla rotonda prendi la 2ª uscita e prendi Via Roma;At the roundabout take the 2nd exit and take Via Roma</description>
+			<LookAt>
+				<longitude>13.36720608656136</longitude>
+				<latitude>43.14232593976324</latitude>
+				<altitude>0</altitude>
+				<heading>-1.1251632330324</heading>
+				<tilt>26.80514119253975</tilt>
+				<range>235.8824369054703</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36707648740403,43.14264389044378,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>6</name>
+			<description>Procedi in direzione nord su Via Roma;Proceed north on Via Roma</description>
+			<LookAt>
+				<longitude>13.36684611912989</longitude>
+				<latitude>43.14312747319045</latitude>
+				<altitude>0</altitude>
+				<heading>-1.125532566814924</heading>
+				<tilt>21.70208439401462</tilt>
+				<range>99.5379638437779</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36715169436359,43.14298799829543,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>7</name>
+			<description>Tornare indietro passando per via Roma o per la parallela;Go back via Roma or the parallel road</description>
+			<LookAt>
+				<longitude>13.36730211121385</longitude>
+				<latitude>43.14317454650183</latitude>
+				<altitude>0</altitude>
+				<heading>12.88894187278984</heading>
+				<tilt>47.07535450271379</tilt>
+				<range>87.29536479648453</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36769892294552,43.14371475783258,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>8</name>
+			<description>Alla rotonda prendi la 1ª uscita e prendi Via Giacomo Leopardi;At the roundabout, take the 1st exit onto Via Giacomo Leopardi</description>
+			<LookAt>
+				<longitude>13.36730211121385</longitude>
+				<latitude>43.14317454650183</latitude>
+				<altitude>0</altitude>
+				<heading>12.88894187278984</heading>
+				<tilt>47.07535450271379</tilt>
+				<range>87.29536479648453</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36725560516451,43.14285466109598,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>9</name>
+			<description>Procedi in direzione nord su Via Dante Alighieri;Proceed north on Via Dante Alighieri</description>
+			<LookAt>
+				<longitude>13.36747002176673</longitude>
+				<latitude>43.14335158074467</latitude>
+				<altitude>0</altitude>
+				<heading>12.88905669327644</heading>
+				<tilt>47.07535450271384</tilt>
+				<range>87.29536479797954</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36798995495869,43.14353531646594,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>10</name>
+			<description>Alla rotonda, prendi la 1ª uscita;At the roundabout, take the 1st exit</description>
+			<LookAt>
+				<longitude>13.36655709789747</longitude>
+				<latitude>43.14311397137977</latitude>
+				<altitude>0</altitude>
+				<heading>12.88843173310285</heading>
+				<tilt>42.17828796374721</tilt>
+				<range>129.979613483297</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.36674208326997,43.14286137471143,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

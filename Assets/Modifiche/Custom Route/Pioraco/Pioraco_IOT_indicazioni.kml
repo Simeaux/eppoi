@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Pioraco_IOT_indicazioni.kml</name>
+	<StyleMap id="__managed_style_0450B2288938D6D77BEE">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_191108B82938D6D77BEE</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_23C182340C38D6D77BEE</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_09B0E2231838D6E91988">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed003</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed003">
+		<LineStyle>
+			<color>ff0affff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="failed10">
+		<LineStyle>
+			<color>ff0affff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Folder id="55B4866196000001">
+		<name>IOT</name>
+		<open>1</open>
+		<styleUrl>#__managed_style_0450B2288938D6D77BEE</styleUrl>
+		<Placemark id="55B4866196000002">
+			<name>IOT</name>
+			<styleUrl>#__managed_style_09B0E2231838D6E91988</styleUrl>
+			<LineString>
+				<coordinates>
+					12.97828,43.17953000000001,442.96 12.97828,43.17957000000001,441.7699999999999 12.9783,43.17975000000001,440.3 12.97835,43.17975000000001,440.9599999999999 12.97916,43.1797,441.59 12.97966,43.17967,441.2799999999999 12.97969,43.17966,442.31 12.98037,43.17962,443.33 12.98061244390053,43.1796050440451,443.5661466563574 12.98345,43.17943,446.3299999999999 12.98377,43.17941,449.33 12.98378,43.17946000000001,448.6799999999999 12.98378,43.17947,448.04 12.98395,43.17949,447.9999999999998 12.98385,43.17957000000001,446.15 12.98398063176357,43.17960825752658,443.18 12.98385782235921,43.17967831130751,444.8999999999999 12.98392876621742,43.17968348421989,445.8700000000001 12.98392287088346,43.17971127821396,446.15 12.98385931631059,43.17972562533802,447.08 12.98385369166858,43.17974931983561,447.2599999999999 12.98393410765413,43.17977241459737,448.3 12.98389975191012,43.17979409668748,449.64 12.98392701322936,43.17981858576311,449.64 12.98390709975559,43.17983892571002,449.94 12.98398801284498,43.17981548639424,448.8100000000001 12.98416842731362,43.17969434291703,445.1499999999999 12.98418735378591,43.17970572264121,444.01 12.98413908031885,43.17975428718682,445.35 12.98413301390904,43.17979595463675,447.16 12.9841553711151,43.17979326875115,448.01 12.98412,43.17983,450.1199999999999 12.98417798247001,43.17987251189039,451.39 12.98423772065989,43.17983876697269,450.48 12.98426208213924,43.17980894206827,449.5000000000001 12.98432901175411,43.17979113224425,448.77 12.9843899279729,43.1798120786322,447.97 12.98440656584072,43.17979852189707,447.2499999999999 12.98433161295996,43.1797531492507,445.8199999999999 12.984313220801,43.17970974652021,444.5 12.98434699067013,43.17968180330452,446.01 12.98437862950542,43.1796678749919,446.45 12.98439077732779,43.17968750790683,446.01 12.98435307816621,43.17972119122251,444.5 12.98435633470521,43.17975495361155,445.8199999999999 12.98443174613875,43.17979949145852,447.2499999999999 12.98440414912683,43.17982248203543,447.97 12.98433184570149,43.17980272312663,448.77 12.98427591520385,43.17981754436973,449.5000000000001 12.98425569882856,43.17984827671224,450.48 12.98438962136724,43.17990831965395,452.72 12.98437,43.17994,456.01 12.98445,43.18002,459.07 12.9844,43.18017,461.7699999999999 12.98457,43.18026,461.0099999999999 12.98485,43.18027,460.05 12.98494,43.18034,459.5899999999999 12.98502,43.18045,458.98 12.98506,43.18043,458.82 12.98509,43.18056,458.67 12.98516,43.18075,460.0299999999999 12.98539,43.18069,453.8099999999999 12.98544,43.18065,451.97 12.98561,43.18061,447.47 12.98565,43.18056,446.0699999999999 12.98577,43.18056,444.1899999999999 12.98591,43.18052,441.97 12.9862,43.18052,437.74 12.98625,43.18057,436.3299999999999 12.98638,43.18063,434.05 12.9868,43.18072,427.66 12.98734270665694,43.18072785823375,419.28 12.98763698735751,43.18070840151949,416.73 12.98782036181881,43.18060773470987,414.05 12.98793,43.18053,411.99 12.98867,43.17971,413.55 12.98893,43.1795,421.0299999999999 12.98908,43.17937,425.5600000000002 12.98921,43.17919,432.5799999999999 12.98938,43.17913,432.98 12.98948,43.17909,433.11 12.98947,43.17906,434.5799999999999 12.98941,43.17891,441.83 12.98926,43.1788,450.1 12.98909,43.17878,456.36 12.9888,43.17874,465.07 12.98845,43.17874,471.1 12.98821,43.1788,469.98 12.98811,43.17886,469.42 12.98801,43.17886,474.1299999999999 12.98798,43.17879,479.09 12.988,43.17874,479.24 12.98799,43.17870000000001,481.2699999999999 12.98794,43.17872000000001,478.9900000000001 12.98778,43.17897000000001,463.18 12.98740636633363,43.17926172151611,451.92 12.98721967333657,43.17930543000124,451.92 12.98704,43.17929,449.8 12.98686924758373,43.17926229613268,449.1499999999999 12.9867,43.17928000000001,448.04 12.98605,43.17938,447.1299999999998 12.98573,43.1794,446.6799999999999 12.98551,43.17937000000001,446.3899999999999 12.98552,43.17931,446.4599999999999 12.98536,43.17924,447.1999999999999 12.98507,43.17917000000001,448.41 12.98478,43.17907,449.9499999999998 12.98463,43.17905,450.3 12.98464,43.17897000000001,451.27 12.98456,43.17866,464.63 12.98458,43.17851,474.86 12.98443,43.17843000000001,482.98 12.98432,43.17841000000001,485.5599999999999 12.98396,43.17839,502.3399999999999 12.98325,43.1785,501.5600000000001 12.98289,43.17859,501.16 12.98249,43.17865,499.23 12.98184,43.17872,494.42 12.98144,43.17878,491.3899999999999 12.98115,43.17887,479.6000000000001 12.98087,43.17899,468.9400000000001 12.98048,43.17906,456.3399999999999 12.98015431456781,43.17907884130599,454.6725444195052 12.97806,43.1792,443.95 12.97805679542132,43.17926599531617,443.94 12.97824109440365,43.17925201089272,444.1199999999999 12.97825,43.17927,444.16 12.97828120334112,43.17950235456846,442.96 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<description>Procedi in direzione nord;Proceed north</description>
+			<LookAt>
+				<longitude>12.97836043965829</longitude>
+				<latitude>43.17952281240754</latitude>
+				<altitude>0</altitude>
+				<heading>3.054751422890754</heading>
+				<tilt>17.99482780647579</tilt>
+				<range>60.50583078078915</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.97828538565548,43.17953516865766,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Svolta a destra su Strada Septempedana/Viale Borgo Raffaello Sanzio/SP361 verso Via Aldo Vincenzetti;Turn right onto Strada Septempedana/Viale Borgo Raffaello Sanzio/SP361 towards Via Aldo Vincenzetti</description>
+			<LookAt>
+				<longitude>12.97902231719415</longitude>
+				<latitude>43.17965664784354</latitude>
+				<altitude>0</altitude>
+				<heading>3.055057542618621</heading>
+				<tilt>24.70783573392236</tilt>
+				<range>206.8865016027965</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.97828636206217,43.17975471702005,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Svolta a sinistra;Turn left</description>
+			<LookAt>
+				<longitude>12.98365160064328</longitude>
+				<latitude>43.17958579103028</latitude>
+				<altitude>0</altitude>
+				<heading>3.058439414669246</heading>
+				<tilt>30.00057099278148</tilt>
+				<range>119.6208469337218</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.98377548602408,43.17940483704073,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Prendi il sentiero del li Vurgacci;Take the path of li Vurgacci</description>
+			<LookAt>
+				<longitude>12.98365160064328</longitude>
+				<latitude>43.17958579103028</latitude>
+				<altitude>0</altitude>
+				<heading>3.058439414669246</heading>
+				<tilt>30.00057099278148</tilt>
+				<range>119.6208469337218</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.98376644955291,43.1794751067185,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<description>Continua dritto per punto panoramico;Continue straight to the panoramic point</description>
+			<LookAt>
+				<longitude>12.98411239423123</longitude>
+				<latitude>43.17976628498182</latitude>
+				<altitude>0</altitude>
+				<heading>3.058562299870942</heading>
+				<tilt>23.83899260131696</tilt>
+				<range>69.84576727492437</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.98422784198079,43.17983287157516,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>6</name>
+			<description>Torna indietro e continua lungo il sentiero de li Vurgacci;Go back and continue along the path of li Vurgacci</description>
+			<LookAt>
+				<longitude>12.98411239423125</longitude>
+				<latitude>43.17976628498183</latitude>
+				<altitude>0</altitude>
+				<heading>3.058562299870327</heading>
+				<tilt>23.83899260131697</tilt>
+				<range>69.84576727420254</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.98437791503989,43.17966144356873,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>7</name>
+			<description>Gira a destra;Turn right</description>
+			<LookAt>
+				<longitude>12.98411239423125</longitude>
+				<latitude>43.17976628498183</latitude>
+				<altitude>0</altitude>
+				<heading>3.058562299870327</heading>
+				<tilt>23.83899260131697</tilt>
+				<range>69.84576727420254</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.98426740489286,43.1798433110691,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>8</name>
+			<description>Gira a destra in direzione sudovest su Via Camellaria verso Via Cesare Augusto;Turn right southwest on Via Camellaria toward Via Cesare Augusto</description>
+			<LookAt>
+				<longitude>12.98942988553687</longitude>
+				<latitude>43.17845830803579</latitude>
+				<altitude>0</altitude>
+				<heading>3.06220113571618</heading>
+				<tilt>23.8403480679459</tilt>
+				<range>443.3112726689271</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.98948973513343,43.17913872680344,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>9</name>
+			<description>Continua su Via Cesare Augusto;Continue on Via Cesare Augusto</description>
+			<LookAt>
+				<longitude>12.98708482080245</longitude>
+				<latitude>43.17914384350126</latitude>
+				<altitude>0</altitude>
+				<heading>3.060623701651373</heading>
+				<tilt>24.55538210214421</tilt>
+				<range>253.2903362028754</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.98688336829422,43.17928371598884,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>10</name>
+			<description>Continua su Piazza Giacomo Matteotti;Continue on Piazza Giacomo Matteotti</description>
+			<LookAt>
+				<longitude>12.98591896854378</longitude>
+				<latitude>43.17924580585429</latitude>
+				<altitude>0</altitude>
+				<heading>3.059722735782245</heading>
+				<tilt>22.15168549327974</tilt>
+				<range>228.9059680977578</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.98606558211036,43.17938860387248,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>11</name>
+			<description>Continua su Via Antonio Gramsci;Continua su Via Antonio Gramsci</description>
+			<LookAt>
+				<longitude>12.98529188165732</longitude>
+				<latitude>43.17939192453883</latitude>
+				<altitude>0</altitude>
+				<heading>3.059373282223301</heading>
+				<tilt>23.8435935121061</tilt>
+				<range>153.1421185048455</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.98549668543767,43.17937798808561,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>12</name>
+			<description>Svolta a sinistra e prendi Largo Giacomo Matteotti/Strada Septempedana/SP361;Turn left onto Largo Giacomo Matteotti/Strada Septempedana/SP361</description>
+			<LookAt>
+				<longitude>12.98488497437989</longitude>
+				<latitude>43.17940778718117</latitude>
+				<altitude>0</altitude>
+				<heading>3.059094843216421</heading>
+				<tilt>23.84359351210605</tilt>
+				<range>153.1421185017816</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.98464619642418,43.17905681715129,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>13</name>
+			<description>Svolta a destra e prendi Viale della Vittoria;Turn right and take Viale della Vittoria</description>
+			<LookAt>
+				<longitude>12.98455046608362</longitude>
+				<latitude>43.17884216533258</latitude>
+				<altitude>0</altitude>
+				<heading>3.058865947972509</heading>
+				<tilt>23.84359351210605</tilt>
+				<range>153.1421185010284</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.9845522088752,43.17851069959579,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>14</name>
+			<description>Svolta a destra e imbocca il Ponte del Bacio;Turn right and take the Ponte del Bacio</description>
+			<LookAt>
+				<longitude>12.9788191558301</longitude>
+				<latitude>43.17922593535496</latitude>
+				<altitude>0</altitude>
+				<heading>3.054944136399166</heading>
+				<tilt>23.84359351210609</tilt>
+				<range>153.1421185014893</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>12.97807543061982,43.17920536595086,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Urbisaglia_AR_indicazioni.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>AR</name>
+		<open>1</open>
+		<Placemark>
+			<name>AR</name>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					13.37600044811458,43.19579274905225,0 13.37585825666355,43.19595514327712,0 13.37619116833438,43.19607275886023,0 13.37650839238079,43.1961752104029,0 13.37678102191814,43.19638201321415,0 13.37711457506658,43.19676968065969,0 13.3772702453003,43.19698910020984,0 13.37758084181977,43.19747245549301,0 13.37773377511823,43.19769826440184,0 13.37788575794997,43.19786840452515,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<description>Procedi in direzione nordovest;Proceed in a northwest direction</description>
+			<LookAt>
+				<longitude>13.37671213336857</longitude>
+				<latitude>43.19607269592098</latitude>
+				<altitude>0</altitude>
+				<heading>-0.001294026827866667</heading>
+				<tilt>19.93519142281342</tilt>
+				<range>191.4365593359815</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.37602051181435,43.19578566601223,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Svolta a destra;Turn right</description>
+			<LookAt>
+				<longitude>13.37635132764601</longitude>
+				<latitude>43.19610053914216</latitude>
+				<altitude>0</altitude>
+				<heading>-0.001540994956683984</heading>
+				<tilt>19.93519142281336</tilt>
+				<range>191.4365593369834</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.37583647350733,43.19595567987366,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Continua su Corso Alessandro Giannelli; Continue on Corso Alessandro Giannelli</description>
+			<LookAt>
+				<longitude>13.37635132764601</longitude>
+				<latitude>43.19610053914216</latitude>
+				<altitude>0</altitude>
+				<heading>-0.001540994956683984</heading>
+				<tilt>19.93519142281336</tilt>
+				<range>191.4365593369834</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.37671940473428,43.19638084833186,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Continua su Piazza Salvia;Continue on Piazza Salvia</description>
+			<LookAt>
+				<longitude>13.37731157673614</longitude>
+				<latitude>43.1972179437456</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0009893664119185067</heading>
+				<tilt>19.01164120602608</tilt>
+				<range>100.2869595650474</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.37757940193544,43.19749675274667,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>
