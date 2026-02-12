@@ -228,8 +228,8 @@ public class Panel_Principale : MonoBehaviour
     }
     public void OpenStoreForUpdate()
     {
-        string appId = "IL_TUO_BUNDLE_ID"; // Es: com.azienda.gioco
-        string appleId = "IL_TUO_APPLE_ID"; // Es: 123456789 (solo numeri)
+        string appId = "com.task.eppoi"; // Es: com.azienda.gioco
+        string appleId = "6759001308"; // Es: 123456789 (solo numeri)
 
 #if UNITY_ANDROID
         // Apre direttamente l'app Play Store sulla pagina della tua app

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -106,7 +107,7 @@ public class CreateTable : MonoBehaviour
     }
     public void copyDB(Slider loadingBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente)
     {
-        string dbName = "mydatabase.db";
+        string dbName = "mydatabase.db.zip";
         string destinationPath = Path.Combine(Application.persistentDataPath, dbName);
         string sourcePath = Path.Combine(Application.streamingAssetsPath, dbName);
         loadingBar.gameObject.SetActive(true);
@@ -128,11 +129,11 @@ public class CreateTable : MonoBehaviour
 #else
         string comune_selected_result;
         var copia = false;
-        if (!File.Exists(destinationPath))
+        if (!File.Exists(destinationPath.Replace(".zip", "")))
             copia = true;
         else
         {
-            FileInfo destinatinInfo = new FileInfo(destinationPath);
+            FileInfo destinatinInfo = new FileInfo(destinationPath.Replace(".zip", ""));
             FileInfo sourceinInfo = new FileInfo(sourcePath);
             if (destinatinInfo.Length < sourceinInfo.Length)
                 copia = true;
@@ -152,14 +153,26 @@ public class CreateTable : MonoBehaviour
                 PlayerPrefs.SetInt("comune_selected", selected_result);
                 PlayerPrefs.Save();
             }
+            if (destinationPath.Contains(".zip"))
+            {
+                ZipFile.ExtractToDirectory(destinationPath, Path.Combine(Application.persistentDataPath), true);
+
+                if (File.Exists(destinationPath))
+                {
+                    File.Delete(destinationPath);
+                    Debug.Log("File ZIP rimosso con successo.");
+                }
+            }
         }
         OnCopyComplete(loadingBar, italiano, inglese, NonChiedereNuovamente);
 
 #endif
+        if (destinationPath.Contains(".zip"))
+        {
+            destinationPath = destinationPath.Replace(".zip", "");
+        }
         // Open the database from the NEW writable location
         conn = "URI=file:" + destinationPath;
-
-
     }
 
     private IEnumerator ReadSettings(string fileName, string filePath)
@@ -212,7 +225,7 @@ public class CreateTable : MonoBehaviour
         string destPath = Path.Combine(Application.persistentDataPath, fileName);
 
         // 1. Controllo esistenza
-        if (File.Exists(destPath))
+        if (File.Exists(destPath.Replace(".zip", "")))
         {
             var copia = false;
             FileInfo destinatinInfo = new FileInfo(destPath);
@@ -257,6 +270,16 @@ public class CreateTable : MonoBehaviour
             else
             {
                 Debug.Log($"Errore copia: {request.error}");
+            }
+        }
+        if (destPath.Contains(".zip"))
+        {
+            ZipFile.ExtractToDirectory(destPath, Path.Combine(Application.persistentDataPath), true);
+
+            if (File.Exists(destPath))
+            {
+                File.Delete(destPath);
+                Debug.Log("File ZIP rimosso con successo.");
             }
         }
     }

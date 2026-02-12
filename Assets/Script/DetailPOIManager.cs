@@ -347,9 +347,9 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                         tappe = true;
                                         TAPPE_TEXT _tt = _t.tappe_text[0];
                                         if (!string.IsNullOrEmpty(_tt.descrizione_breve))
-                                            Pois.descrizione.text += "<i>" + _tt.descrizione_breve + "</i>" + "\n";
+                                            Pois.descrizione.text += "<i>" + _tt.descrizione_breve + "</i>" + "\n\n";
                                         if (!string.IsNullOrEmpty(_tt.descrizione))
-                                            Pois.descrizione.text += _tt.descrizione + "\n";
+                                            Pois.descrizione.text += _tt.descrizione + "\n\n";
                                         foreach (var _pxt in _pxtList.FindAll(p => p.tappa_id == txp.tappa_id))
                                         {
                                             foreach (var _poi in _poiList.FindAll(p => p.ID == _pxt.poi_id))
@@ -358,9 +358,9 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                                 {
                                                     Pois.descrizione.text += "<br><link=\"" + _poi.ID + "\"><sprite name=\"poi\"><color=#E8531E><b>" + _poi.nome + "</b></color></link><br>";
                                                     if (!string.IsNullOrEmpty(_poi.descrizione_breve()))
-                                                        Pois.descrizione.text += "<i>" + _poi.descrizione_breve() + "</i>" + "\n";
+                                                        Pois.descrizione.text += "<i>" + _poi.descrizione_breve() + "</i>" + "\n\n";
                                                     if (!string.IsNullOrEmpty(_poi.descrizione()))
-                                                        Pois.descrizione.text += _poi.descrizione() + "\n";
+                                                        Pois.descrizione.text += _poi.descrizione() + "\n\n";
                                                 }
                                             }
                                         }

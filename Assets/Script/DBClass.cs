@@ -648,6 +648,8 @@ public class DBClass : MonoBehaviour
     {
         testo = testo.Replace("<strong>", "<b>");
         testo = testo.Replace("</strong>", "</b>");
+        testo = testo.Replace("<em>", "<i>");
+        testo = testo.Replace("</em>", "</i>");
         return testo;
     }
     public void copyDB(Slider loadingBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente)
