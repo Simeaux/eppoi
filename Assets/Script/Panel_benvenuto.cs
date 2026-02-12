@@ -69,6 +69,15 @@ public class Panel_benvenuto : MonoBehaviour
             panel_benvenuto.SetActive(false);
             panel_principale.SetActive(true);
         }
+        if (Gia_chiesto_aggiornamento.gia_visto_benvenuto == 0)
+        {
+            Gia_chiesto_aggiornamento.gia_visto_benvenuto = 1;
+        }
+        else if (Gia_chiesto_aggiornamento.gia_visto_benvenuto > 0)
+        {
+            panel_benvenuto.SetActive(false);
+            panel_principale.SetActive(true);
+        }
     }
     private void OnEnable()
     {

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,6 +57,16 @@ public class Panel_Principale : MonoBehaviour
             _panel_principale.SetActive(false);
             PlayerPrefs.SetString("poi_selezionato", PlayerPrefs.GetString("apri_direttamente_il_poi_selezionato"));
             _panel_poi.SetActive(true);
+        }
+        if (PlayerPrefs.HasKey("comune_selected") && PlayerPrefs.GetInt("comune_selected") > 0)
+        {
+            var _comune = _DBClass.GetCOMUNI(null, null, PlayerPrefs.GetInt("comune_selected"));
+            if (_comune != null)
+            {
+                PlayerPrefs.SetString("istat", _comune.FirstOrDefault().istat);
+                _panel_principale.SetActive(false);
+                _panel_comune.SetActive(true);
+            }
         }
     }
 

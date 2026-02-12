@@ -60,14 +60,14 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
         if (GameObject.FindObjectOfType<ItinerariEventiPOI_AttaccatiAlComune>() != null)
             GameObject.FindObjectOfType<ItinerariEventiPOI_AttaccatiAlComune>().BtnIDescrizioneClicked();
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
-        
+
         _from_search_filter = from_search_filter;
         //Debug.Log($"Arrivo qui con id: {ID} tipo: {tipo}");
         if (PlayerPrefs.GetInt("show_grid_poi") == 2)
             PlayerPrefs.SetInt("show_grid_poi", 1);
         if (!DetailPOI.enabled || from_comune)
         {
-            if (_ID  != "")
+            if (_ID != "")
             {
                 Pois.descrizione.text = string.Empty;
                 Pois.scrollview_list_img.gameObject.SetActive(true);
@@ -273,7 +273,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                             //if (PanelDownOfPanlMap != null)
                             //    PanelDownOfPanlMap.SetActive(false);
 
-                                Pois.immagine.gameObject.SetActive(true);
+                            Pois.immagine.gameObject.SetActive(true);
 
                             float _dimensione_foto = 1240;
                             if (_p.Listimages != null && _p.Listimages.Count > 0)
@@ -324,37 +324,39 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                 //Pois.scrollview_list_img.transform.SetParent(Pois.descrizione.transform, false);
                                 Pois.scrollview_list_img.gameObject.SetActive(false);
                             }
-                            
+
 
 
                             //Location loc = new Location(_p.latitudine, _p.longitudine);
                             Pois.name.text = _p.nome_percorso;
                             Pois.nameComune.text = "";
-                            Pois.tipo.text = _lingua_selezionata == 1 ? "Itinerario": "Itinerary";
-                            if(_p.descrizione != null && _p.descrizione.Count > 0)
+                            Pois.tipo.text = _lingua_selezionata == 1 ? "Itinerario" : "Itinerary";
+                            if (_p.descrizione != null && _p.descrizione.Count > 0)
                                 Pois.descrizione.text += _p.descrizione[0].descrizione + "\n\n\n\n";
                             // Aggiungo le tappe
                             bool tappe = false;
-                            foreach( var txp in _DBClass.getTAPPEXPERCORSI(null, null, _p.id))
+                            var unicode = 9312;
+                            foreach (var txp in _DBClass.getTAPPEXPERCORSI(null, null, _p.id))
                             {
-                                foreach(var _t in  _DBClass.getTAPPE(_lingua_selezionata, txp.tappa_id))
+                                foreach (var _t in _DBClass.getTAPPE(_lingua_selezionata, txp.tappa_id))
                                 {
-                                    Pois.descrizione.text += "<br><b><sprite name=\"tappa\"><color=#E8531E>" + _t.nome_tappa + "</color></b>"+ "\n";
+                                    Pois.descrizione.text += "<br><b>\\u" + unicode.ToString("X") + "<color=#E8531E>" + _t.nome_tappa + "</color></b>" + "\n";
+                                    unicode++;
                                     if (_t.tappe_text != null && _t.tappe_text.Count > 0)
                                     {
                                         tappe = true;
                                         TAPPE_TEXT _tt = _t.tappe_text[0];
                                         if (!string.IsNullOrEmpty(_tt.descrizione_breve))
-                                            Pois.descrizione.text +=  "<i>" + _tt.descrizione_breve + "</i>" + "\n";
+                                            Pois.descrizione.text += "<i>" + _tt.descrizione_breve + "</i>" + "\n";
                                         if (!string.IsNullOrEmpty(_tt.descrizione))
                                             Pois.descrizione.text += _tt.descrizione + "\n";
-                                        foreach(var _pxt in _pxtList.FindAll(p=> p.tappa_id == _t.id))
+                                        foreach (var _pxt in _pxtList.FindAll(p => p.tappa_id == txp.tappa_id))
                                         {
-                                            foreach(var _poi in _poiList.FindAll(p=> p.ID == _pxt.id))
+                                            foreach (var _poi in _poiList.FindAll(p => p.ID == _pxt.poi_id))
                                             {
                                                 if (!string.IsNullOrEmpty(_poi.nome))
                                                 {
-                                                    Pois.descrizione.text += "<br><link=\""+ _poi.ID +"\"><sprite name=\"poi\"><color=#E8531E><b>" + _poi.nome + "</b></color></link><br>";
+                                                    Pois.descrizione.text += "<br><link=\"" + _poi.ID + "\"><sprite name=\"poi\"><color=#E8531E><b>" + _poi.nome + "</b></color></link><br>";
                                                     if (!string.IsNullOrEmpty(_poi.descrizione_breve()))
                                                         Pois.descrizione.text += "<i>" + _poi.descrizione_breve() + "</i>" + "\n";
                                                     if (!string.IsNullOrEmpty(_poi.descrizione()))
@@ -365,8 +367,8 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                     }
                                 }
                             }
-                            if(tappe)
-                                Pois.descrizione.text += "\n\n\n\n";
+                            if (tappe)
+                                Pois.descrizione.text += "\n\n\n\n.";
                             Pois.descrizione.text = _DBClass.pulisciHTML(Pois.descrizione.text);
                             Pois.img_webpage.color = Color.white;
                             Pois.img_facebook.color = Color.white;
@@ -385,41 +387,41 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                 Pois.webpage.text = _p.webPage;
                             else
                             {*/
-                                Pois.webpage.text = string.Empty;
-                                Pois.img_webpage.color = lightgray;
-                                Pois.webpage.enabled = false;
+                            Pois.webpage.text = string.Empty;
+                            Pois.img_webpage.color = lightgray;
+                            Pois.webpage.enabled = false;
                             /*}
                             if (!string.IsNullOrEmpty(_p.facebook))
                                 Pois.facebook.text = _p.facebook;
                             else
                             {*/
-                                Pois.facebook.text = string.Empty;
-                                Pois.img_facebook.color = lightgray;
-                                Pois.facebook.enabled = false;
+                            Pois.facebook.text = string.Empty;
+                            Pois.img_facebook.color = lightgray;
+                            Pois.facebook.enabled = false;
                             /*}
                             if (!string.IsNullOrEmpty(_p.instagram))
                                 Pois.instagramm.text = _p.instagram;
                             else
                             {*/
-                                Pois.instagramm.text = string.Empty;
-                                Pois.img_instagramm.color = lightgray;
-                                Pois.instagramm.enabled = false;
+                            Pois.instagramm.text = string.Empty;
+                            Pois.img_instagramm.color = lightgray;
+                            Pois.instagramm.enabled = false;
                             /*}
                             if (!string.IsNullOrEmpty(_p.telefono))
                                 Pois.telefono.text = _p.telefono;
                             else
                             {*/
-                                Pois.telefono.text = string.Empty;
-                                Pois.img_telefono.color = lightgray;
-                                Pois.telefono.enabled = false;
+                            Pois.telefono.text = string.Empty;
+                            Pois.img_telefono.color = lightgray;
+                            Pois.telefono.enabled = false;
                             /*}
                             if (!string.IsNullOrEmpty(_p.mail))
                                 Pois.mail.text = _p.mail;
                             else
                             {*/
-                                Pois.mail.text = string.Empty;
-                                Pois.img_mail.color = lightgray;
-                                Pois.mail.enabled = false;
+                            Pois.mail.text = string.Empty;
+                            Pois.img_mail.color = lightgray;
+                            Pois.mail.enabled = false;
                             //}
 
                             Color _c = new Color();
@@ -470,14 +472,14 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                 //Debug.Log((Pois.dettaglioItinerario.transform.localPosition.y - 2.0));
                                 int tab = 150;
                                 int altezza_pageslider = -402;
-//#if UNITY_IOS
-//			                    altezza_pageslider = -802;
-//#endif
+                                //#if UNITY_IOS
+                                //			                    altezza_pageslider = -802;
+                                //#endif
 
                                 Pois.dettaglioItinerario.transform.localPosition = new Vector3(0, 0 + tab, 0);// .Translate(new Vector3(0, -1 * (Pois.dettaglioItinerario.transform.localPosition.y), 0));
                                 if (_p.Listimages != null && _p.Listimages.Count != 0)
-                                //    Pois.dettaglioItinerario.transform.localPosition = new Vector3(0, 0, 0);// .Translate(new Vector3(0, -2, 0));
-                                //else
+                                    //    Pois.dettaglioItinerario.transform.localPosition = new Vector3(0, 0, 0);// .Translate(new Vector3(0, -2, 0));
+                                    //else
                                     Pois.dettaglioItinerario.transform.localPosition = new Vector3(0, altezza_pageslider + tab, 0);// Pois.dettaglioItinerario.transform.position = new Vector3(0, -802, 0);
 
                                 int indice_dettaglio = 0;
@@ -492,7 +494,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                         t += ", ";
                                     t += _p.tipo_navigazione;
                                 }
-                                if(!string.IsNullOrEmpty(t))
+                                if (!string.IsNullOrEmpty(t))
                                     dettagli_da_scrivere.Add(new DettaglioItinerario() { label = _lingua_selezionata == 1 ? "Tipologia" : "Typology", value = t });
 
                                 t = "";
@@ -535,7 +537,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                 t = "";
                                 //if (!string.IsNullOrEmpty(_p.tempo_percorrenza))
                                 var poi = _DBClass.getPOI(_p.poi_id);
-                                if(poi != null)
+                                if (poi != null)
                                     t = $"{(Math.Sqrt((Math.Pow(poi[0].longitudine - _DBClass._longitudine, 2) + Math.Pow(poi[0].latitudine - _DBClass._latitudine, 2))) * 100).ToString("0.##")} km";
 
                                 //"100 km";
@@ -575,7 +577,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
             }
         }
     }
-    
+
     public void CloseDetailPOI()
     {
         if (PlayerPrefs.GetInt("show_grid_poi") == 2)
@@ -608,13 +610,13 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
         Debug.Log("Mostra_nella_mappa");
         //if (SceneManager.GetActiveScene().name == "Menu")
         //{
-            PlayerPrefs.SetString("id_select", ID_selected.text);
-            PlayerPrefs.SetString("show_on_freemap", "1");
-            PlayerPrefs.SetString("SpostaCentro_freemap", _longitudine_scelta.ToString() + "_" + _latitudine_scelta.ToString());
+        PlayerPrefs.SetString("id_select", ID_selected.text);
+        PlayerPrefs.SetString("show_on_freemap", "1");
+        PlayerPrefs.SetString("SpostaCentro_freemap", _longitudine_scelta.ToString() + "_" + _latitudine_scelta.ToString());
         //}
         CloseDetailPOI();
         PlayerPrefs.SetInt("show_grid_poi", 0);
-        
+
         if (GameObject.FindObjectOfType<ICanvas>() != null)
             GameObject.FindObjectOfType<ICanvas>().search_filterPOI = false;
         //if (PanelDownOfPanlMap != null)

@@ -62,6 +62,15 @@ public class Select_language : MonoBehaviour
             panel_select_language.SetActive(false);
             panel_benvenuto.SetActive(true);
         }
+        if (Gia_chiesto_aggiornamento.gia_visto == 0)
+        {
+            Gia_chiesto_aggiornamento.gia_visto = 1;
+        }
+        else if (Gia_chiesto_aggiornamento.gia_visto > 0)
+        {
+            panel_select_language.SetActive(false);
+            panel_benvenuto.SetActive(true);
+        }
     }
 
     private void OnEnable()
