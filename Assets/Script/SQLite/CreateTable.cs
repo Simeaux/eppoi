@@ -125,7 +125,7 @@ public class CreateTable : MonoBehaviour
 #if UNITY_ANDROID
         Debug.Log("Database - Android");
         StartCoroutine(CopyDatabaseRoutineAndroid(dbName, loadingBar, italiano, inglese, NonChiedereNuovamente));
-        StartCoroutine(ReadSettings(fileName, filePath));
+        StartCoroutine(ReadSettings(fileName));
 #else
         string comune_selected_result;
         var copia = false;
@@ -175,29 +175,32 @@ public class CreateTable : MonoBehaviour
         conn = "URI=file:" + destinationPath;
     }
 
-    private IEnumerator ReadSettings(string fileName, string filePath)
+    private IEnumerator ReadSettings(string fileName)
     {
         string sourcePath = Path.Combine(Application.streamingAssetsPath, fileName);
         string destPath = Path.Combine(Application.persistentDataPath, fileName);
         // Copia solo se il file non esiste già nella cartella persistente
         if (!File.Exists(destPath))
         {
-            using (UnityWebRequest request = UnityWebRequest.Get(sourcePath))
+            if (File.Exists(sourcePath))
             {
-                yield return request.SendWebRequest();
+                using (UnityWebRequest request = UnityWebRequest.Get(sourcePath))
+                {
+                    yield return request.SendWebRequest();
 
-                if (request.result == UnityWebRequest.Result.Success)
-                {
-                    File.WriteAllBytes(destPath, request.downloadHandler.data);
-                    Debug.Log("File copiato correttamente!");
+                    if (request.result == UnityWebRequest.Result.Success)
+                    {
+                        File.WriteAllBytes(destPath, request.downloadHandler.data);
+                        Debug.Log("File copiato correttamente!");
+                    }
+                    else
+                    {
+                        Debug.LogError("Errore copia: " + request.error);
+                    }
                 }
-                else
-                {
-                    Debug.LogError("Errore copia: " + request.error);
-                }
+                // Ora puoi leggerlo
+                LeggiFile(destPath);
             }
-            // Ora puoi leggerlo
-            LeggiFile(destPath);
         }
     }
     private void LeggiFile(string path)
@@ -228,7 +231,7 @@ public class CreateTable : MonoBehaviour
         if (File.Exists(destPath.Replace(".zip", "")))
         {
             var copia = false;
-            FileInfo destinatinInfo = new FileInfo(destPath);
+            FileInfo destinatinInfo = new FileInfo(destPath.Replace(".zip", ""));
             Debug.Log("Database " + destinatinInfo.Length);
             if (destinatinInfo.Length < 10)
                 copia = true;

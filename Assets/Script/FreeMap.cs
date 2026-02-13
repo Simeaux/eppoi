@@ -484,7 +484,6 @@ public class FreeMap : MonoBehaviour
         return min < num && num < max;
     }
 
-    private int old_already_inserted = 0;
     private UnityEngine.Color FromHex(string hex)
     {
         if (hex.StartsWith("#"))
