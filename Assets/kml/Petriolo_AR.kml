@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Petriolo_AR.kml</name>
+	<StyleMap id="m_ylw-pushpin00">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin8</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl12</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin80</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin11">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin100</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin8">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin80">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl12">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_grn-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin100">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_grn-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin4">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>Petriolo_AR</name>
+		<open>1</open>
+		<Placemark>
+			<name>AR</name>
+			<styleUrl>#msn_ylw-pushpin11</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					13.46918166448376,43.22163554397356,0 13.46916270993769,43.22161854695135,0 13.46882785264364,43.22136089541474,0 13.46864598043409,43.22127999311323,0 13.46732915555595,43.22115452493238,0 13.46581308006508,43.2209425268987,0 13.46542395602377,43.2209086831913,0 13.46534072388353,43.22096022443201,0 13.46535779737535,43.22098153703949,0 13.46548548333036,43.2210282913659,0 13.46571310595585,43.22108972158817,0 13.46581495810506,43.22111985279447,0 13.4657752409952,43.22119886938991,0 13.46581545626769,43.22121617251523,0 13.46594020606321,43.22111756729719,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>(t)1</name>
+			<description>Tapppa 1 - Sacrario dei caduti in guerra;Stage 1 - Sacrario dei caduti in guerra</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46845385591575</longitude>
+				<latitude>43.22157934318582</latitude>
+				<altitude>0</altitude>
+				<heading>0.000554583114034098</heading>
+				<tilt>18.97083481746156</tilt>
+				<range>119.9045435293982</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46919444444444,43.22164166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<open>1</open>
+			<description>Procedi in direzione sudovest su Via Castellano/Strada Provinciale 36 verso Via della Pace;Proceed southwest on Via Castellano/Provincial Road 36 towards Via della Pace</description>
+			<LookAt>
+				<longitude>13.46920207289561</longitude>
+				<latitude>43.22157476481554</latitude>
+				<altitude>0</altitude>
+				<heading>0.002564204158383747</heading>
+				<tilt>21.81608812972802</tilt>
+				<range>122.4407827631613</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46916850815296,43.22161182750546,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Svolta a destra verso Piazza S. Martino;Turn right towards Piazza S. Martino</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46528772827415</longitude>
+				<latitude>43.22120891259384</latitude>
+				<altitude>0</altitude>
+				<heading>-0.00179782556140186</heading>
+				<tilt>25.29252858024748</tilt>
+				<range>119.3292149784922</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46539944647842,43.22089802417087,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Svolta a destra e prendi Piazza S. Martino;Turn right and take Piazza S. Martino</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46528385439493</longitude>
+				<latitude>43.2212098429015</latitude>
+				<altitude>0</altitude>
+				<heading>-0.001800478446155433</heading>
+				<tilt>25.2925285802475</tilt>
+				<range>119.3292149777546</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46531248681733,43.22099743913704,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Svolta a sinistra per Torre Civica;Turn left onto Torre Civica</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46557085047198</longitude>
+				<latitude>43.22111413659002</latitude>
+				<altitude>0</altitude>
+				<heading>-0.001653014372902995</heading>
+				<tilt>24.39455393343967</tilt>
+				<range>103.4344596288102</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.4658144262516,43.22110619430919,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)2</name>
+			<description>Tappa 2 - Piazza San Martino;Stage 2 - Piazza San Martino</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46557085047198</longitude>
+				<latitude>43.22111413659002</latitude>
+				<altitude>0</altitude>
+				<heading>-0.001653014372902995</heading>
+				<tilt>24.39455393343967</tilt>
+				<range>103.4344596288102</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46577777777778,43.22120555555556,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<open>1</open>
+			<description>Torna indietro e prosegui verso il Belvedere;Go back and continue towards the Belvedere</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46557085047198</longitude>
+				<latitude>43.22111413659002</latitude>
+				<altitude>0</altitude>
+				<heading>-0.001653014372902995</heading>
+				<tilt>24.39455393343967</tilt>
+				<range>103.4344596288102</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46581142832445,43.22122533830979,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)3</name>
+			<open>1</open>
+			<description>Tappa 3 - Belvedere Piazza San Martino;Stage 3 - Belvedere Piazza San Martino</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46557085047198</longitude>
+				<latitude>43.22111413659002</latitude>
+				<altitude>0</altitude>
+				<heading>-0.001653014372902995</heading>
+				<tilt>24.39455393343967</tilt>
+				<range>103.4344596288102</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46596111111111,43.22112222222223,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

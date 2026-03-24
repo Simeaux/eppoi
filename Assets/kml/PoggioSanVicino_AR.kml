@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>PoggioSanVicino_AR.kml</name>
+	<StyleMap id="__managed_style_0A8D322BFB39D8014529">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed16</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed15</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="failed15">
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="failed16">
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin01">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl01</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-pushpin8">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_red-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl01">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_grn-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-pushpin0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-pushpin4">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_red-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+	</Style>
+	<Style id="sn_grn-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-pushpin10">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_red-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+	</Style>
+	<Folder>
+		<name>PoggioSanVicino_AR</name>
+		<open>1</open>
+		<Placemark id="56B5B04E8A000004">
+			<name>AR</name>
+			<styleUrl>#__managed_style_0A8D322BFB39D8014529</styleUrl>
+			<LineString>
+				<coordinates>
+					13.07865395339342,43.37466031770805,505.3369999999999 13.0785541653438,43.37467543521002,505.3369999999999 13.0784321874942,43.37501611058521,505.3369999999999 13.07842332559115,43.37557844535561,504.613 13.07839413164531,43.37568924872588,504.009 13.07838968718702,43.37606371909207,502.7649999999998 13.07833404001739,43.37605238232383,502.7649999999998 13.07836224483088,43.37559727578019,502.7649999999998 13.07836464670823,43.37537308987514,502.7649999999998 13.07828668828514,43.37509183170609,502.7649999999998 13.07808751597785,43.37469906478241,502.7649999999998 13.07788821056098,43.374745154042,502.7649999999998 13.0778530673202,43.37510281894002,502.7649999999998 13.07795022721811,43.3755095943992,502.7649999999998 13.07801913958009,43.37568333755502,502.7649999999998 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>(t)1</name>
+			<description>Tappa 1 - Piazza dedicata alla forza femminile;Stage 1 - Piazza dedicata alla forza femminile</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.07852482029653</longitude>
+				<latitude>43.37504771566817</latitude>
+				<altitude>0</altitude>
+				<heading>-2.99304092872679</heading>
+				<tilt>27.01966077688693</tilt>
+				<range>204.5404491616377</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin8</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07866090155465,43.37465682310796,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<open>1</open>
+			<description>Procedi in direzione nord su Via Giacomo Leopardi verso Via Borgo Garibaldi;Proceed north on Via Giacomo Leopardi towards Via Borgo Garibaldi</description>
+			<LookAt>
+				<longitude>13.07839100282196</longitude>
+				<latitude>43.37513865051723</latitude>
+				<altitude>0</altitude>
+				<heading>-2.993132802910111</heading>
+				<tilt>27.01945658259701</tilt>
+				<range>154.4469232610595</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin01</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07856591057223,43.3746871860134,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Tieni la sinistra;Keep left</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.07832929572302</longitude>
+				<latitude>43.37526357454568</latitude>
+				<altitude>0</altitude>
+				<heading>-2.993176791531589</heading>
+				<tilt>17.7202612610288</tilt>
+				<range>225.3162724528118</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07843772696796,43.37558552945513,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<open>1</open>
+			<description>Torna indietro su Via Giacomo Lepardi;Go back to Via Giacomo Leopardi</description>
+			<LookAt>
+				<longitude>13.07783047147351</longitude>
+				<latitude>43.37540242671238</latitude>
+				<altitude>0</altitude>
+				<heading>0.003535239963437597</heading>
+				<tilt>15.56255487515946</tilt>
+				<range>253.1180554417162</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07830524269552,43.37604209874128,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)2</name>
+			<open>1</open>
+			<description>Tappa 2 - Piazza Santa Maria Assunta;Stage 2 - Piazza Santa Maria Assunta</description>
+			<LookAt>
+				<longitude>13.07783047147351</longitude>
+				<latitude>43.37540242671238</latitude>
+				<altitude>0</altitude>
+				<heading>0.003535239963437597</heading>
+				<tilt>15.56255487515946</tilt>
+				<range>253.1180554417162</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07841346716094,43.37605022377291,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Tieni la destra;Keep right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.07832929572302</longitude>
+				<latitude>43.37526357454568</latitude>
+				<altitude>0</altitude>
+				<heading>-2.993176791531589</heading>
+				<tilt>17.7202612610288</tilt>
+				<range>225.3162724528118</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07834580856221,43.37537123790545,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)3</name>
+			<open>1</open>
+			<description>Tappa 3 - Torre Civica;Stage 3 - Torre Civica</description>
+			<LookAt>
+				<longitude>13.07794098800627</longitude>
+				<latitude>43.37558206009962</latitude>
+				<altitude>0</altitude>
+				<heading>0.003610936424168158</heading>
+				<tilt>15.56235969949789</tilt>
+				<range>172.2415140323911</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.0782835895628,43.37511043922447,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<description>Gira a destra;Turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.07832929572302</longitude>
+				<latitude>43.37526357454568</latitude>
+				<altitude>0</altitude>
+				<heading>-2.993176791531589</heading>
+				<tilt>17.7202612610288</tilt>
+				<range>225.3162724528118</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07807565330922,43.37468527264164,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)4</name>
+			<description>Tappa 4 - Chiesa dei Santi Giovanni Battista e Giovanni Evangelista;Stage 4 - Chiesa dei Santi Giovanni Battista e Giovanni Evangelista</description>
+			<LookAt>
+				<longitude>13.07794098800627</longitude>
+				<latitude>43.37558206009962</latitude>
+				<altitude>0</altitude>
+				<heading>0.003610936424168158</heading>
+				<tilt>15.56235969949789</tilt>
+				<range>172.2415140323911</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.07793392348115,43.37551761997351,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

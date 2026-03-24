@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using TS.PageSlider.Demo;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore;
 using UnityEngine.UI;
-
+using UnityEngine.UIElements;
 using static ARLocation.MapboxRoutes.SampleProject.ArMenuController;
 using static DBClass;
 
@@ -15,7 +18,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
 
     public Canvas DetailPOI;
     public Text ID_selected;
-    public Button portami_la;
+    public UnityEngine.UI.Button portami_la;
     public POIData Pois;
     //public GameObject PanelDownOfPanlMap;
 
@@ -31,6 +34,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
     private int _lingua_selezionata = 1;
     private Color lightgray = new Color(0.8f, 0.8f, 0.8f, 1.0f);
 
+
     private void Start()
     {
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
@@ -41,6 +45,13 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
         Pois.immagine.gameObject.SetActive(true);
         Pois.scrollview_list_img.Clear();
         Pois.scrollview.transform.localPosition = new Vector3(0, 0, 0);
+        /*
+        if (assetTemporaneo != null)
+        {
+            // Fondamentale: Distruggi l'asset per non saturare la RAM
+            Destroy(assetTemporaneo);
+        }
+        */
     }
     private class DettaglioItinerario
     {
@@ -233,7 +244,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                         else if (ListTappexPercorsi.Count > 0)
                                         {
                                             Debug.Log("percorso associato tramite getPOIXTAPPE e getTAPPEXPERCORSI");
-                                            var _percorso = _DBClass.GetPERCORSO(ListTappexPercorsi[0].id);
+                                            var _percorso = _DBClass.GetPERCORSO(ListTappexPercorsi[0].percorso_id);
                                             if (_percorso != null && _percorso.Count > 0)
                                                 _percorso_associato = _percorso[0];
                                         }
@@ -259,17 +270,23 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                 }
                 else if (tipo == 1)
                 {
-                    int ID = int.Parse(_ID);
+                    long ID = long.Parse(_ID);
                     var _pxtList = _DBClass.getPOIXTAPPE(null, null, null, ID);
-                    var _poiList = _DBClass.getPOI(null, null, null, 0, null, null, null, null, ID);
-                    List<PERCORSO> _PERCORSO = _DBClass.GetPERCORSO(ID);
+                    var _poiList = _DBClass.getPOI(null, null, null, 0, null, null, true, null, ID);
+                    List<PERCORSO> _PERCORSO = _DBClass.GetPERCORSO(ID, null, null, null, null, null, null, true);
+                    List<Texture2D> _arr_app_img = new List<Texture2D>();
+
+                    int _numero_immagine = 0;
+
                     foreach (DBClass.PERCORSO _p in _PERCORSO)
                     {
                         if (_p != null)
                         {
+                            Pois.descrizione.text += "\n\n\n\n\n\n\n";
                             ID_selected.text = _ID;
                             DetailPOI.enabled = true;
-                            portami_la.gameObject.SetActive(true);
+                            if (portami_la != null)
+                                portami_la.gameObject.SetActive(true);
                             //if (PanelDownOfPanlMap != null)
                             //    PanelDownOfPanlMap.SetActive(false);
 
@@ -279,7 +296,8 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                             if (_p.Listimages != null && _p.Listimages.Count > 0)
                             {
 
-                                Pois.descrizione.text = "\n\n\n\n\n\n\n";
+                                Pois.descrizione.text += "\n\n\n\n\n\n";
+
 
                                 Debug.Log($"foto da visualizzare {_p.Listimages.Count}");
                                 int _i = 0;
@@ -329,18 +347,40 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
 
                             //Location loc = new Location(_p.latitudine, _p.longitudine);
                             Pois.name.text = _p.nome_percorso;
+
                             Pois.nameComune.text = "";
                             Pois.tipo.text = _lingua_selezionata == 1 ? "Itinerario" : "Itinerary";
+
+
                             if (_p.descrizione != null && _p.descrizione.Count > 0)
                                 Pois.descrizione.text += _p.descrizione[0].descrizione + "\n\n\n\n";
                             // Aggiungo le tappe
                             bool tappe = false;
                             var unicode = 9312;
+
+                            var titolo_tappe = false;
                             foreach (var txp in _DBClass.getTAPPEXPERCORSI(null, null, _p.id))
                             {
                                 foreach (var _t in _DBClass.getTAPPE(_lingua_selezionata, txp.tappa_id))
                                 {
-                                    Pois.descrizione.text += "<br><b>\\u" + unicode.ToString("X") + "<color=#E8531E>" + _t.nome_tappa + "</color></b>" + "\n";
+                                    if (!titolo_tappe)
+                                    {
+                                        Pois.descrizione.text += "<br><b>Tappe itinerario</b>";
+                                        titolo_tappe = true;
+                                    }
+                                    Pois.descrizione.text += "<br><b><size=120%>\\u" + unicode.ToString("X") + "</size><color=#E8531E><link=tappa_" + txp.ordine + ">" + _t.nome_tappa + "</link></color></b>";
+                                    unicode++;
+                                }
+                            }
+                            if (titolo_tappe)
+                                Pois.descrizione.text += "<br><align=center><s>_________</s></align>";
+                            unicode = 9312;
+                            foreach (var txp in _DBClass.getTAPPEXPERCORSI(null, null, _p.id))
+                            {
+                                foreach (var _t in _DBClass.getTAPPE(_lingua_selezionata, txp.tappa_id))
+                                {
+                                    Pois.descrizione.text += "<link=ancora_tappa_" + txp.ordine + "></link>";
+                                    Pois.descrizione.text += "<br><b><size=120%>\\u" + unicode.ToString("X") + "</size><color=#E8531E>" + _t.nome_tappa + "</color></b>" + "\n";
                                     unicode++;
                                     if (_t.tappe_text != null && _t.tappe_text.Count > 0)
                                     {
@@ -350,26 +390,118 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                             Pois.descrizione.text += "<i>" + _tt.descrizione_breve + "</i>" + "\n\n";
                                         if (!string.IsNullOrEmpty(_tt.descrizione))
                                             Pois.descrizione.text += _tt.descrizione + "\n\n";
+                                        _dimensione_foto = 1240;
                                         foreach (var _pxt in _pxtList.FindAll(p => p.tappa_id == txp.tappa_id))
                                         {
                                             foreach (var _poi in _poiList.FindAll(p => p.ID == _pxt.poi_id))
                                             {
                                                 if (!string.IsNullOrEmpty(_poi.nome))
                                                 {
-                                                    Pois.descrizione.text += "<br><link=\"" + _poi.ID + "\"><sprite name=\"poi\"><color=#E8531E><b>" + _poi.nome + "</b></color></link><br>";
-                                                    if (!string.IsNullOrEmpty(_poi.descrizione_breve()))
-                                                        Pois.descrizione.text += "<i>" + _poi.descrizione_breve() + "</i>" + "\n\n";
-                                                    if (!string.IsNullOrEmpty(_poi.descrizione()))
-                                                        Pois.descrizione.text += _poi.descrizione() + "\n\n";
+                                                    Pois.descrizione.text += "<br><link=poi_" + _poi.ID + "><sprite name=\"poi\"><color=#E8531E><b>" + _poi.nome + "</b></color></link><br>";
+                                                    // Aggiungo lo sprite per l'immagine del poi
+                                                    if (_poi._images != null && _poi._images.Count > 0)
+                                                        Pois.descrizione.text += "<size=500><align=center><sprite name=\"img_" + _numero_immagine + "\"></align></size>";
+                                                    /*
+                                                    Su Espressa richiesta di PAolo ho tolto le descrizini dei POI
+                                                                                                        if (!string.IsNullOrEmpty(_poi.descrizione_breve()))
+                                                                                                            Pois.descrizione.text += "<i>" + _poi.descrizione_breve() + "</i>" + "\n";
+                                                                                                        if (!string.IsNullOrEmpty(_poi.descrizione()))
+                                                                                                        {
+                                                                                                            Pois.descrizione.text += "<link=" + _poi.ID + "><color=#0000EE>[Altro]</color></link>";
+                                                                                                            link++;
+                                                                                                            Pois.descrizione.text += "<size=0% id=" + _poi.ID + ">\n" + _poi.descrizione() + "</size>\n\n";
+                                                                                                        }
+                                                    */
+                                                    /// immagine poi
+                                                    if (_poi._images != null && _poi._images.Count > 0)
+                                                    {
+                                                        Vector2 size = Pois.descrizione.GetRenderedValues(false);
+                                                        //Pois.descrizione.text += "\n\n\n\n\n\n\n";
+
+                                                        Debug.Log($"foto da visualizzare {_poi._images.Count}");
+                                                        int _i = 0;
+                                                        foreach (var _img in _poi._images)
+                                                        {
+                                                            if (_i == 0)
+                                                            {
+                                                                Sprite s = _DBClass.getSpriteFromByteArray(_img.image);
+
+                                                                Texture2D tex = new Texture2D(2, 2);
+                                                                tex.LoadImage(_img.image); // Converte i byte in immagine
+                                                                tex.name = "img_" + _numero_immagine;
+                                                                _arr_app_img.Add(tex);
+                                                                /*
+
+
+                                                                                                                                // 1. Crea l'istanza dell'asset
+                                                                                                                                TMP_SpriteAsset spriteAsset = ScriptableObject.CreateInstance<TMP_SpriteAsset>();
+                                                                spriteAsset.spriteSheet = s.texture;
+
+                                                                // 2. Configura il materiale
+                                                                Shader shader = Shader.Find("TextMeshPro/Sprite");
+                                                                spriteAsset.material = new Material(shader);
+                                                                spriteAsset.material.mainTexture = s.texture;
+
+                                                                // 3. Popola la lista degli sprite
+                                                                spriteAsset.spriteInfoList = new List<TMP_Sprite>();
+                                                                //for (int i = 0; i < sprites.Length; i++)
+                                                                //{
+                                                                TMP_Sprite tmpSprite = new TMP_Sprite();
+                                                                tmpSprite.id = (int)_poi.ID;
+                                                                tmpSprite.name = "img_" + _numero_immagine;
+                                                                tmpSprite.sprite = s;
+                                                                // Altri parametri come x, y, width, height ricavati dalla textureRect
+                                                                spriteAsset.spriteInfoList.Add(tmpSprite);
+                                                                //}
+
+                                                                // 4. Fondamentale: Aggiorna le tabelle interne per rendere gli sprite "trovabili"
+                                                                spriteAsset.UpdateLookupTables();
+
+                                                                // Se sei in Editor, salvalo su disco
+                                                                //#if UNITY_EDITOR
+                                                                AssetDatabase.CreateAsset(spriteAsset, "Assets/MyNewSpriteAsset.asset");
+                                                                //#endif
+                                                                */
+                                                            }
+                                                            _i++;
+                                                        }
+                                                        //float delta = 0;
+                                                        //if(_i > 1)
+                                                        //    delta = (_dimensione_foto * (_i - 1));
+                                                        //Pois.content_list_img.GetComponent<RectTransform>().sizeDelta = new Vector2(delta, 0);
+                                                        //Pois.immagine.gameObject.SetActive(false);
+                                                        //Pois.scrollview_list_img.transform.SetParent(Pois.descrizione.transform, false);
+
+
+                                                    }
+                                                    /// end immagine poi
+                                                    _numero_immagine++;
+
+
+
+
                                                 }
                                             }
                                         }
                                     }
                                 }
                             }
+
                             if (tappe)
                                 Pois.descrizione.text += "\n\n\n\n.";
+
                             Pois.descrizione.text = _DBClass.pulisciHTML(Pois.descrizione.text);
+
+
+
+                            Texture2D texturePunti = Resources.Load<Texture2D>("Icone/punti di interesse nero");
+                            texturePunti.name = "poi";
+                            _arr_app_img.Add(texturePunti);
+
+                            BuildSpriteAssetFromDB(_arr_app_img, Pois.descrizione);
+
+
+
                             Pois.img_webpage.color = Color.white;
                             Pois.img_facebook.color = Color.white;
                             Pois.img_instagramm.color = Color.white;
@@ -505,7 +637,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                     if (!string.IsNullOrEmpty(t))
                                         t += ", ";
                                     //t += _lingua_selezionata == 1 ? "lunghezza " : "length ";
-                                    t += _p.lunghezza + " km";
+                                    t += _p.lunghezza;// + " km";
                                 }
                                 if (!string.IsNullOrEmpty(t))
                                     dettagli_da_scrivere.Add(new DettaglioItinerario() { label = _lingua_selezionata == 1 ? "Difficoltà" : "Difficulty", value = t });
@@ -578,6 +710,94 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public void BuildSpriteAssetFromDB(List<Texture2D> dbTextures, TMP_Text myText)
+    {
+        if (dbTextures == null || myText == null) return;
+
+        // 1. Crea l'Atlas
+        Texture2D atlas = new Texture2D(2048, 2048);
+        Rect[] rects = atlas.PackTextures(dbTextures.ToArray(), 2, 2048);
+
+        // 2. Istanza Sprite Asset
+        TMP_SpriteAsset spriteAsset = ScriptableObject.CreateInstance<TMP_SpriteAsset>();
+
+        // --- INIZIALIZZAZIONE FORZATA DELLE LISTE (Anti-NullReference) ---
+        var fields = typeof(TMP_SpriteAsset).GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
+        foreach (var f in fields)
+        {
+            if (f.FieldType == typeof(List<TMP_SpriteCharacter>)) f.SetValue(spriteAsset, new List<TMP_SpriteCharacter>());
+            if (f.FieldType == typeof(List<TMP_SpriteGlyph>)) f.SetValue(spriteAsset, new List<TMP_SpriteGlyph>());
+            if (f.FieldType == typeof(List<TMP_Sprite>)) f.SetValue(spriteAsset, new List<TMP_Sprite>());
+        }
+        // -----------------------------------------------------------------
+
+        spriteAsset.spriteSheet = atlas;
+        spriteAsset.material = new Material(Shader.Find("TextMeshPro/Sprite"));
+        spriteAsset.material.mainTexture = atlas;
+
+        // --- INIZIALIZZAZIONE FORZATA (Soluzione Finale) ---
+        BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public;
+
+        // Inizializziamo i campi per Nome (copre quasi tutte le versioni di TMP)
+        string[] fieldNames = { "m_SpriteCharacterTable", "m_SpriteGlyphTable", "spriteCharacterTable", "spriteGlyphTable", "spriteInfoList" };
+
+        foreach (string name in fieldNames)
+        {
+            FieldInfo field = typeof(TMP_SpriteAsset).GetField(name, flags);
+            if (field != null)
+            {
+                // Se il campo è una lista di Character
+                if (field.FieldType == typeof(List<TMP_SpriteCharacter>))
+                    field.SetValue(spriteAsset, new List<TMP_SpriteCharacter>());
+                // Se il campo è una lista di Glyph
+                else if (field.FieldType == typeof(List<TMP_SpriteGlyph>))
+                    field.SetValue(spriteAsset, new List<TMP_SpriteGlyph>());
+                // Se è la vecchia lista Sprite
+                else if (field.FieldType == typeof(List<TMP_Sprite>))
+                    field.SetValue(spriteAsset, new List<TMP_Sprite>());
+            }
+        }
+
+        // Verifica di emergenza: se la Reflection fallisce, usiamo le proprietà pubbliche
+        if (spriteAsset.spriteCharacterTable == null)
+        {
+            // Nota: Se questo dà errore CS0272, la Reflection SOPRA doveva funzionare.
+            // Se non ha funzionato, controlla la versione di TMP nel Package Manager.
+        }
+        //
+
+        // 4. UNICO CICLO: Popoliamo Glifi e Caratteri insieme
+        for (int i = 0; i < dbTextures.Count; i++)
+        {
+            // Crea il Glifo (Dati Geometrici)
+            TMP_SpriteGlyph glyph = new TMP_SpriteGlyph();
+            glyph.index = (uint)i;
+            glyph.glyphRect = new GlyphRect(
+                (int)(rects[i].x * atlas.width),
+                (int)(rects[i].y * atlas.height),
+                (int)(rects[i].width * atlas.width),
+                (int)(rects[i].height * atlas.height)
+            );
+            glyph.metrics = new GlyphMetrics(glyph.glyphRect.width, glyph.glyphRect.height, 0, glyph.glyphRect.height * 0.8f, glyph.glyphRect.width);
+            glyph.scale = 1.0f;
+            spriteAsset.spriteGlyphTable.Add(glyph);
+
+            // Crea il Carattere (Dati Logici/Nome)
+            // Passando glyph al costruttore, colleghiamo correttamente il Glyph ID
+            TMP_SpriteCharacter character = new TMP_SpriteCharacter((uint)i, glyph);
+            character.name = dbTextures[i].name;
+            character.scale = 1.0f;
+
+            spriteAsset.spriteCharacterTable.Add(character);
+        }
+
+        // 5. Genera tabelle di ricerca
+        spriteAsset.UpdateLookupTables();
+
+        // 6. Assegna
+        myText.spriteAsset = spriteAsset;
+        myText.ForceMeshUpdate();
+    }
     public void CloseDetailPOI()
     {
         if (PlayerPrefs.GetInt("show_grid_poi") == 2)
@@ -603,7 +823,8 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
         //    PanelDownOfPanlMap.SetActive(true);
         DetailPOI.enabled = false;
         DetailPOI.gameObject.SetActive(false);
-        portami_la.gameObject.SetActive(false);
+        if (portami_la != null)
+            portami_la.gameObject.SetActive(false);
     }
     public void Mostra_nella_mappa()
     {
@@ -656,7 +877,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
 
             // Let's see that web page!
             //Application.OpenURL(url);
-            PlayerPrefs.SetInt("poi_selezionato_collegato_ad_un_percorso", int.Parse(linkId));
+            PlayerPrefs.SetString("poi_selezionato_collegato_ad_un_percorso", linkId);
         }
     }
 }

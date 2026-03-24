@@ -44,27 +44,28 @@ public class ChangeScene : MonoBehaviour
         PlayerPrefs.SetInt("show_grid_poi", 0);
         if (!(PlayerPrefs.GetString("apri_direttamente_il_poi_selezionato") != ""))
             PlayerPrefs.SetString("istat", "");
-        PlayerPrefs.SetInt("percorso_selezionato", 0);
-        PlayerPrefs.SetInt("evento_selezionato", 0);
+        PlayerPrefs.SetString("percorso_selezionato", "");
+        PlayerPrefs.SetString("evento_selezionato", "");
         PlayerPrefs.SetString("poi_selezionato", "");
         // 1. Spegne Vuforia
         if (VuforiaBehaviour.Instance != null)
             VuforiaBehaviour.Instance.enabled = false;
     }
-    public void Load_ARRoute(int score)
+    public void Load_ARRoute(long score)
     {
-        ResetPlayer();
+        //ResetPlayer();
         Debug.Log("Load_ARRoute:" + score);
-        PlayerPrefs.SetInt("percorso", score);
+        PlayerPrefs.SetString("percorso", score.ToString());
+        PlayerPrefs.SetString("percorso_selezionato", score.ToString());
         PlayerPrefs.SetString("ID", "");
         ActiveSceneAndDeactivateTheActiveOne("ARRoute");
-
+        SceneManager.UnloadSceneAsync("Map");
     }
     public void Load_ARRoute(string ID)
     {
         ResetPlayer();
         Debug.Log("Load_ARRoute with ID:" + ID);
-        PlayerPrefs.SetInt("percorso", 0);
+        PlayerPrefs.SetString("percorso", "");
         PlayerPrefs.SetString("ID", ID);
         ActiveSceneAndDeactivateTheActiveOne("ARRoute");
     }

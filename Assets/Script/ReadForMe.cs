@@ -8,6 +8,9 @@ using UnityEngine.UI;
 using static DBClass;
 
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using System.Linq;
+using UnityEngine.Analytics;
 
 public class ReadForMe : MonoBehaviour
 {
@@ -86,28 +89,50 @@ public class ReadForMe : MonoBehaviour
 
     public void Speak()
     {
-
-#if UNITY_IOS        
+        var _t = RimuoviTagHtml(testo.text);
+#if UNITY_IOS
         var lingua_selezionata = @"it-IT";
         if (PlayerPrefs.GetInt("lingua_selezionata") == 2)
             lingua_selezionata = "en-US";
-        _iosSpeak(testo.text, lingua_selezionata);
+        _iosSpeak(_t, lingua_selezionata);
 #elif UNITY_ANDROID
-        SpeakAndroid(testo.text, 0);
+        SpeakAndroid(_t, 0);
 #else
         // Esempio rapido per testare l'audio su Mac Editor
         StopSpeak();
 
         ttsProcess = new Process();
         ttsProcess.StartInfo.FileName = "say";
-        ttsProcess.StartInfo.Arguments = testo.text;
+        ttsProcess.StartInfo.Arguments = _t;
         ttsProcess.Start();
-        //System.Diagnostics.Process.Start("say", testo.text);
+        //System.Diagnostics.Process.Start("say", _t);
 
 #endif
         setPlayButton(false);
     }
 
+    public static string RimuoviTagHtml(string input)
+    {
+        if (input.Contains("_________"))
+        {
+            var _input = input.Split("_________");
+            input = _input[1];
+        }
+        var unicode = 9312;
+        for (int i = 0; i < 20; i++)
+        {
+            input = input.Replace("u" + unicode.ToString("X"), "");
+            unicode++;
+        }
+        input = new string(input.Where(c => c <= 127).ToArray());
+        if (string.IsNullOrEmpty(input)) return string.Empty;
+
+        // Rimuove tutti i tag HTML
+        string result = Regex.Replace(input, "<.*?>", string.Empty);
+
+        // Opzionale: decodifica entità come &nbsp; o &amp;
+        return System.Net.WebUtility.HtmlDecode(result);
+    }
     private void SpeakAndroid(string message, int tipo_chiamata)
     {
 #if UNITY_ANDROID
@@ -132,8 +157,10 @@ public class ReadForMe : MonoBehaviour
 
     public void StopSpeak()
     {
+        if (ReaderPanel.activeSelf)
+        {
 #if UNITY_IOS
-        _iosStopSpeak();
+            _iosStopSpeak();
 #elif UNITY_ANDROID
         StopAndroid();
 #else
@@ -144,8 +171,9 @@ public class ReadForMe : MonoBehaviour
             ttsProcess = null;
         }
 #endif
-        //TTS.Stop();
-        setPlayButton(true);
+            //TTS.Stop();
+            setPlayButton(true);
+        }
     }
     // Metodo Stop per Android
     private void StopAndroid()

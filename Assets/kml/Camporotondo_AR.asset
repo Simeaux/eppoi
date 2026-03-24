@@ -1,0 +1,3410 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: Camporotondo_AR
+  m_EditorClassIdentifier: Assembly-CSharp::ARLocation.MapboxRoutes.CustomRoute
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.13196
+      Longitude: 13.26534
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 1
+    Instruction: Tappa 1 - Piazza San Marco;Stage 1 - Piazza San Marco
+  - Location:
+      Latitude: 43.13198000617578
+      Longitude: 13.26559054578828
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 1
+    Instruction: Esci dalla piazza e imbocca via Roma;Exit the square and take Via
+      Roma
+  - Location:
+      Latitude: 43.13212551345954
+      Longitude: 13.26558297398812
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13237433043057
+      Longitude: 13.26552062395816
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13247240898454
+      Longitude: 13.26547940531594
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 2
+    Instruction: Prendi le scale in discesa sulla destra;Take the stairs down on
+      the right
+  - Location:
+      Latitude: 43.13261408467969
+      Longitude: 13.26572076405782
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 3
+    Instruction: Gira a destra su via Circonvallazione;Turn right onto Circonvallazione
+      Street
+  - Location:
+      Latitude: 43.13196313958539
+      Longitude: 13.26601459209186
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13184060796874
+      Longitude: 13.26603033287896
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13164337910584
+      Longitude: 13.26593331292342
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 4
+    Instruction: Allo stop gira a sinistra su via Tullio Pascucci Colsalvatico;At
+      the stop turn left onto via Tullio Pascucci Colsalvatico
+  - Location:
+      Latitude: 43.13158858982212
+      Longitude: 13.26596150258528
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 5
+    Instruction: Continua su Via Tullio Pascucci Colsalvatico;Continue on Via Tullio
+      Pascucci Colsalvatico
+  - Location:
+      Latitude: 43.13153967399052
+      Longitude: 13.26673510488442
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13161359299088
+      Longitude: 13.26735850582075
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13173976659284
+      Longitude: 13.26763024392935
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13234872335214
+      Longitude: 13.26823039941384
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13258432524703
+      Longitude: 13.26895134724737
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13252547200643
+      Longitude: 13.27035892555166
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13239145522797
+      Longitude: 13.2710486926053
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 6
+    Instruction: Imbocca la strada sterrata sulla sinistra;Take the dirt road on
+      the left
+  - Location:
+      Latitude: 43.13266886857671
+      Longitude: 13.27129220136789
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.133173679320294
+      Longitude: 13.27145475327509
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13425370500177
+      Longitude: 13.2718965013122
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13434775097485
+      Longitude: 13.27199246545903
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13444
+      Longitude: 13.27207
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13448
+      Longitude: 13.27223
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13447
+      Longitude: 13.27252
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13454
+      Longitude: 13.27303
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13455
+      Longitude: 13.27344
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1347
+      Longitude: 13.27394
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13493
+      Longitude: 13.27448
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13523
+      Longitude: 13.27499
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13551
+      Longitude: 13.27534
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13558
+      Longitude: 13.27556
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13580444804084
+      Longitude: 13.27594173053033
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13598182408938
+      Longitude: 13.27618149817871
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13621533179776
+      Longitude: 13.27628412099062
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 7
+    Instruction: Continua lungo il percorso;Continue along the path
+  - Location:
+      Latitude: 43.13635786417748
+      Longitude: 13.27642519644528
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13644746479588
+      Longitude: 13.27657187911249
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13662
+      Longitude: 13.27671
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13677
+      Longitude: 13.27687
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13689
+      Longitude: 13.27719
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13691
+      Longitude: 13.27762
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13687172509316
+      Longitude: 13.27813878299254
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13688121879247
+      Longitude: 13.27855016938956
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13677385550172
+      Longitude: 13.27862967544714
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13648
+      Longitude: 13.27852
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 8
+    Instruction: Costeggia l'immobile;Skirt the property
+  - Location:
+      Latitude: 43.1363
+      Longitude: 13.27872
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 9
+    Instruction: Gira a Sinistra e prendi la strada sterrata;Turn left and take the
+      dirt road
+  - Location:
+      Latitude: 43.13635151817901
+      Longitude: 13.27890893562978
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13642023421641
+      Longitude: 13.2790367069054
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13668881181615
+      Longitude: 13.27914506028942
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13674215526994
+      Longitude: 13.27914503222755
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13697942628194
+      Longitude: 13.27880405840637
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 10
+    Instruction: Gira a destra;Turn right
+  - Location:
+      Latitude: 43.1371103392617
+      Longitude: 13.27883557268242
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13725
+      Longitude: 13.27887
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1375
+      Longitude: 13.27897
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13768929990557
+      Longitude: 13.27932644448555
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 11
+    Instruction: Congiungiti con la strada principale e continua verso destra;Join
+      the main road and continue to the right
+  - Location:
+      Latitude: 43.13788355991578
+      Longitude: 13.27955175813347
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13807439684354
+      Longitude: 13.2798117615079
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13809619208465
+      Longitude: 13.27996247685648
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13792794645041
+      Longitude: 13.28044194456905
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13774396320829
+      Longitude: 13.28080670517297
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 12
+    Instruction: Continua sulla sinistra;Continue on the left
+  - Location:
+      Latitude: 43.13780054082441
+      Longitude: 13.28105263350495
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13796
+      Longitude: 13.28156
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13811348965731
+      Longitude: 13.28201082926229
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13822594560153
+      Longitude: 13.2820264577366
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13870107302823
+      Longitude: 13.28163796942484
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13878929948591
+      Longitude: 13.28132266047084
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.138879
+      Longitude: 13.281163
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13920745757128
+      Longitude: 13.28082398995478
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13946002122788
+      Longitude: 13.2807285636288
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13978081918178
+      Longitude: 13.28069770484925
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13989035828076
+      Longitude: 13.28084011175617
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13996737569169
+      Longitude: 13.28077225601203
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13999667399894
+      Longitude: 13.28049613032721
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13998602774453
+      Longitude: 13.28025785002864
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14015913030205
+      Longitude: 13.27975209493883
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 13
+    Instruction: All'incrocio gira a destra;At the crossroads turn right
+  - Location:
+      Latitude: 43.14019702959378
+      Longitude: 13.2797844552775
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14043488488593
+      Longitude: 13.28066759499691
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 14
+    Instruction: Alla biforcazione tieni la sinistra;At the fork, keep left
+  - Location:
+      Latitude: 43.14060768912219
+      Longitude: 13.28086416821903
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14108220047974
+      Longitude: 13.2809661679687
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14162424406373
+      Longitude: 13.28113605882754
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14182352034439
+      Longitude: 13.2811325253591
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14222699298619
+      Longitude: 13.28123197196477
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.142556
+      Longitude: 13.28115
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14375
+      Longitude: 13.280456
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14407639196176
+      Longitude: 13.28048442746057
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14434449821845
+      Longitude: 13.28045965810501
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 15
+    Instruction: Prendi la strada principale tenrendo la destra;Take the main road
+      keeping to the right
+  - Location:
+      Latitude: 43.14443156352033
+      Longitude: 13.28063468528066
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14461785764233
+      Longitude: 13.28066798454767
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14499950574001
+      Longitude: 13.28045976761613
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1452298459062
+      Longitude: 13.28029198990604
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 16
+    Instruction: Prendi la strada principale tenrendo la destra;Take the main road
+      keeping to the right
+  - Location:
+      Latitude: 43.14607220531191
+      Longitude: 13.2804068482013
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14648992983704
+      Longitude: 13.28034353164652
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14660905603637
+      Longitude: 13.28037962128638
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14726164515933
+      Longitude: 13.2809067653198
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14764484685166
+      Longitude: 13.28122675670777
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1479122686296
+      Longitude: 13.28156194724008
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1479863031216
+      Longitude: 13.28178895634207
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14802514476883
+      Longitude: 13.28205030915954
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14783474589336
+      Longitude: 13.28358183335205
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 17
+    Instruction: Tieni la Sinistra;Keep Left
+  - Location:
+      Latitude: 43.14780821406514
+      Longitude: 13.28413317085436
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14792971751021
+      Longitude: 13.28479534203954
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1481627232227
+      Longitude: 13.28535048847107
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.148738
+      Longitude: 13.285649
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 2
+    Instruction: Tappa 2 - Croce di Colvenale;Stage 2 - Croce di Colvenale
+  - Location:
+      Latitude: 43.14902182895598
+      Longitude: 13.28612097463312
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14934919245731
+      Longitude: 13.2875620499195
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1496444168876
+      Longitude: 13.2881926852238
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14970213234895
+      Longitude: 13.28877275360874
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 18
+    Instruction: Gira a Sinistra;Turn Left
+  - Location:
+      Latitude: 43.14976487489536
+      Longitude: 13.28877130117957
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14994524835057
+      Longitude: 13.28868224707372
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15036891443949
+      Longitude: 13.28857603147248
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15108530524886
+      Longitude: 13.28872004985444
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.151708
+      Longitude: 13.288588
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15223023027865
+      Longitude: 13.28874186172599
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15265292035166
+      Longitude: 13.28878637016689
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15295879507401
+      Longitude: 13.28875308124485
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 19
+    Instruction: Prendi la strada secondaria sulla sinistra;Take the secondary road
+      on the left
+  - Location:
+      Latitude: 43.15296052890598
+      Longitude: 13.28855783209032
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1526772901244
+      Longitude: 13.2881117762999
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15266952742954
+      Longitude: 13.28693367164075
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15287450971711
+      Longitude: 13.28671818638067
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15300147271982
+      Longitude: 13.28639181950993
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15298882595112
+      Longitude: 13.28611639543864
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15263042561517
+      Longitude: 13.28602225333348
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15223832089671
+      Longitude: 13.28605581401728
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.151952
+      Longitude: 13.285799
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15175214041893
+      Longitude: 13.28486430479171
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.151391
+      Longitude: 13.284018
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15112
+      Longitude: 13.28273
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.151114
+      Longitude: 13.282727
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15063717350129
+      Longitude: 13.28199396173451
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15051971426713
+      Longitude: 13.28142373594891
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15010076907332
+      Longitude: 13.2805972903167
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1499318930327
+      Longitude: 13.28007062104376
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14988591470442
+      Longitude: 13.27973132898739
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14919921201943
+      Longitude: 13.27879746121608
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 20
+    Instruction: Gira a destra;Turn right
+  - Location:
+      Latitude: 43.1500986967045
+      Longitude: 13.27832359966298
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 21
+    Instruction: Continua su questa strada;Continue on this path
+  - Location:
+      Latitude: 43.150771
+      Longitude: 13.277393
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 22
+    Instruction: All'edicola votiva gira a sinistra;At the votive shrine turn left
+  - Location:
+      Latitude: 43.150498
+      Longitude: 13.276666
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14982
+      Longitude: 13.27648
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.149458
+      Longitude: 13.275809
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.149476
+      Longitude: 13.275672
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.149717
+      Longitude: 13.275579
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.149709
+      Longitude: 13.274463
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 23
+    Instruction: Gira a destra;Turn right
+  - Location:
+      Latitude: 43.1498
+      Longitude: 13.27416
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.150132
+      Longitude: 13.273822
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15065727870985
+      Longitude: 13.27143855797439
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1506533863296
+      Longitude: 13.27116017129002
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15060367521776
+      Longitude: 13.27083089690193
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 24
+    Instruction: Tieni la destra e prendi la strada principale;Keep right and take
+      the main road
+  - Location:
+      Latitude: 43.15059728119882
+      Longitude: 13.27060307731657
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15027021062865
+      Longitude: 13.26976280132227
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15019517217807
+      Longitude: 13.26944680565058
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1503401731751
+      Longitude: 13.2687487497602
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15039333379615
+      Longitude: 13.26818145250553
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15031685039867
+      Longitude: 13.26797851707165
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15018949111492
+      Longitude: 13.26790450102129
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.15003574032777
+      Longitude: 13.267848780993
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 25
+    Instruction: Tinei la sinistra;Keep left
+  - Location:
+      Latitude: 43.14942441807394
+      Longitude: 13.26820564169992
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14927314945827
+      Longitude: 13.26822197680855
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 26
+    Instruction: Gira a destra;Turn right
+  - Location:
+      Latitude: 43.1487684046734
+      Longitude: 13.26769087810109
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14845072079716
+      Longitude: 13.26755008877086
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14818494913304
+      Longitude: 13.26748844080814
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14801
+      Longitude: 13.26757
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14763128035793
+      Longitude: 13.26788294777842
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14712
+      Longitude: 13.26817
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14675
+      Longitude: 13.26851
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14647169364822
+      Longitude: 13.26902398012073
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 27
+    Instruction: Allo stop gira a destra;At the stop sign turn right
+  - Location:
+      Latitude: 43.14641689886965
+      Longitude: 13.26898360450312
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 28
+    Instruction: Continua su Contrada Colvenale;Continue on Contrada Colvenale
+  - Location:
+      Latitude: 43.14643175184609
+      Longitude: 13.26823471610788
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14645265543873
+      Longitude: 13.26802748110414
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14655302495042
+      Longitude: 13.26773939607873
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14665475903341
+      Longitude: 13.26767244531176
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14684173240221
+      Longitude: 13.26768346717316
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1470190813615
+      Longitude: 13.26762627587662
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14714100520766
+      Longitude: 13.26748342674924
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14710418157478
+      Longitude: 13.26724706143875
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14666947726783
+      Longitude: 13.267189227621
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1462066952272
+      Longitude: 13.26736326625496
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14590646265632
+      Longitude: 13.26758065090918
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1454682431614
+      Longitude: 13.2679877238867
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14528814204949
+      Longitude: 13.26808710698735
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14501228441516
+      Longitude: 13.26807707163776
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14455621827645
+      Longitude: 13.2678946313054
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1440765750865
+      Longitude: 13.26778697529274
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14383154371656
+      Longitude: 13.26789089026374
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14365209365516
+      Longitude: 13.26808701498311
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14348061886581
+      Longitude: 13.26824955073603
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14330602696022
+      Longitude: 13.26830782804055
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14315838411134
+      Longitude: 13.26820212767869
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14309475051684
+      Longitude: 13.26807393167373
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14310865482885
+      Longitude: 13.26789979571714
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14320077902923
+      Longitude: 13.26773089164425
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14340607638644
+      Longitude: 13.26748527383158
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14356013021602
+      Longitude: 13.26713523175672
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14366352378769
+      Longitude: 13.26668282426945
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14365082468207
+      Longitude: 13.26625300808796
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14348335699842
+      Longitude: 13.26595822152562
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14328312445438
+      Longitude: 13.26580129343849
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1429929465581
+      Longitude: 13.26576976215327
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14276540267162
+      Longitude: 13.2658039280315
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14252
+      Longitude: 13.26588
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14202
+      Longitude: 13.26607
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14142045376668
+      Longitude: 13.26618801478424
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 29
+    Instruction: Continua su questa strada;Continue on this path
+  - Location:
+      Latitude: 43.1411406699586
+      Longitude: 13.26638042122322
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 30
+    Instruction: Tieni la destra;Keep right
+  - Location:
+      Latitude: 43.14089
+      Longitude: 13.26663
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14067851170369
+      Longitude: 13.26677937034887
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14042907741718
+      Longitude: 13.26680330447859
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14018
+      Longitude: 13.26669
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13974
+      Longitude: 13.26646
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13954
+      Longitude: 13.26627
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13921090994319
+      Longitude: 13.26552954126731
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13910653362898
+      Longitude: 13.26544049351486
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13894064467399
+      Longitude: 13.26536690813257
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13865769717304
+      Longitude: 13.26534052964302
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13825914890995
+      Longitude: 13.26530573416769
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13786518036977
+      Longitude: 13.26519785795763
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13770836136977
+      Longitude: 13.26515721009867
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13751589680722
+      Longitude: 13.26517907569442
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1371719842438
+      Longitude: 13.26546112299858
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.137021921231
+      Longitude: 13.26558944459005
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13672092614576
+      Longitude: 13.26584714567002
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1365201373214
+      Longitude: 13.26594119915015
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13634983675508
+      Longitude: 13.26598736730871
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13615296223786
+      Longitude: 13.2659853935606
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13594959947985
+      Longitude: 13.26595571423962
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13581919941913
+      Longitude: 13.26586255325373
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 31
+    Instruction: Allo STOP gira a sinistra;At the STOP sign turn left
+  - Location:
+      Latitude: 43.13580325480394
+      Longitude: 13.26578198106082
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 32
+    Instruction: Continua su Strada Provinciale 49;Continue on Provincial Road 49
+  - Location:
+      Latitude: 43.13541844889946
+      Longitude: 13.26582092927011
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 33
+    Instruction: Gira sulla Destra;Turn right
+  - Location:
+      Latitude: 43.13525402268159
+      Longitude: 13.26555045718514
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13516678790401
+      Longitude: 13.26525805670552
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13501
+      Longitude: 13.26474
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13488996678892
+      Longitude: 13.2645301628789
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13448472613749
+      Longitude: 13.26408562267969
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13433697349237
+      Longitude: 13.26381077599776
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13418
+      Longitude: 13.26332
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13411
+      Longitude: 13.26295
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1341
+      Longitude: 13.26275
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13423
+      Longitude: 13.26227
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13425
+      Longitude: 13.262
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13422
+      Longitude: 13.26134
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13429
+      Longitude: 13.26053
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13421
+      Longitude: 13.26022
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13421
+      Longitude: 13.26
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13430577755656
+      Longitude: 13.25976919756611
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13441317290302
+      Longitude: 13.25972875887872
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13472708098389
+      Longitude: 13.25973810470481
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13489803200724
+      Longitude: 13.25966468114298
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1351617490152
+      Longitude: 13.25946167921063
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13524741842492
+      Longitude: 13.25934078453588
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 34
+    Instruction: Continua su questa strada;Continue on this path
+  - Location:
+      Latitude: 43.13520636731724
+      Longitude: 13.25922404498044
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13507027566617
+      Longitude: 13.2591723469514
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13483885117244
+      Longitude: 13.25916443915396
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13465347748605
+      Longitude: 13.25907427795608
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13442850280791
+      Longitude: 13.25885966067669
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13432450340255
+      Longitude: 13.25864783773994
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1343
+      Longitude: 13.25835
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13427
+      Longitude: 13.25775
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13427
+      Longitude: 13.25728
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13434571494978
+      Longitude: 13.25699484077953
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13445115410083
+      Longitude: 13.25666082749098
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13461
+      Longitude: 13.25585
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 35
+    Instruction: All'incrocio tieni la destra;At the crossroads keep right
+  - Location:
+      Latitude: 43.13471
+      Longitude: 13.25523
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13478
+      Longitude: 13.25466
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13475902414969
+      Longitude: 13.25395586640432
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13454382371209
+      Longitude: 13.25314821722928
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13451791584765
+      Longitude: 13.25296837856362
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 36
+    Instruction: All'incrocio gira a sinistra;At the crossroads turn left
+  - Location:
+      Latitude: 43.13396800605744
+      Longitude: 13.25282056104406
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13375620792034
+      Longitude: 13.25271598787176
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13344039019607
+      Longitude: 13.25256334595327
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13327638627321
+      Longitude: 13.25255566038653
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13309854395358
+      Longitude: 13.25261830737928
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13298
+      Longitude: 13.25273
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1329
+      Longitude: 13.25292
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13277
+      Longitude: 13.25306
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13245343437479
+      Longitude: 13.25320671354661
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13204207471981
+      Longitude: 13.25339311596803
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13189513494289
+      Longitude: 13.25357552993948
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13172984498666
+      Longitude: 13.2540522197022
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13159091060263
+      Longitude: 13.25457758085672
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13149509748298
+      Longitude: 13.25514612446645
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1313562770362
+      Longitude: 13.2557208857295
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13130049616794
+      Longitude: 13.25637017541929
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 37
+    Instruction: All'incrocio tieni la sinistra;At the crossroads keep left
+  - Location:
+      Latitude: 43.13131190809153
+      Longitude: 13.25684741819561
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13128
+      Longitude: 13.25724
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13123143847489
+      Longitude: 13.25747920204872
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1310611413243
+      Longitude: 13.25774871155903
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13026764438456
+      Longitude: 13.25828859232011
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13000438153581
+      Longitude: 13.25844561133821
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.12989201129862
+      Longitude: 13.25867437275658
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.12975859759177
+      Longitude: 13.25939316707087
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.12981428269265
+      Longitude: 13.25972813531142
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.12992921615088
+      Longitude: 13.25986443049388
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13030450500849
+      Longitude: 13.26000222804571
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13081475675296
+      Longitude: 13.26014598095295
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13105814528961
+      Longitude: 13.2602639846707
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13129396073061
+      Longitude: 13.26042142395373
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13131456490037
+      Longitude: 13.26056278059956
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13125985058493
+      Longitude: 13.26068827934482
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13110564935578
+      Longitude: 13.2608309752913
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1305884310547
+      Longitude: 13.26110665853705
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13036873059065
+      Longitude: 13.26117160909632
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13010370793465
+      Longitude: 13.26132997242779
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13000096455681
+      Longitude: 13.26141069180129
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.12999926925963
+      Longitude: 13.26156689627545
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13012175777487
+      Longitude: 13.26169381652162
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13030732159454
+      Longitude: 13.26178627877098
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1303599003743
+      Longitude: 13.26186676959802
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13038023067381
+      Longitude: 13.26196872003094
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13036803152184
+      Longitude: 13.26231948570652
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13041614029736
+      Longitude: 13.2627650154208
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13089296419278
+      Longitude: 13.2633858643143
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13101711022379
+      Longitude: 13.2635436481229
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13115302764761
+      Longitude: 13.26360043903155
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13142412274065
+      Longitude: 13.26352576822224
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13158302166199
+      Longitude: 13.26358085889442
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1321201373691
+      Longitude: 13.26397350255107
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 38
+    Instruction: Allo STOP gira a destra;At the STOP sign turn right
+  - Location:
+      Latitude: 43.13209245615666
+      Longitude: 13.26403558408075
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13171349393784
+      Longitude: 13.26386330543446
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1315489063926
+      Longitude: 13.26390841120039
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13122631351851
+      Longitude: 13.26416100348919
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13104197396913
+      Longitude: 13.26420610925516
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13069722240022
+      Longitude: 13.2642662502644
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 39
+    Instruction: Gira a Sinistra in Via Campo Fiera;Turn left onto Via Campo Fiera
+  - Location:
+      Latitude: 43.1307235568039
+      Longitude: 13.26438051820526
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13098031664688
+      Longitude: 13.26435345474516
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 40
+    Instruction: Gira a Destra;Turn right
+  - Location:
+      Latitude: 43.13100884545173
+      Longitude: 13.26458199062594
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13107248658392
+      Longitude: 13.26493381559897
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13127708851714
+      Longitude: 13.26518658386425
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 41
+    Instruction: All'incrocio gira a sinistra;At the crossroads turn left
+  - Location:
+      Latitude: 43.13134813764381
+      Longitude: 13.26506937083003
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13144003540015
+      Longitude: 13.26483895884856
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 3
+    Instruction: Tappa 3 - Mura castellane;Stage 3 - Mura castellane
+  - Location:
+      Latitude: 43.13150568185046
+      Longitude: 13.2642993963189
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 42
+    Instruction: Allo STOP gira a destra;At the STOP sign turn right
+  - Location:
+      Latitude: 43.13158771382493
+      Longitude: 13.2643121345416
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 43
+    Instruction: Prendi le scale sulla destra;Take the stairs on the right
+  - Location:
+      Latitude: 43.13158708500029
+      Longitude: 13.26446299631641
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13172409134981
+      Longitude: 13.2645499474072
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13176555298507
+      Longitude: 13.2645717036274
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 44
+    Instruction: Continua verso Piazza;Continue towards Piazza
+  - Location:
+      Latitude: 43.13175599111423
+      Longitude: 13.26464417026835
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13171976568802
+      Longitude: 13.26475315681362
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13168728079319
+      Longitude: 13.2648453624592
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13165919364366
+      Longitude: 13.26509141556673
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13169497995408
+      Longitude: 13.26520159443434
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 45
+    Instruction: Gira a Sinistra;Turn Left
+  - Location:
+      Latitude: 43.13190980968099
+      Longitude: 13.26519227411908
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.13191165061548
+      Longitude: 13.26534260014978
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  SceneViewScale: 1
+  Color: 

@@ -67,7 +67,11 @@ GraphicsSettings:
     UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: 01886679a877346f2a3c7b7bbe2a03fb,
       type: 2}
   m_ShaderBuildSettings:
-    keywordDeclarationOverrides: []
+    keywordDeclarationOverrides:
+    - keywords:
+      - name: TextMeshPro
+        keepInBuild: 1
+      variantGenerationMode: 0
   m_LightsUseLinearIntensity: 1
   m_LightsUseColorTemperature: 1
   m_LogWhenShaderIsCompiled: 0

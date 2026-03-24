@@ -21,8 +21,10 @@ public class Select_language : MonoBehaviour
     public Button BtnItaliano;
     public Button BtnInglese;
     public Button BtnCancella_DB;
+    public Button BtnGetPersistentDB;
     public Toggle conferma;
     public Slider slider;
+    public Slider slider_chunk;
 
     public GameObject _logo;
     public GameObject panel_select_language;
@@ -31,6 +33,14 @@ public class Select_language : MonoBehaviour
     public Text txtNonChiedereNuovamente;
     public Toggle NonChiedereNuovamente;
 
+    public Canvas Canvas_DB_Corrotto;
+    public Canvas Canvas_Errore_connessione;
+    public Canvas Canvas_Manca_Spazio;
+
+    public Canvas Canvas_Prompt_Download;
+    public Text Testo_Info_Download; // Per scrivere la dimensione (es. "Dimensione: 150MB")
+    public Button Bottone_Conferma;
+    public Button Bottone_Annulla;
     private int _lingua_selezionata = 1;
 
     private DBClass _DBClass;
@@ -39,6 +49,11 @@ public class Select_language : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Input.location.Start();
+        // Impedisce allo schermo di spegnersi o attenuarsi
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        BtnGetPersistentDB.gameObject.SetActive(Debug.isDebugBuild);
+        BtnCancella_DB.gameObject.SetActive(Debug.isDebugBuild);
         //Setto il parametro del comune selezionato all'istat di Serrapetrona
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
         try
@@ -55,7 +70,7 @@ public class Select_language : MonoBehaviour
             //    _DBClass.CreateDB(slider);
         }
         _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
-        _DBClass.copyDB(slider, BtnItaliano, BtnInglese, NonChiedereNuovamente);
+        _DBClass.copyDB(slider, slider_chunk, BtnItaliano, BtnInglese, NonChiedereNuovamente, Canvas_DB_Corrotto, Canvas_Errore_connessione, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla);
         txtNonChiedereNuovamente.text = _lingua_selezionata == 1 ? "Non chiedere nuovamente" : "Don't ask again";
         if (PlayerPrefs.GetString("apri_direttamente_il_poi_selezionato") != "")
         {
@@ -99,14 +114,21 @@ public class Select_language : MonoBehaviour
             _DBClass.setSetting_LinguaSelezionata(2);
         goOn();
     }
-    private void onCancellaDB()
+    public void onCancellaDB()
     {
-        _DBClass.RemovePersistent_DB(slider, BtnItaliano, BtnInglese, NonChiedereNuovamente);
+        Canvas_DB_Corrotto.gameObject.SetActive(false);
+        Canvas_Errore_connessione.gameObject.SetActive(false);
+        _DBClass.RemovePersistent_DB(slider, slider_chunk, BtnItaliano, BtnInglese, NonChiedereNuovamente, Canvas_DB_Corrotto, Canvas_Errore_connessione, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla);
         slider.gameObject.SetActive(true);
         BtnItaliano.gameObject.SetActive(false);
         BtnInglese.gameObject.SetActive(false);
         NonChiedereNuovamente.gameObject.SetActive(false);
-        _DBClass.copyDB(slider, BtnItaliano, BtnInglese, NonChiedereNuovamente);
+        copyDB();
+    }
+
+    public void copyDB()
+    {
+        _DBClass.copyDB(slider, slider_chunk, BtnItaliano, BtnInglese, NonChiedereNuovamente, Canvas_DB_Corrotto, Canvas_Errore_connessione, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla);
     }
     private void goOn()
     {
@@ -140,4 +162,5 @@ public class Select_language : MonoBehaviour
                 _logo.transform.rotation = new Quaternion(0, 0, 0, 0);
         }
     }
+
 }

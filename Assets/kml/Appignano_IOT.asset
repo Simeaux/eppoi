@@ -1,0 +1,368 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: Appignano_IOT
+  m_EditorClassIdentifier: Assembly-CSharp::ARLocation.MapboxRoutes.CustomRoute
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.36392752983419
+      Longitude: 13.34610994642621
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 1
+    Instruction: Tappa 1 - Piazza Umberto I;Stage 1 - Piazza Umberto I
+  - Location:
+      Latitude: 43.36401389098272
+      Longitude: 13.34600183049086
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 1
+    Instruction: Procedi in direzione nordovest su Piazza Umberto I' verso Via Vittorio
+      Veneto;Proceed northwest on Piazza Umberto I' towards Via Vittorio Veneto
+  - Location:
+      Latitude: 43.36411382962546
+      Longitude: 13.34587307326686
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36424776868294
+      Longitude: 13.34575117560955
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 2
+    Instruction: Tappa 2 -MArC - Museo dell'Arte Ceramica;Stage 2 - MArC - Museo
+      dell'Arte Ceramica
+  - Location:
+      Latitude: 43.36425361664578
+      Longitude: 13.34569541885276
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 2
+    Instruction: Svolta a sinistra e prendi Via Monocchia;Turn left and take Via
+      Monocchia
+  - Location:
+      Latitude: 43.36411566003465
+      Longitude: 13.34515892834242
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 3
+    Instruction: Gira a sinbistra verso Borgo XX Settembre;Turn left towards Borgo
+      XX Settembre
+  - Location:
+      Latitude: 43.3640156355373
+      Longitude: 13.34514610555341
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 3
+    Instruction: Tappa 3 - Opera delle brocche;Stage 3 - Opera delle brocche
+  - Location:
+      Latitude: 43.36384736099678
+      Longitude: 13.34520004863647
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36314257295541
+      Longitude: 13.34537061319591
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 4
+    Instruction: Gira a sinistra in direzione nordest verso Borgo XX Settembre;Turn
+      left heading northeast towards Borgo XX Settembre
+  - Location:
+      Latitude: 43.36337860580003
+      Longitude: 13.3457923172294
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.3633911375047
+      Longitude: 13.345890849575
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36361026019367
+      Longitude: 13.34628242373346
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 5
+    Instruction: Svolta a sinistra e prendi Via Nicola Mei;Turn left and take Via
+      Nicola Mei
+  - Location:
+      Latitude: 43.3636736266571
+      Longitude: 13.34625989432466
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 4
+    Instruction: Tappa 4 - Vicolo Nicola Mei;Stage 4 - Vicolo Nicola Mei
+  - Location:
+      Latitude: 43.3637392047514
+      Longitude: 13.34621648701038
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 6
+    Instruction: Gira a destra;Turn right
+  - Location:
+      Latitude: 43.36377131661515
+      Longitude: 13.34630080272719
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36382031893493
+      Longitude: 13.34651305054785
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36387458924652
+      Longitude: 13.34658414676109
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 5
+    Instruction: Tappa 5 - Fontana di Borgo XX Settembre;Stage 5 - Fontana di Borgo
+      XX Settembre
+  - Location:
+      Latitude: 43.36394014708569
+      Longitude: 13.34666137121448
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36399470370413
+      Longitude: 13.34669775372734
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36403327193205
+      Longitude: 13.34673076958657
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36403985880036
+      Longitude: 13.34675043539289
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 7
+    Instruction: Svolta tutto a destra verso Borgo XX Settembre/Strada Provinciale
+      Treiese;Turn sharp right towards Borgo XX Settembre/Strada Provinciale Treiese
+  - Location:
+      Latitude: 43.36403744806076
+      Longitude: 13.34676357365277
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36364760974156
+      Longitude: 13.3466933324729
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 8
+    Instruction: Continua su Borgo XX Settembre/Strada Provinciale Treiese;Continue
+      on Borgo XX Settembre/Treiese Provincial Road
+  - Location:
+      Latitude: 43.36351130276574
+      Longitude: 13.34674057344471
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36324228066449
+      Longitude: 13.34673668943929
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36300793657369
+      Longitude: 13.34645219193714
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36298443815202
+      Longitude: 13.34621670113428
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36300612060207
+      Longitude: 13.34596805272074
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36304462864759
+      Longitude: 13.34567421951413
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 9
+    Instruction: Svolta a sinistra e prendi Borgo Santa Croce/Strada Provinciale
+      Treiese;Turn left and take Borgo Santa Croce/Strada Provinciale Treiese
+  - Location:
+      Latitude: 43.3629952518845
+      Longitude: 13.34553457461623
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36287259830038
+      Longitude: 13.34542770709264
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36251707476981
+      Longitude: 13.34549485407307
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 6
+    Instruction: Tappa 6 - Via dei Vasai;Stage 6 - Via dei Vasai
+  - Location:
+      Latitude: 43.36202573971759
+      Longitude: 13.34558796686187
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.36186617163776
+      Longitude: 13.34570353860925
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 7
+    Instruction: Tappa 7 - Chiesa dell'Addolorata;Stage 7 - Chiesa dell'Addolorata
+  SceneViewScale: 1
+  Color: 

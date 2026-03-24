@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Petriolo_IOT.kml</name>
+	<StyleMap id="m_ylw-pushpin00">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin8</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl12</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin80</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin8">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin80">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl12">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_grn-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff00f8ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_grn-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff00f8ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>Petriolo_IOT</name>
+		<open>1</open>
+		<Placemark>
+			<name>IoT</name>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					13.46583996385086,43.22104895401153,0 13.46598448594657,43.22114993114558,0 13.46589824653492,43.22112604225431,0 13.46577306696255,43.2212861126775,0 13.4659539751735,43.2213972218121,0 13.46629732016076,43.22166912410479,0 13.46618542824173,43.22171053764659,0 13.46609528334291,43.22173714828866,0 13.46603207498104,43.22174206998279,0 13.46602759142444,43.22172530464502,0 13.46608442637986,43.22172038914427,0 13.46573813247542,43.22144235311671,0 13.46580169439889,43.22131919231551,0 13.46572593785371,43.22128593209221,0 13.46581808789929,43.22113057524465,0 13.46533479546719,43.22097726854349,0 13.46533830253305,43.22093229945835,0 13.46523472563761,43.22088213760236,0 13.46505123616617,43.22081295824653,0 13.4648789681502,43.22072385614544,0 13.4647839823213,43.22065778552518,0 13.46480130863115,43.22064393789838,0 13.46489804330042,43.22071447524022,0 13.46507411619181,43.22080515596149,0 13.46525898422587,43.22087391706857,0 13.46541755101772,43.2209032485133,0 13.46562047673448,43.22091130543322,0 13.46575213789027,43.22092771779428,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>(t)1</name>
+			<description>Tappa 1 - Teatro comunale &quot;G. Ginobili&quot;;Stage 1 - Teatro comunale &quot;G. Ginobili&quot;</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46578410158712</longitude>
+				<latitude>43.2211006294073</latitude>
+				<altitude>0</altitude>
+				<heading>-6.761840938435002</heading>
+				<tilt>45.00061674432814</tilt>
+				<range>104.1199824572011</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46583330938284,43.22106495979529,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)2</name>
+			<open>1</open>
+			<description>Tappa 2 - Museo dei Legni Processionali;Stage 2 - Museo dei Legni Processionali</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46578410158712</longitude>
+				<latitude>43.2211006294073</latitude>
+				<altitude>0</altitude>
+				<heading>-6.761840938435002</heading>
+				<tilt>45.00061674432814</tilt>
+				<range>104.1199824572011</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46598937025492,43.2211462062731,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<open>1</open>
+			<description>Procedi in direzione nordest su Piazza S.Martino verso Via de Nobili;Proceed northeast on Piazza SAN.Martino towards Via de Nobili</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46564498514324</longitude>
+				<latitude>43.22112538585343</latitude>
+				<altitude>0</altitude>
+				<heading>-0.001602643328574698</heading>
+				<tilt>25.81933154260489</tilt>
+				<range>165.6204614840793</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.4658998135972,43.22112846997292,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Svolta a destra e prendi Via Marco Martello;Turn right and take Via Marco Martello</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46589191764405</longitude>
+				<latitude>43.22152860527942</latitude>
+				<altitude>0</altitude>
+				<heading>-0.3010688536890467</heading>
+				<tilt>19.86159655002408</tilt>
+				<range>207.4574084584763</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46580016821597,43.22127699027548,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)3</name>
+			<description>Tappa 3 - Museo Diego De Minicis;Stage 3 - Museo Diego De Minicis</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46594734684271</longitude>
+				<latitude>43.22184097711814</latitude>
+				<altitude>0</altitude>
+				<heading>-0.3010152664039092</heading>
+				<tilt>30.00042612014995</tilt>
+				<range>95.20618639648137</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.4660285564462,43.22174780309391,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<open>1</open>
+			<description>Procedi in direzione sudest su Via Marco Martello verso Via de Nobili;Proceed southeast on Via Marco Martello towards Via de Nobili</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46514490472167</longitude>
+				<latitude>43.22088845214368</latitude>
+				<altitude>0</altitude>
+				<heading>7.660558960836754e-05</heading>
+				<tilt>32.31258177450052</tilt>
+				<range>125.4731170343508</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46601317938945,43.22170987954268,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Svolta a sinistra e prendi Piazza S. Martino;Turn left and take Piazza S. Martino</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46558416655154</longitude>
+				<latitude>43.22186605237039</latitude>
+				<altitude>0</altitude>
+				<heading>-0.3012795910605808</heading>
+				<tilt>19.86206979235668</tilt>
+				<range>362.5199024369272</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46568990724278,43.22127960095676,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<description>Svolta a sinistra verso Corso Umberto I°/Strada Provinciale 36;Turn left onto Corso Umberto I/Provincial Road 36</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46520534305278</longitude>
+				<latitude>43.22076433676876</latitude>
+				<altitude>0</altitude>
+				<heading>-0.3015237252856427</heading>
+				<tilt>30.00063398962729</tilt>
+				<range>140.9782965237603</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46533375422788,43.22098300094798,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>6</name>
+			<description>Svolta a destra e prendi Corso Umberto I /Strada Provinciale 36;Turn right and take Corso Umberto I / Provincial Road 36</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46520534305278</longitude>
+				<latitude>43.22076433676876</latitude>
+				<altitude>0</altitude>
+				<heading>-0.3015237252856427</heading>
+				<tilt>30.00063398962729</tilt>
+				<range>140.9782965237603</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46534519611476,43.22092520636458,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)4</name>
+			<open>1</open>
+			<description>Tappa 4 - Museo delle Macchine Parlanti;Stage 4 - Museo delle Macchine Parlanti</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46520782310273</longitude>
+				<latitude>43.22076529709832</latitude>
+				<altitude>0</altitude>
+				<heading>-0.3015220269270832</heading>
+				<tilt>30.00063398962734</tilt>
+				<range>140.9782965245803</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.4647647257442,43.220667748932,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>7</name>
+			<description>Torna indietro sulla stessa via;Go back the same way</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46520534305278</longitude>
+				<latitude>43.22076433676876</latitude>
+				<altitude>0</altitude>
+				<heading>-0.3015237252856427</heading>
+				<tilt>30.00063398962729</tilt>
+				<range>140.9782965237603</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.46480864656009,43.22063611784008,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>8</name>
+			<open>1</open>
+			<description>Tieni la detra;Keep right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46520534305278</longitude>
+				<latitude>43.22076433676876</latitude>
+				<altitude>0</altitude>
+				<heading>-0.3015237252856427</heading>
+				<tilt>30.00063398962729</tilt>
+				<range>140.9782965237603</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.4654142934092,43.22089144105863,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)5</name>
+			<open>1</open>
+			<description>Tappa 5 - Tipicità;Stage 5 - Tipicità</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.46520782310273</longitude>
+				<latitude>43.22076529709832</latitude>
+				<altitude>0</altitude>
+				<heading>-0.3015220269270832</heading>
+				<tilt>30.00063398962734</tilt>
+				<range>140.9782965245803</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.4657724016058,43.22091920650191,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

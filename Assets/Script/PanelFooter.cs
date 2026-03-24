@@ -156,6 +156,26 @@ public class PanelFooter : MonoBehaviour
 #endif
             }
         }
+        else if (PlayerPrefs.GetString("percorso_selezionato") != "")
+        {
+            // navigo verso il poi
+            var _POIXTAPPE = GameObject.FindObjectOfType<DBClass>().getPOIXTAPPE(null, null, null, long.Parse(PlayerPrefs.GetString("percorso_selezionato")));
+            if (_POIXTAPPE != null && _POIXTAPPE.Count > 0)
+            {
+                var _POI = GameObject.FindObjectOfType<DBClass>().getPOI(_POIXTAPPE[0].poi_id);
+                if (_POI != null && _POI.Count > 0)
+                {
+                    POI _selected_poi = _POI[0];
+#if UNITY_ANDROID
+                    Application.OpenURL($"google.navigation:q={_selected_poi.latitudine},{_selected_poi.longitudine}");
+#elif UNITY_IOS
+                    Application.OpenURL($"http://maps.apple.com/maps?saddr=Current+Location&daddr={_selected_poi.latitudine},{_selected_poi.longitudine}");
+#else
+                    Application.OpenURL($"http://maps.google.com/maps?saddr=My+Location&daddr={_selected_poi.latitudine},{_selected_poi.longitudine}");
+#endif
+                }
+            }
+        }
         else if (!string.IsNullOrEmpty(PlayerPrefs.GetString("istat")))
         {
             //navigo verso il comune

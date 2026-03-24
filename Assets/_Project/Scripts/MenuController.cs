@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using ARLocation.Utils;
 using Mapbox.Unity.Map;
 using Mapbox.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
 using static DBClass;
 
 namespace ARLocation.MapboxRoutes.SampleProject
@@ -39,7 +40,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
         public float MinimapStepSize = 0.5f;
         public GameObject[] _gameobject1234;
         public GameObject GoTappa;
-        
+
 
         private AbstractRouteRenderer currentPathRenderer => s.LineType == LineType.Route ? RoutePathRenderer : NextTargetPathRenderer;
         private DBClass _DBClass;
@@ -148,6 +149,23 @@ namespace ARLocation.MapboxRoutes.SampleProject
         //private float _lati;
         void Start()
         {
+            if (ARLocationProvider.Instance != null)
+            {
+                ARLocationProvider.Instance.OnEnabled.AddListener(onLocationEnabled);
+            }
+            else
+            {
+                Debug.LogWarning("GPS non trovato. Se sei su Unity Remote, usa il Mock Provider!");
+            }
+
+
+            _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
+            _DBClass.GetLatLonUsingGPS();
+
+            // Inizializza la mappa sulla tua posizione attuale
+            Map.Initialize(new Vector2d(_DBClass._latitudine, _DBClass._longitudine), (int)Map.Zoom);
+
+
             NextTargetPathRenderer.enabled = false;
             RoutePathRenderer.enabled = false;
             ARLocationProvider.Instance.OnEnabled.AddListener(onLocationEnabled);
@@ -156,7 +174,13 @@ namespace ARLocation.MapboxRoutes.SampleProject
             //s.ErrorMessage = null;
             //StartCoroutine(search());
             s.View = View.Route;
-            _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
+
+            // per togliere il velo trasparente al centro dello schermo
+
+            // Disabilita totalmente la nebbia globale di Unity
+            RenderSettings.fog = false;
+            // Opzionale: imposta lo skybox a null per evitare riflessi ambientali strani sui cartelli
+            RenderSettings.skybox = null;
         }
 
         private void OnMapRedrawn()
@@ -183,9 +207,15 @@ namespace ARLocation.MapboxRoutes.SampleProject
 
         void OnDisable()
         {
+            // Verifica SEMPRE che l'istanza non sia null prima di rimuovere listener
+            if (ARLocationProvider.Instance != null)
+            {
+                ARLocationProvider.Instance.OnEnabled.RemoveListener(onLocationEnabled);
+            }
             // ARLocationProvider.Instance.OnEnabled.RemoveListener(onLocationEnabled);
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
+
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
@@ -194,7 +224,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
 
         void drawMap()
         {
-            
+
             var tw = RenderTexture.width;
             var th = RenderTexture.height;
 
@@ -348,7 +378,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
                 var lang = PlayerPrefs.GetInt("lingua_selezionata") == 1 ? MapboxApiLanguage.Italian : MapboxApiLanguage.English_UK;//  MapboxRoute.Settings.Language;
                 var api = new MapboxApi(MapboxToken, lang);
                 var loader = new RouteLoader(api);
-               
+
                 StartCoroutine(
                         loader.LoadRoute(
                             //new RouteWaypoint { Type = RouteWaypointType.Location, Location = start },
@@ -368,7 +398,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
                                 RouteContainer.SetActive(true);
                                 Camera.gameObject.SetActive(false);
                                 s.View = View.Route;
-                                
+
                                 currentPathRenderer.enabled = true;
                                 MapboxRoute.RoutePathRenderer = currentPathRenderer;
                                 MapboxRoute.BuildRoute(res);
@@ -382,7 +412,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
         private RouteResponse currentResponse;
         private List<GameObject> POIGo = new List<GameObject>();
 
-        public void CustomRoute(RouteResponse res, List<POI> poiList, List<TAPPE>tappeList)
+        public void CustomRoute(RouteResponse res, List<POI> poiList, List<TAPPE> tappeList)
         {
             custom_route = true;
             ARSession.SetActive(true);
@@ -450,7 +480,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
 
 
 
-            
+
             //Debug.Log($"sono :{_POI.Count()}");
             List<long> already_inserted = new List<long>();
             foreach (DBClass.POI _p in _POI)
@@ -463,27 +493,39 @@ namespace ARLocation.MapboxRoutes.SampleProject
                         if (!already_inserted.Contains(_p.ID))
                         {
                             already_inserted.Add(_p.ID);
-                            var _go = _gameobject1234[_tipo.tipo.group_id];// GameObject.FindGameObjectsWithTag(_p.tag).FirstOrDefault();
-                            if (_go != null)
+                            var _group_tipo_poi = _DBClass.getGROUP_TIPO_POI(_tipo.tipo.group_id).FirstOrDefault();
+                            if (_group_tipo_poi != null)
                             {
-                                //Debug.Log($"POI :{_p.nome} lon:{_p.longitudine} lat:{_p.latitudine}");
-                                var apgo = Instantiate(_go, Map.GeoToWorldPosition(_DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine), true), Quaternion.identity);
-                                apgo.tag = _p.tag;
-                                apgo.name = _p.ID.ToString();
-                                apgo.transform.Rotate(90, 0, 0);
-                                apgo.transform.localPosition = new Vector3(
-                    apgo.transform.position.x,
-                    10,
-                    apgo.transform.position.z);
-                                if (MapSize > 512)
-                                    apgo.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                                POIGo.Add(apgo);
+                                var _go = _gameobject1234[_group_tipo_poi.indice];
+                                if (_go != null)
+                                {
+                                    //Debug.Log($"POI :{_p.nome} lon:{_p.longitudine} lat:{_p.latitudine}");
+                                    var apgo = Instantiate(_go, Map.GeoToWorldPosition(_DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine), true), Quaternion.identity);
+                                    //apgo.tag = _p.tag;
+                                    apgo.name = _p.ID.ToString();
+                                    apgo.transform.Rotate(90, -90, 90);
+                                    apgo.transform.localPosition = new Vector3(
+                        apgo.transform.position.x,
+                        4,
+                        apgo.transform.position.z);
+                                    if (MapSize > 512)
+                                        apgo.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                                    else
+                                        apgo.transform.localScale = new Vector3(5f, 0.2f, 5f);
+
+                                    if (!apgo.TryGetComponent<RotateObjectAR>(out RotateObjectAR _ro))
+                                    {
+                                        _ro = apgo.AddComponent<RotateObjectAR>();
+                                    }
+                                    _ro.Speed = 22;
+                                    POIGo.Add(apgo);
+                                }
                             }
                         }
                     }
                 }
             }
-            
+
             foreach (DBClass.TAPPE _t in _TAPPE)
             {
                 //"43.25659609773222,13.00896889545388"
@@ -492,22 +534,28 @@ namespace ARLocation.MapboxRoutes.SampleProject
                     var _go = GoTappa;
                     if (_go != null)
                     {
-                        Debug.Log("Caricate tappe n." + _TAPPE.Count);
+                        //Debug.Log("Caricate tappe n." + _TAPPE.Count);
                         //Debug.Log($"POI :{_p.nome} lon:{_p.longitudine} lat:{_p.latitudine}");
                         var apgo = Instantiate(_go, Map.GeoToWorldPosition(_DBClass.VectorFromLonLat(_t.longitudine, _t.latitudine), true), Quaternion.identity);
                         //apgo.tag = _t.tag;
-                        apgo.name = _t.id.ToString();
-                        //apgo.transform.Rotate(90, 0, 0);
+                        apgo.name = "tappa_" + _t.id.ToString();
+                        apgo.transform.Rotate(90, 0, 0);
                         apgo.transform.localPosition = new Vector3(
             apgo.transform.position.x,
-            10,
+            6,
             apgo.transform.position.z);
                         if (MapSize > 512)
                             apgo.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                        else
+                            apgo.transform.localScale = new Vector3(5f, 0.2f, 5f);
                         //apgo.transform.Rotate(90, 90, 90);
                         foreach (var ap in apgo.GetComponentsInChildren<TestoTappa>())
                         {
-                            ap.SetText(_t.nome_tappa);
+                            var _txp = _DBClass.getTAPPEXPERCORSI(null, _t.id).FirstOrDefault();
+                            if (_txp != null)
+                                ap.SetText(_txp.ordine.ToString());
+                            else
+                                ap.SetText(_t.nome_tappa);
                         }
                         POIGo.Add(apgo);
                     }
@@ -534,13 +582,65 @@ namespace ARLocation.MapboxRoutes.SampleProject
                 s.Results = api.QueryLocalResult.features;
             }
         }
-        
-        Vector3 lastCameraPos;
+
+        private float correctionInterval = 5.0f; // Corregge col GPS ogni 5 secondi
+        private float timer = 0;
+
+        [SerializeField] float rotationSmoothing = 5f; // Regola la fluidità da 1 a 10
+
+        private float driftThreshold = 3.0f; // Se l'AR sbaglia di oltre 5 metri rispetto al GPS, correggiamo
+
         void Update()
         {
+            // 1. POSIZIONE GPS "VERA" (La nostra ancora di salvezza)
+            var rawLoc = ARLocationProvider.Instance.CurrentLocation;
+            var latLon = new Mapbox.Utils.Vector2d(rawLoc.latitude, rawLoc.longitude);
+            Vector3 gpsWorldPos = Map.GeoToWorldPosition(latLon, false);
+            Vector3 targetGpsPos = new Vector3(gpsWorldPos.x, 100f, gpsWorldPos.z);
+
+            // 2. POSIZIONE AR (Quella fluida ma che dritta)
+            Vector3 arPos = new Vector3(Camera.main.transform.position.x, 100f, Camera.main.transform.position.z);
+
+            // 3. IL MIX MAGICO: CONTROLLO DEL DRIFT
+            // Se la distanza tra dove l'AR pensa di essere e dove il GPS dice che siamo è troppa...
+            if (Vector3.Distance(arPos, targetGpsPos) > driftThreshold)
+            {
+                // ...riportiamo dolcemente la camera della minimappa verso il GPS reale
+                MapboxMapCamera.transform.position = Vector3.Lerp(MapboxMapCamera.transform.position, targetGpsPos, Time.deltaTime * 2f);
+            }
+            else
+            {
+                // ...altrimenti seguiamo l'AR per avere massima fluidità
+                MapboxMapCamera.transform.position = Vector3.Lerp(MapboxMapCamera.transform.position, arPos, Time.deltaTime * 5f);
+            }
+
+            // 4. ROTAZIONE (Usa il valore della bussola filtrato per evitare tremolii)
+            float compassHeading = (float)ARLocationProvider.Instance.CurrentHeading.heading;
+            float correctedYAngle = Camera.main.transform.eulerAngles.y + compassHeading;
+
+            Quaternion targetRot = Quaternion.Euler(90, correctedYAngle, 0);
+            MapboxMapCamera.transform.rotation = Quaternion.Slerp(MapboxMapCamera.transform.rotation, targetRot, Time.deltaTime * rotationSmoothing);
+
+            // 5. MANUTENZIONE MAPPA (Tile)
+            timer += Time.deltaTime;
+            if (timer > correctionInterval) // Ogni tot secondi scarichiamo i nuovi tile
+            {
+                Map.SetCenterLatitudeLongitude(latLon);
+                Map.UpdateMap();
+                timer = 0;
+            }
+        }
+
+    }
+}
+
+
+/*
+            V1
             MapboxMapCamera.gameObject.SetActive(true);
             if (s.View == View.Route)
             {
+
                 var cameraPos = Camera.main.transform.position;
 
                 var arLocationRootAngle = ARLocationManager.Instance.gameObject.transform.localEulerAngles.y;
@@ -549,7 +649,8 @@ namespace ARLocation.MapboxRoutes.SampleProject
 
                 MapboxMapCamera.transform.eulerAngles = new Vector3(90, mapAngle, 0);
                 //Debug.Log("bbb differenza " + (cameraPos - lastCameraPos).magnitude);
-                if ((cameraPos - lastCameraPos).magnitude < MinimapStepSize)
+                //Debug.Log("bbb " + cameraPos);
+                if (lastCameraPos != Vector3.zero && (cameraPos - lastCameraPos).magnitude < MinimapStepSize)
                 {
                     return;
                 }
@@ -564,12 +665,30 @@ namespace ARLocation.MapboxRoutes.SampleProject
                 Map.UpdateMap();
                 //StartCoroutine(_DBClass.GetLatLonUsingGPS());
                 //Map.UpdateMap(new Mapbox.Utils.Vector2d(_DBClass._latitudine, _DBClass._longitudine));
+               
             }
             else
             {
                 MapboxMapCamera.transform.eulerAngles = new Vector3(90, 0, 0);
             }
+            */
+/*Questa mi piace, ma aggiorna ogni 10 metri
+// V2
 
-        }
-    }
-}
+// 1. Ottieni la posizione GPS reale dal manager AR
+var rawLoc = ARLocationProvider.Instance.CurrentLocation;
+var latLon = new Mapbox.Utils.Vector2d(rawLoc.latitude, rawLoc.longitude);
+
+
+// 2. Traduci il GPS in coordinate Vector3 di Unity relative alla mappa caricata
+// Il secondo parametro 'false' evita di scalare la posizione se non necessario
+Vector3 worldPos = Map.GeoToWorldPosition(latLon, false);
+
+// 3. Sposta la camera della minimappa esattamente sopra quel punto
+MapboxMapCamera.transform.position = new Vector3(worldPos.x, 100f, worldPos.z);
+
+// 4. Rotazione (usa il tuo Lerp esistente)
+float mapAngle = Mathf.LerpAngle(MapboxMapCamera.transform.eulerAngles.y, Camera.main.transform.eulerAngles.y, Time.deltaTime * 5f);
+MapboxMapCamera.transform.eulerAngles = new Vector3(90, mapAngle, 0);
+
+*/

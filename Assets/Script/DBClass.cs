@@ -19,7 +19,8 @@ public class DBClass : MonoBehaviour
     private static CreateTable createTable;
     private void Start()
     {
-
+        Application.targetFrameRate = 60; // O 120 per schermi moderni
+        StartCoroutine(GetLatLonUsingGPS());
     }
     private void Awake()
     {
@@ -146,7 +147,7 @@ public class DBClass : MonoBehaviour
     }
     public class PERCORSO
     {
-        public int id;
+        public long id;
         public string tipo_percorso;
         public string tipo_navigazione;
         public string nome_percorso;
@@ -159,7 +160,7 @@ public class DBClass : MonoBehaviour
         public string accessibilita;
         public string tempo_percorrenza;
         public string pendenza;
-        public int poi_id;
+        public long poi_id;
         public List<PERCORSO_IMMAGINI> Listimages;
         public List<PERCORSO_TEXT> descrizione;
     }
@@ -172,14 +173,14 @@ public class DBClass : MonoBehaviour
     }
     public class PERCORSO_IMMAGINI
     {
-        public int id;
+        public long id;
         public byte[] image;
         public string descrizione;
         public bool principale;
     }
     public class TAPPE
     {
-        public int id;
+        public long id;
         public string nome_tappa;
         public string colore;
         public double latitudine;
@@ -205,14 +206,14 @@ public class DBClass : MonoBehaviour
     public class POIXTAPPE
     {
         public int id;
-        public int poi_id;
-        public int tappa_id;
+        public long poi_id;
+        public long tappa_id;
     }
     public class TAPPEXPERCORSI
     {
-        public int id;
-        public int tappa_id;
-        public int percorso_id;
+        public long id;
+        public long tappa_id;
+        public long percorso_id;
         public int ordine;
     }
     public class COMUNE
@@ -241,7 +242,7 @@ public class DBClass : MonoBehaviour
             if (ap == null)
                 ap = createTable.getCOMUNI_TEXT(1, this.id);
             if (ap != null && ap.Count > 0)
-                ret = ap.FirstOrDefault().descrizione;
+                ret = ap.FirstOrDefault().descrizione.Replace("`", "'");
             return ret;
         }
         public string descrizioneBreve()
@@ -306,13 +307,13 @@ public class DBClass : MonoBehaviour
         var ap = createTable.getPOIGeneralita(id);
         return ap;
     }
-    public List<POI> getPOI(long? id = null, int? comune_id = null, string nome = null, int maxrow = 0, int? group_tipo_poi = null, int? tipo_poi = null, bool? get_images = null, bool? get_max_date_update = null, int? percorso_id = null, string? uuid = null)
+    public List<POI> getPOI(long? id = null, int? comune_id = null, string nome = null, int maxrow = 0, int? group_tipo_poi = null, int? tipo_poi = null, bool? get_images = null, bool? get_max_date_update = null, long? percorso_id = null, string? uuid = null)
     {
         StartCoroutine(GetLatLonUsingGPS());
         if (PlayerPrefs.HasKey("comune_selected") && PlayerPrefs.GetInt("comune_selected") > 0)
             comune_id = PlayerPrefs.GetInt("comune_selected");
 
-        var ap = createTable.getPOI(PlayerPrefs.GetInt("lingua_selezionata"), id, comune_id, nome, maxrow, (float?)_latitudine, (float?)_longitudine, group_tipo_poi, tipo_poi, get_images, get_max_date_update, percorso_id, uuid);
+        var ap = createTable.getPOI(PlayerPrefs.GetInt("lingua_selezionata"), id, comune_id, nome, maxrow, _latitudine, _longitudine, group_tipo_poi, tipo_poi, get_images, get_max_date_update, percorso_id, uuid);
 
         return ap;
     }
@@ -374,13 +375,13 @@ public class DBClass : MonoBehaviour
         PlayerPrefs.SetInt("lingua_selezionata", lingua_selezionata);
     }
 
-    public List<PERCORSO> GetPERCORSO(int? id = null, long? poi_id = null, bool? groupedByCodice = null, int? comune_id = null, string nome = null, string tipo_percorso = null, string tipo_navigazione = null, bool? get_images = null)
+    public List<PERCORSO> GetPERCORSO(long? id = null, long? poi_id = null, bool? groupedByCodice = null, int? comune_id = null, string nome = null, string tipo_percorso = null, string tipo_navigazione = null, bool? get_images = null)
     {
         if (PlayerPrefs.HasKey("comune_selected") && PlayerPrefs.GetInt("comune_selected") > 0)
             comune_id = PlayerPrefs.GetInt("comune_selected");
         return createTable.getPERCORSI(PlayerPrefs.GetInt("lingua_selezionata"), id, poi_id, groupedByCodice, comune_id, nome, tipo_percorso, tipo_navigazione, get_images);
     }
-    public List<PERCORSO_IMMAGINI> getPERCORSI_IMMAGINI(int? id = null, int? percorso_id = null)
+    public List<PERCORSO_IMMAGINI> getPERCORSI_IMMAGINI(int? id = null, long? percorso_id = null)
     {
 
         return createTable.getPERCORSI_IMMAGINI(id, percorso_id);
@@ -409,19 +410,20 @@ public class DBClass : MonoBehaviour
 
         return createTable.getPOI_IMMAGINI(id, poi_id, solo_principale);
     }
-    public List<POIXTAPPE> getPOIXTAPPE(int? id = null, long? poi_id = null, int? tappa_id = null, int? percorso_id = null)
+    public List<POIXTAPPE> getPOIXTAPPE(int? id = null, long? poi_id = null, long? tappa_id = null, long? percorso_id = null)
     {
-
+        if (createTable == null)
+            Awake();
         return createTable.getPOIXTAPPE(id, poi_id, tappa_id, percorso_id);
     }
 
-    public List<TAPPEXPERCORSI> getTAPPEXPERCORSI(int? id = null, int? tappa_id = null, int? percorso_id = null)
+    public List<TAPPEXPERCORSI> getTAPPEXPERCORSI(int? id = null, long? tappa_id = null, long? percorso_id = null)
     {
 
         return createTable.getTAPPEXPERCORSI(id, tappa_id, percorso_id);
     }
 
-    public List<TAPPE> getTAPPE(int lingua_id, int? id = null)
+    public List<TAPPE> getTAPPE(int lingua_id, long? id = null)
     {
 
         return createTable.getTAPPE(lingua_id, id);
@@ -444,12 +446,12 @@ public class DBClass : MonoBehaviour
         createTable = _createTable.AddComponent<CreateTable>();
         createTable.CreateDB(true, slider);
     }
-    public void RemovePersistent_DB(Slider slider, Button italiano, Button inglese, Toggle NonChiedereNuovamente)
+    public void RemovePersistent_DB(Slider slider, Slider sliderchunk, Button italiano, Button inglese, Toggle NonChiedereNuovamente, Canvas Canvas_DB_Corrotto, Canvas Canvas_Errore_connessione, Canvas Canvas_Manca_Spazio, Canvas Canvas_Prompt_Download, Text Testo_Info_Download, Button Bottone_Conferma, Button Bottone_Annulla)
     {
         _createTable = new GameObject("Cool GameObject made from Code");
         createTable = _createTable.AddComponent<CreateTable>();
         createTable.RemovePersistent_DB();
-        createTable.copyDB(slider, italiano, inglese, NonChiedereNuovamente);
+        createTable.copyDB(slider, sliderchunk, italiano, inglese, NonChiedereNuovamente, Canvas_DB_Corrotto, Canvas_Errore_connessione, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla);
     }
     public void PersistentToStraming_DB()
     {
@@ -465,7 +467,7 @@ public class DBClass : MonoBehaviour
     }
 
 
-    public List<CustomRoute> ListOfCustomRoute(int? id = null, int? poi_id = null, bool? groupedByCodice = null)
+    public List<CustomRoute> ListOfCustomRoute(long? id = null, int? poi_id = null, bool? groupedByCodice = null)
     {
         //costruisco un Custom route
         return GetCustomRoute(GetPERCORSO(id, poi_id, groupedByCodice));
@@ -504,6 +506,13 @@ public class DBClass : MonoBehaviour
                                 var isStep = Regex.Split(ListOfElements, "IsStep:");
                                 if (isStep[1].Contains("1"))
                                     _point.IsStep = true;
+                            }
+                            if (ListOfElements.Contains("IsTappa:"))
+                            {
+                                _point.IsTappa = false;
+                                var isTappa = Regex.Split(ListOfElements, "IsTappa:");
+                                if (isTappa[1].Contains("1"))
+                                    _point.IsTappa = true;
                             }
                             if (ListOfElements.Contains("Name:"))
                             {
@@ -632,12 +641,22 @@ public class DBClass : MonoBehaviour
         _longitudine = Input.location.lastData.longitude;
         _latitudine = Input.location.lastData.latitude;
 
+        PlayerPrefs.SetString("_latitudine", _latitudine.ToString());
+        PlayerPrefs.SetString("_longitudine", _longitudine.ToString());
         //AddLocation(latitude, longitude);
 
         if (Input.location.status == LocationServiceStatus.Stopped && _latitudine == 0)
         {
-            _latitudine = 43.2534828186035;
-            _longitudine = 13.0091695785522;
+            if (PlayerPrefs.HasKey("_longitudine"))
+                double.TryParse(PlayerPrefs.GetString("_longitudine"), out _longitudine);
+            else
+                _longitudine = 13.0091695785522;
+
+            if (PlayerPrefs.HasKey("_latitudine"))
+                double.TryParse(PlayerPrefs.GetString("_latitudine"), out _latitudine);
+            else
+                _latitudine = 43.2534828186035;
+
         }
         //        Debug.Log(Input.location.status + "  lat:" + _latitudine + "  long:" + _longitudine);
         //Stop retrieving location
@@ -646,17 +665,17 @@ public class DBClass : MonoBehaviour
 
     public string pulisciHTML(string testo)
     {
-        testo = testo.Replace("<strong>", "<b>");
-        testo = testo.Replace("</strong>", "</b>");
-        testo = testo.Replace("<em>", "<i>");
-        testo = testo.Replace("</em>", "</i>");
-        return testo;
+        return createTable.pulisciHTML(testo);
     }
-    public void copyDB(Slider loadingBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente)
+    public void copyDB(Slider loadingBar, Slider loadingChunkBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente, Canvas Canvas_DB_Corrotto, Canvas Canvas_Errore_connessione, Canvas Canvas_Manca_Spazio, Canvas Canvas_Prompt_Download, Text Testo_Info_Download, Button Bottone_Conferma, Button Bottone_Annulla)
     {
         _createTable = new GameObject("Cool GameObject made from Code");
         createTable = _createTable.AddComponent<CreateTable>();
-        createTable.copyDB(loadingBar, italiano, inglese, NonChiedereNuovamente);
+        createTable.copyDB(loadingBar, loadingChunkBar, italiano, inglese, NonChiedereNuovamente, Canvas_DB_Corrotto, Canvas_Errore_connessione, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla);
+    }
+    public float CalculateDistance(double lat_1, double lat_2, double long_1, double long_2)
+    {
+        return createTable.CalculateDistance((float)lat_1, (float)lat_2, (float)long_1, (float)long_2);
     }
 }
 

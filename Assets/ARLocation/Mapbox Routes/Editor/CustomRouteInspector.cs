@@ -62,7 +62,9 @@ namespace ARLocation.MapboxRoutes
             {
                 var p = pointsCache[i];
                 var isStep = customRoute.Points[i].IsStep;
+                var isTappa = customRoute.Points[i].IsTappa;
                 Handles.color = isStep ? Color.red : Color.blue;
+                Handles.color = isTappa ? Color.yellowGreen : Handles.color;
                 Handles.SphereHandleCap(0, Vector3.Scale(p, s), Quaternion.identity, 4.0f, EventType.Repaint);
 
                 if (i > 0)
@@ -184,6 +186,7 @@ namespace ARLocation.MapboxRoutes
 
             var placemarkNodeList = documentNode.GetElementsByTagName("Placemark");
             var customRoute = ScriptableObject.CreateInstance<MapboxRoutes.CustomRoute>();
+
             for (var i = 0; i < placemarkNodeList.Count; i++)
             {
                 var placemarkNode = placemarkNodeList[i];
@@ -273,7 +276,7 @@ namespace ARLocation.MapboxRoutes
                     var min_distance = 999999999.99;
                     int num = 0;
                     int indice = -1;
-                    
+
                     foreach (var point in customRoute.Points)
                     {
                         if (point.Location != null && point.Location.Latitude > 0 && point.Location.Longitude > 0)
@@ -290,7 +293,11 @@ namespace ARLocation.MapboxRoutes
                     if (indice != -1)
                     {
                         if (nameNode != null)
-                            customRoute.Points[indice].Name = nameNode.InnerText;
+                        {
+                            if (nameNode.InnerText.Contains("(t)"))
+                                customRoute.Points[indice].IsTappa = true;
+                            customRoute.Points[indice].Name = nameNode.InnerText.Replace("(t)", "");
+                        }
                         if (descriptionNode != null)
                             customRoute.Points[indice].Instruction = descriptionNode.InnerText;
                     }
@@ -300,8 +307,8 @@ namespace ARLocation.MapboxRoutes
             var baseName = System.IO.Path.GetFileNameWithoutExtension(path);
             var filename = System.IO.Path.Combine(dirPath, baseName + ".asset");
             AssetDatabase.CreateAsset(customRoute, filename);
-            
-            
+
+
         }
 
         [MenuItem("Assets/AR+GPS/Custom Route From KML", true)]

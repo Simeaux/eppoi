@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Mogliano_AR.kml</name>
+	<StyleMap id="m_ylw-pushpin000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin80</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_red-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin5">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin11</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin80">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_grn-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-pushpin0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin3">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_grn-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_red-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin11">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>Mogliano_AR</name>
+		<open>1</open>
+		<Placemark>
+			<name>AR</name>
+			<styleUrl>#msn_ylw-pushpin5</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					13.47700021838963,43.18508999540726,0 13.47683125766889,43.18508998293982,0 13.47649791677984,43.18518403205496,0 13.47722891000141,43.18526476082807,0 13.47726276927164,43.1853223354404,0 13.47703533105902,43.18541809103001,0 13.47707581063837,43.18559309330995,0 13.47815502679845,43.18541275929982,0 13.47884698245282,43.18531974497157,0 13.47888811462921,43.18577639803529,0 13.4789101789698,43.18584401853972,0 13.47930558748961,43.18585643322311,0 13.47956748968738,43.18563860861959,0 13.47992755144465,43.18537936299735,0 13.48016318655547,43.18550170265744,0 13.48035080735173,43.18563760395921,0 13.48039741889835,43.18573910736679,0 13.48046637073463,43.18593436044894,0 13.48048898423604,43.18599673866967,0 13.48038102358211,43.18620052382845,0 13.48027223034169,43.18629486993758,0 13.48025434403823,43.18633002668128,0 13.48028176668531,43.18638102901215,0 13.48032806488084,43.18641885134172,0 13.48044259398023,43.18646010267487,0 13.48068620148164,43.18649165261545,0 13.48107614977439,43.18641434006275,0 13.48128541366029,43.18653874561933,0 13.48129616502973,43.1864768671927,0 13.48110480794497,43.18637125473294,0 13.48099776032191,43.18627307441776,0 13.48094216399398,43.18622727439519,0 13.48073357820095,43.18590620981688,0 13.48057584863244,43.18574769568235,0 13.48033835440036,43.18564456661503,0 13.48010580564323,43.18548728129846,0 13.47986348081524,43.18537812272934,0 13.47972728743419,43.18535965462385,0 13.47907909014802,43.18531259206114,0 13.47783559422617,43.18549848017059,0 13.47621126812325,43.18574738623448,0 13.47611487521056,43.18561248652205,0 13.47453907219564,43.18416018679311,0 13.47456667684421,43.18411783904695,0 13.4754508840501,43.18496565005446,0 13.47586224749056,43.18533217037009,0 13.47646505134303,43.18518822037571,0 13.47735769160604,43.18528665393779,0 13.47935915768369,43.18483974570946,0 13.4797341098024,43.18476070375916,0 13.48007261683095,43.18477325571168,0 13.48047696947947,43.18494988619312,0 13.48113292660603,43.18539850680035,0 13.48231581481597,43.18581721161155,0 13.48525879449581,43.18739365998524,0 13.48555966707318,43.18744904193483,0 13.48669675406265,43.18748394869147,0 13.48844287121887,43.18773836361315,0 13.49223992847429,43.18753517839226,0 13.49306978786126,43.18746546093394,0 13.4941734738926,43.18752585557538,0 13.49512326744145,43.18747119030624,0 13.49556754035921,43.18733086397621,0 13.4963696663188,43.18736191722637,0 13.49705051349196,43.18736414521631,0 13.49813612849599,43.18732146795157,0 13.4986253132027,43.18724711567528,0 13.49967769903653,43.18679088332842,0 13.50156043247449,43.18667739096218,0 13.50216482373517,43.18644941620204,0 13.50282988977289,43.18629161722804,0 13.50433853652901,43.18599547940754,0 13.50599126639951,43.18488873603775,0 13.50698619435791,43.18383861399376,0 13.50900593848022,43.18275569547438,0 13.50981573512578,43.18221099481201,0 13.51064657423823,43.1813911379656,0 13.51287843676312,43.18001807482228,0 13.51301791253445,43.1798696591263,0 13.51339176699542,43.17840874111815,0 13.51351160896047,43.17842064534067,0 13.51381317701728,43.17871849209238,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>(t)1</name>
+			<description>Tappa 1 - Museo delle Terre Artigiane;Stage 1 - Museo delle Terre Artigiane</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.47697164771518</longitude>
+				<latitude>43.18507078225405</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01471474297873476</heading>
+				<tilt>26.37475974474668</tilt>
+				<range>269.947086406278</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47701017112202,43.1850920262227,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<open>1</open>
+			<description>Procedi in direzione ovest su V.le Adriano, Adriani;Proceed west on V.le Adriano, Adriani</description>
+			<LookAt>
+				<longitude>13.47728120784921</longitude>
+				<latitude>43.18527204456487</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01631322114353399</heading>
+				<tilt>29.83547168557705</tilt>
+				<range>104.2068174927932</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47684053561662,43.18511291850351,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Svolta tutto a destra verso Largo Cesare Battisti/SP61;Turn sharp right onto Largo Cesare Battisti/SP61</description>
+			<LookAt>
+				<longitude>13.47670937957024</longitude>
+				<latitude>43.18521798029031</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01670430669022137</heading>
+				<tilt>30.00060570912065</tilt>
+				<range>134.9424576279791</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47651122254721,43.18517059807587,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Svolta tutto a sinistra e prendi Largo Cesare Battisti/SP61;Turn left and take Largo Cesare Battisti/SP61</description>
+			<LookAt>
+				<longitude>13.476711121625</longitude>
+				<latitude>43.18521798066423</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01670311450319091</heading>
+				<tilt>30.00060570912062</tilt>
+				<range>134.9424576268763</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47722347275954,43.18525423873083,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Svolta a destra e prendi Viale XX Settembre;Turn right and take Viale XX Settembre</description>
+			<LookAt>
+				<longitude>13.47691679386536</longitude>
+				<latitude>43.18532154132218</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01656236033346878</heading>
+				<tilt>30.00060570912066</tilt>
+				<range>134.9424576259973</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47705267929834,43.18557415248016,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<description>Continua su Piazzale Diaz;Continue on Piazzale Diaz</description>
+			<LookAt>
+				<longitude>13.47791588131381</longitude>
+				<latitude>43.18552675219838</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01587706795998319</heading>
+				<tilt>30.0006114517935</tilt>
+				<range>134.4133502829679</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47817579367488,43.18539911356149,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>6</name>
+			<description>Svolta a sinistra e prendi Via Umberto I&apos;;Turn left and take Via Umberto I&apos;</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.47926516712247</longitude>
+				<latitude>43.18592523444199</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01292680884890433</heading>
+				<tilt>27.08836213851253</tilt>
+				<range>236.5679551865276</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47882433554821,43.18530232180473,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)2</name>
+			<description>Tappa 2 - Rocca Medievale;Stage 2 - Rocca Medievale</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.47939147307677</longitude>
+				<latitude>43.18570631213819</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01284038191737248</heading>
+				<tilt>27.08878868285225</tilt>
+				<range>340.8361572957066</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47886644332016,43.18576438887452,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>7</name>
+			<open>1</open>
+			<description>Svolta a sinistra e prendi Vicolo Bolignano;Turn left and take Vicolo Bolignano</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.47926516712247</longitude>
+				<latitude>43.18592523444199</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01292680884890433</heading>
+				<tilt>27.08836213851253</tilt>
+				<range>236.5679551865276</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47891980384849,43.18585778654461,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>8</name>
+			<description>Vicolo Bolignano fa una leggera curva a destra e diventa Via Stucci;Vicolo Bolignano makes a slight curve to the right and becomes Via Stucci</description>
+			<LookAt>
+				<longitude>13.47900245874211</longitude>
+				<latitude>43.18564745850669</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01512907131191681</heading>
+				<tilt>30.00057588224198</tilt>
+				<range>126.0452637541045</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47909364044661,43.18586018558826,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)3</name>
+			<description>Tappa 3 - Chiesa di San Gregorio Magno;Stage 3 - Chiesa di San Gregorio Magno</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.4795716922479</longitude>
+				<latitude>43.18562941206832</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01194094615426766</heading>
+				<tilt>30.00082521864775</tilt>
+				<range>182.7036532902261</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47958599900192,43.18564429476188,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>9</name>
+			<open>1</open>
+			<description>Svolta a sinistra e prendi Via Roma;Turn left and take Via Roma</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.47986532061256</longitude>
+				<latitude>43.18555571981096</latitude>
+				<altitude>0</altitude>
+				<heading>-10.4859286032869</heading>
+				<tilt>50.20713875677163</tilt>
+				<range>91.95847585467972</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47992626202182,43.18536983788041,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>10</name>
+			<description>Svolta a sinistra e prendi Via Giuseppe Verdi;Turn left and take Via Giuseppe Verdi</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.47986532061256</longitude>
+				<latitude>43.18555571981096</latitude>
+				<altitude>0</altitude>
+				<heading>-10.4859286032869</heading>
+				<tilt>50.20713875677163</tilt>
+				<range>91.95847585467972</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48036346594402,43.18562343521606,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>11</name>
+			<description>Procedi in direzione nordovest su Via Giuseppe Verdi verso Vicoo Latini;Proceed northwest on Via Giuseppe Verdi towards Vicoo Latini</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.4804248734229</longitude>
+				<latitude>43.18606752376274</latitude>
+				<altitude>0</altitude>
+				<heading>-5.112728205357307</heading>
+				<tilt>27.03397624184496</tilt>
+				<range>133.0636436337484</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48051328228673,43.18599022754297,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>12</name>
+			<description>Svolta a destra e prendi Vicolo Boninfanti;Turn right and take Vicolo Boninfanti</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.48036040643278</longitude>
+				<latitude>43.18614277608621</latitude>
+				<altitude>0</altitude>
+				<heading>-5.112770611093541</heading>
+				<tilt>25.06100559836185</tilt>
+				<range>115.3239495762226</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48023111271391,43.18632453564521,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)4</name>
+			<open>1</open>
+			<description>Tappa 4 - Chiesa di San Nicolò - Auditorium;Stage 4 - Chiesa di San Nicolò - Auditorium</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.48036040643278</longitude>
+				<latitude>43.18614277608621</latitude>
+				<altitude>0</altitude>
+				<heading>-5.112770611093541</heading>
+				<tilt>25.06100559836185</tilt>
+				<range>115.3239495762226</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48028888888889,43.18629444444444,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>13</name>
+			<description>Gira a destra e prosegui verso Piazza Garibaldi;Turn right and continue towards Piazza Garibaldi</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.4807430083784</longitude>
+				<latitude>43.18629367633492</latitude>
+				<altitude>0</altitude>
+				<heading>-11.71773910979091</heading>
+				<tilt>0</tilt>
+				<range>104.4672276697441</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48068901620975,43.18649207829102,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)5</name>
+			<open>1</open>
+			<description>Tappa 5 - Chiesa di Santa Maria di Piazza;Stage 5 - Chiesa di Santa Maria di Piazza</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.48056902185336</longitude>
+				<latitude>43.1862545168178</latitude>
+				<altitude>0</altitude>
+				<heading>-11.71785818138538</heading>
+				<tilt>0</tilt>
+				<range>150.3129065541233</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48107388282548,43.18641762059201,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)6</name>
+			<open>1</open>
+			<description>Tappa 6 - Teatro Apollo;Stage 6 - Teatro Apollo</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.48096086852289</longitude>
+				<latitude>43.18627784303089</latitude>
+				<altitude>0</altitude>
+				<heading>-11.71759001231467</heading>
+				<tilt>0</tilt>
+				<range>150.3129065506131</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48130169154309,43.18654241797633,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>14</name>
+			<description>Procedi in direzione sudovest su Via Regina Margherita;Proceed southwest on Via Regina Margherita</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.48096086852289</longitude>
+				<latitude>43.18627784303089</latitude>
+				<altitude>0</altitude>
+				<heading>-11.71759001231467</heading>
+				<tilt>0</tilt>
+				<range>150.3129065506131</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48131803130476,43.18647507572349,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>15</name>
+			<description>Continua su Piazza Garibaldi;Continue on Piazza Garibaldi</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.48056902185336</longitude>
+				<latitude>43.1862545168178</latitude>
+				<altitude>0</altitude>
+				<heading>-11.71785818138538</heading>
+				<tilt>0</tilt>
+				<range>150.3129065541233</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48111246272116,43.18637109500853,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)7</name>
+			<open>1</open>
+			<description>Tappa 7 - Museo di Arte Sacra;Stage 7 - Museo di Arte Sacra</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.48092302795883</longitude>
+				<latitude>43.18622036565724</latitude>
+				<altitude>0</altitude>
+				<heading>-11.71762211458384</heading>
+				<tilt>4.384641671275765</tilt>
+				<range>185.6430554315568</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48102209398213,43.18628569296693,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>16</name>
+			<description>Continua su Via Roma;Continue on Via Roma</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.48056902185336</longitude>
+				<latitude>43.1862545168178</latitude>
+				<altitude>0</altitude>
+				<heading>-11.71785818138538</heading>
+				<tilt>0</tilt>
+				<range>150.3129065541233</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48094952394953,43.18622120077458,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>17</name>
+			<description>Continua su Piazzale Diaz;Continue on Piazzale Diaz</description>
+			<LookAt>
+				<longitude>13.47820751879605</longitude>
+				<latitude>43.18550108316379</latitude>
+				<altitude>0</altitude>
+				<heading>-0.006453276271413146</heading>
+				<tilt>9.81765895410709</tilt>
+				<range>206.0019250018559</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47909967214463,43.18533917111802,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>18</name>
+			<description>Continua su Viale XX Settembre;Continue on Viale XX Settembre</description>
+			<LookAt>
+				<longitude>13.47760094659085</longitude>
+				<latitude>43.18554599486824</latitude>
+				<altitude>0</altitude>
+				<heading>-0.006868391910415165</heading>
+				<tilt>9.817658954107163</tilt>
+				<range>206.0019249980026</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.4778315026936,43.18552168761397,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>19</name>
+			<description>Svolta a sinistra e prendi Viale del Santuario;Turn left and take Viale del Santuario</description>
+			<LookAt>
+				<longitude>13.4767638662358</longitude>
+				<latitude>43.18559017556933</latitude>
+				<altitude>0</altitude>
+				<heading>-0.007441266029666462</heading>
+				<tilt>9.817658954107426</tilt>
+				<range>206.0019250264062</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47623728396701,43.18576593352708,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)8</name>
+			<description>Tappa 8 - Santuario del Santissimo Crocifisso;Stage 8 - Santuario del Santissimo Crocifisso</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.47505570839964</longitude>
+				<latitude>43.18427650661566</latitude>
+				<altitude>0</altitude>
+				<heading>-11.72163982601508</heading>
+				<tilt>19.33997466069998</tilt>
+				<range>167.3432867878401</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47452876952317,43.18416251741245,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>20</name>
+			<open>1</open>
+			<description>Procedi in direzione nordovest su Strada Provinciale 72 verso Viale del Santuario;Proceed northwest on Provincial Road 72 towards Viale del Santuario</description>
+			<LookAt>
+				<longitude>13.47522185877338</longitude>
+				<latitude>43.18461269955171</latitude>
+				<altitude>0</altitude>
+				<heading>-0.008496564221002404</heading>
+				<tilt>9.817658954107461</tilt>
+				<range>206.0019250299164</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47458337875277,43.18410339048072,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>21</name>
+			<description>Svolta a destra e prendi V.le Adriano Adriani;Turn right and take V.le Adriano Adriani</description>
+			<LookAt>
+				<longitude>13.47571018685393</longitude>
+				<latitude>43.18515824959947</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01392449423306232</heading>
+				<tilt>16.07502033040877</tilt>
+				<range>139.38902162366</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.4758577365719,43.18531299684759,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>22</name>
+			<description>Svolta leggermente a sinistra verso Via Cairoli/SP61;Turn slightly left onto Via Cairoli/SP61</description>
+			<LookAt>
+				<longitude>13.4761365486472</longitude>
+				<latitude>43.18519692678903</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0136327104492454</heading>
+				<tilt>16.07502033040867</tilt>
+				<range>139.3890216173536</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47645629667404,43.18520070797639,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>23</name>
+			<description>Svolta leggermente a destra e prendi Via Cairoli/SP61;Turn slightly right and take Via Cairoli/SP61</description>
+			<LookAt>
+				<longitude>13.47692858180254</longitude>
+				<latitude>43.18525404054634</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01309067795075561</heading>
+				<tilt>16.07502033040872</tilt>
+				<range>139.3890216201391</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47737186585477,43.18528906811787,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>24</name>
+			<description>Svolta leggermente a destra e prendi Contrada Sant&apos;Anna;Turn slightly right and take Contrada Sant&apos;Anna</description>
+			<LookAt>
+				<longitude>13.49476034100721</longitude>
+				<latitude>43.1868718033616</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0008870278879696448</heading>
+				<tilt>16.07540032706215</tilt>
+				<range>292.1775481472214</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.49422148965773,43.18754857378627,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>25</name>
+			<description>Continua su Contrada Santa Croce;Continue on Contrada Santa Croce</description>
+			<LookAt>
+				<longitude>13.50257812994772</longitude>
+				<latitude>43.1860273917901</latitude>
+				<altitude>0</altitude>
+				<heading>0.0009391897528323739</heading>
+				<tilt>24.61670735507587</tilt>
+				<range>130.6001908101114</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.50283665111659,43.18632515597844,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>26</name>
+			<description>Svolta a sinistra;Turn left</description>
+			<LookAt>
+				<longitude>13.51416229601085</longitude>
+				<latitude>43.1790057345336</latitude>
+				<altitude>0</altitude>
+				<heading>0.008866908200053474</heading>
+				<tilt>24.6175656273478</tilt>
+				<range>483.7204026076548</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.5134064638369,43.17836400943877,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)9</name>
+			<open>1</open>
+			<description>Tappa 9 - Parco fluviale di Santa Croce;Stage 9 - Parco fluviale di Santa Croce</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.5129774190777</longitude>
+				<latitude>43.17858573874333</latitude>
+				<altitude>0</altitude>
+				<heading>-11.69564624952014</heading>
+				<tilt>22.56732862747588</tilt>
+				<range>245.0584456664994</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.51384073714212,43.17870249901897,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Appignano_IOT.kml</name>
+	<StyleMap id="m_ylw-pushpin5">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin021</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin60">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin01</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl06</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-pushpin1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin01">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin021">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl06">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl2">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_grn-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-pushpin0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-pushpin1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00f8ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_grn-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-pushpin1">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00f8ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>Appignano_IOT</name>
+		<open>1</open>
+		<Placemark>
+			<name>IoT</name>
+			<styleUrl>#msn_ylw-pushpin6</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					13.34610994642621,43.36392752983419,0 13.34600183049086,43.36401389098272,0 13.34587307326686,43.36411382962546,0 13.34575117560955,43.36424776868294,0 13.34569541885276,43.36425361664578,0 13.34515892834242,43.36411566003465,0 13.34514610555341,43.3640156355373,0 13.34520004863647,43.36384736099678,0 13.34537061319591,43.36314257295541,0 13.3457923172294,43.36337860580003,0 13.345890849575,43.3633911375047,0 13.34628242373346,43.36361026019367,0 13.34625989432466,43.3636736266571,0 13.34621648701038,43.3637392047514,0 13.34630080272719,43.36377131661515,0 13.34651305054785,43.36382031893493,0 13.34658414676109,43.36387458924652,0 13.34666137121448,43.36394014708569,0 13.34669775372734,43.36399470370413,0 13.34673076958657,43.36403327193205,0 13.34675043539289,43.36403985880036,0 13.34676357365277,43.36403744806076,0 13.3466933324729,43.36364760974156,0 13.34674057344471,43.36351130276574,0 13.34673668943929,43.36324228066449,0 13.34645219193714,43.36300793657369,0 13.34621670113428,43.36298443815202,0 13.34596805272074,43.36300612060207,0 13.34567421951413,43.36304462864759,0 13.34553457461623,43.3629952518845,0 13.34542770709264,43.36287259830038,0 13.34549485407307,43.36251707476981,0 13.34558796686187,43.36202573971759,0 13.34570353860925,43.36186617163776,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>(t)1</name>
+			<description>Tappa 1 - Piazza Umberto I;Stage 1 - Piazza Umberto I</description>
+			<LookAt>
+				<longitude>13.34560734775445</longitude>
+				<latitude>43.36370092494677</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0003686759313482446</heading>
+				<tilt>27.80623868459569</tilt>
+				<range>196.5641389499332</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34612078192325,43.36393361453112,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<open>1</open>
+			<description>Procedi in direzione nordovest su Piazza Umberto I&apos; verso Via Vittorio Veneto;Proceed northwest on Piazza Umberto I&apos; towards Via Vittorio Veneto</description>
+			<LookAt>
+				<longitude>13.34560734775445</longitude>
+				<latitude>43.36370092494677</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0003686759313482446</heading>
+				<tilt>27.80623868459569</tilt>
+				<range>196.5641389499332</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin60</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34603264289341,43.36402787548544,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)2</name>
+			<description>Tappa 2 -MArC - Museo dell&apos;Arte Ceramica;Stage 2 - MArC - Museo dell&apos;Arte Ceramica</description>
+			<LookAt>
+				<longitude>13.34584652863858</longitude>
+				<latitude>43.36320750529281</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001897815725536993</heading>
+				<tilt>23.65805943607235</tilt>
+				<range>265.6504184108629</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34576111111111,43.36426111111111,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<open>1</open>
+			<description>Svolta a sinistra e prendi Via Monocchia;Turn left and take Via Monocchia</description>
+			<LookAt>
+				<longitude>13.34560734775445</longitude>
+				<latitude>43.36370092494677</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0003686759313482446</heading>
+				<tilt>27.80623868459569</tilt>
+				<range>196.5641389499332</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin60</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34568332722558,43.3642732239659,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Gira a sinbistra verso Borgo XX Settembre;Turn left towards Borgo XX Settembre</description>
+			<LookAt>
+				<longitude>13.34584320450274</longitude>
+				<latitude>43.36321101495889</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001920640761282661</heading>
+				<tilt>23.65805943607235</tilt>
+				<range>265.6504184114502</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin5</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34514817799355,43.36411572568353,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)3</name>
+			<open>1</open>
+			<description>Tappa 3 - Opera delle brocche;Stage 3 - Opera delle brocche</description>
+			<LookAt>
+				<longitude>13.34560734775445</longitude>
+				<latitude>43.36370092494677</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0003686759313482446</heading>
+				<tilt>27.80623868459569</tilt>
+				<range>196.5641389499332</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin1</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34511064004424,43.3640173799543,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Gira a sinistra in direzione nordest verso Borgo XX Settembre;Turn left heading northeast towards Borgo XX Settembre</description>
+			<LookAt>
+				<longitude>13.34584756484382</longitude>
+				<latitude>43.36321381534587</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001890702377175067</heading>
+				<tilt>23.65805943607234</tilt>
+				<range>265.6504184098513</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin5</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34533491067553,43.36315401925254,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<description>Svolta a sinistra e prendi Via Nicola Mei;Turn left and take Via Nicola Mei</description>
+			<LookAt>
+				<longitude>13.34585061029416</longitude>
+				<latitude>43.3632106073412</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001869790827039029</heading>
+				<tilt>23.65805943607232</tilt>
+				<range>265.650418409722</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin5</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34627063030925,43.36358154754373,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)4</name>
+			<open>1</open>
+			<description>Tappa 4 - Vicolo Nicola Mei;Stage 4 - Vicolo Nicola Mei</description>
+			<LookAt>
+				<longitude>13.34560734775445</longitude>
+				<latitude>43.36370092494677</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0003686759313482446</heading>
+				<tilt>27.80623868459569</tilt>
+				<range>196.5641389499332</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin1</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.3462540046431,43.36367069927484,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>6</name>
+			<description>Gira a destra;Turn right</description>
+			<LookAt>
+				<longitude>13.3456652137241</longitude>
+				<latitude>43.3637089347884</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0003352086708113644</heading>
+				<tilt>27.43111224913707</tilt>
+				<range>180.6746280317624</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin60</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34621057842018,43.36375933510784,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)5</name>
+			<open>1</open>
+			<description>Tappa 5 - Fontana di Borgo XX Settembre;Stage 5 - Fontana di Borgo XX Settembre</description>
+			<LookAt>
+				<longitude>13.34635320616424</longitude>
+				<latitude>43.3639380916144</latitude>
+				<altitude>0</altitude>
+				<heading>0.0001371849036832846</heading>
+				<tilt>27.43111224913708</tilt>
+				<range>180.6746280308419</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin1</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34657011652163,43.36388512340216,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>7</name>
+			<description>Svolta tutto a destra verso Borgo XX Settembre/Strada Provinciale Treiese;Turn sharp right towards Borgo XX Settembre/Strada Provinciale Treiese</description>
+			<LookAt>
+				<longitude>13.34585061029416</longitude>
+				<latitude>43.3632106073412</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001869790827039029</heading>
+				<tilt>23.65805943607232</tilt>
+				<range>265.650418409722</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin5</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34676605302959,43.36406869905009,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>8</name>
+			<description>Continua su Borgo XX Settembre/Strada Provinciale Treiese;Continue on Borgo XX Settembre/Treiese Provincial Road</description>
+			<LookAt>
+				<longitude>13.34585028417369</longitude>
+				<latitude>43.36320733196889</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001872029785345249</heading>
+				<tilt>23.6580594360723</tilt>
+				<range>265.6504184142283</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin5</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34675355235592,43.36364888801533,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>9</name>
+			<description>Svolta a sinistra e prendi Borgo Santa Croce/Strada Provinciale Treiese;Turn left and take Borgo Santa Croce/Strada Provinciale Treiese</description>
+			<LookAt>
+				<longitude>13.34585832008432</longitude>
+				<latitude>43.36320733205072</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001816853053996687</heading>
+				<tilt>23.65805943607232</tilt>
+				<range>265.6504184149936</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin5</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.3456653084591,43.36303981680831,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)6</name>
+			<open>1</open>
+			<description>Tappa 6 - Via dei Vasai;Stage 6 - Via dei Vasai</description>
+			<LookAt>
+				<longitude>13.3456848780103</longitude>
+				<latitude>43.362459655937</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0003216985446222684</heading>
+				<tilt>27.43111224913708</tilt>
+				<range>180.674628029176</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34549882532602,43.36253829170054,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)7</name>
+			<open>1</open>
+			<description>Tappa 7 - Chiesa dell&apos;Addolorata;Stage 7 - Chiesa dell&apos;Addolorata</description>
+			<LookAt>
+				<longitude>13.3456848764304</longitude>
+				<latitude>43.36194925214392</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0003216997238622152</heading>
+				<tilt>27.4311122491375</tilt>
+				<range>180.6746280729332</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.34571944444444,43.36186944444444,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

@@ -14,20 +14,22 @@ using Mapbox.Json.Linq;
 using Mono.Data.Sqlite;
 
 
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static DBClass;
-using IDbConnection = System.Data.IDbConnection;
+
 
 public class CreateTable : MonoBehaviour
 {
     private bool _call_all_togeter = false;
     public bool Verbose = false;
     public Slider _slider;
+
+
+
     string conn;
     string sqlQuery;
     IDbConnection dbconn;
@@ -105,8 +107,257 @@ public class CreateTable : MonoBehaviour
             conn = "URI=file:" + destinationPath;
         }
     }
-    public void copyDB(Slider loadingBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente)
+    // Ritorna lo spazio disponibile in byte
+    long GetAvailableStorage()
     {
+#if UNITY_EDITOR
+        // In Editor (Windows/Mac) DriveInfo funziona
+        string path = Application.persistentDataPath;
+        System.IO.DriveInfo drive = new System.IO.DriveInfo(System.IO.Path.GetPathRoot(path));
+        return drive.AvailableFreeSpace;
+
+#elif UNITY_ANDROID
+        // Su Android dobbiamo usare Java per interrogare lo storage
+        try {
+            using (var statFs = new AndroidJavaObject("android.os.StatFs", Application.persistentDataPath)) {
+                long blockSize = statFs.Call<long>("getBlockSizeLong");
+                long availableBlocks = statFs.Call<long>("getAvailableBlocksLong");
+                return availableBlocks * blockSize;
+            }
+        } catch (System.Exception e) {
+            Debug.LogError("Errore calcolo spazio Android: " + e.Message);
+            return long.MaxValue; // Ritorna un valore alto per non bloccare il download in caso di errore
+        }
+
+#elif UNITY_IOS
+        // Su iOS non esiste un comando C# diretto semplice. 
+        // Se non hai un plugin specifico, conviene assumere che lo spazio ci sia 
+        // o gestire l'errore durante la scrittura del file.
+        return long.MaxValue; 
+
+#else
+        return long.MaxValue;
+#endif
+    }
+    private string FormatBytes(long bytes)
+    {
+        string[] Suffix = { "B", "KB", "MB", "GB", "TB" };
+        int i;
+        double dblSByte = bytes;
+
+        for (i = 0; i < Suffix.Length && bytes >= 1024; i++, bytes /= 1024)
+        {
+            dblSByte = bytes / 1024.0;
+        }
+
+        // Ritorna il numero con 2 decimali (es. 150.45 MB)
+        return string.Format("{0:0.##} {1}", dblSByte, Suffix[i]);
+    }
+    private IEnumerator QuitSafeRoutine()
+    {
+        Debug.Log("Chiusura sicura in corso...");
+
+        // Aspetta che Unity finisca di processare l'evento del click e il frame attuale
+        yield return new WaitForEndOfFrame();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+    private IEnumerator DownloadAndCopyRoutine(string destinationPath, string dbAddress, Slider loadingBar, Slider loadingChunkBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente, Canvas Canvas_Errore_connessione, Canvas Canvas_DB_Corrotto, Canvas Canvas_Manca_Spazio, Canvas Canvas_Prompt_Download, Text Testo_Info_Download, Button Bottone_Conferma, Button Bottone_Annulla)
+    {
+        long totalBytes = GetFileSize(dbAddress);
+        // Controllo spazio: serve il peso del file + margine (es. 10MB)
+        long requiredSpace = totalBytes + (1024 * 1024 * 10);
+
+        if (GetAvailableStorage() < requiredSpace)
+        {
+            Debug.LogError("Spazio insufficiente sul dispositivo!");
+            // Qui dovresti attivare un Canvas di errore specifico
+            Canvas_Manca_Spazio.gameObject.SetActive(true);
+            yield break;
+        }
+        // 1. ESCI SE GIÀ PRONTO
+        if (File.Exists(destinationPath) && new FileInfo(destinationPath).Length >= totalBytes)
+        {
+            Debug.Log(destinationPath);
+            Debug.Log("Database integro. Fine.");
+            italiano.gameObject.SetActive(true);
+            inglese.gameObject.SetActive(true);
+            NonChiedereNuovamente.gameObject.SetActive(true);
+            yield break;
+        }
+
+        bool userAuthorized = false;
+        bool userCancelled = false;
+
+        string readableSize = FormatBytes(totalBytes);
+
+        // Mostra il valore all'utente nel Canvas di Prompt
+        Testo_Info_Download.text = $"Per continuare è necessario scaricare risorse aggiuntive.\n\n" +
+                                   $"Spazio richiesto: {readableSize}";
+
+        Canvas_Prompt_Download.gameObject.SetActive(true);
+
+        // Assegna i listener ai bottoni del prompt
+        Bottone_Conferma.onClick.RemoveAllListeners();
+        Bottone_Conferma.onClick.AddListener(() => userAuthorized = true);
+
+        // Se hai un tasto "Annulla"
+        // Sostituisci il tuo vecchio blocco nel DownloadAndCopyRoutine:
+        Bottone_Annulla.onClick.RemoveAllListeners();
+        Bottone_Annulla.onClick.AddListener(() => StartCoroutine(QuitSafeRoutine()));
+
+
+        // Aspetta l'input dell'utente senza bloccare l'app
+        while (!userAuthorized)
+        {
+            yield return null;
+        }
+
+        Canvas_Prompt_Download.gameObject.SetActive(false);
+
+        if (userCancelled) yield break;
+
+
+        int chunkSize = 1024 * 1024 * 10; // 10MB
+        long downloadedBytes = 0;
+        int i = 0;
+
+        // 2. CALCOLO REALE DEI BYTE GIÀ SCARICATI
+        // Importante: ci fermiamo al primo chunk mancante per garantire l'ordine
+        while (File.Exists(Path.Combine(Application.persistentDataPath, $"part_{i}.tmp")))
+        {
+            downloadedBytes += new FileInfo(Path.Combine(Application.persistentDataPath, $"part_{i}.tmp")).Length;
+            i++;
+        }
+
+        // 3. DOWNLOAD DEI CHUNK MANCANTI
+        while (downloadedBytes < totalBytes)
+        {
+            italiano.gameObject.SetActive(false);
+            inglese.gameObject.SetActive(false);
+            NonChiedereNuovamente.gameObject.SetActive(false);
+            if (loadingBar != null) loadingBar.gameObject.SetActive(true);
+            string currentPartPath = Path.Combine(Application.persistentDataPath, $"part_{i}.tmp");
+            long end = Math.Min(downloadedBytes + chunkSize - 1, totalBytes - 1);
+
+            UnityWebRequest www = UnityWebRequest.Get(dbAddress);
+            www.SetRequestHeader("Range", $"bytes={downloadedBytes}-{end}");
+            www.downloadHandler = new DownloadHandlerFile(currentPartPath);
+
+            var op = www.SendWebRequest();
+            while (!op.isDone)
+            {
+                if (loadingBar != null) loadingBar.value = op.progress;
+                yield return null;
+            }
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                downloadedBytes += (long)www.downloadedBytes;
+                loadingChunkBar.value = (float)downloadedBytes / totalBytes * 1.0f;
+                loadingChunkBar.gameObject.SetActive(true);
+                Debug.Log($"Progresso: {(float)downloadedBytes / totalBytes * 100}%");
+                i++;
+                yield return null;
+            }
+            else
+            {
+                Canvas_Errore_connessione.gameObject.SetActive(true);
+                yield break;
+            }
+        }
+
+        // 4. UNIONE FINALE (MERGE) - Creazione file da zero
+        Debug.Log("Unione chunk in corso...");
+        if (File.Exists(destinationPath)) File.Delete(destinationPath);
+
+        using (var outputStream = File.Create(destinationPath))
+        {
+            // Usiamo 'i' che ora rappresenta il numero totale di pezzi
+            for (int _i = 0; _i < i; _i++)
+            {
+                string p = Path.Combine(Application.persistentDataPath, $"part_{_i}.tmp");
+                if (File.Exists(p))
+                {
+                    using (var inputStream = File.OpenRead(p))
+                    {
+                        inputStream.CopyTo(outputStream);
+                    }
+                    File.Delete(p); // Pulizia immediata
+                }
+            }
+        }
+
+        // Attiva UI finale
+        Debug.Log("Merge completato. Ora puoi fare l'integrity_check.");
+        Debug.Log("File salvato in: " + destinationPath);
+
+
+        // 2. Verifica Integrità SQLite
+        if (CheckSqliteIntegrity(destinationPath))
+        {
+            Debug.Log("Database pronto all'uso!");
+        }
+        else
+        {
+            Canvas_DB_Corrotto.gameObject.SetActive(true);
+            Debug.LogError("Database corrotto a livello logico.");
+        }
+        loadingChunkBar.gameObject.SetActive(false);
+        loadingBar.gameObject.SetActive(false);
+        italiano.gameObject.SetActive(true);
+        inglese.gameObject.SetActive(true);
+        NonChiedereNuovamente.gameObject.SetActive(true);
+
+    }
+
+    long GetFileSize(string url)
+    {
+        // Il blocco 'using' chiama automaticamente .Dispose() alla fine
+        using (UnityWebRequest headRequest = UnityWebRequest.Head(url))
+        {
+            var operation = headRequest.SendWebRequest();
+
+            // Attenzione: questo 'while' blocca Unity. 
+            // In una Coroutine sarebbe meglio usare 'yield return operation;'
+            while (!operation.isDone) { }
+
+            if (headRequest.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Errore Head Request: " + headRequest.error);
+                return 0;
+            }
+
+            string contentLength = headRequest.GetResponseHeader("Content-Length");
+            return string.IsNullOrEmpty(contentLength) ? 0 : long.Parse(contentLength);
+        } // <--- QUI il socket viene CHIUSO realmente
+    }
+    public void copyDB(Slider loadingBar, Slider loadingChunkBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente, Canvas Canvas_DB_Corrotto, Canvas Canvas_Errore_connessione, Canvas Canvas_Manca_Spazio, Canvas Canvas_Prompt_Download, Text Testo_Info_Download, Button Bottone_Conferma, Button Bottone_Annulla)
+    {
+        string dbName = "mydatabase.db";
+
+
+        string destinationPath = Path.Combine(Application.persistentDataPath, dbName);
+        try
+        {
+            // 1. Ricomposizione dei Chunk
+            StartCoroutine(DownloadAndCopyRoutine(destinationPath, "https://www.macerataturismo.it/wp-content/blogs.dir/1/files/2025/12/mydatabase.db.bytes", loadingBar, loadingChunkBar, italiano, inglese, NonChiedereNuovamente, Canvas_Errore_connessione, Canvas_DB_Corrotto, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla));
+
+
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Errore durante il processo: {e.Message}");
+        }
+
+        string sourcePath = Path.Combine(Application.streamingAssetsPath, dbName);
+        conn = "URI=file:" + destinationPath;
+
+        /*
         string dbName = "mydatabase.db.zip";
         string destinationPath = Path.Combine(Application.persistentDataPath, dbName);
         string sourcePath = Path.Combine(Application.streamingAssetsPath, dbName);
@@ -173,6 +424,7 @@ public class CreateTable : MonoBehaviour
         }
         // Open the database from the NEW writable location
         conn = "URI=file:" + destinationPath;
+        */
     }
 
     private IEnumerator ReadSettings(string fileName)
@@ -222,6 +474,22 @@ public class CreateTable : MonoBehaviour
         }
     }
 
+    private bool CheckSqliteIntegrity(string dbPath)
+    {
+        string connectionString = $"URI=file:{dbPath}";
+        using (var connection = new SqliteConnection(connectionString))
+        {
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "PRAGMA integrity_check;";
+                var result = command.ExecuteScalar();
+                connection.Close();
+                return result != null && result.ToString().ToLower() == "ok";
+            }
+
+        }
+    }
     private IEnumerator CopyDatabaseRoutineAndroid(string fileName, Slider loadingBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente)
     {
         string sourcePath = Path.Combine(Application.streamingAssetsPath, fileName);
@@ -373,7 +641,7 @@ public class CreateTable : MonoBehaviour
                 PlayerPrefs.SetInt("lingua_selezionata", 0);
                 PlayerPrefs.SetString("istat", "");
                 PlayerPrefs.SetString("poi_selezionato", "");
-                PlayerPrefs.SetInt("percorso_selezionato", 0);
+                PlayerPrefs.SetString("percorso_selezionato", "");
 
 
                 using (var dbcmd = dbconn.CreateCommand())
@@ -1599,7 +1867,7 @@ public class CreateTable : MonoBehaviour
         }
         return ret;
     }
-    public List<POI> getPOI(int lingua_id, long? id = null, int? comune_id = null, string nome = null, int maxrow = 0, float? _latitudine = null, float? _longitudine = null, int? group_tipo_poi = null, int? tipo_poi = null, bool? get_images = null, bool? get_max_date_update = null, int? percorso_id = null, string? uuid = null)
+    public List<POI> getPOI(int lingua_id, long? id = null, int? comune_id = null, string nome = null, int maxrow = 0, double? _latitudine = null, double? _longitudine = null, int? group_tipo_poi = null, int? tipo_poi = null, bool? get_images = null, bool? get_max_date_update = null, long? percorso_id = null, string? uuid = null)
     {
         List<POI> ret = new List<POI>();
         getConnection();
@@ -1614,7 +1882,7 @@ public class CreateTable : MonoBehaviour
             using (var dbcmd = dbconn.CreateCommand())
             {
 
-                sqlQuery = $"SELECT  POI.id, POI.longitudine, POI.latitudine, nome, webPage, facebook, instagram, telefono, mail, tag, descrizione, limite_zoom, istat, comune_id, nome_comune, provincia, " +
+                sqlQuery = $"PRAGMA cache_size = 2000; SELECT  POI.id, POI.longitudine, POI.latitudine, nome, webPage, facebook, instagram, telefono, mail, tag, descrizione, limite_zoom, istat, comune_id, nome_comune, provincia, " +
                     $" (SELECT COUNT(id) from PERCORSI where poi_id = POI.id and PERCORSI.attivo ='Y' and lingua_id = {lingua_id}), " +
                     $"POI.indirizzo, POI.visitabile, POI.distanza_dal_centro, " +
                     //                    $"ABS({SafeSubString(_latitudine.ToString().Replace(".", ""), 7).Replace(",","")} - substr(POI.latitudine, 0,7) + {SafeSubString( _longitudine.ToString().Replace(".", ""), 7).Replace(",", "")} - substr(POI.longitudine, 0,7))  as distance , " +
@@ -1645,7 +1913,7 @@ public class CreateTable : MonoBehaviour
                     sqlQuery += $" ORDER BY POI.mod_dte DESC LIMIT 1";
                 else
                 {
-                    sqlQuery += $" ORDER BY distance, distanza_dal_centro";
+                    sqlQuery += $" ORDER BY distance";
                     if (maxrow > 0)
                         sqlQuery += $" LIMIT {maxrow}";
                 }
@@ -2328,7 +2596,7 @@ public class CreateTable : MonoBehaviour
         }
         return ret;
     }
-    public List<PERCORSO> getPERCORSI(int? lingua_id = null, int? id = null, long? poi_id = null, bool? groupedByCodice = null, int? comune_id = null, string nome = null, string tipo_percorso = null, string tipo_navigazione = null, bool? get_images = null)
+    public List<PERCORSO> getPERCORSI(int? lingua_id = null, long? id = null, long? poi_id = null, bool? groupedByCodice = null, int? comune_id = null, string nome = null, string tipo_percorso = null, string tipo_navigazione = null, bool? get_images = null)
     {
         List<PERCORSO> ret = new List<PERCORSO>();
         getConnection();
@@ -2342,19 +2610,19 @@ public class CreateTable : MonoBehaviour
                 Debug.Log("Connection opened to: " + conn);
             using (var dbcmd = dbconn.CreateCommand())
             {
-                sqlQuery = $"SELECT id, tipo_percorso, tipo_navigazione, nome_percorso, percorso, colore, poi_id, lunghezza, dislivello, " +
+                sqlQuery = $"SELECT PERCORSI.id, tipo_percorso, tipo_navigazione, nome_percorso, percorso, colore, poi_id, lunghezza, dislivello, " +
                     $"adatto_a, accessibilita, tempo_percorrenza, pendenza";
-                sqlQuery += $" FROM PERCORSI WHERE attivo = 'Y' ";
+                sqlQuery += $" FROM PERCORSI left join POI on poi_id = POi.id left join COMUNI on COMUNI.id = POI.comune_id WHERE PERCORSI.attivo = 'Y' and COMUNI.attivo = 'Y' ";
                 //if (lingua_id.HasValue && lingua_id > 0)
                 //    sqlQuery += $" AND lingua_id = {lingua_id.Value}";
                 if (id.HasValue && id > 0)
-                    sqlQuery += $" AND id = {id.Value}";
+                    sqlQuery += $" AND PERCORSI.id = {id.Value}";
                 if (poi_id.HasValue && poi_id > 0)
-                    sqlQuery += $" AND poi_id = {poi_id.Value}";
+                    sqlQuery += $" AND PERCORSI.poi_id = {poi_id.Value}";
                 if (comune_id.HasValue && comune_id > 0)
-                    sqlQuery += $" AND poi_id IN( SELECT id from POI where attivo ='Y' and comune_id = {comune_id.Value})";
+                    sqlQuery += $" AND PERCORSI.poi_id IN( SELECT id from POI where attivo ='Y' and comune_id = {comune_id.Value})";
                 if (!string.IsNullOrEmpty(nome))
-                    sqlQuery += $" AND nome_percorso like '%{nome}%'";
+                    sqlQuery += $" AND (nome_percorso like '%{nome}%' OR PERCORSI.poi_id in (select poi.id from POI left join COMUNI on poi.comune_id = COMUNI.id where nome_comune like '%{nome}%') )";
                 if (!string.IsNullOrEmpty(tipo_percorso))
                     sqlQuery += $" AND tipo_percorso = '{tipo_percorso}'";
                 if (!string.IsNullOrEmpty(tipo_navigazione))
@@ -2368,11 +2636,12 @@ public class CreateTable : MonoBehaviour
                 while (_reader.Read())
                 {
                     PERCORSO percorso = new PERCORSO();
-                    percorso.id = _reader.GetInt32(0);
+                    percorso.id = _reader.GetInt64(0);
                     percorso.tipo_percorso = !_reader.IsDBNull(1) ? Regex.Unescape(_reader.GetString(1)) : "";
                     percorso.tipo_navigazione = !_reader.IsDBNull(2) ? Regex.Unescape(_reader.GetString(2)) : "";
                     percorso.nome_percorso = !_reader.IsDBNull(3) ? Regex.Unescape(_reader.GetString(3)) : "";
-                    percorso.percorso = !_reader.IsDBNull(4) ? Regex.Unescape(_reader.GetString(4)) : "";
+                    percorso.percorso = !_reader.IsDBNull(4) ? Regex.Unescape(_reader.GetString(4).Replace("\\r\\n", "\n")) : "";
+
                     percorso.colore = !_reader.IsDBNull(5) ? Regex.Unescape(_reader.GetString(5)) : "";
                     percorso.poi_id = _reader.GetInt32(6);
                     percorso.lunghezza = !_reader.IsDBNull(7) ? Regex.Unescape(_reader.GetString(7)) : "";
@@ -2392,7 +2661,7 @@ public class CreateTable : MonoBehaviour
         }
         return ret;
     }
-    public List<PERCORSO_TEXT> getPERCORSI_TEXT(int lingua_id, int? percorso_id = null)
+    public List<PERCORSO_TEXT> getPERCORSI_TEXT(int lingua_id, long? percorso_id = null)
     {
         List<PERCORSO_TEXT> ret = new List<PERCORSO_TEXT>();
         getConnection();
@@ -2429,7 +2698,7 @@ public class CreateTable : MonoBehaviour
         }
         return ret;
     }
-    public List<PERCORSO_IMMAGINI> getPERCORSI_IMMAGINI(int? id = null, int? percorso_id = null, bool? solo_princioale = null)
+    public List<PERCORSO_IMMAGINI> getPERCORSI_IMMAGINI(int? id = null, long? percorso_id = null, bool? solo_princioale = null)
     {
         List<PERCORSO_IMMAGINI> ret = new List<PERCORSO_IMMAGINI>();
         getConnection();
@@ -2455,7 +2724,7 @@ public class CreateTable : MonoBehaviour
                 while (_reader.Read())
                 {
                     PERCORSO_IMMAGINI percorsi_immagini = new PERCORSO_IMMAGINI();
-                    percorsi_immagini.id = _reader.GetInt32(0);
+                    percorsi_immagini.id = _reader.GetInt64(0);
                     percorsi_immagini.descrizione = !_reader.IsDBNull(1) ? Regex.Unescape(_reader.GetString(1)) : "";
                     percorsi_immagini.image = System.Convert.FromBase64String(Regex.Unescape(Encoding.ASCII.GetString((byte[])_reader["image"]))); // ["image"];
                     percorsi_immagini.principale = (int)_reader["principale"] == 1 ? true : false;
@@ -2469,7 +2738,7 @@ public class CreateTable : MonoBehaviour
         }
         return ret;
     }
-    public List<POIXTAPPE> getPOIXTAPPE(int? id = null, long? poi_id = null, int? tappa_id = null, int? percorso_id = null)
+    public List<POIXTAPPE> getPOIXTAPPE(int? id = null, long? poi_id = null, long? tappa_id = null, long? percorso_id = null)
     {
         List<POIXTAPPE> ret = new List<POIXTAPPE>();
         getConnection();
@@ -2496,10 +2765,11 @@ public class CreateTable : MonoBehaviour
                 IDataReader _reader = dbcmd.ExecuteReader();
                 while (_reader.Read())
                 {
+
                     POIXTAPPE poixtappe = new POIXTAPPE();
                     poixtappe.id = _reader.GetInt32(0);
-                    poixtappe.poi_id = _reader.GetInt32(1);
-                    poixtappe.tappa_id = _reader.GetInt32(2);
+                    poixtappe.poi_id = _reader.GetInt64(1);
+                    poixtappe.tappa_id = _reader.GetInt64(2);
                     ret.Add(poixtappe);
                 }
             }
@@ -2507,7 +2777,7 @@ public class CreateTable : MonoBehaviour
         }
         return ret;
     }
-    public List<TAPPE> getTAPPE(int lingua_id, int? id = null)
+    public List<TAPPE> getTAPPE(int lingua_id, long? id = null)
     {
         List<TAPPE> ret = new List<TAPPE>();
         getConnection();
@@ -2521,28 +2791,29 @@ public class CreateTable : MonoBehaviour
                 Debug.Log("Connection opened to: " + conn);
             using (var dbcmd = dbconn.CreateCommand())
             {
-                sqlQuery = $"SELECT id, nome_tappa, colore, latitudine, longitudine FROM TAPPE WHERE attivo = 'Y' ";
+                sqlQuery = $"SELECT id, nome_tappa, colore, latitudine, longitudine FROM TAPPE WHERE attivo = 'Y' and latitudine is not null ";
                 if (id != null && id > 0)
                     sqlQuery += $" AND id = {id}";
+                Debug.Log(sqlQuery);
+
                 dbcmd.CommandText = sqlQuery;
                 IDataReader _reader = dbcmd.ExecuteReader();
                 while (_reader.Read())
                 {
+
                     TAPPE tappa = new TAPPE();
-                    tappa.id = _reader.GetInt32(0);
+                    tappa.id = _reader.GetInt64(0);
                     tappa.nome_tappa = !_reader.IsDBNull(1) ? Regex.Unescape(_reader.GetString(1)) : "";
                     tappa.colore = !_reader.IsDBNull(2) ? Regex.Unescape(_reader.GetString(2)) : "";
 
-                    double lo = _reader.GetFloat(3);
+                    double lo = !_reader.IsDBNull(3) ? _reader.GetFloat(3) : 0;
                     while (lo > 99)
                         lo /= 10;
                     tappa.latitudine = lo;
-                    double la = _reader.GetFloat(4);
+                    double la = !_reader.IsDBNull(4) ? _reader.GetFloat(4) : 0;
                     while (la > 99)
                         la /= 10;
                     tappa.longitudine = la;
-
-
 
 
                     tappa.tappe_text = getTAPPE_TEXT(lingua_id, null, tappa.id);
@@ -2553,7 +2824,7 @@ public class CreateTable : MonoBehaviour
         }
         return ret;
     }
-    public List<TAPPE_TEXT> getTAPPE_TEXT(int lingua_id, int? id = null, int? tappa_id = null)
+    public List<TAPPE_TEXT> getTAPPE_TEXT(int lingua_id, int? id = null, long? tappa_id = null)
     {
         List<TAPPE_TEXT> ret = new List<TAPPE_TEXT>();
         getConnection();
@@ -2578,7 +2849,7 @@ public class CreateTable : MonoBehaviour
                 {
                     TAPPE_TEXT tipo_poi = new TAPPE_TEXT();
                     tipo_poi.id = _reader.GetInt32(0);
-                    tipo_poi.descrizione = !_reader.IsDBNull(1) ? Regex.Unescape(_reader.GetString(1)) : "";
+                    tipo_poi.descrizione = pulisciHTML(!_reader.IsDBNull(1) ? Regex.Unescape(_reader.GetString(1)) : "");
                     tipo_poi.lingua_id = _reader.GetInt32(2);
                     tipo_poi.tappa_id = _reader.GetInt32(3);
 
@@ -2588,6 +2859,18 @@ public class CreateTable : MonoBehaviour
             dbconn.Close();
         }
         return ret;
+    }
+    public string pulisciHTML(string testo)
+    {
+        testo = testo.Replace("<strong>", "<b>");
+        testo = testo.Replace("</strong>", "</b>");
+        testo = testo.Replace("<span style=\"font-weight: 400\">", "");
+        testo = testo.Replace("<span style= font-weight: 400 >", "");
+        testo = testo.Replace("</span>", "");
+        testo = testo.Replace("<em>", "<i>");
+        testo = testo.Replace("</em>", "</i>");
+
+        return testo;
     }
     public List<TAPPE_IMMAGINI> getTAPPE_IMMAGINI(int? id = null, int? tappa_id = null)
     {
@@ -2634,7 +2917,7 @@ public class CreateTable : MonoBehaviour
     }
 
 
-    public List<TAPPEXPERCORSI> getTAPPEXPERCORSI(int? id = null, int? tappa_id = null, int? percorso_id = null)
+    public List<TAPPEXPERCORSI> getTAPPEXPERCORSI(int? id = null, long? tappa_id = null, long? percorso_id = null)
     {
         List<TAPPEXPERCORSI> ret = new List<TAPPEXPERCORSI>();
         getConnection();
@@ -2657,15 +2940,16 @@ public class CreateTable : MonoBehaviour
                     sqlQuery += $" AND percorso_id = {percorso_id}";
 
                 if (percorso_id != null && percorso_id > 0)
-                    sqlQuery += $" ORDER BY ordine";
+                    sqlQuery += $"  group by percorso_id, ordine ORDER BY ordine, mod_dte desc ";
+
                 dbcmd.CommandText = sqlQuery;
                 IDataReader _reader = dbcmd.ExecuteReader();
                 while (_reader.Read())
                 {
                     TAPPEXPERCORSI tappaxpercorsi = new TAPPEXPERCORSI();
-                    tappaxpercorsi.id = _reader.GetInt32(0);
-                    tappaxpercorsi.tappa_id = _reader.GetInt32(1);
-                    tappaxpercorsi.percorso_id = _reader.GetInt32(2);
+                    tappaxpercorsi.id = _reader.GetInt64(0);
+                    tappaxpercorsi.tappa_id = _reader.GetInt64(1);
+                    tappaxpercorsi.percorso_id = _reader.GetInt64(2);
                     tappaxpercorsi.ordine = _reader.GetInt32(3);
                     ret.Add(tappaxpercorsi);
                 }

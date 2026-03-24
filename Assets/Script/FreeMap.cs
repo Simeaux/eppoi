@@ -30,6 +30,7 @@ using System.Drawing;
 using System.Globalization;
 using Mapbox.Examples;
 using Mapbox.Unity.Location;
+using UnityEngine.Analytics;
 
 public class FreeMap : MonoBehaviour
 {
@@ -62,7 +63,9 @@ public class FreeMap : MonoBehaviour
     public resolution mapResolution = resolution.high;
     public double[] boundingBox; //[lon(min), lat(min), lon(max), lat(max)]
 
-    public GameObject GOImhere;
+    public GameObject GOGeneric;
+    public GameObject GOImHere;
+    public GameObject GONomeComune;
 
     public Material MinimapLineMaterial;
     public GameObject[] _gameobject;
@@ -101,10 +104,12 @@ public class FreeMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Input.location.Start();
+
         lat.text = 43.144215900691755.ToString();
         lon.text = 13.196735039064533.ToString();
         FindLatLon();
-        zoom.text = "10";
+        zoom.text = "15";
 
 
         double.TryParse(lon.text, out centerLongitude);
@@ -128,7 +133,7 @@ public class FreeMap : MonoBehaviour
         _extract.getstart();
         StartCoroutine(_DBClass.GetLatLonUsingGPS());
         GetMapbox();
-        //OnBtnHere();
+        OnBtnHere();
     }
     public IEnumerable FindLatLon()
     {
@@ -174,8 +179,49 @@ public class FreeMap : MonoBehaviour
 
 
     //Update è chiamato a ogni frame
+    private double _latitudine;
+    private double _longitudine;
+    private bool _gia_spostato = false;
     private void Update()
     {
+
+        if (!_gia_spostato)
+        {
+            StartCoroutine(_DBClass.GetLatLonUsingGPS());
+            if (_DBClass._latitudine != 43.2534828186035 && _DBClass._latitudine != 0 && _DBClass._longitudine != 13.0091695785522 && _DBClass._longitudine != 0)
+            {
+                if (_latitudine != _DBClass._latitudine || _longitudine != _DBClass._longitudine)
+                    _gia_spostato = true;
+                _latitudine = _DBClass._latitudine;
+                _longitudine = _DBClass._longitudine;
+
+
+
+
+                // Segnalo la mia posizione 
+                var apgo_imhere = Instantiate(GOImHere, abstractMap.GeoToWorldPosition(_DBClass.VectorFromLonLat(_DBClass._longitudine, _DBClass._latitudine), true), Quaternion.identity);
+                Obj_x_Map_Prefab _ap_imhere = apgo_imhere.GetComponentInChildren<Obj_x_Map_Prefab>();
+                if (_ap_imhere != null)
+                {
+                    _ap_imhere._map = abstractMap;
+                    _ap_imhere._latLong = _DBClass.VectorFromLonLat(_DBClass._longitudine, _DBClass._latitudine);
+                    _ap_imhere.Enable();
+                    _ap_imhere.UpdatePosition();
+                }
+
+
+                //Simone punto da ricordare
+                //apgo.tag = "A";
+                apgo_imhere.name = "ImHere";
+                apgo_imhere.transform.Rotate(90, 0, 0);
+                apgo_imhere.transform.SetParent(GOObject.transform, false);
+                POIGo.Add(apgo_imhere);
+                // Segnalo la mia posizione 
+
+                //OnBtnHere();
+            }
+        }
+
         // Verifica che la factory e il provider siano pronti
         if (LocationProviderFactory.Instance != null &&
             LocationProviderFactory.Instance.DefaultLocationProvider != null)
@@ -243,7 +289,7 @@ public class FreeMap : MonoBehaviour
                 }
             }
 
-            if (click)
+            if (click && !PlayerPrefs.HasKey("cambio_zoom_nella_mappa"))
             {
                 Debug.Log("FreeMap CLiccked!!");
                 // Bit shift the index of the layer (8) to get a bit mask
@@ -269,13 +315,17 @@ public class FreeMap : MonoBehaviour
                         PanelMAP.SetActive(false);
                         GameObject.FindObjectOfType<ItinerariEventiPOI_AttaccatiAlComune>().Reload();
                     }
-                    else if (int.TryParse(p.name.Replace("(Clone)", ""), out var _app2))
+                    else if (long.TryParse(p.name.Replace("(Clone)", ""), out var _app2))
                     {
-                        if (!string.IsNullOrEmpty(p.name))
-                            PlayerPrefs.SetInt("percorso_selezionato", _app2);
-                        PanelPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(_app2.ToString(), false, false, 1);
-                        PanelMAP.SetActive(false);
-                        GameObject.FindObjectOfType<ItinerariEventiPOI_AttaccatiAlComune>().Reload();
+                        var txp = _DBClass.getTAPPEXPERCORSI(null, _app2, null);
+                        if (txp != null && txp.Count > 0)
+                        {
+                            long _id = txp.FirstOrDefault().percorso_id;
+                            PlayerPrefs.SetString("percorso_selezionato", _id.ToString());
+                            PanelPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(_id.ToString(), false, false, 1);
+                            PanelMAP.SetActive(false);
+                            GameObject.FindObjectOfType<ItinerariEventiPOI_AttaccatiAlComune>().Reload();
+                        }
                     }
 
                 }
@@ -288,11 +338,12 @@ public class FreeMap : MonoBehaviour
                     double.TryParse(zoom.text, out selectedzoom);
                     //if (selectedzoom > 11)
                     //{
+
                     if (Dx.text != "0" || Dy.text != "0" || selectedzoom != selectedzoomLast)
                     {
                         if (selectedzoomLast != selectedzoom)
                         {
-                            GOObject.transform.position = new Vector3(0, 0, 0);
+                            //GOObject.transform.position = new Vector3(0, 0, 0);
                             Ricalcola_Centro(false);
                             selectedzoomLast = selectedzoom;
                         }
@@ -356,6 +407,8 @@ public class FreeMap : MonoBehaviour
             DrawCustomRoute();
         //GOObject.transform.Translate(new Vector3((float)deltax/valore, 0, (float)deltay));
 
+        if (PlayerPrefs.HasKey("cambio_zoom_nella_mappa"))
+            PlayerPrefs.DeleteKey("cambio_zoom_nella_mappa");
     }
 
     private void GetMapbox()
@@ -533,6 +586,50 @@ public class FreeMap : MonoBehaviour
 
 
         Debug.Log("DrawCustomRoute cancellazione  " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
+        var xAngleRotate = 90;
+        if (GONomeComune != null)
+        {
+            List<COMUNE> _comune_list = _DBClass.GetCOMUNI(null);//.Where(o => Between(o.longitudine, tmp_boundingBox[0], tmp_boundingBox[2]) && Between(o.latitudine, tmp_boundingBox[1], tmp_boundingBox[3]) || (!string.IsNullOrEmpty(ID_selected) && ID_selected == o.ID.ToString())).ToList();
+
+            foreach (COMUNE _c in _comune_list)
+            {
+                if (_c != null)
+                {
+                    var _lo = _c.longitudine;
+                    while (_lo > 100)
+                        _lo = _lo / 10;
+                    var _la = _c.latitudine;
+                    while (_la > 100)
+                        _la = _la / 10;
+                    GameObject _go = GONomeComune;
+                    var apgo = Instantiate(_go, abstractMap.GeoToWorldPosition(_DBClass.VectorFromLonLat(_lo, _la), true), Quaternion.identity);
+                    Obj_x_Map_Prefab _ap = apgo.GetComponentInChildren<Obj_x_Map_Prefab>();
+                    if (_ap != null)
+                    {
+                        _ap._map = abstractMap;
+                        _ap._latLong = _DBClass.VectorFromLonLat(_lo, _la);
+                        _ap.Enable();
+                        _ap.UpdatePosition();
+                    }
+                    apgo.transform.Rotate(90, 90, 90);
+                    foreach (var ap in apgo.GetComponentsInChildren<NomeComune>())
+                    {
+                        ap.SetText(_c.nome_comune);
+                    }
+
+                    //Simone punto da ricordare
+                    //apgo.tag = "A";
+                    apgo.name = _c.id.ToString();
+                    //apgo.transform.Rotate(xAngleRotate, 0, 0);
+
+                    apgo.transform.SetParent(GOObject.transform, false);
+                    POIGo.Add(apgo);
+                }
+            }
+
+
+        }
+
 
         string ID_selected = "";
         if (GameObject.FindObjectOfType<Panel_POI>() != null)
@@ -554,8 +651,8 @@ public class FreeMap : MonoBehaviour
                     already_inserted.Add(_p.ID);
                     if (_p.limite_zoom <= (int)selectedzoom)
                     {
-                        GameObject _go = GOImhere;
-                        var xAngleRotate = 90;
+                        GameObject _go = GOGeneric;
+                        xAngleRotate = 90;
                         var _tipo = _p.tipoList.FirstOrDefault();
                         if (_tipo != null && _tipo.tipo != null)
                         {
@@ -607,7 +704,7 @@ public class FreeMap : MonoBehaviour
         try
         {/*
             //Location l = ARLocationManager.Instance.GetLocationForWorldPosition(Camera.main.transform.position);
-            //var imhere = Instantiate(GOImhere, abstractMap.GeoToWorldPosition(new Vector2d(l.Latitude, l.Longitude), true), Quaternion.identity);
+            //var imhere = Instantiate(GOGeneric, abstractMap.GeoToWorldPosition(new Vector2d(l.Latitude, l.Longitude), true), Quaternion.identity);
 
             // 1. Ottieni la posizione attuale dal provider predefinito di Mapbox
             var locationProvider = LocationProviderFactory.Instance.DeviceLocationProvider;
@@ -617,16 +714,16 @@ public class FreeMap : MonoBehaviour
             // Il parametro 'true' serve per scalare correttamente la posizione sulla mappa
             Vector3 worldPosition = abstractMap.GeoToWorldPosition(currentLatLon, true);
 
-            // 3. Assegna la posizione al GameObject "GOImhere"
-            GOImhere.transform.position = worldPosition;
-            var imhere = Instantiate(GOImhere, abstractMap.GeoToWorldPosition(new Vector2d(worldPosition.x, worldPosition.y), true), Quaternion.identity);
+            // 3. Assegna la posizione al GameObject "GOGeneric"
+            GOGeneric.transform.position = worldPosition;
+            var imhere = Instantiate(GOGeneric, abstractMap.GeoToWorldPosition(new Vector2d(worldPosition.x, worldPosition.y), true), Quaternion.identity);
             /-*
             */
 
-            getPosition();
+            //getPosition();
 
             /*
-                        var imhere = Instantiate(GOImhere, abstractMap.GeoToWorldPosition(new Vector2d(_DBClass._latitudine, _DBClass._longitudine), true), Quaternion.identity);
+                        var imhere = Instantiate(GOGeneric, abstractMap.GeoToWorldPosition(new Vector2d(_DBClass._latitudine, _DBClass._longitudine), true), Quaternion.identity);
                         Obj_x_Map_Prefab _ap = imhere.GetComponentInChildren<Obj_x_Map_Prefab>();
                         if (_ap != null)
                         {
@@ -738,28 +835,33 @@ public class FreeMap : MonoBehaviour
             //estraggo le tappe
             foreach (var txp in _extract?.getTappeXPercorsiList().Where(p => p.percorso_id == percorsi.ToList()[i].id))
             {
+
                 var _plist = _DBClass.getTAPPE(1, txp.tappa_id);
                 if (_plist != null)
                 {
                     foreach (var _p in _plist)
                     {
-                        _billboard.name = txp.percorso_id.ToString();
-                        var apgo1 = Instantiate(_billboard, abstractMap.GeoToWorldPosition(_DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine), true), Quaternion.identity);
-                        Obj_x_Map_Prefab _ap = apgo1.GetComponentInChildren<Obj_x_Map_Prefab>();
-                        if (_ap != null)
+                        if (!already_inserted.Contains(_p.id))
                         {
-                            _ap._map = abstractMap;
-                            _ap._latLong = _DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine);
-                            _ap.Enable();
-                            _ap.UpdatePosition();
+                            already_inserted.Add(_p.id);
+                            _billboard.name = _p.id.ToString();
+                            var apgo1 = Instantiate(_billboard, abstractMap.GeoToWorldPosition(_DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine), true), Quaternion.identity);
+                            Obj_x_Map_Prefab _ap = apgo1.GetComponentInChildren<Obj_x_Map_Prefab>();
+                            if (_ap != null)
+                            {
+                                _ap._map = abstractMap;
+                                _ap._latLong = _DBClass.VectorFromLonLat(_p.longitudine, _p.latitudine);
+                                _ap.Enable();
+                                _ap.UpdatePosition();
+                            }
+                            apgo1.transform.Rotate(90, 90, 90);
+                            foreach (var ap in apgo1.GetComponentsInChildren<TestoTappa>())
+                            {
+                                ap.SetText(txp.ordine.ToString());// _p.nome_tappa);
+                            }
+                            apgo1.transform.SetParent(GOObject.transform, false);
+                            POIGo.Add(apgo1);
                         }
-                        apgo1.transform.Rotate(90, 90, 90);
-                        foreach (var ap in apgo1.GetComponentsInChildren<TestoTappa>())
-                        {
-                            ap.SetText(txp.ordine.ToString());// _p.nome_tappa);
-                        }
-                        apgo1.transform.SetParent(GOObject.transform, false);
-                        POIGo.Add(apgo1);
                     }
                 }
             }
@@ -776,49 +878,50 @@ public class FreeMap : MonoBehaviour
         */
         Debug.Log("DrawCustomRoute out " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
     }
-
-    public IEnumerator getPosition()
-    {
-        Debug.Log("getPosition in " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
-        // 1. Controlla se l'utente ha il GPS attivo
-        if (!Input.location.isEnabledByUser)
+    /*
+        public IEnumerator getPosition()
         {
-            Debug.Log("GPS non attivo sul device");
-            yield break;
+            Debug.Log("getPosition in " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
+            // 1. Controlla se l'utente ha il GPS attivo
+            if (!Input.location.isEnabledByUser)
+            {
+                Debug.Log("GPS non attivo sul device");
+                yield break;
+            }
+
+            // 2. Avvia il servizio (accuratezza desiderata 5 metri, aggiornamento ogni 5 metri)
+            Input.location.Start(5, 5);
+
+            // 3. Attendi l'inizializzazione
+            int maxWait = 20;
+            while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
+            {
+                yield return new WaitForSeconds(1);
+                maxWait--;
+            }
+
+            if (maxWait < 1 || Input.location.status == LocationServiceStatus.Failed)
+            {
+                Debug.Log("Impossibile determinare la posizione");
+                yield break;
+            }
+
+            // 4. Posizione ottenuta!
+            _DBClass._latitudine = Input.location.lastData.latitude;
+            _DBClass._longitudine = Input.location.lastData.longitude;
+            var accuracy = Input.location.lastData.horizontalAccuracy;
+
+            Debug.Log($"Coordinate: {_DBClass._latitudine}, {_DBClass._longitudine} (Precisione: {accuracy}m)");
+            Debug.Log("getPosition out " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
         }
-
-        // 2. Avvia il servizio (accuratezza desiderata 5 metri, aggiornamento ogni 5 metri)
-        Input.location.Start(5, 5);
-
-        // 3. Attendi l'inizializzazione
-        int maxWait = 20;
-        while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
-        {
-            yield return new WaitForSeconds(1);
-            maxWait--;
-        }
-
-        if (maxWait < 1 || Input.location.status == LocationServiceStatus.Failed)
-        {
-            Debug.Log("Impossibile determinare la posizione");
-            yield break;
-        }
-
-        // 4. Posizione ottenuta!
-        _DBClass._latitudine = Input.location.lastData.latitude;
-        _DBClass._longitudine = Input.location.lastData.longitude;
-        var accuracy = Input.location.lastData.horizontalAccuracy;
-
-        Debug.Log($"Coordinate: {_DBClass._latitudine}, {_DBClass._longitudine} (Precisione: {accuracy}m)");
-        Debug.Log("getPosition out " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
-    }
+    */
 
     public void OnBtnHere()
     {
         //Location l = ARLocationManager.Instance.GetLocationForWorldPosition(Camera.main.transform.position);
         //Location l = ARLocationProvider.Instance.CurrentLocation.ToLocation();
         StartCoroutine(_DBClass.GetLatLonUsingGPS());
-        StartCoroutine(getPosition());
+        //StartCoroutine(getPosition());
         SpostaCentro(_DBClass._latitudine, _DBClass._longitudine);
         Ricalcola_Centro(false);
     }

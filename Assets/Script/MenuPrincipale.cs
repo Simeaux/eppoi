@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class MenuPrincipale : MonoBehaviour
 {
 
-   public void ButtonCliccked(Text button)
+    public void ButtonCliccked(Text button)
     {
         PlayerPrefs.SetString("istat", button.text);
         PlayerPrefs.SetString("poi_selezionato", "");
-        PlayerPrefs.SetInt("percorso_selezionato", 0);
+        PlayerPrefs.SetString("percorso_selezionato", "");
 
     }
     public void ButtonClicckedComune(Text text)
@@ -28,30 +28,40 @@ public class MenuPrincipale : MonoBehaviour
                 int tipo = int.Parse(listText[0]);
 
 
-                int id = int.Parse(listText[1]);
+                long id = long.Parse(listText[1]);
                 if (tipo == 1 && !(PlayerPrefs.GetString("poi_selezionato") != ""))
                 {
-                    var _comune = GameObject.FindObjectOfType<DBClass>().GetCOMUNI(null, null, GameObject.FindObjectOfType<DBClass>().getPOI(GameObject.FindObjectOfType<DBClass>().GetPERCORSO(id)?[0]?.poi_id)?[0].comune_id);
-                    if (_comune != null && _comune.Count > 0)
-                        PlayerPrefs.SetString("istat", _comune[0].istat);
-                    PlayerPrefs.SetInt("percorso_selezionato", id);
+                    var _percorso = GameObject.FindObjectOfType<DBClass>().GetPERCORSO(id);
+                    if (_percorso != null)
+                    {
+                        var _poi = GameObject.FindObjectOfType<DBClass>().getPOI(_percorso[0].poi_id);
+                        if (_poi != null && _poi.Count > 0)
+                        {
+
+                            var _comune = GameObject.FindObjectOfType<DBClass>().GetCOMUNI(null, null, _poi[0].comune_id);
+                            if (_comune != null && _comune.Count > 0)
+                                PlayerPrefs.SetString("istat", _comune[0].istat);
+                        }
+                    }
+
+                    PlayerPrefs.SetString("percorso_selezionato", id.ToString());
                     if (sceneName == "Map")
                         PlayerPrefs.SetInt("show_grid_poi", 2);
                 }
                 else if (tipo == 1 && (PlayerPrefs.GetString("poi_selezionato") != ""))
                 {
-                    PlayerPrefs.SetInt("percorso_selezionato_collegato_ad_un_poi", id);
+                    PlayerPrefs.SetString("percorso_selezionato_collegato_ad_un_poi", id.ToString());
                     if (sceneName == "Map")
                         PlayerPrefs.SetInt("show_grid_poi", 2);
                 }
 
                 if (tipo == 2)
                 {
-                    PlayerPrefs.SetInt("evento_selezionato", id);
+                    PlayerPrefs.SetString("evento_selezionato", id.ToString());
                     if (sceneName == "Map")
                         PlayerPrefs.SetInt("show_grid_poi", 2);
                 }
-                if (tipo == 3 && !(PlayerPrefs.GetInt("percorso_selezionato") > 0))
+                if (tipo == 3 && !(PlayerPrefs.GetString("percorso_selezionato") != ""))
                 {
                     var _comune = GameObject.FindObjectOfType<DBClass>().GetCOMUNI(null, null, GameObject.FindObjectOfType<DBClass>().getPOI(id)?[0]?.comune_id);
                     if (_comune != null && _comune.Count > 0)
@@ -60,13 +70,13 @@ public class MenuPrincipale : MonoBehaviour
                     if (sceneName == "Map")
                         PlayerPrefs.SetInt("show_grid_poi", 2);
                 }
-                else if (tipo == 3 && (PlayerPrefs.GetInt("percorso_selezionato") > 0))
+                else if (tipo == 3 && (PlayerPrefs.GetString("percorso_selezionato") != ""))
                 {
-                    PlayerPrefs.SetInt("poi_selezionato_collegato_ad_un_percorso", id);
+                    PlayerPrefs.SetString("poi_selezionato_collegato_ad_un_percorso", listText[1]);
                     if (sceneName == "Map")
                         PlayerPrefs.SetInt("show_grid_poi", 2);
                 }
-                    
+
             }
         }
     }

@@ -578,7 +578,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4181488109892912791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,6 +614,7 @@ MonoBehaviour:
   - {fileID: 8441323921283691284}
   - {fileID: 7508161911948996718}
   _check_per_CanvasPOI: 1
+  _readForMe: {fileID: 7454195358818307292}
 --- !u!1 &4641305021312756633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,6 +2719,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7454195358818307292 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7466688403000778918, guid: 55d59b96e0b6b435c899ccd8eefce564,
+    type: 3}
+  m_PrefabInstance: {fileID: 66884003232803962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac5827e6e8e35420cbe1185f9abecb2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1012263532039873233

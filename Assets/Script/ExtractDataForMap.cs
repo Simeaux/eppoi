@@ -15,9 +15,18 @@ public class ExtractDataForMap : MonoBehaviour
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
         Debug.Log("Extract");
         //PoiList = _DBClass.getPOI(null, null, null, 100, null, null, false);
-        PoiList = _DBClass.getPOIxMap("");
-        PercorsoList = _DBClass.GetPERCORSO(null, null, true);
-        TappeXPercorsiList = _DBClass.getTAPPEXPERCORSI(null, null, null);
+        if (PlayerPrefs.GetString("percorso_selezionato") != "")
+        {
+            PoiList = new List<POI>();
+            PercorsoList = _DBClass.GetPERCORSO(long.Parse(PlayerPrefs.GetString("percorso_selezionato")), null, true);
+            TappeXPercorsiList = _DBClass.getTAPPEXPERCORSI(null, null, long.Parse(PlayerPrefs.GetString("percorso_selezionato")));
+        }
+        else
+        {
+            PoiList = _DBClass.getPOIxMap("");
+            PercorsoList = _DBClass.GetPERCORSO(null, null, true);
+            TappeXPercorsiList = _DBClass.getTAPPEXPERCORSI(null, null, null);
+        }
     }
 
     public void aggiornaPoiList(double[] punti = null)
@@ -32,7 +41,7 @@ public class ExtractDataForMap : MonoBehaviour
         */
         setPOIList(new List<POI>());
         setPOIList(_DBClass.getPOIxMap(not_in, punti));
-        
+
     }
     public List<POI> getPoiList()
     {

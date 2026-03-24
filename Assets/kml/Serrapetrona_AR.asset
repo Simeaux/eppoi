@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: Serrapetrona_AR
+  m_EditorClassIdentifier: Assembly-CSharp::ARLocation.MapboxRoutes.CustomRoute
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.17588987738783
+      Longitude: 13.18712196234618
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 1
+    Instruction: Tappa 1 - Chiesa di San Francesco;Stage 1 - Chiesa di San Francesco
+  - Location:
+      Latitude: 43.17589168661546
+      Longitude: 13.18722813985113
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 1
+    Instruction: Procedi verso est;Proceed east
+  - Location:
+      Latitude: 43.17587999597781
+      Longitude: 13.18753114106967
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 2
+    Instruction: prendi Via S. Francesco;take Via S. Francesco
+  - Location:
+      Latitude: 43.17593700065761
+      Longitude: 13.18778941242647
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.17602025419195
+      Longitude: 13.18800911782496
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 2
+    Instruction: Tappa 2 - Museo Pinacoteca d'Arte Sacra Contemporanea;Stage 2 -
+      Museo Pinacoteca d'Arte Sacra Contemporanea
+  - Location:
+      Latitude: 43.17603378540894
+      Longitude: 13.18815605460932
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.17601093075736
+      Longitude: 13.18855609711027
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 3
+    Instruction: Svolta a destra e prendi Piazza S. Maria;Turn right and take Piazza
+      S. Maria
+  - Location:
+      Latitude: 43.17593139596539
+      Longitude: 13.18855005085981
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 3
+    Instruction: Tappa 3 - Chiesa di Santa Maria di Piazza;Stage 3 - Chiesa di Santa
+      Maria di Piazza
+  - Location:
+      Latitude: 43.17572379342663
+      Longitude: 13.18871938116418
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 4
+    Instruction: Svolta a sinistra e prendi Via Umberto I;Turn left and take Via
+      Umberto I
+  - Location:
+      Latitude: 43.17571708641054
+      Longitude: 13.18914801950295
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.17568735006668
+      Longitude: 13.18939180667446
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 5
+    Instruction: Svolta a sinistra e prendi Via Rave;Turn left and take Via Rave
+  - Location:
+      Latitude: 43.17582010412597
+      Longitude: 13.18946204412315
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.17596473145809
+      Longitude: 13.18955700713181
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.17612665203544
+      Longitude: 13.1897380862616
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 4
+    Instruction: Tappa 4 - Palazzo Claudi;Stage 4 - Palazzo Claudi
+  SceneViewScale: 1
+  Color: 

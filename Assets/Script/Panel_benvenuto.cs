@@ -97,7 +97,7 @@ public class Panel_benvenuto : MonoBehaviour
     }
     private void goOn()
     {
-        GameObject.FindObjectOfType<ChangeScene>().ResetPlayer();
+        //GameObject.FindObjectOfType<ChangeScene>().ResetPlayer();
         panel_benvenuto.SetActive(!panel_benvenuto.activeSelf);
         panel_principale.SetActive(!panel_benvenuto.activeSelf);
     }

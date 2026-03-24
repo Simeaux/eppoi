@@ -1,0 +1,243 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: RipeSanGinesio_AR
+  m_EditorClassIdentifier: Assembly-CSharp::ARLocation.MapboxRoutes.CustomRoute
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.14309034157557
+      Longitude: 13.36674960936399
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 1
+    Instruction: Tappa 1 - Pinacoteca Comunale d'Arte Contemporanea;Stage 1 - Pinacoteca
+      Comunale d'Arte Contemporanea
+  - Location:
+      Latitude: 43.14307016408325
+      Longitude: 13.36672388947274
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 1
+    Instruction: Procedi in direzione sud su Via Dante Alighieri;Proceed south on
+      Via Dante Alighieri
+  - Location:
+      Latitude: 43.14300165130302
+      Longitude: 13.36670447766418
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14290239426669
+      Longitude: 13.36677044154617
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14280947980049
+      Longitude: 13.36677514012338
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 2
+    Instruction: "Alla rotonda prendi la 2\xAA uscita e prendi Viale della Resistenza;At
+      the roundabout, take the 2nd exit onto Viale della Resistenza"
+  - Location:
+      Latitude: 43.14275102877975
+      Longitude: 13.3668185026354
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14270357995041
+      Longitude: 13.36687700671692
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 2
+    Instruction: Tappa 2 - Centro Culturale "Elena Pasquali";Stage 2 - Centro Culturale
+      "Elena Pasquali"
+  - Location:
+      Latitude: 43.14271032285584
+      Longitude: 13.36693062720261
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 3
+    Instruction: Svolta a sinistra e prendi Via Roma;Turn left and take Via Roma
+  - Location:
+      Latitude: 43.142878340534
+      Longitude: 13.36710719448433
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14299891736679
+      Longitude: 13.36709293202012
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14316141558743
+      Longitude: 13.3671170908398
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14327758443286
+      Longitude: 13.3671448602256
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 3
+    Instruction: Tappa 3 - Custodi d'arte;Stage 3 - Custodi d'arte
+  - Location:
+      Latitude: 43.14343243999464
+      Longitude: 13.3672449866298
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14351579186958
+      Longitude: 13.36732266196996
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14355120766488
+      Longitude: 13.36741882989928
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14364864481865
+      Longitude: 13.3674724076507
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 4
+    Instruction: Torna indietro e prosegui verso il municipio;Go back and continue
+      towards the town hall
+  - Location:
+      Latitude: 43.14354521754536
+      Longitude: 13.36744384988163
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14350327566913
+      Longitude: 13.3674559835738
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14333377383537
+      Longitude: 13.36734263287293
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14321363657612
+      Longitude: 13.36729093478428
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14310604726906
+      Longitude: 13.36723746201803
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.14297752925943
+      Longitude: 13.36718546023535
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  SceneViewScale: 1
+  Color: 

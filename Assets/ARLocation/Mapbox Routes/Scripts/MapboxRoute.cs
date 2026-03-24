@@ -202,11 +202,12 @@ namespace ARLocation.MapboxRoutes
                     Settings.OnScreenIndicator.OnRouteUpdate(createSignPostEventArgs(s.CurrentTargetIndex));
                 }
             }
-            
+
         }
         // ================================================================================ //
         //  Private methods                                                                 //
         // ================================================================================ //
+
 
         private RoutePathRendererArgs createRoutePathRendererArgs()
         {
@@ -290,9 +291,9 @@ namespace ARLocation.MapboxRoutes
 
             return (float)(6376500.0 * (2.0 * Math.Atan2(Math.Sqrt(d3), Math.Sqrt(1.0 - d3))));
         }
-        
-        
-        
+
+
+
         private SignPostEventArgs createSignPostEventArgs(int index)
         {
             //var t = s.StepsPlaceAtInstances[index].LocationOptions.LocationInput.Location;
@@ -301,13 +302,14 @@ namespace ARLocation.MapboxRoutes
             var user = Camera.main.transform.position;
             var target = s.StepsPlaceAtInstances[index].transform.position;
 
-            var instruction = s.RouteSteps[index].maneuver.instruction;
+            var instruction = s.RouteSteps[index].maneuver.instruction.Replace("\r", "\r\n");
             var name = s.RouteSteps[index].name;
 
             //Debug.Log($"{index} - {user} - {target}");
             float distance = MathUtils.HorizontalDistance(user, target);
             //Debug.Log($"{index} - {distance}");
-            double distance_to_next_POI = distance + CalculateDistanceToNextPOI(0, index);
+            double distance_to_next_Tappa = distance + CalculateDistanceToNextTappa(0, index);
+
             return new SignPostEventArgs
             {
                 Route = this,
@@ -316,21 +318,23 @@ namespace ARLocation.MapboxRoutes
                 NextTargetPos = (index + 1) < NumberOfSteps ? s.StepsPlaceAtInstances[index + 1].transform.position : (Vector3?)null,
                 PrevTargetPos = (index) > 0 ? s.StepsPlaceAtInstances[index - 1].transform.position : (Vector3?)null,
                 Distance = distance,
-                DistanceToNextPOI = (float)(distance_to_next_POI),
+                DistanceToNextTappa = (float)(distance_to_next_Tappa),
                 IsCurrentTarget = (index == s.CurrentTargetIndex),
                 StepIndex = index,
-                Instruction = $"{index}. {instruction}",
+                Instruction = $"{name}. {instruction}",
                 Name = name,
+                Visible = string.IsNullOrEmpty(instruction),
+
             };
         }
 
-        //calcolo la distanza tra il prossimo step e il primo che ha il valore instruction != null e quella totale
-        private float CalculateDistanceToNextPOI(float distance, int index)
+        //calcolo la distanza tra la prossima tappa e il primo che ha il valore instruction != null e quella totale
+        private float CalculateDistanceToNextTappa(float distance, int index)
         {
             float ret = distance;
-            if (string.IsNullOrEmpty(s.RouteSteps[index].maneuver.location.Label.Trim()))
+            if (!s.RouteSteps[index].maneuver.isTappa)
             {
-                // prendo in considerazione il prossimo step
+                // prendo in considerazione la prossima tappa
                 //index++;
                 //Debug.Log(index);
                 if (index < s.RouteSteps.Count - 1)
@@ -338,8 +342,13 @@ namespace ARLocation.MapboxRoutes
 
                     for (int i = index; i < s.RouteSteps.Count - 1; i++)
                     {
+                        /*
                         //se lo step ha il label posso uscire dal for perchè ho trovato un POI
                         if (!string.IsNullOrEmpty(s.RouteSteps[i].maneuver.location.Label.Trim()))
+                            continue;
+                        */
+                        //se lo step è una tappa posso uscire
+                        if (s.RouteSteps[i].maneuver.isTappa)
                             continue;
                         //Debug.Log(s.RouteSteps[i].maneuver.instruction);
                         var a_loc = s.StepsPlaceAtInstances[i].LocationOptions.LocationInput.Location;
@@ -400,9 +409,9 @@ namespace ARLocation.MapboxRoutes
                 var opt = new PlaceAtLocation.PlaceAtOptions { };
                 opt.MaxNumberOfLocationUpdates = 0;
                 var placeAt = PlaceAtLocation.AddPlaceAtComponent(go, loc, opt);
-                
+
                 s.StepsPlaceAtInstances.Add(placeAt);
-                
+
                 s.SignPostInstances.Add(new List<AbstractRouteSignpost>());
 
                 // Create a signpost prefab instace for this step

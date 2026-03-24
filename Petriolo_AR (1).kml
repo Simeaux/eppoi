@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Petriolo_AR.kml</name>
+	<StyleMap id="msn_ylw-pushpin20">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_ylw-pushpin1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin4">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Placemark>
+		<name>AR centro storico</name>
+		<styleUrl>#msn_ylw-pushpin20</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				13.46918166448376,43.22163554397356,0 13.46916270993769,43.22161854695135,0 13.46882785264364,43.22136089541474,0 13.46864598043409,43.22127999311323,0 13.46732915555595,43.22115452493238,0 13.46581308006508,43.2209425268987,0 13.46542395602377,43.2209086831913,0 13.46534072388353,43.22096022443201,0 13.46532441039101,43.22099772217973,0 13.46547237253525,43.22104734323517,0 13.46571037039001,43.22110586394491,0 13.46574999380584,43.2211256806435,0 13.46571074920325,43.2211888053142,0 13.46566143661282,43.22125493407844,0 13.46569799272638,43.22126598407141,0 13.46575212056111,43.22117253751847,0 13.46578266805127,43.22108098515073,0 13.46578747898762,43.22102965429896,0 13.46587313157708,43.2210848957699,0 
+			</coordinates>
+		</LineString>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Placemark>
+</Document>
+</kml>

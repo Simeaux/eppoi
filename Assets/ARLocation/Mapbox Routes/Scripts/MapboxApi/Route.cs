@@ -142,6 +142,7 @@ namespace ARLocation.MapboxRoutes
             public int bearing_before;
             public int bearing_after;
             public string instruction;
+            public bool isTappa;
             public Location location;
             public string type;
 
@@ -149,7 +150,7 @@ namespace ARLocation.MapboxRoutes
             {
                 string result = "";
 
-                result += $"Maneuver{{ bearing_before = {bearing_before}, bearing_after = {bearing_after}, instruction = {instruction}, location = {location}, type = {type} }}";
+                result += $"Maneuver{{ bearing_before = {bearing_before}, bearing_after = {bearing_after}, instruction = {instruction}, location = {location}, type = {type}, isTappa = {isTappa} }}";
 
                 return result;
             }
@@ -161,6 +162,7 @@ namespace ARLocation.MapboxRoutes
                 result.bearing_before = node["bearing_before"].AsInt;
                 result.bearing_after = node["bearing_after"].AsInt;
                 result.instruction = node["instruction"];
+                result.isTappa = node["isTappa"].AsBool;
                 result.type = node["type"];
                 var loc = node["location"].AsArray;
                 result.location = new Location(loc[1].AsDouble, loc[0].AsDouble, 0);

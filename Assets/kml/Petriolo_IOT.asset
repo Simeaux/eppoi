@@ -1,0 +1,307 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: Petriolo_IOT
+  m_EditorClassIdentifier: Assembly-CSharp::ARLocation.MapboxRoutes.CustomRoute
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.22104895401153
+      Longitude: 13.46583996385086
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 1
+    Instruction: Tappa 1 - Teatro comunale "G. Ginobili";Stage 1 - Teatro comunale
+      "G. Ginobili"
+  - Location:
+      Latitude: 43.22114993114558
+      Longitude: 13.46598448594657
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 2
+    Instruction: Tappa 2 - Museo dei Legni Processionali;Stage 2 - Museo dei Legni
+      Processionali
+  - Location:
+      Latitude: 43.22112604225431
+      Longitude: 13.46589824653492
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 1
+    Instruction: Procedi in direzione nordest su Piazza S.Martino verso Via de Nobili;Proceed
+      northeast on Piazza SAN.Martino towards Via de Nobili
+  - Location:
+      Latitude: 43.2212861126775
+      Longitude: 13.46577306696255
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 2
+    Instruction: Svolta a destra e prendi Via Marco Martello;Turn right and take
+      Via Marco Martello
+  - Location:
+      Latitude: 43.2213972218121
+      Longitude: 13.4659539751735
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22166912410479
+      Longitude: 13.46629732016076
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22171053764659
+      Longitude: 13.46618542824173
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22173714828866
+      Longitude: 13.46609528334291
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22174206998279
+      Longitude: 13.46603207498104
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 3
+    Instruction: Tappa 3 - Museo Diego De Minicis;Stage 3 - Museo Diego De Minicis
+  - Location:
+      Latitude: 43.22172530464502
+      Longitude: 13.46602759142444
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 3
+    Instruction: Procedi in direzione sudest su Via Marco Martello verso Via de Nobili;Proceed
+      southeast on Via Marco Martello towards Via de Nobili
+  - Location:
+      Latitude: 43.22172038914427
+      Longitude: 13.46608442637986
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22144235311671
+      Longitude: 13.46573813247542
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22131919231551
+      Longitude: 13.46580169439889
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22128593209221
+      Longitude: 13.46572593785371
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 4
+    Instruction: Svolta a sinistra e prendi Piazza S. Martino;Turn left and take
+      Piazza S. Martino
+  - Location:
+      Latitude: 43.22113057524465
+      Longitude: 13.46581808789929
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22097726854349
+      Longitude: 13.46533479546719
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 5
+    Instruction: "Svolta a sinistra verso Corso Umberto I\xB0/Strada Provinciale
+      36;Turn left onto Corso Umberto I/Provincial Road 36"
+  - Location:
+      Latitude: 43.22093229945835
+      Longitude: 13.46533830253305
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 6
+    Instruction: Svolta a destra e prendi Corso Umberto I /Strada Provinciale 36;Turn
+      right and take Corso Umberto I / Provincial Road 36
+  - Location:
+      Latitude: 43.22088213760236
+      Longitude: 13.46523472563761
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22081295824653
+      Longitude: 13.46505123616617
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22072385614544
+      Longitude: 13.4648789681502
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22065778552518
+      Longitude: 13.4647839823213
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 4
+    Instruction: Tappa 4 - Museo delle Macchine Parlanti;Stage 4 - Museo delle Macchine
+      Parlanti
+  - Location:
+      Latitude: 43.22064393789838
+      Longitude: 13.46480130863115
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 7
+    Instruction: Torna indietro sulla stessa via;Go back the same way
+  - Location:
+      Latitude: 43.22071447524022
+      Longitude: 13.46489804330042
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22080515596149
+      Longitude: 13.46507411619181
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22087391706857
+      Longitude: 13.46525898422587
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.2209032485133
+      Longitude: 13.46541755101772
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 8
+    Instruction: Tieni la detra;Keep right
+  - Location:
+      Latitude: 43.22091130543322
+      Longitude: 13.46562047673448
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22092771779428
+      Longitude: 13.46575213789027
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 5
+    Instruction: "Tappa 5 - Tipicit\xE0;Stage 5 - Tipicit\xE0"
+  SceneViewScale: 1
+  Color: 

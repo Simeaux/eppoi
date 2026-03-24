@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 namespace ARLocation.MapboxRoutes
 {
+
     public class SignPost : AbstractRouteSignpost
     {
+
+        //private DBClass _DBClass;
         // ================================================================================ //
         //  Public Class                                                                  //
         // ================================================================================ //
@@ -62,7 +65,12 @@ namespace ARLocation.MapboxRoutes
             [Tooltip("If true, the arrow will be hidden after the target has been deactivated and the next target becomes active.")]
             public bool HideArrowOnNextTarget = false;
         }
-
+        /*
+                void Start()
+                {
+                    _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
+                }
+                */
         [System.Serializable]
         public class MapPinSettingsData
         {
@@ -165,7 +173,7 @@ namespace ARLocation.MapboxRoutes
             gameObject.SetActive(false);
         }
 
-        public override void OffCurrentTarget(SignPostEventArgs args) {}
+        public override void OffCurrentTarget(SignPostEventArgs args) { }
 
         public override void OnCurrentTarget(SignPostEventArgs args) { }
 
@@ -350,7 +358,13 @@ namespace ARLocation.MapboxRoutes
                 Utils.Misc.SetTransformPositionY(SignContainer.transform, Camera.main.transform.position.y + RoadSignSettings.Height);
             }
             _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
-            string testo = _lingua_selezionata == 1 ? "Prossimo POI" : "Next POI";
+            string testo = _lingua_selezionata == 1 ? "Prossima tappa" : "Next step";
+            /*
+                        StartCoroutine(_DBClass.GetLatLonUsingGPS());
+                        _DBClass.getPOI()
+                        _DBClass._latitudine;
+                        _DBClass._longitudine
+            */
             if (state.Type != StateType.Hidden)
             {
                 if (RoadSignSettings.DistanceLabel != null)
@@ -359,24 +373,25 @@ namespace ARLocation.MapboxRoutes
                     string m = "m";
                     if (args.Distance > 1000)
                     {
-                        t = (args.Distance/1000).ToString("N2").Replace(",", ".");
+                        t = (args.Distance / 1000).ToString("N2").Replace(",", ".");
                         m = "km";
                     }
+
                     // scrivo la distanza fino al prossimo step
                     RoadSignSettings.DistanceLabel.text = $"{t} {m}";
                     // se esiste la distanza fino al prossimo POI la segno se è differente dalla distanza fino al prossimo step altrimenti aggiungo la dicitura SOSTA
-                    if (args.DistanceToNextPOI > 0 && args.Distance != args.DistanceToNextPOI)
+                    if (args.DistanceToNextTappa > 0 && args.Distance != args.DistanceToNextTappa)
                     {
-                        t = args.DistanceToNextPOI.ToString("N0").Replace(",", ".");
+                        t = args.DistanceToNextTappa.ToString("N0").Replace(",", ".");
                         m = "m";
-                        if (args.DistanceToNextPOI > 100)
+                        if (args.DistanceToNextTappa > 100)
                         {
-                            t = (args.DistanceToNextPOI/1000).ToString("N2").Replace(",", ".");
+                            t = (args.DistanceToNextTappa / 1000).ToString("N2").Replace(",", ".");
                             m = "km";
                         }
-                        RoadSignSettings.DistanceLabel.text += $". {testo} {t} {m}";
+                        RoadSignSettings.DistanceLabel.text += $" - {testo} {t} {m}";
                     }
-                    else if (args.DistanceToNextPOI > 0)
+                    else if (args.DistanceToNextTappa > 0)
                         RoadSignSettings.DistanceLabel.text = $"{testo} {RoadSignSettings.DistanceLabel.text}";
 
                 }
@@ -385,9 +400,12 @@ namespace ARLocation.MapboxRoutes
                 {
                     RoadSignSettings.DirectionLabel.text = args.Instruction;
                     TMP_Text t = GameObject.FindGameObjectWithTag("Indicazione").GetComponent<TMP_Text>();
-                    if(t != null)
+                    if (t != null)
                         t.text = $"{args.Instruction} {RoadSignSettings.DistanceLabel.text}";
                 }
+                //SMO: Bozza se è da non visulizzare togliere dallo chermo, ma con Hidden semplicemente non va a pulire le precedenti, cercare un altro metodo
+                //if (!args.Visible)
+                //    state.Type = StateType.Hidden;
             }
         }
 

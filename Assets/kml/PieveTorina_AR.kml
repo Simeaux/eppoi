@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>PieveTorina_AR.kml</name>
+	<StyleMap id="m_ylw-pushpin00">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin8</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl12</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin80</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_red-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin8">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin80">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl12">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_grn-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_grn-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_red-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>PieveTorina_AR</name>
+		<open>1</open>
+		<Placemark>
+			<name>AR Centro Pieve Torina</name>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					13.04497940461023,43.04401625653469,0 13.0450433183386,43.04399263973217,0 13.04525897925493,43.04390749258747,0 13.04546920624673,43.04351349526829,0 13.04351533290145,43.0434804306791,0 13.03826410682407,43.04345465162523,0 13.03672314437391,43.04342538835931,0 13.03458385823502,43.0439071218181,0 13.03254644462475,43.04387499201783,0 13.03153120731977,43.04363535425644,0 13.03121872792621,43.04367660517873,0 13.03088295008006,43.04375601184773,0 13.03022405734163,43.04374833148467,0 13.02910057163476,43.04352358629042,0 13.02868016140274,43.04345742843277,0 13.02755589422184,43.04354553929193,0 13.02610542914985,43.04349371361435,0 13.02507786855158,43.04364945471185,0 13.02470698547887,43.04375514245464,0 13.02354742991087,43.04367925603538,0 13.02270184085999,43.0437395930737,0 13.02180542392543,43.04362266032689,0 13.02062125340075,43.04357398976803,0 13.01989334420273,43.04302613717167,0 13.01962204967519,43.04301918257878,0 13.01919049890815,43.04309184215487,0 13.01891021449165,43.04307439487508,0 13.01839867329513,43.04284183700919,0 13.01804223456766,43.04281489391662,0 13.01693246013636,43.04291589210001,0 13.0159748437156,43.04290547456859,0 13.01550861115936,43.04302513334604,0 13.01479639122657,43.04300428017643,0 13.01398485121864,43.04330967897231,0 13.01365102609116,43.04355762626512,0 13.01341192160952,43.04364918193755,0 13.01240157755302,43.04357754629164,0 13.01215015130015,43.04361476816072,0 13.0119011107867,43.04368299637155,0 13.01111134917798,43.04414653451505,0 13.01066088898764,43.04426746329119,0 13.01024568907099,43.04474984923363,0 13.00910127942762,43.045033321828,0 13.00889740985617,43.04502945668636,0 13.00713248190604,43.04430771148652,0 13.00633273625296,43.04428331785051,0 13.00609932629776,43.04425918561119,0 13.0055907263547,43.04407272859488,0 13.00538375290822,43.04404929169348,0 13.00485380310568,43.04405244932613,0 13.0046667337154,43.04395632282279,0 13.00357155771807,43.04313046309806,0 13.00344519071321,43.04302466918955,0 13.00296529530242,43.04226128199301,0 13.00287798286833,43.04221421607276,0 13.00216367545268,43.04201678797745,0 13.00183170718668,43.04205626315181,0 13.0011948923769,43.04240688177428,0 13.00088661471798,43.04232819573113,0 13.00051576911065,43.04216674418895,0 13.00016746750783,43.04209274787438,0 13.00018708806006,43.04207350639496,0 13.00053381405226,43.04215426551296,0 13.00092792909771,43.04230155955543,0 13.00118971449933,43.0423716301226,0 13.00183298326836,43.04203186962236,0 13.00217703143376,43.04198648893972,0 13.00288156554551,43.04217681703076,0 13.00298470578488,43.04223302995747,0 13.00347113505184,43.04299961891078,0 13.0035955445364,43.04311285022763,0 13.00467696257821,43.04393233695668,0 13.00484903324021,43.04402672298724,0 13.00538904803909,43.04402690671584,0 13.00559815721023,43.04404723967343,0 13.00609792545022,43.04422733926508,0 13.00632543017852,43.04425146958359,0 13.00713288665012,43.0442758986371,0 13.00890961682293,43.04499930746079,0 13.00910366406542,43.04499622497458,0 13.0102313435237,43.04472396663398,0 13.0106375510879,43.04424209507008,0 13.01109845599408,43.04412439279577,0 13.01189140615032,43.04365438882684,0 13.01214177950986,43.04358539419047,0 13.0124016369382,43.0435539080434,0 13.01340581109551,43.04361484151552,0 13.01363288907017,43.04352369952646,0 13.01397364426859,43.04327036388325,0 13.01478929297816,43.04297588349404,0 13.01550246642294,43.04299380192459,0 13.01597635552838,43.04287094527638,0 13.01692592630093,43.04288161510032,0 13.01804690374194,43.04277840991989,0 13.01840548489807,43.04280588976351,0 13.0189093892433,43.04303740501046,0 13.01918964877796,43.04305180797002,0 13.01960907910003,43.04298056871952,0 13.01989738748488,43.04298771400168,0 13.02064176787563,43.04354301115924,0 13.02181710568213,43.04358249827831,0 13.02269356988568,43.04370202785337,0 13.02353822458253,43.04364219746429,0 13.0247024108739,43.04371043080813,0 13.02507573968788,43.04360677177256,0 13.02608508325297,43.04345471178132,0 13.02755977449887,43.04350912977193,0 13.02867191766806,43.04341669814063,0 13.02910571504256,43.04348605609145,0 13.03022364491502,43.04370722983376,0 13.03085387690709,43.04371536454483,0 13.03151386808962,43.04360359651714,0 13.03254132789258,43.04382937488047,0 13.03458879675495,43.04384819845101,0 13.03687754840185,43.0433643510648,0 13.04563679384662,43.04347542982256,0 13.04587484121374,43.04342539525111,0 13.04678732518998,43.0430372234903,0 13.04717982363412,43.04276474883414,0 13.04788608037747,43.04218470753712,0 13.04803546409155,43.04088912096073,0 13.0476963459252,43.04043241032245,0 13.04729184882283,43.03991472820536,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>(t)1</name>
+			<description>Tappa 1 - Chiesa San Giovanni Battista;Stage 1 - Chiesa San Giovanni Battista</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.04512280925342</longitude>
+				<latitude>43.04399489279847</latitude>
+				<altitude>0</altitude>
+				<heading>0.02271820893876434</heading>
+				<tilt>27.11967309821292</tilt>
+				<range>119.9297665542707</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.04497426743227,43.04400985112618,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<open>1</open>
+			<description>Procedi in direzione sud su Via XX Settembre verso SP96;Proceed south on Via XX Settembre towards SP96</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.04512280925342</longitude>
+				<latitude>43.04399489279847</latitude>
+				<altitude>0</altitude>
+				<heading>0.02271820893876434</heading>
+				<tilt>27.11967309821292</tilt>
+				<range>119.9297665542707</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.04506123528899,43.04397833665347,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Svolta a destra e prendi SP96;Turn right and take SP96</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.043886108084</longitude>
+				<latitude>43.043544148061</latitude>
+				<altitude>0</altitude>
+				<heading>0.02228848745935183</heading>
+				<tilt>28.53988082532975</tilt>
+				<range>401.6154190669794</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.04539559297001,43.04356901047213,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Svolta a destra verso Frazione Fiume;Turn right towards Frazione Fiume</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.0008091061618</longitude>
+				<latitude>43.04189187392463</latitude>
+				<altitude>0</altitude>
+				<heading>-0.007113723760479596</heading>
+				<tilt>28.53988082532975</tilt>
+				<range>401.6154190659167</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.00218805929806,43.04206428423007,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Svolta a sinistra verso Mulino di Fiume;Turn left towards Mulino di Fiume</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.0008091061618</longitude>
+				<latitude>43.04189187392463</latitude>
+				<altitude>0</altitude>
+				<heading>-0.007113723760373047</heading>
+				<tilt>28.53988082532976</tilt>
+				<range>401.6154190665462</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.00126202254017,43.04244217865561,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)2</name>
+			<description>Tappa 2 - Mulino di Fiume;Stage 2 - Mulino di Fiume</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.00053461943304</longitude>
+				<latitude>43.0420305449977</latitude>
+				<altitude>0</altitude>
+				<heading>-0.008189171365868341</heading>
+				<tilt>27.70393290872936</tilt>
+				<range>157.0132713397824</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.00014722222222,43.04209166666666,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<open>1</open>
+			<description>Torna indietro percorrendo la stessa strada;Go back along the same road</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.00053461943304</longitude>
+				<latitude>43.0420305449977</latitude>
+				<altitude>0</altitude>
+				<heading>-0.008189171365868341</heading>
+				<tilt>27.70393290872936</tilt>
+				<range>157.0132713397824</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.00019256901733,43.04206337144052,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>6</name>
+			<description>Svolta leggermente a sinistra e prendi SP96;Turn slightly left and take SP96</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.00116287812091</longitude>
+				<latitude>43.04201719290384</latitude>
+				<altitude>0</altitude>
+				<heading>-0.00620375821397365</heading>
+				<tilt>27.8668265721498</tilt>
+				<range>211.5960629026146</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.00180923592221,43.04200697333059,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>7</name>
+			<description>Prosegui dritto;Continue straight</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.04613042656083</longitude>
+				<latitude>43.0425795254765</latitude>
+				<altitude>0</altitude>
+				<heading>0.0244887941720645</heading>
+				<tilt>27.86682657214984</tilt>
+				<range>211.5960628971272</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.04559401940445,43.0434281476053,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)3</name>
+			<open>1</open>
+			<description>Tappa 3 - Biblioteca dell&apos;Archivio Storico Comunale;Stage 3 - Biblioteca dell&apos;Archivio Storico Comunale</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.0479258912931</longitude>
+				<latitude>43.04283204813044</latitude>
+				<altitude>0</altitude>
+				<heading>0.03022802073515822</heading>
+				<tilt>21.45552467665804</tilt>
+				<range>696.615210661955</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.04714830301401,43.04275978438847,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>8</name>
+			<description>Svolta a destra;Turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.04778614076475</longitude>
+				<latitude>43.04156378672723</latitude>
+				<altitude>0</altitude>
+				<heading>0.02561888139525266</heading>
+				<tilt>27.86682657214986</tilt>
+				<range>211.5960628991379</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.04784976874499,43.04217456824497,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>9</name>
+			<open>1</open>
+			<description>Svolta a destra;Turn right</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.04742896775176</longitude>
+				<latitude>43.04087764642118</latitude>
+				<altitude>0</altitude>
+				<heading>0.0253751107404967</heading>
+				<tilt>27.86682657214984</tilt>
+				<range>211.5960628970643</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.04800222632435,43.04089062119543,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)4</name>
+			<open>1</open>
+			<description>Tappa 4 - Teatro Comunale &quot;S. Agostino&quot;;Stage 4 - Teatro Comunale &quot;S. Agostino&quot;</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.04798856506369</longitude>
+				<latitude>43.04019158356598</latitude>
+				<altitude>0</altitude>
+				<heading>0.02735266806752537</heading>
+				<tilt>24.09389471841937</tilt>
+				<range>455.3195213717764</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.04760739767898,43.04041495186632,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)5</name>
+			<open>1</open>
+			<description>Tappa 5 - Museo della Nostra Terra;Stage 5 - Museo della Nostra Terra</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.04798856506369</longitude>
+				<latitude>43.04019158356598</latitude>
+				<altitude>0</altitude>
+				<heading>0.02735266806752537</heading>
+				<tilt>24.09389471841937</tilt>
+				<range>455.3195213717764</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.04726994177567,43.03990799492838,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

@@ -42,7 +42,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     private bool _ar = false;
     private bool _iot = false;
     private int _lingua_selezionata = 1;
-    private int _NumberOfItemsToShow = 10;
+    private int _NumberOfItemsToShow = 20;
     private int _TotalRowToExtract = 0;
     private string _istat = "";
     private DBClass _DBClass;
@@ -59,12 +59,12 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     public void IncrementNumberOfRowToShow()
     {
         _tipo_dettaglio_da_vedere = _OLD_tipo_dettaglio_da_vedere;
-        _NumberOfItemsToShow += 10;
+        _NumberOfItemsToShow += 20;
         Calcola();
     }
     public void ResetNumberOfRowToShow(bool calcola = true)
     {
-        _NumberOfItemsToShow = 10;
+        _NumberOfItemsToShow = 20;
         _tipo_dettaglio_da_vedere = _OLD_tipo_dettaglio_da_vedere;
         scrollPosition = Vector2.zero;
         if (calcola)
@@ -154,6 +154,19 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     }
     private void OnEnable()
     {
+        // Recuperi il componente ScrollRect dal GameObject
+        ScrollRect sr = _scroll_descrizione.GetComponent<ScrollRect>();
+
+        if (sr != null)
+        {
+            sr.verticalNormalizedPosition = 1f;
+        }
+        sr = panel_list_oggetti.GetComponent<ScrollRect>();
+
+        if (sr != null)
+        {
+            sr.verticalNormalizedPosition = 1f;
+        }
         BtnIDescrizione.onClick.AddListener(BtnIDescrizioneClicked);
         BtnItinerari.onClick.AddListener(BtnItinerariClicked);
         if (BtnEventi != null)
@@ -224,9 +237,10 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     }
     private void Calcola()
     {
+
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
         string _poi_selezionato = PlayerPrefs.GetString("poi_selezionato");
-        int _percorso_selezionato = PlayerPrefs.GetInt("percorso_selezionato");
+        string _percorso_selezionato = PlayerPrefs.GetString("percorso_selezionato");
         //Debug.Log($"ItinerariEventiPOI_calcola poi:{_poi_selezionato} percorso:{_percorso_selezionato}");
         POIList = new List<POI>();
         PERCORSOList = new List<PERCORSO>();
@@ -269,14 +283,14 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             }
             _TotalRowToExtract = PERCORSOList.Count;
         }
-        else if (_percorso_selezionato > 0)
+        else if (_percorso_selezionato != "")
         {
-            foreach (var _tappexpercorso in _DBClass.getTAPPEXPERCORSI(null, null, _percorso_selezionato))
+            foreach (var _tappexpercorso in _DBClass.getTAPPEXPERCORSI(null, null, long.Parse(_percorso_selezionato)))
             {
                 foreach (var _poixtappe in _DBClass.getPOIXTAPPE(null, null, _tappexpercorso.tappa_id))
                 {
                     var _poi = _DBClass.getPOI(_poixtappe.poi_id, null, _filterName, _NumberOfItemsToShow, _gruppo_tipo_poi, _tipo_poi, true).FirstOrDefault();
-                    if (!POIList.Contains(_poi))
+                    if (POIList.Where(p => p.ID == _poi.ID).Count() == 0)
                         POIList.Add(_poi);
                 }
             }
@@ -307,7 +321,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                         if (_tipo_dettaglio_da_vedere == 0 || _tipo_dettaglio_da_vedere == 1)
                         {
 
-                            foreach (var _percorso in _DBClass.GetPERCORSO(null, null, null, _selected_comune.id, _filterName, tipo_percorso, tipo_navigazione))
+                            foreach (var _percorso in _DBClass.GetPERCORSO(null, null, null, _selected_comune.id, _filterName, tipo_percorso, tipo_navigazione, true))
                             {
                                 if (!PERCORSOList.Contains(_percorso))
                                     PERCORSOList.Add(_percorso);
@@ -365,6 +379,12 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     public void BtnIDescrizioneClicked()
     {
         //Debug.Log("vedo la descrizione");
+        ScrollRect sr = panel_list_oggetti.GetComponent<ScrollRect>();
+
+        if (sr != null)
+        {
+            sr.verticalNormalizedPosition = 1f;
+        }
         _OLD_tipo_dettaglio_da_vedere = _tipo_dettaglio_da_vedere = 0;
         ResetNumberOfRowToShow();
     }
@@ -372,18 +392,36 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     private void BtnItinerariClicked()
     {
         //Debug.Log("vedo gli itinerari");
+        ScrollRect sr = panel_list_oggetti.GetComponent<ScrollRect>();
+
+        if (sr != null)
+        {
+            sr.verticalNormalizedPosition = 1f;
+        }
         _OLD_tipo_dettaglio_da_vedere = _tipo_dettaglio_da_vedere = 1;
         ResetNumberOfRowToShow();
     }
     private void BtnEventiClicked()
     {
         //Debug.Log("vedo gli Eventi");
+        ScrollRect sr = panel_list_oggetti.GetComponent<ScrollRect>();
+
+        if (sr != null)
+        {
+            sr.verticalNormalizedPosition = 1f;
+        }
         _OLD_tipo_dettaglio_da_vedere = _tipo_dettaglio_da_vedere = 2;
         ResetNumberOfRowToShow();
     }
     private void BtnPOIClicked()
     {
         //Debug.Log("vedo i POI");
+        ScrollRect sr = panel_list_oggetti.GetComponent<ScrollRect>();
+
+        if (sr != null)
+        {
+            sr.verticalNormalizedPosition = 1f;
+        }
         _OLD_tipo_dettaglio_da_vedere = _tipo_dettaglio_da_vedere = 3;
         ResetNumberOfRowToShow();
     }
@@ -407,13 +445,17 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     }
 
 
-
+    // Ritorna l'array ordinato per distanza e poi per nome
     public List<IEP> ClassiToIEP(List<POI> _POIs, List<PERCORSO> _PERCORSOs, bool check_tipo_dettaglio_da_vedere)
     {
-        List<IEP> ret = new List<IEP>();
-        _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
         if (_DBClass == null)
             _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
+        /*StartCoroutine(_DBClass.GetLatLonUsingGPS());
+        */
+
+        List<IEP> ret = new List<IEP>();
+        _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
+
         if ((!check_tipo_dettaglio_da_vedere || _tipo_dettaglio_da_vedere == 3) && _POIs != null && _POIs.Count > 0)
         {
             foreach (var _poi in _POIs)
@@ -445,7 +487,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
                     _IEP.nome_comune = _poi.comune + $" ({_poi.provincia})";
                     _IEP.descrizione_breve = _poi.descrizione_breve();
-                    _IEP.distance = _poi.distanza_dal_centro / 1000;
+                    _IEP.distance = _DBClass.CalculateDistance(_poi.latitudine, _DBClass._latitudine, _poi.longitudine, _DBClass._longitudine);
                     ret.Add(_IEP);
                 }
             }
@@ -497,13 +539,22 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                         Debug.Log(_percorso.poi_id);
                         var _poi = _DBClass.getPOIGeneralita(_percorso.poi_id).FirstOrDefault();
                         if (_poi != null)
+                        {
                             _IEP.nome_comune = _poi.comune + $" ({_poi.provincia})";
+                            _IEP.distance = _DBClass.CalculateDistance(_poi.latitudine, _DBClass._latitudine, _poi.longitudine, _DBClass._longitudine);
+                        }
+                    }
+                    else
+                    {
+                        _IEP.nome_comune = "";
+                        _IEP.distance = 0;
                     }
                     if (_percorso.descrizione != null && _percorso.descrizione.Count > 0)
                         _IEP.descrizione_breve = _percorso.descrizione[0].descrizione_breve;
                     else
                         _IEP.descrizione_breve = string.Empty;
-                    _IEP.distance = 0;
+
+
                     ret.Add(_IEP);
                 }
             }
@@ -538,6 +589,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             }
             Calcola();
             var iep = ClassiToIEP(POIList, PERCORSOList, true);
+            iep = iep.OrderBy(p => p.distance).ToList();
 
             float h = Screen.height;// - 220;
             GUILayout.BeginVertical(new GUIStyle() { padding = new RectOffset(20, 20, 20, 220) }, GUILayout.MaxHeight(h), GUILayout.Height(h - 500));
@@ -595,15 +647,15 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     else if (_component.name == "id")
                         _component.text = $"{_iep.tipo};{_iep.id}";
                     else if (_component.name == "Distanza")
-                        _component.text = _component.text.Replace("{0}", _iep.distance.ToString("0.##"));
+                        _component.text = _component.text.Replace("{0}", (_iep.distance / 1000).ToString("0.##"));
                     else if (_component.name == "NomeComune")
                         _component.text = _iep.nome_comune;
                     else if (_component.name == "DescrizioneBreve")
                         _component.text = _iep.descrizione_breve;
                     else if (_component.name == "Lunghezza")
                     {
-                        if (!string.IsNullOrEmpty(_iep.lunghezza))
-                            _component.text = _component.text.Replace("{0}", "{0} km");
+                        //if (!string.IsNullOrEmpty(_iep.lunghezza) && !_iep.lunghezza.ToLower().Contains("km"))
+                        //    _component.text = _component.text.Replace("{0}", "{0} km");
                         _component.text = _component.text.Replace("{0}", _iep.lunghezza);
 
                         _component.text = _component.text.Replace("{1}", _iep.dislivello);
@@ -686,6 +738,13 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                         if (_iep.immagine != null && _iep.immagine != null && _iep.immagine.Length > 0)
                             foto = _iep.immagine;
                         _component.sprite = _DBClass.getSpriteFromByteArray(foto);
+                        var _ratio_component = _component.GetComponent<AspectRatioFitter>();
+                        if (_ratio_component != null)
+                        {
+                            float ratio = (float)_component.sprite.rect.width / _component.sprite.rect.height;
+                            // Aggiorniamo il componente
+                            _ratio_component.aspectRatio = ratio;
+                        }
                     }
                     if (_component.name == "Image_tipo_percorso")
                     {

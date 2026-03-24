@@ -138,7 +138,7 @@ public class Panel_Principale : MonoBehaviour
                 _logo.transform.rotation = new Quaternion(0, 0, 0, 0);
         }
 
-        if ((PlayerPrefs.GetInt("percorso_selezionato") > 0 || PlayerPrefs.GetString("poi_selezionato") != ""))
+        if ((PlayerPrefs.GetString("percorso_selezionato") != "" || PlayerPrefs.GetString("poi_selezionato") != ""))
         {
             _istat = PlayerPrefs.GetString("istat");
             _panel_poi.SetActive(true);
@@ -228,8 +228,8 @@ public class Panel_Principale : MonoBehaviour
     }
     public void OpenStoreForUpdate()
     {
-        string appId = "com.task.eppoi"; // Es: com.azienda.gioco
-        string appleId = "6759001308"; // Es: 123456789 (solo numeri)
+        string appId = "com.task.poiqui"; // Es: com.azienda.gioco
+        string appleId = "6759608710"; // Es: 123456789 (solo numeri)
 
 #if UNITY_ANDROID
         // Apre direttamente l'app Play Store sulla pagina della tua app

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class TouchMap : MonoBehaviour
@@ -20,6 +21,7 @@ public class TouchMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!string.IsNullOrEmpty(PlayerPrefs.GetString("nfc")))
         {
             Debug.Log("Eccomi " + PlayerPrefs.GetInt("show_grid_poi"));
@@ -58,38 +60,56 @@ public class TouchMap : MonoBehaviour
                     click = true;
                 }
             }
-
             if (click)
             {
-                Debug.Log("TouchMap CLiccked!!");
-                // Bit shift the index of the layer (8) to get a bit mask
-                int layerMask = 1 << 8;
-
-                // This would cast rays only against colliders in layer 8.
-                // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
-                layerMask = ~layerMask;
-                ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+                if (!ARMenuCanvas.GetComponent<ARLocation.MapboxRoutes.SampleProject.ArMenuController>().isZeroSizeMinimap())
                 {
-                    // da quì ho il tag del gameobject cliccato e posso aprire il dettaglio o chiedere se vuole arrivarci
-                    var p = hit.transform.gameObject as GameObject;
-                    Debug.Log("Ci siamo quasi tag:" + p.tag + " name:" + p.name);
-                    if (p.CompareTag("Portami_al_POI") || p.CompareTag("Close_Detail"))
+
+                    Debug.Log("TouchMap CLiccked!!");
+                    Vector3 touchPos = Input.mousePosition;
+                    if (Input.touchCount > 0)
                     {
-                        Debug.Log("Chiudo il detail tag:" + p.tag + " name:" + p.name);
-                        DetailPOI.GetComponent<DetailPOIManager>().CloseDetailPOI();
-                        //reset della grandezza della minimap
-                        ARMenuCanvas.GetComponent<ARLocation.MapboxRoutes.SampleProject.ArMenuController>().ResetSizeMinimap();
+                        touchPos = Input.GetTouch(0).position;
                     }
-                    else if (ARMenuCanvas.GetComponent<ARLocation.MapboxRoutes.SampleProject.ArMenuController>().Settings.MenuController.MapSize < 513)
+
+                    ray = Camera.main.ScreenPointToRay(touchPos);
+                    Debug.Log("ray " + ray);
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                     {
-                        Debug.Log("Eccomi " + PlayerPrefs.GetInt("show_grid_poi"));
-                        DetailPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(p.name, false, true, 3);
-                        ARMenuCanvas.GetComponent<ARLocation.MapboxRoutes.SampleProject.ArMenuController>().ZeroSizeMinimap();
+                        // da quì ho il tag del gameobject cliccato e posso aprire il dettaglio o chiedere se vuole arrivarci
+                        var p = hit.transform.gameObject as GameObject;
+                        Debug.Log("Ci siamo quasi tag:" + p.tag + " name:" + p.name);
+                        if (!p.name.Contains("tappa_"))
+                        {
+                            if (p.CompareTag("Portami_al_POI") || p.CompareTag("Close_Detail"))
+                            {
+                                Debug.Log("Chiudo il detail tag:" + p.tag + " name:" + p.name);
+                                DetailPOI.GetComponent<DetailPOIManager>().CloseDetailPOI();
+                                //reset della grandezza della minimap
+                                ARMenuCanvas.GetComponent<ARLocation.MapboxRoutes.SampleProject.ArMenuController>().ResetSizeMinimap();
+                            }
+                            else if (ARMenuCanvas.GetComponent<ARLocation.MapboxRoutes.SampleProject.ArMenuController>().Settings.MenuController.MapSize < 513)
+                            {
+
+                                Debug.Log("Eccomi " + PlayerPrefs.GetInt("show_grid_poi"));
+                                DetailPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(p.name, false, true, 3);
+                                ARMenuCanvas.GetComponent<ARLocation.MapboxRoutes.SampleProject.ArMenuController>().ZeroSizeMinimap();
+                            }
+                        }
+
                     }
 
                 }
-
+                else
+                {
+                    foreach (Transform _ap in DetailPOI.transform)
+                    {
+                        if (_ap.name == "CanvasPOI" && !_ap.gameObject.activeSelf)
+                        {
+                            ARMenuCanvas.GetComponent<ARLocation.MapboxRoutes.SampleProject.ArMenuController>().ResetSizeMinimap();
+                        }
+                    }
+                }
             }
         }
     }

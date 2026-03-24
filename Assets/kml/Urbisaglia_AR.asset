@@ -1,0 +1,202 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: Urbisaglia_AR
+  m_EditorClassIdentifier: Assembly-CSharp::ARLocation.MapboxRoutes.CustomRoute
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.19578078020547
+      Longitude: 13.37599158201721
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 1
+    Instruction: Tappa 1 - Rocca medioevale;Stage 1 - Rocca medioevale
+  - Location:
+      Latitude: 43.19582346802542
+      Longitude: 13.37593001581066
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 1
+    Instruction: Procedi in direzione nordovest;Proceed in a northwest direction
+  - Location:
+      Latitude: 43.19595514327712
+      Longitude: 13.37585825666355
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 2
+    Instruction: Svolta a destra;Turn right
+  - Location:
+      Latitude: 43.19607275886023
+      Longitude: 13.37619116833438
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1961752104029
+      Longitude: 13.37650839238079
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 2
+    Instruction: Tappa 2 - Collegiata di San Lorenzo;Stage 2 - Collegiata di San
+      Lorenzo
+  - Location:
+      Latitude: 43.19638201321415
+      Longitude: 13.37678102191814
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 3
+    Instruction: Continua su Corso Alessandro Giannelli; Continue on Corso Alessandro
+      Giannelli
+  - Location:
+      Latitude: 43.19672011056209
+      Longitude: 13.37707853767613
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 3
+    Instruction: Tappa 3 - Chiesa Santissima Addolorata;Stage 3 - Chiesa Santissima
+      Addolorata
+  - Location:
+      Latitude: 43.1967604963324
+      Longitude: 13.3771134838495
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.19681154919311
+      Longitude: 13.37716429161891
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 4
+    Instruction: Tappa 4 - Palazzo Brunelli;Stage 4 - Palazzo Brunelli
+  - Location:
+      Latitude: 43.19695419187389
+      Longitude: 13.37726675578842
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 5
+    Instruction: Tappa 5 - Torre Campanaria;Stage 5 - Torre Campanaria
+  - Location:
+      Latitude: 43.19699952056643
+      Longitude: 13.37730435593002
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 4
+    Instruction: Gira a sinistra;Turn left
+  - Location:
+      Latitude: 43.19724237132344
+      Longitude: 13.37656392660172
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 6
+    Instruction: Tappa 6 - Porta Trento e Porta Piave;Stage 6 - Porta Trento e Porta
+      Piave
+  - Location:
+      Latitude: 43.19725484649038
+      Longitude: 13.37657872431431
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 5
+    Instruction: Torna indietro;Go back
+  - Location:
+      Latitude: 43.19701601753712
+      Longitude: 13.37729491313364
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 6
+    Instruction: Gira a sinistra;Turn left
+  - Location:
+      Latitude: 43.19723017875842
+      Longitude: 13.37744014609654
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 7
+    Instruction: Tappa 7 - Palazzo Comunale;Stage 7 - Palazzo Comunale
+  - Location:
+      Latitude: 43.19747245549301
+      Longitude: 13.37758084181977
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 7
+    Instruction: Continua su Piazza Salvia;Continue on Piazza Salvia
+  - Location:
+      Latitude: 43.19769826440184
+      Longitude: 13.37773377511823
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.19786840452515
+      Longitude: 13.37788575794997
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 8
+    Instruction: Tappa 8 - Parco della Rimembranza;Stage 8 - Parco della Rimembranza
+  SceneViewScale: 1
+  Color: 

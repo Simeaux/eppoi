@@ -1,0 +1,740 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: Pollenza_IOT
+  m_EditorClassIdentifier: Assembly-CSharp::ARLocation.MapboxRoutes.CustomRoute
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.26781566185164
+      Longitude: 13.34774803715019
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 1
+    Instruction: "Procedi in direzione nord su Piazza della Libert\xE0 verso Via
+      Roma;Proceed north on Piazza della Libert\xE0 towards Via Roma"
+  - Location:
+      Latitude: 43.2689510889969
+      Longitude: 13.34670455044341
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 2
+    Instruction: Via Roma svolta leggermente a sinistra e diventa Via Schiavonia;Via
+      Roma turns slightly left and becomes Via Schiavonia
+  - Location:
+      Latitude: 43.26908402166944
+      Longitude: 13.34576597058727
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 3
+    Instruction: Svolta a sinistra e prendi Viale R. Sanzio;Turn left and take Viale
+      R. Sanzio
+  - Location:
+      Latitude: 43.26816633170311
+      Longitude: 13.34634860594819
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26809093433397
+      Longitude: 13.34643979208253
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26733301994432
+      Longitude: 13.34758169306089
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 4
+    Instruction: Svolta tutto a destra e prendi Via Papa Giovanni XXIII;Turn right
+      and take Via Papa Giovanni XXIII
+  - Location:
+      Latitude: 43.26728646754501
+      Longitude: 13.34752189570394
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26760123588064
+      Longitude: 13.34689059007359
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26761754748457
+      Longitude: 13.34678303330118
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26751026724509
+      Longitude: 13.34606124379242
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26676325802836
+      Longitude: 13.34569230222548
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 5
+    Instruction: Procedi in direzione nord su Via Papa Giovanni XXIII verso Via Giuseppe
+      Fammilume;Proceed north on Via Papa Giovanni XXIII towards Via Giuseppe Fammilume
+  - Location:
+      Latitude: 43.26674576937249
+      Longitude: 13.345758000881
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 1
+    Instruction: Tappa 1 - La Bottega 4.0;Stage 1 - La Bottega 4.0
+  - Location:
+      Latitude: 43.26694432739608
+      Longitude: 13.34585686646366
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 6
+    Instruction: Svolta a destra e prendi Via Giuseppe Fammilume;Turn right and take
+      Via Giuseppe Fammilume
+  - Location:
+      Latitude: 43.26703238610595
+      Longitude: 13.34676388245929
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 7
+    Instruction: Svolta a destra e prendi Via Melograno;Turn right and take Via Melograno
+  - Location:
+      Latitude: 43.26652156370878
+      Longitude: 13.34686120124532
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26604171266658
+      Longitude: 13.34704474911422
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 8
+    Instruction: Gira a sinistra;Turn left
+  - Location:
+      Latitude: 43.26612124671191
+      Longitude: 13.34772900913687
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 9
+    Instruction: Gira a destra su Viale R.Sanzio;Turn right onto Viale R.Sanzio
+  - Location:
+      Latitude: 43.26591287392569
+      Longitude: 13.34794926991756
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26576745419882
+      Longitude: 13.34816519955039
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26572658096909
+      Longitude: 13.34843003213406
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26569604422075
+      Longitude: 13.34871041771699
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 10
+    Instruction: Continua su Viale Mura di Levante;Continue on Viale Mura di Levante
+  - Location:
+      Latitude: 43.26576666040808
+      Longitude: 13.34903410385099
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26584320694761
+      Longitude: 13.34929145851816
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26592046791767
+      Longitude: 13.34943648136961
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26600972944818
+      Longitude: 13.34955283334712
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26611716624293
+      Longitude: 13.3496475867345
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26624696208479
+      Longitude: 13.34972394770457
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26645863088901
+      Longitude: 13.34970035845071
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26674055057737
+      Longitude: 13.34962589007583
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 11
+    Instruction: Tirni la sinistra;Keep left
+  - Location:
+      Latitude: 43.26714506470276
+      Longitude: 13.34946064611747
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 12
+    Instruction: Gira a sinistra e prendi Via Giacomo Leopardi;Turn left and take
+      Via Giacomo Leopardi
+  - Location:
+      Latitude: 43.26721320759801
+      Longitude: 13.34935407740628
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26762538834758
+      Longitude: 13.34914770839018
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26786032852824
+      Longitude: 13.34893533363026
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26800194843858
+      Longitude: 13.34872822229432
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 2
+    Instruction: Tappa 2 - Negozio di Antiquariato;Stage 2 - Negozio di Antiquariato
+  - Location:
+      Latitude: 43.26809543318686
+      Longitude: 13.34857277233654
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26826013774161
+      Longitude: 13.34834053277947
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 3
+    Instruction: Tappa 3 - Laboratorio di restauro;Stage 3 - Laboratorio di restauro
+  - Location:
+      Latitude: 43.26824114825197
+      Longitude: 13.34830811766228
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 13
+    Instruction: Procedi in direzione sudest su Via Giacomo Leopardi verso Piaggia
+      Sant'Agostino;Proceed southeast on Via Giacomo Leopardi towards Piaggia Sant'Agostino
+  - Location:
+      Latitude: 43.26807090385621
+      Longitude: 13.34856720883418
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26783908947973
+      Longitude: 13.34893201638403
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26759097854335
+      Longitude: 13.34913620186747
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26719763047514
+      Longitude: 13.34933527781837
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 14
+    Instruction: Svolta tutto a sinistra verso Borgo G. Murat/Strada Provinciale
+      Stazione di Pollenza-Passo di Treia/SP124;Turn sharp left towards Borgo G.
+      Murat/Provincial Road Stazione di Pollenza-Passo di Treia/SP124
+  - Location:
+      Latitude: 43.26700774140461
+      Longitude: 13.34966370585899
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.2667920361687
+      Longitude: 13.34998896752172
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26650572679394
+      Longitude: 13.35027402123953
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26610746799698
+      Longitude: 13.35049892088433
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26589651908912
+      Longitude: 13.35058191617909
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26572087237894
+      Longitude: 13.35069862420116
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26550318105767
+      Longitude: 13.35100530639624
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.2651651444444
+      Longitude: 13.35166188979271
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.2645729147706
+      Longitude: 13.35253052339274
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26412820438105
+      Longitude: 13.35316683018002
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26390223591944
+      Longitude: 13.35334885399156
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26358845137175
+      Longitude: 13.35347996504454
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26238250576479
+      Longitude: 13.35384075818904
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.2619541953703
+      Longitude: 13.35400238674639
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26126805227669
+      Longitude: 13.3543871384404
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.26002089046519
+      Longitude: 13.35556803994852
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.25974727985414
+      Longitude: 13.35607462193784
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.25929519947737
+      Longitude: 13.35712851412048
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.25899599467218
+      Longitude: 13.35792343409423
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 15
+    Instruction: Svolta a destra e prendi Rione Trebbio;Turn right and take Rione
+      Trebbio
+  - Location:
+      Latitude: 43.25787969677444
+      Longitude: 13.35859705022618
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.25769430319608
+      Longitude: 13.3588051246121
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.25757851201576
+      Longitude: 13.35900206615064
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.25750892644315
+      Longitude: 13.35917309802122
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.25730730100775
+      Longitude: 13.35992579777357
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.2571797444273
+      Longitude: 13.36043116442843
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 16
+    Instruction: Svolta a sinistra e prendi Via Padre U. Ciccioli;Turn left onto
+      Via Padre U. Ciccioli
+  - Location:
+      Latitude: 43.25719793004521
+      Longitude: 13.36066100128127
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.25724722873912
+      Longitude: 13.36100757231486
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.25733808366421
+      Longitude: 13.36144436141049
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.25743584233838
+      Longitude: 13.36170697924677
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.25760355671605
+      Longitude: 13.36205115660248
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 4
+    Instruction: Tappa 4 - Laboratorio di ceramiche;Stage 4 - Laboratorio di ceramiche
+  SceneViewScale: 1
+  Color: 

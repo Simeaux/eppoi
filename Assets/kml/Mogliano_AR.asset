@@ -1,0 +1,861 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: Mogliano_AR
+  m_EditorClassIdentifier: Assembly-CSharp::ARLocation.MapboxRoutes.CustomRoute
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.18508999540726
+      Longitude: 13.47700021838963
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 1
+    Instruction: Tappa 1 - Museo delle Terre Artigiane;Stage 1 - Museo delle Terre
+      Artigiane
+  - Location:
+      Latitude: 43.18508998293982
+      Longitude: 13.47683125766889
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 1
+    Instruction: Procedi in direzione ovest su V.le Adriano, Adriani;Proceed west
+      on V.le Adriano, Adriani
+  - Location:
+      Latitude: 43.18518403205496
+      Longitude: 13.47649791677984
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 2
+    Instruction: Svolta tutto a destra verso Largo Cesare Battisti/SP61;Turn sharp
+      right onto Largo Cesare Battisti/SP61
+  - Location:
+      Latitude: 43.18526476082807
+      Longitude: 13.47722891000141
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 3
+    Instruction: Svolta tutto a sinistra e prendi Largo Cesare Battisti/SP61;Turn
+      left and take Largo Cesare Battisti/SP61
+  - Location:
+      Latitude: 43.1853223354404
+      Longitude: 13.47726276927164
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18541809103001
+      Longitude: 13.47703533105902
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18559309330995
+      Longitude: 13.47707581063837
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 4
+    Instruction: Svolta a destra e prendi Viale XX Settembre;Turn right and take
+      Viale XX Settembre
+  - Location:
+      Latitude: 43.18541275929982
+      Longitude: 13.47815502679845
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 5
+    Instruction: Continua su Piazzale Diaz;Continue on Piazzale Diaz
+  - Location:
+      Latitude: 43.18531974497157
+      Longitude: 13.47884698245282
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 6
+    Instruction: Svolta a sinistra e prendi Via Umberto I';Turn left and take Via
+      Umberto I'
+  - Location:
+      Latitude: 43.18577639803529
+      Longitude: 13.47888811462921
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 2
+    Instruction: Tappa 2 - Rocca Medievale;Stage 2 - Rocca Medievale
+  - Location:
+      Latitude: 43.18584401853972
+      Longitude: 13.4789101789698
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 8
+    Instruction: Vicolo Bolignano fa una leggera curva a destra e diventa Via Stucci;Vicolo
+      Bolignano makes a slight curve to the right and becomes Via Stucci
+  - Location:
+      Latitude: 43.18585643322311
+      Longitude: 13.47930558748961
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18563860861959
+      Longitude: 13.47956748968738
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 3
+    Instruction: Tappa 3 - Chiesa di San Gregorio Magno;Stage 3 - Chiesa di San Gregorio
+      Magno
+  - Location:
+      Latitude: 43.18537936299735
+      Longitude: 13.47992755144465
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 9
+    Instruction: Svolta a sinistra e prendi Via Roma;Turn left and take Via Roma
+  - Location:
+      Latitude: 43.18550170265744
+      Longitude: 13.48016318655547
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18563760395921
+      Longitude: 13.48035080735173
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 10
+    Instruction: Svolta a sinistra e prendi Via Giuseppe Verdi;Turn left and take
+      Via Giuseppe Verdi
+  - Location:
+      Latitude: 43.18573910736679
+      Longitude: 13.48039741889835
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18593436044894
+      Longitude: 13.48046637073463
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18599673866967
+      Longitude: 13.48048898423604
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 11
+    Instruction: Procedi in direzione nordovest su Via Giuseppe Verdi verso Vicoo
+      Latini;Proceed northwest on Via Giuseppe Verdi towards Vicoo Latini
+  - Location:
+      Latitude: 43.18620052382845
+      Longitude: 13.48038102358211
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18629486993758
+      Longitude: 13.48027223034169
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 4
+    Instruction: "Tappa 4 - Chiesa di San Nicol\xF2 - Auditorium;Stage 4 - Chiesa
+      di San Nicol\xF2 - Auditorium"
+  - Location:
+      Latitude: 43.18633002668128
+      Longitude: 13.48025434403823
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 12
+    Instruction: Svolta a destra e prendi Vicolo Boninfanti;Turn right and take Vicolo
+      Boninfanti
+  - Location:
+      Latitude: 43.18638102901215
+      Longitude: 13.48028176668531
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18641885134172
+      Longitude: 13.48032806488084
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18646010267487
+      Longitude: 13.48044259398023
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18649165261545
+      Longitude: 13.48068620148164
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 13
+    Instruction: Gira a destra e prosegui verso Piazza Garibaldi;Turn right and continue
+      towards Piazza Garibaldi
+  - Location:
+      Latitude: 43.18641434006275
+      Longitude: 13.48107614977439
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 5
+    Instruction: Tappa 5 - Chiesa di Santa Maria di Piazza;Stage 5 - Chiesa di Santa
+      Maria di Piazza
+  - Location:
+      Latitude: 43.18653874561933
+      Longitude: 13.48128541366029
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 6
+    Instruction: Tappa 6 - Teatro Apollo;Stage 6 - Teatro Apollo
+  - Location:
+      Latitude: 43.1864768671927
+      Longitude: 13.48129616502973
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 14
+    Instruction: Procedi in direzione sudovest su Via Regina Margherita;Proceed southwest
+      on Via Regina Margherita
+  - Location:
+      Latitude: 43.18637125473294
+      Longitude: 13.48110480794497
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 15
+    Instruction: Continua su Piazza Garibaldi;Continue on Piazza Garibaldi
+  - Location:
+      Latitude: 43.18627307441776
+      Longitude: 13.48099776032191
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 7
+    Instruction: Tappa 7 - Museo di Arte Sacra;Stage 7 - Museo di Arte Sacra
+  - Location:
+      Latitude: 43.18622727439519
+      Longitude: 13.48094216399398
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 16
+    Instruction: Continua su Via Roma;Continue on Via Roma
+  - Location:
+      Latitude: 43.18590620981688
+      Longitude: 13.48073357820095
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18574769568235
+      Longitude: 13.48057584863244
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18564456661503
+      Longitude: 13.48033835440036
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18548728129846
+      Longitude: 13.48010580564323
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18537812272934
+      Longitude: 13.47986348081524
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18535965462385
+      Longitude: 13.47972728743419
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18531259206114
+      Longitude: 13.47907909014802
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 17
+    Instruction: Continua su Piazzale Diaz;Continue on Piazzale Diaz
+  - Location:
+      Latitude: 43.18549848017059
+      Longitude: 13.47783559422617
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 18
+    Instruction: Continua su Viale XX Settembre;Continue on Viale XX Settembre
+  - Location:
+      Latitude: 43.18574738623448
+      Longitude: 13.47621126812325
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 19
+    Instruction: Svolta a sinistra e prendi Viale del Santuario;Turn left and take
+      Viale del Santuario
+  - Location:
+      Latitude: 43.18561248652205
+      Longitude: 13.47611487521056
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18416018679311
+      Longitude: 13.47453907219564
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 8
+    Instruction: Tappa 8 - Santuario del Santissimo Crocifisso;Stage 8 - Santuario
+      del Santissimo Crocifisso
+  - Location:
+      Latitude: 43.18411783904695
+      Longitude: 13.47456667684421
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 20
+    Instruction: Procedi in direzione nordovest su Strada Provinciale 72 verso Viale
+      del Santuario;Proceed northwest on Provincial Road 72 towards Viale del Santuario
+  - Location:
+      Latitude: 43.18496565005446
+      Longitude: 13.4754508840501
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18533217037009
+      Longitude: 13.47586224749056
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 21
+    Instruction: Svolta a destra e prendi V.le Adriano Adriani;Turn right and take
+      V.le Adriano Adriani
+  - Location:
+      Latitude: 43.18518822037571
+      Longitude: 13.47646505134303
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 22
+    Instruction: Svolta leggermente a sinistra verso Via Cairoli/SP61;Turn slightly
+      left onto Via Cairoli/SP61
+  - Location:
+      Latitude: 43.18528665393779
+      Longitude: 13.47735769160604
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 23
+    Instruction: Svolta leggermente a destra e prendi Via Cairoli/SP61;Turn slightly
+      right and take Via Cairoli/SP61
+  - Location:
+      Latitude: 43.18483974570946
+      Longitude: 13.47935915768369
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18476070375916
+      Longitude: 13.4797341098024
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18477325571168
+      Longitude: 13.48007261683095
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18494988619312
+      Longitude: 13.48047696947947
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18539850680035
+      Longitude: 13.48113292660603
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18581721161155
+      Longitude: 13.48231581481597
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18739365998524
+      Longitude: 13.48525879449581
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18744904193483
+      Longitude: 13.48555966707318
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18748394869147
+      Longitude: 13.48669675406265
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18773836361315
+      Longitude: 13.48844287121887
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18753517839226
+      Longitude: 13.49223992847429
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18746546093394
+      Longitude: 13.49306978786126
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18752585557538
+      Longitude: 13.4941734738926
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 24
+    Instruction: Svolta leggermente a destra e prendi Contrada Sant'Anna;Turn slightly
+      right and take Contrada Sant'Anna
+  - Location:
+      Latitude: 43.18747119030624
+      Longitude: 13.49512326744145
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18733086397621
+      Longitude: 13.49556754035921
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18736191722637
+      Longitude: 13.4963696663188
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18736414521631
+      Longitude: 13.49705051349196
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18732146795157
+      Longitude: 13.49813612849599
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18724711567528
+      Longitude: 13.4986253132027
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18679088332842
+      Longitude: 13.49967769903653
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18667739096218
+      Longitude: 13.50156043247449
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18644941620204
+      Longitude: 13.50216482373517
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18629161722804
+      Longitude: 13.50282988977289
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 25
+    Instruction: Continua su Contrada Santa Croce;Continue on Contrada Santa Croce
+  - Location:
+      Latitude: 43.18599547940754
+      Longitude: 13.50433853652901
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18488873603775
+      Longitude: 13.50599126639951
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18383861399376
+      Longitude: 13.50698619435791
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18275569547438
+      Longitude: 13.50900593848022
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18221099481201
+      Longitude: 13.50981573512578
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1813911379656
+      Longitude: 13.51064657423823
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.18001807482228
+      Longitude: 13.51287843676312
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.1798696591263
+      Longitude: 13.51301791253445
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.17840874111815
+      Longitude: 13.51339176699542
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 26
+    Instruction: Svolta a sinistra;Turn left
+  - Location:
+      Latitude: 43.17842064534067
+      Longitude: 13.51351160896047
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.17871849209238
+      Longitude: 13.51381317701728
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 9
+    Instruction: Tappa 9 - Parco fluviale di Santa Croce;Stage 9 - Parco fluviale
+      di Santa Croce
+  SceneViewScale: 1
+  Color: 

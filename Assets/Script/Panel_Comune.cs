@@ -4,6 +4,7 @@ using System.Xml.Linq;
 using TS.PageSlider;
 using TS.PageSlider.Demo;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static DBClass;
@@ -41,30 +42,34 @@ public class Panel_Comune : MonoBehaviour
     private void Update()
     {
 
-        if ((PlayerPrefs.GetString("poi_selezionato") != "" || PlayerPrefs.GetInt("percorso_selezionato") > 0 )&& !_panelPOI.activeSelf)
+        if ((PlayerPrefs.GetString("poi_selezionato") != "" || PlayerPrefs.GetString("percorso_selezionato") != "") && !_panelPOI.activeSelf)
         {
             _panelPOI.SetActive(true);
             _panelComune.SetActive(false);
-            
+
         }
-        // || PlayerPrefs.GetInt("evento_selezionato") > 0 || PlayerPrefs.GetInt("percorso_selezionato") > 0
     }
     private void OnGUI()
     {
-        
+
         //GUI.DrawTexture(new Rect(200, 20, 400, 400), texture, ScaleMode.ScaleToFit, true, 1f);
     }
     private void OnEnable()
     {
+        // Verifica se è già carica, cadsomai la distrugge
+        if (SceneManager.GetSceneByName("Map").isLoaded)
+        {
+            SceneManager.UnloadSceneAsync("Map");
+        }
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
-        
-        
+
+
         ///
         backBtn.onClick.AddListener(backBtnPressed);
 
         _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
         _istat = PlayerPrefs.GetString("istat");
-        
+
         var _Listcomune = _DBClass.GetCOMUNI(_istat);
         descrizione.text = string.Empty;
         scrollviewFotoComune.gameObject.SetActive(true);
@@ -74,7 +79,7 @@ public class Panel_Comune : MonoBehaviour
             scrollviewFotoComune.transform.SetParent(descrizione.transform, false);
             _selected_comune = _comune;
             //
-            
+
             if (_comune.Listimages != null && _comune.Listimages.Count > 0 && _comune.Listimages[0].image != null && _comune.Listimages[0].image.Length > 0)
             {
                 descrizione.text = "\n\n\n\n\n\n\n";
@@ -152,7 +157,7 @@ public class Panel_Comune : MonoBehaviour
     {
         PlayerPrefs.SetString("istat", "");
         PlayerPrefs.SetString("poi_selezionato", "");
-        PlayerPrefs.SetInt("percorso_selezionato", 0);
+        PlayerPrefs.SetString("percorso_selezionato", "");
         selected_tab.text = "0";
         _panelComune.SetActive(false);
         _panelPrincipale.SetActive(true);

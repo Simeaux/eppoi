@@ -12,7 +12,7 @@ using Mapbox.Map;
 using static ARLocation.MapboxRoutes.SampleProject.ArMenuController;
 using TS.PageSlider;
 using TS.PageSlider.Demo;
-using DigitsNFCToolkit;
+
 
 namespace ARLocation.MapboxRoutes.SampleProject
 {
@@ -432,14 +432,14 @@ namespace ARLocation.MapboxRoutes.SampleProject
             OnPercorsiPress();
         }
         */
-        private void Percorso_N_Go(int n)
+        private void Percorso_N_Go(long n)
         {
             Elements.LabelText.text = n.ToString();
             reloadRoute(n);
         }
-        private void reloadRoute(int n)
+        private void reloadRoute(long n)
         {
-            
+
             if (n >= 0)
             {
                 var ListOfRoute = _DBClass.ListOfCustomRoute(n, null, null);
@@ -459,7 +459,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
                     foreach (var route in ListOfRoute)
                     {
                         res.routes.Add(route.ToMapboxRoute());
-                        if(res.waypoints == null)
+                        if (res.waypoints == null)
                             res.waypoints = route.GetWaypoints();
                     }
                     List<POI> _poi = new List<POI>();
@@ -503,18 +503,18 @@ namespace ARLocation.MapboxRoutes.SampleProject
                 }
 
             }
-           /*
-            var route = Settings.MapboxRoute.Settings.RouteSettings.CustomRoute;
-            MapboxRoute mr = (MapboxRoute)Settings.MapboxRoute.GetComponent(typeof(MapboxRoute));
-            mr.LoadCustomRoute(route);
-            mr.ReloadRoute();
+            /*
+             var route = Settings.MapboxRoute.Settings.RouteSettings.CustomRoute;
+             MapboxRoute mr = (MapboxRoute)Settings.MapboxRoute.GetComponent(typeof(MapboxRoute));
+             mr.LoadCustomRoute(route);
+             mr.ReloadRoute();
 
-            var res = new RouteResponse();
-            res.routes = new List<Route> { route.ToMapboxRoute() };
-            res.waypoints = route.GetWaypoints();
+             var res = new RouteResponse();
+             res.routes = new List<Route> { route.ToMapboxRoute() };
+             res.waypoints = route.GetWaypoints();
 
-            Settings.MenuController.CustomRoute(res);
-            */
+             Settings.MenuController.CustomRoute(res);
+             */
         }
 
         void toggleMenuNavigazione()
@@ -669,11 +669,11 @@ namespace ARLocation.MapboxRoutes.SampleProject
         {
             _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
             Elements.BtnResizeMinimap.onClick.AddListener(ResizeMinimapPress);
-            int percorso = PlayerPrefs.GetInt("percorso");
-            if (percorso > 0)
+            string percorso = PlayerPrefs.GetString("percorso");
+            if (percorso != "")
             {
-                var _percorsoList = _DBClass.GetPERCORSO(percorso);
-                if(_percorsoList != null && _percorsoList.Count > 0)
+                var _percorsoList = _DBClass.GetPERCORSO(long.Parse(percorso));
+                if (_percorsoList != null && _percorsoList.Count > 0)
                 {
                     var _percorso = _percorsoList[0];
                     if (_percorso.tipo_navigazione == "IOT")
@@ -686,7 +686,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
                     else
                         Elements.BtnNFC.gameObject.SetActive(false);
                 }
-                Percorso_N_Go(percorso);
+                Percorso_N_Go(long.Parse(percorso));
             }
             else
             {
@@ -779,7 +779,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
                     DetailPOI.gameObject.SetActive(false);
                 }
             }
-            
+
         }
 
         void showButtonLabelsNavigazione()
@@ -870,7 +870,7 @@ namespace ARLocation.MapboxRoutes.SampleProject
                 default_zoom = Settings.MenuController.Map.Zoom;
                 Settings.MenuController.Map.SetZoom(Settings.MenuController.Map.Zoom - 4.0f);
 
-                Settings.MenuController.MapSize = (int)(Screen.height - (Elements.PanelBackgroundMenu.GetComponentInChildren<RectTransform>().rect.height - Elements.PanelBackgroundMenu.GetComponentInChildren<RectTransform>().rect.y ));// 220;
+                Settings.MenuController.MapSize = (int)(Screen.height - (Elements.PanelBackgroundMenu.GetComponentInChildren<RectTransform>().rect.height - Elements.PanelBackgroundMenu.GetComponentInChildren<RectTransform>().rect.y));// 220;
                 Settings.MenuController.Map.UpdateMap();
                 Elements.BtnClose.gameObject.SetActive(false);
             }
@@ -892,6 +892,13 @@ namespace ARLocation.MapboxRoutes.SampleProject
             Settings.MenuController.MapSize = 0;
             Settings.MenuController.Map.UpdateMap();
             Elements.BtnClose.gameObject.SetActive(true);
+        }
+        public bool isZeroSizeMinimap()
+        {
+            bool ret = false;
+            if (Settings.MenuController.MapSize == 0)
+                ret = true;
+            return ret;
         }
     }
 

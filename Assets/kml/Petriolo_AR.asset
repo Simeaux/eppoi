@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3ef57f122164deba0f4502244ca1ae, type: 3}
+  m_Name: Petriolo_AR
+  m_EditorClassIdentifier: Assembly-CSharp::ARLocation.MapboxRoutes.CustomRoute
+  Name: 
+  Points:
+  - Location:
+      Latitude: 43.22163554397356
+      Longitude: 13.46918166448376
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 1
+    Instruction: Tapppa 1 - Sacrario dei caduti in guerra;Stage 1 - Sacrario dei
+      caduti in guerra
+  - Location:
+      Latitude: 43.22161854695135
+      Longitude: 13.46916270993769
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 1
+    Instruction: Procedi in direzione sudovest su Via Castellano/Strada Provinciale
+      36 verso Via della Pace;Proceed southwest on Via Castellano/Provincial Road
+      36 towards Via della Pace
+  - Location:
+      Latitude: 43.22136089541474
+      Longitude: 13.46882785264364
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22127999311323
+      Longitude: 13.46864598043409
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22115452493238
+      Longitude: 13.46732915555595
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.2209425268987
+      Longitude: 13.46581308006508
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.2209086831913
+      Longitude: 13.46542395602377
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 2
+    Instruction: Svolta a destra verso Piazza S. Martino;Turn right towards Piazza
+      S. Martino
+  - Location:
+      Latitude: 43.22096022443201
+      Longitude: 13.46534072388353
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22098153703949
+      Longitude: 13.46535779737535
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 3
+    Instruction: Svolta a destra e prendi Piazza S. Martino;Turn right and take Piazza
+      S. Martino
+  - Location:
+      Latitude: 43.2210282913659
+      Longitude: 13.46548548333036
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22108972158817
+      Longitude: 13.46571310595585
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 
+    Instruction: 
+  - Location:
+      Latitude: 43.22111985279447
+      Longitude: 13.46581495810506
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 4
+    Instruction: Svolta a sinistra per Torre Civica;Turn left onto Torre Civica
+  - Location:
+      Latitude: 43.22119886938991
+      Longitude: 13.4657752409952
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 2
+    Instruction: Tappa 2 - Piazza San Martino;Stage 2 - Piazza San Martino
+  - Location:
+      Latitude: 43.22121617251523
+      Longitude: 13.46581545626769
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 0
+    Name: 5
+    Instruction: Torna indietro e prosegui verso il Belvedere;Go back and continue
+      towards the Belvedere
+  - Location:
+      Latitude: 43.22111756729719
+      Longitude: 13.46594020606321
+      Altitude: 0
+      AltitudeMode: 0
+      Label: 
+    IsStep: 1
+    IsTappa: 1
+    Name: 3
+    Instruction: Tappa 3 - Belvedere Piazza San Martino;Stage 3 - Belvedere Piazza
+      San Martino
+  SceneViewScale: 1
+  Color: 

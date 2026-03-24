@@ -160,6 +160,7 @@ public class ICanvas : MonoBehaviour
 
     private void OnBtnmore_zoom()
     {
+        PlayerPrefs.SetInt("cambio_zoom_nella_mappa", 1);
         Debug.Log("Bottone More zoom premuto");
 
         double x = 0;
@@ -169,6 +170,7 @@ public class ICanvas : MonoBehaviour
     }
     private void OnBtnless_zoom()
     {
+        PlayerPrefs.SetInt("cambio_zoom_nella_mappa", 1);
         Debug.Log("Bottone Less zoom premuto");
 
         double x = 0;
@@ -217,8 +219,8 @@ public class ICanvas : MonoBehaviour
             panel_all_White.SetActive(false);
             if (PlayerPrefs.GetString("poi_selezionato") != "")
                 PanelPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(PlayerPrefs.GetString("poi_selezionato"), true, false, 3);
-            else if (PlayerPrefs.GetInt("percorso_selezionato") > 0)
-                PanelPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(PlayerPrefs.GetInt("percorso_selezionato").ToString(), true, false, 1);
+            else if (PlayerPrefs.GetString("percorso_selezionato") != "")
+                PanelPOI.GetComponent<DetailPOIManager>().OpenDetailAtID(PlayerPrefs.GetString("percorso_selezionato"), true, false, 1);
             PanelMAP.SetActive(false);
         }
         if (PlayerPrefs.GetInt("show_grid_poi") == 0)

@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Mogliano_IOT.kml</name>
+	<StyleMap id="m_ylw-pushpin000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin80</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_red-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin00">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin5</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin11</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin80">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_grn-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-pushpin0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin11">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0affff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_grn-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_red-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin5">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0affff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>Mogliano_IOT</name>
+		<open>1</open>
+		<Placemark>
+			<name>IOT</name>
+			<styleUrl>#msn_ylw-pushpin00</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					13.48120575460007,43.18657912363911,0 13.48119847377107,43.1864752381059,0 13.48297377602671,43.18710265461622,0 13.48339285752317,43.18713345906586,0 13.48361143859316,43.18718783019727,0 13.4835979677416,43.18730937077603,0 13.48373201857664,43.1872564975972,0 13.48371078654097,43.18712674946934,0 13.48365748267384,43.18694232225533,0 13.48341957660642,43.18667502853621,0 13.48288113089546,43.18627016631252,0 13.48291685672915,43.18620560469549,0 13.48526882545437,43.18738975997015,0 13.48557818214751,43.18743710884093,0 13.48591306927306,43.18745663513565,0 13.48664971078223,43.18749009090146,0 13.48831165705044,43.18771813674819,0 13.48870620733117,43.18774173243423,0 13.49137727772571,43.18759462996197,0 13.49324631360202,43.18746058937278,0 13.49438048995673,43.18755474545044,0 13.49795787375537,43.18777810866428,0 13.50082081458739,43.18790561297386,0 13.50097262386298,43.18798460938927,0 13.5010213222523,43.18814221994663,0 13.50088461323562,43.1886030780248,0 13.50071653779223,43.18915971959372,0 13.50072629631792,43.18938957375872,0 13.50094132196529,43.18983574271093,0 13.50147922581963,43.19090740127197,0 13.50173985276709,43.191124688169,0 13.50218509186486,43.19138181536338,0 13.50261984250153,43.19144732200981,0 13.50520964647506,43.19146983243337,0 13.50714660640483,43.19149097565619,0 13.50743079156983,43.19171700217222,0 13.5076186755656,43.19208541678111,0 13.50748598905092,43.19245967532763,0 13.50707076695014,43.19283964620649,0 13.50542609393838,43.19410401094298,0 13.50530782944388,43.19426514196348,0 13.50531817907761,43.19443362850577,0 13.50537710034689,43.19463132535054,0 13.50558325981531,43.19483551266039,0 13.50595098899376,43.19502817406424,0 13.50633706860916,43.19521584569756,0 13.5065029905731,43.1953522566136,0 13.50664533697119,43.19554830754652,0 13.50676519381454,43.19578812995082,0 13.50706956588907,43.19639416943043,0 13.50734530452961,43.1970221353808,0 13.50742738585798,43.19749769925442,0 13.50744979120614,43.19765574331937,0 13.50757781461745,43.19795019672061,0 13.50814707819836,43.19915473688102,0 13.50835154465111,43.19941654111656,0 13.50949633538654,43.20045969445445,0 13.5097311830948,43.20060825196342,0 13.51001461872395,43.20072514714786,0 13.51145403445458,43.20103620569801,0 13.51159211106225,43.20107878984457,0 13.51175618360068,43.20117356314266,0 13.51244919128146,43.20167346685438,0 13.5128402968686,43.20194080863969,0 13.51318891645779,43.20212159045856,0 13.51387004513707,43.20241762778753,0 13.51452369430556,43.20264002284556,0 13.51506160460563,43.20283711623177,0 13.51515565569652,43.20282802460418,0 13.51534329222066,43.20277833613196,0 13.51543331394062,43.20234547630849,0 13.51548876886457,43.20196481975035,0 13.51517829975381,43.20169969124453,0 13.51453901701009,43.20127489477616,0 13.51457131061114,43.20124029663812,0 13.51519246234077,43.20165107916723,0 13.51557943794172,43.20195605394185,0 13.51556693192863,43.2021227037449,0 13.51543314034346,43.20271493379829,0 13.51541930064428,43.20287405782833,0 13.5153821971457,43.20293302669618,0 13.51530871986676,43.20296072635787,0 13.51503547541869,43.20286796102297,0 13.51450511246954,43.20265873015987,0 13.51384981377031,43.20243290666838,0 13.51316700731909,43.20214144504713,0 13.51282050780617,43.20197070133884,0 13.51238969917652,43.20169810964978,0 13.51172272400035,43.20118716285103,0 13.51156033784139,43.20111093967937,0 13.51143277364448,43.20106334335869,0 13.50999566535472,43.20075575189774,0 13.50966684541925,43.20064531573954,0 13.50946756268178,43.20051824718184,0 13.50927670892804,43.2003656929132,0 13.50830361437529,43.19942956905236,0 13.50810814829488,43.19916782508343,0 13.50751989208742,43.19796285686513,0 13.50738989072237,43.19766202566765,0 13.50737001375939,43.19750345406619,0 13.50730402874935,43.19702670015421,0 13.50702056004279,43.19641067749139,0 13.50671491590559,43.19579100347828,0 13.50659476404802,43.19556880754984,0 13.50646252244294,43.19535794772385,0 13.50629926928794,43.19522683330598,0 13.5059257605571,43.19506575883656,0 13.50571103875158,43.19497167926013,0 13.50554182807255,43.19486196663637,0 13.50542756761436,43.19474918239973,0 13.50530407584073,43.19457419408549,0 13.50525658064216,43.19434417140037,0 13.50527426720539,43.19418851955008,0 13.50540851157887,43.19403692420767,0 13.50705598765427,43.19279466908984,0 13.50746132062282,43.19242895100276,0 13.50753919015364,43.19227249775517,0 13.50756222345847,43.19208606042456,0 13.50750921676561,43.19190722302388,0 13.50739271873089,43.19173670504567,0 13.50725081190292,43.19161737879944,0 13.50710405302997,43.19156036913404,0 13.50698766920537,43.19150872766574,0 13.5051922342289,43.19149630508803,0 13.50259667232717,43.19147895239397,0 13.502099540131,43.19140321252666,0 13.50164001621582,43.19110925030868,0 13.501382428761,43.19085646685138,0 13.50066534074265,43.18939577020365,0 13.50066615086098,43.1890586524359,0 13.50084186182952,43.18859270901378,0 13.50098213273911,43.18813140193139,0 13.5009135824511,43.18800271939427,0 13.5007923716889,43.18793925498697,0 13.49793458848278,43.18781460690457,0 13.49436468073592,43.18758584364357,0 13.49333079273329,43.18749505476513,0 13.49132534445265,43.18762334980484,0 13.48869976323727,43.18776399048291,0 13.48831230523397,43.1877539599128,0 13.48664016794076,43.18751627257244,0 13.48574618868827,43.18747915448157,0 13.48541943538727,43.18745802754513,0 13.48514849594056,43.18735765208287,0 13.4829286384642,43.18625135611695,0 13.48256795506056,43.18601076379763,0 13.48218050261255,43.18579177564811,0 13.48181088474126,43.1856525123704,0 13.48128725735357,43.1854741410001,0 13.48099801573202,43.18534746367059,0 13.48034492132466,43.18489943516013,0 13.48005619253904,43.18479533766427,0 13.47982404014308,43.18477741343,0 13.47738093560784,43.18530048802554,0 13.47717171976519,43.18524981873053,0 13.47665471640553,43.18522682523854,0 13.47643328348209,43.18521126836279,0 13.47595357898318,43.18535134507129,0 13.4758358212543,43.18536681068268,0 13.47472389419929,43.18434756628197,0 13.47459599333551,43.18428858610264,0 13.47451261339144,43.1843888770026,0 13.47434990569246,43.18435214784306,0 13.47396404854605,43.18416744368973,0 13.47375276582083,43.18386966696515,0 13.47347860822662,43.18354748311069,0 13.47317099525295,43.18335442626333,0 13.47251967758741,43.18303022820763,0 13.47253047030123,43.18268091673171,0 13.47262072238072,43.18234912806491,0 13.47315410735139,43.18228474650066,0 13.47343075787836,43.18222363993478,0 13.47389470144723,43.18203211439787,0 13.47376589447683,43.18187676257639,0 13.47358403975595,43.18128401406612,0 13.47362947316123,43.18127255828506,0 13.47367767626838,43.18135804911391,0 13.47371462198962,43.18135627870998,0 13.47395550075783,43.18131621864912,0 13.47404483703247,43.18130346857437,0 13.47422793786482,43.18145030787708,0 13.47452173427121,43.18173186869712,0 13.4748651104163,43.18206481003649,0 13.47551574236448,43.18248725623999,0 13.47558545902885,43.18248799762847,0 13.47630445570244,43.18122936407932,0 13.47651474406449,43.18102518288962,0 13.47689724060471,43.18076589802751,0 13.47759566033346,43.18047315169571,0 13.4794300951904,43.17980919771416,0 13.47992185330521,43.17962269972581,0 13.48038192226016,43.17935010598607,0 13.4806597234166,43.17915456172013,0 13.48081147881145,43.17892713019341,0 13.48083507206928,43.17874966385739,0 13.4807590995676,43.17843769995405,0 13.48065940865798,43.17826171491771,0 13.48056573178042,43.17798199284077,0 13.48039141977106,43.17777882865183,0 13.4804598637804,43.17761183659086,0 13.48055852484423,43.17767158791314,0 13.48047397936626,43.17779165901136,0 13.48056674146058,43.1778890786516,0 13.48065515241472,43.17777332557866,0 13.48107074581158,43.17739669713615,0 13.4813731162794,43.17725539240367,0 13.48182984269113,43.17715948873889,0 13.48244950959562,43.1770342915048,0 13.48266944379465,43.17697596119842,0 13.48339054410614,43.17658879918341,0 13.48379368114177,43.17630988251758,0 13.48424265210664,43.17593622963668,0 13.48443223858339,43.1756998368667,0 13.48453221921982,43.17556980600468,0 13.48455099456372,43.17533798252596,0 13.48453654523513,43.17514651684218,0 13.48442403618501,43.17491214803945,0 13.48419931059608,43.1745393681728,0 13.48410075730826,43.17422498837479,0 13.48407408402518,43.17396880850452,0 13.48410981755,43.17378166670372,0 13.48425907923549,43.17358412715472,0 13.48456894104592,43.17331111633884,0 13.48488325578734,43.17308661641837,0 13.48518931333536,43.17291924783074,0 13.48557102425334,43.17279399279027,0 13.48620344304759,43.1727212934435,0 13.48671570656597,43.1727190964915,0 13.48707217827474,43.17270420053793,0 13.487304309753,43.17265337475268,0 13.48755892125249,43.17252884117477,0 13.48780484302068,43.17231936668863,0 13.48802569958943,43.17198701920993,0 13.48818050152896,43.1718094328132,0 13.48841410503683,43.17163187506736,0 13.48868631494695,43.17151239304419,0 13.4890200450746,43.17145005318374,0 13.48929192720079,43.17137547399277,0 13.48945847820636,43.17127233368878,0 13.48963574500856,43.17109445474816,0 13.48969295956907,43.17084185463693,0 13.48967705679139,43.17069841362175,0 13.48959837450712,43.17054339692358,0 13.48941688823301,43.17038908114746,0 13.48914106585955,43.17016644133821,0 13.48887374571277,43.16997692447161,0 13.4886662531789,43.16979041485653,0 13.48858871213106,43.16964832628245,0 13.48857175101437,43.16953393308826,0 13.4885962375347,43.16937702070503,0 13.488623524276,43.16923396355778,0 13.48860016578093,43.16904100543211,0 13.48848868923004,43.16875047564762,0 13.48807676550728,43.16775383413555,0 13.48782800700303,43.16722502414444,0 13.4877404275235,43.1671176271256,0 13.48757163094423,43.16695682441199,0 13.48639630415411,43.16610934597691,0 13.48587632096209,43.16573562028903,0 13.48599745024679,43.16568149138785,0 13.48644112383946,43.16587221358149,0 13.4867066877681,43.16598313184095,0 13.48705725855456,43.16599484741285,0 13.48719014825203,43.16594600305515,0 13.4869864020276,43.16568787350186,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>(t)1</name>
+			<description>Tappa 1 - L&apos;arte dell&apos;intreccio;Stage 1 - L&apos;arte dell&apos;intreccio</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.48184904290251</longitude>
+				<latitude>43.18655483669102</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01384027338146878</heading>
+				<tilt>27.69480776916129</tilt>
+				<range>238.4856815022314</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48122071360436,43.18656660801732,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>1</name>
+			<open>1</open>
+			<description>Procedi in direzione nordest su Via Regina Margherita verso Vicolo Lucatelli;Proceed northeast on Via Regina Margherita towards Vicolo Lucatelli</description>
+			<LookAt>
+				<longitude>13.48205485780216</longitude>
+				<latitude>43.18667348026847</latitude>
+				<altitude>0</altitude>
+				<heading>3.764793923808141</heading>
+				<tilt>25.40637988866998</tilt>
+				<range>305.6179631332491</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48120968045411,43.18646092561373,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>Svolta a sinistra e prendi Piazzale Mazzini;Turn left and take Piazzale Mazzini</description>
+			<LookAt>
+				<longitude>13.48205485780216</longitude>
+				<latitude>43.18667348026847</latitude>
+				<altitude>0</altitude>
+				<heading>3.764793923808141</heading>
+				<tilt>25.40637988866998</tilt>
+				<range>305.6179631332491</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48359647795333,43.18716351171262,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>3</name>
+			<description>Svolta a destra verso Via Cairoli/SP61;Turn right onto Via Cairoli/SP61</description>
+			<LookAt>
+				<longitude>13.4820586172781</longitude>
+				<latitude>43.18667329981444</latitude>
+				<altitude>0</altitude>
+				<heading>3.764796496673683</heading>
+				<tilt>25.40637988866998</tilt>
+				<range>305.6179631365786</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48360487728118,43.18733438832005,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>4</name>
+			<description>Svolta tutto a sinistra, procedi in direzione nordest su Via Cairoli/SP61 verso Strada Provinciale Mogliano-Abbadia di Fiastra;Turn hard left, proceed northeast on Via Cairoli/SP61 towards Strada Provinciale Mogliano-Abbadia di Fiastra</description>
+			<LookAt>
+				<longitude>13.48229837090216</longitude>
+				<latitude>43.18657920871683</latitude>
+				<altitude>0</altitude>
+				<heading>3.765259486970352</heading>
+				<tilt>30.00087454013434</tilt>
+				<range>194.5007034435358</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48285237317683,43.18626602481612,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>5</name>
+			<description>Svolta a destra;Turn right</description>
+			<LookAt>
+				<longitude>13.51593366465772</longitude>
+				<latitude>43.20242778531642</latitude>
+				<altitude>0</altitude>
+				<heading>3.788279719381648</heading>
+				<tilt>30.00304083105087</tilt>
+				<range>676.7706848787808</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.51501099409365,43.20277820807683,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>6</name>
+			<open>1</open>
+			<description>Svolta a destra;Turn right</description>
+			<LookAt>
+				<longitude>13.51594156289948</longitude>
+				<latitude>43.20242740406431</latitude>
+				<altitude>0</altitude>
+				<heading>3.788285126147347</heading>
+				<tilt>30.00304083105089</tilt>
+				<range>676.7706848796478</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.51535126056972,43.20197809567092,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)2</name>
+			<description>Tappa 2 - Dettagli di cuoio:Stage 2 - Dettagli di cuoio</description>
+			<LookAt>
+				<longitude>13.51593366465772</longitude>
+				<latitude>43.20242778531642</latitude>
+				<altitude>0</altitude>
+				<heading>3.788279719381648</heading>
+				<tilt>30.00304083105087</tilt>
+				<range>676.7706848787808</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.51446388888889,43.20124444444445,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>7</name>
+			<open>1</open>
+			<description>Torna indietro per la stessa via e riprendi la strada principale;Go back the same way and get back on the main road</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.51361882456675</longitude>
+				<latitude>43.20232759931838</latitude>
+				<altitude>0</altitude>
+				<heading>0.007903280508023957</heading>
+				<tilt>27.69714616688247</tilt>
+				<range>798.5396695138903</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_red-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.51457065597176,43.20117477250119,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>8</name>
+			<description>Svolta a sinistra;Turn left</description>
+			<LookAt>
+				<longitude>13.51594156289948</longitude>
+				<latitude>43.20242740406431</latitude>
+				<altitude>0</altitude>
+				<heading>3.788285126147347</heading>
+				<tilt>30.00304083105089</tilt>
+				<range>676.7706848796478</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.51566413141357,43.20191179990899,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>9</name>
+			<description>Svolta a sinistra e prendi SP61;Turn left and take SP61</description>
+			<LookAt>
+				<longitude>13.51594156289948</longitude>
+				<latitude>43.20242740406431</latitude>
+				<altitude>0</altitude>
+				<heading>3.788285126147347</heading>
+				<tilt>30.00304083105089</tilt>
+				<range>676.7706848796478</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.51549160771796,43.20294170787054,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>10</name>
+			<description>Svolta leggermente a sinistra verso V.le Adriano Adriani;Turn slightly left towards Viale Adriano Adriani</description>
+			<LookAt>
+				<longitude>13.47755340526493</longitude>
+				<latitude>43.18511574214673</latitude>
+				<altitude>0</altitude>
+				<heading>3.761818047040691</heading>
+				<tilt>21.39832219847738</tilt>
+				<range>520.6753646006413</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47743671548601,43.185338460568,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>11</name>
+			<description>Svolta leggermente a destra e prendi V.le Adriano Adriani;Turn slightly right and take Viale Adriano Adriani</description>
+			<LookAt>
+				<longitude>13.47698466584004</longitude>
+				<latitude>43.18530113800652</latitude>
+				<altitude>0</altitude>
+				<heading>3.76160311273175</heading>
+				<tilt>26.49215254561391</tilt>
+				<range>180.7337292340296</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47646341599505,43.18523101754793,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>12</name>
+			<description>Svolta a sinistra e prendi Viale del Santuario;Turn left and take Viale del Santuario</description>
+			<LookAt>
+				<longitude>13.47606854591544</longitude>
+				<latitude>43.18519320042998</latitude>
+				<altitude>0</altitude>
+				<heading>3.760976160754143</heading>
+				<tilt>26.49215254561388</tilt>
+				<range>180.7337292317528</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.4759900790942,43.18536133621885,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>13</name>
+			<description>Svolta a destra e prendi Strada Provinciale 72;Turn right and take Provincial Road 72</description>
+			<LookAt>
+				<longitude>13.47426274703215</longitude>
+				<latitude>43.18453775169655</latitude>
+				<altitude>0</altitude>
+				<heading>3.759740360400596</heading>
+				<tilt>26.49215254561389</tilt>
+				<range>180.7337292321593</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47462338033339,43.18429570111733,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>14</name>
+			<description>Svolta a sinistra e prendi Via Romolo Murri;Turn left and take Via Romolo Murri</description>
+			<LookAt>
+				<longitude>13.47426057519624</longitude>
+				<latitude>43.1845378557822</latitude>
+				<altitude>0</altitude>
+				<heading>3.759738874118001</heading>
+				<tilt>26.49215254561392</tilt>
+				<range>180.7337292315858</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47450613530981,43.18440579949055,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>15</name>
+			<description>Svolta a sinistra e prendi Via Antonio Gramsci;Turn left and take Via Antonio Gramsci</description>
+			<LookAt>
+				<longitude>13.47301258009516</longitude>
+				<latitude>43.18318854704906</latitude>
+				<altitude>0</altitude>
+				<heading>3.758884808987549</heading>
+				<tilt>26.49215254561388</tilt>
+				<range>180.7337292295541</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47252373536421,43.18305176544408,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>16</name>
+			<description>Svolta a sinistra per rimanere su Via Antonio Gramsci;Turn left to stay on Via Antonio Gramsci</description>
+			<LookAt>
+				<longitude>13.47302359006731</longitude>
+				<latitude>43.18258979565535</latitude>
+				<altitude>0</altitude>
+				<heading>3.758892343278498</heading>
+				<tilt>26.49215254561389</tilt>
+				<range>180.733729235332</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47264414930492,43.18236341216155,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>17</name>
+			<description>Svolta a destra e prendi Via Aldo Moro;Turn right and take Via Aldo Moro</description>
+			<LookAt>
+				<longitude>13.47373520447721</longitude>
+				<latitude>43.18189950876066</latitude>
+				<altitude>0</altitude>
+				<heading>3.759379323554765</heading>
+				<tilt>26.49215254561387</tilt>
+				<range>180.7337292281204</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47388200635718,43.18205236082046,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>18</name>
+			<description>Svolta a destra verso Via Giacomo Matteotti;Turn right onto Via Giacomo Matteotti</description>
+			<LookAt>
+				<longitude>13.47369921856426</longitude>
+				<latitude>43.18156280755197</latitude>
+				<altitude>0</altitude>
+				<heading>3.759354699112128</heading>
+				<tilt>26.49215254561387</tilt>
+				<range>180.7337292318223</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47368828952801,43.1813751612809,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>19</name>
+			<description>Svolta a sinistra e prendi Via Giacomo Matteotti;Turn left and take Via Giacomo Matteotti</description>
+			<LookAt>
+				<longitude>13.47369487510857</longitude>
+				<latitude>43.18156301570255</latitude>
+				<altitude>0</altitude>
+				<heading>3.759351726857729</heading>
+				<tilt>26.49215254561389</tilt>
+				<range>180.7337292289351</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47396448522836,43.1813307685476,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>20</name>
+			<description>Svolta a destra e prendi Via Alcide De Gasperi/Strada Provinciale 72;Turn right and take Via Alcide De Gasperi/Provincial Road 72</description>
+			<LookAt>
+				<longitude>13.47495087408479</longitude>
+				<latitude>43.18200216232419</latitude>
+				<altitude>0</altitude>
+				<heading>3.760289933313262</heading>
+				<tilt>28.97022361187968</tilt>
+				<range>133.590415343902</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.47554532422444,43.18250495094485,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>21</name>
+			<description>Svolta leggermente a destra;Turn slightly right</description>
+			<LookAt>
+				<longitude>13.47944913283951</longitude>
+				<latitude>43.17800734270187</latitude>
+				<altitude>0</altitude>
+				<heading>3.76336817890759</heading>
+				<tilt>28.97075930189132</tilt>
+				<range>256.6838049489056</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48054308858848,43.17798944851347,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)3</name>
+			<description>Tappa 3 - Design naturale;Stage 3 - Design naturale</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.48039348749947</longitude>
+				<latitude>43.17803990308258</latitude>
+				<altitude>0</altitude>
+				<heading>-0.005775980941510613</heading>
+				<tilt>27.52570893638935</tilt>
+				<range>342.0629117694789</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48042721805977,43.17759575014234,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>22</name>
+			<open>1</open>
+			<description>Svolta a destra e prendi Strada Provinciale 72;Turn right and take Provincial Road 72</description>
+			<LookAt>
+				<longitude>13.47944913283951</longitude>
+				<latitude>43.17800734270187</latitude>
+				<altitude>0</altitude>
+				<heading>3.76336817890759</heading>
+				<tilt>28.97075930189132</tilt>
+				<range>256.6838049489056</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48059436731525,43.17790360048788,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>23</name>
+			<description>Svolta tutto a sinistra e prendi Zona Industriale Piani d&apos;Ete;Turn sharp left and take Zona Industriale Piani d&apos;Ete</description>
+			<LookAt>
+				<longitude>13.48601472611133</longitude>
+				<latitude>43.16557511436078</latitude>
+				<altitude>0</altitude>
+				<heading>3.767860676689807</heading>
+				<tilt>28.97075930189134</tilt>
+				<range>256.6838049504067</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48585125779439,43.16576115079542,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>24</name>
+			<description>Gira a destra;turn right</description>
+			<LookAt>
+				<longitude>13.48629805151769</longitude>
+				<latitude>43.16564912230554</latitude>
+				<altitude>0</altitude>
+				<heading>3.76794593531828</heading>
+				<tilt>26.60717423268491</tilt>
+				<range>224.8817371275495</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48722660266622,43.16596536992584,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>(t)4</name>
+			<open>1</open>
+			<description>Tappa 4 - Fili di stile;Stage 4 - Fili di stile</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-04-30</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>13.48743965748001</longitude>
+				<latitude>43.16549464980424</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0009545160956899441</heading>
+				<tilt>27.52796361619101</tilt>
+				<range>885.1879897199174</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>13.48701012297654,43.16563259867161,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

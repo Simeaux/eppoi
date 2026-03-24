@@ -30,7 +30,7 @@ public class ManageCanvasPOI : MonoBehaviour
     void Start()
     {
         ShowCanvasPOI();
-        
+
         // Create a temporary reference to the current scene.
         Scene currentScene = SceneManager.GetActiveScene();
         // Retrieve the name of this scene.
@@ -84,8 +84,8 @@ public class ManageCanvasPOI : MonoBehaviour
     }
     public void HideCanvasPOI()
     {
-        PlayerPrefs.SetInt("percorso_selezionato", 0);
-        PlayerPrefs.SetInt("evento_selezionato", 0);
+        PlayerPrefs.SetString("percorso_selezionato", "");
+        PlayerPrefs.SetString("evento_selezionato", "");
         PlayerPrefs.SetString("poi_selezionato", "");
         PlayerPrefs.SetString("istat", "");
         selected_tab.text = "0";
@@ -102,7 +102,7 @@ public class ManageCanvasPOI : MonoBehaviour
         string sceneName = currentScene.name;
         if (sceneName == "ARRoute")
         {
-            if(ARMenuCanvas != null)
+            if (ARMenuCanvas != null)
                 ARMenuCanvas.GetComponent<ARLocation.MapboxRoutes.SampleProject.ArMenuController>().ResetSizeMinimap();
         }
         /*
@@ -156,10 +156,10 @@ public class ManageCanvasPOI : MonoBehaviour
         List<PERCORSO> _PERCORSO = null;
         if (!string.IsNullOrEmpty(Elements.ID_selected.text))
         {
-            int _id_selected = int.Parse(Elements.ID_selected.text);
-            if (PlayerPrefs.GetInt("percorso_selezionato") > 0)
+            long _id_selected = long.Parse(Elements.ID_selected.text);
+            if (PlayerPrefs.GetString("percorso_selezionato") != "")
                 _PERCORSO = GameObject.FindObjectOfType<DBClass>().GetPERCORSO(_id_selected);
-            //if (PlayerPrefs.GetInt("evento_selezionato")> 0)
+            //if (PlayerPrefs.GetString("evento_selezionato") != "")
             if (PlayerPrefs.GetString("poi_selezionato") != "")
             {
                 _PERCORSO = GameObject.FindObjectOfType<DBClass>().GetPERCORSO(null, _id_selected);
@@ -182,13 +182,13 @@ public class ManageCanvasPOI : MonoBehaviour
     {
         if (PlayerPrefs.GetString("poi_selezionato") != "")
         {
-            PlayerPrefs.SetInt("percorso_selezionato", (int)long.Parse( PlayerPrefs.GetString("poi_selezionato")));
+            PlayerPrefs.SetString("percorso_selezionato", PlayerPrefs.GetString("poi_selezionato"));
             PlayerPrefs.SetString("poi_selezionato", "");
         }
 
         Debug.Log("Route_to_POI: " + Elements.ID_selected.text);
         List<PERCORSO> _PERCORSO = findPercorso();
-        if (_PERCORSO != null && _PERCORSO.Count > 0 )
+        if (_PERCORSO != null && _PERCORSO.Count > 0)
         {
             if (!string.IsNullOrEmpty(_PERCORSO[0].percorso))
             {
@@ -198,7 +198,10 @@ public class ManageCanvasPOI : MonoBehaviour
                 _changeScene = new ChangeScene();
                 _changeScene._loaderCanvas = _loaderCanvas;
                 _changeScene._progressBar = _progressBar;
+
+
                 _changeScene.Load_ARRoute(_p.id);
+
             }
         }
     }
