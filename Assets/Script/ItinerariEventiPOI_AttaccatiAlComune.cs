@@ -411,7 +411,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     _IEP.testo = _poi.nome;
                     _IEP.logo_bici = false;
                     _IEP.tipo_poi = _poi.tipo_list_descrizione();
-                    _IEP.immagine_poi = _poi.tipoList[0].tipo.group_id;
+                    _IEP.immagine_poi = (_poi.tipoList != null && _poi.tipoList.Count > 0)
+                        ? _poi.tipoList[0].tipo.group_id : 0;
                     _IEP.tipo_percorso = "";
                     _IEP.tipo_navigazione = "";
                     _IEP.lunghezza = "";
