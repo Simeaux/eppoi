@@ -120,6 +120,7 @@ public class Select_language : MonoBehaviour
         Canvas_Errore_connessione.gameObject.SetActive(false);
         _DBClass.RemovePersistent_DB(slider, slider_chunk, BtnItaliano, BtnInglese, NonChiedereNuovamente, Canvas_DB_Corrotto, Canvas_Errore_connessione, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla);
         slider.gameObject.SetActive(true);
+        slider_chunk.gameObject.SetActive(true);
         BtnItaliano.gameObject.SetActive(false);
         BtnInglese.gameObject.SetActive(false);
         NonChiedereNuovamente.gameObject.SetActive(false);

@@ -162,7 +162,7 @@ public class ReadForMe : MonoBehaviour
 #if UNITY_IOS
             _iosStopSpeak();
 #elif UNITY_ANDROID
-        StopAndroid();
+            StopAndroid();
 #else
         if (ttsProcess != null && !ttsProcess.HasExited)
         {
@@ -193,6 +193,23 @@ public class ReadForMe : MonoBehaviour
     }
     private void setPlayButton(bool set)
     {
+        Transform figlioIcona = Btn_play.transform.Find("Image_play");
+        if (figlioIcona != null)
+        {
+            Image imgIcona = figlioIcona.GetComponent<Image>();
+
+            if (imgIcona != null)
+            {
+                if (!set)
+                {
+                    Color _c = new Color();
+                    if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
+                        imgIcona.color = _c;
+                }
+                else
+                    imgIcona.color = Color.black;
+            }
+        }
         //Btn_play.gameObject.SetActive(set);
         //Btn_stop.gameObject.SetActive(!Btn_play.gameObject.activeSelf);
     }

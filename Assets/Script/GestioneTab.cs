@@ -26,11 +26,9 @@ public class GestioneTab : MonoBehaviour
             {
                 foreach (var _cmp in _btn.GetComponentsInChildren<Text>())
                 {
-                    Debug.Log(_cmp.name);
                     if (_cmp.name == "Text")
                     {
 
-                        Debug.Log(_cmp.text);
                         switch (_cmp.text)
                         {
                             case "LUOGHI":
@@ -44,6 +42,9 @@ public class GestioneTab : MonoBehaviour
                                 break;
                             case "DESCRIZIONE":
                                 _cmp.text = "DESCRIPTION";
+                                break;
+                            case "EVENTI":
+                                _cmp.text = "EVENTS";
                                 break;
                         }
                     }
@@ -129,6 +130,7 @@ public class GestioneTab : MonoBehaviour
         PlayerPrefs.SetInt($"show_comuni", 0);
         PlayerPrefs.SetInt($"show_itinerari", 0);
         PlayerPrefs.SetInt($"show_poi", 0);
+        PlayerPrefs.SetInt($"show_eventi", 0);
 
         //luoghi/descrizione
         if (i == 0)
@@ -147,6 +149,11 @@ public class GestioneTab : MonoBehaviour
         {
             //Debug.Log("poi");
             PlayerPrefs.SetInt($"show_poi", 1);
+        }
+        if (i == 3)
+        {
+            //Debug.Log("poi");
+            PlayerPrefs.SetInt($"show_eventi", 1);
         }
         if (_readForMe != null)
         {

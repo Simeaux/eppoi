@@ -12,8 +12,7 @@ using System.Threading.Tasks;
 using ARLocation.UI;
 using Mapbox.Json.Linq;
 using Mono.Data.Sqlite;
-
-
+using SQLite4Unity3d;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.Networking;
@@ -22,9 +21,18 @@ using UnityEngine.UI;
 using static DBClass;
 
 
+
+
+
 public class CreateTable : MonoBehaviour
 {
     private bool _call_all_togeter = false;
+
+
+    private SqliteConnection _syncConnection;
+    private SqliteTransaction _syncTransaction;
+    private SqliteCommand _syncCommand;
+
     public bool Verbose = false;
     public Slider _slider;
 
@@ -165,10 +173,13 @@ public class CreateTable : MonoBehaviour
 #else
         Application.Quit();
 #endif
-    }
+    }/*
     private IEnumerator DownloadAndCopyRoutine(string destinationPath, string dbAddress, Slider loadingBar, Slider loadingChunkBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente, Canvas Canvas_Errore_connessione, Canvas Canvas_DB_Corrotto, Canvas Canvas_Manca_Spazio, Canvas Canvas_Prompt_Download, Text Testo_Info_Download, Button Bottone_Conferma, Button Bottone_Annulla)
     {
+        Debug.Log(destinationPath);
+        Debug.Log(dbAddress);
         long totalBytes = GetFileSize(dbAddress);
+        Debug.Log(totalBytes);
         // Controllo spazio: serve il peso del file + margine (es. 10MB)
         long requiredSpace = totalBytes + (1024 * 1024 * 10);
 
@@ -336,16 +347,21 @@ public class CreateTable : MonoBehaviour
             return string.IsNullOrEmpty(contentLength) ? 0 : long.Parse(contentLength);
         } // <--- QUI il socket viene CHIUSO realmente
     }
+    */
+    /*
     public void copyDB(Slider loadingBar, Slider loadingChunkBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente, Canvas Canvas_DB_Corrotto, Canvas Canvas_Errore_connessione, Canvas Canvas_Manca_Spazio, Canvas Canvas_Prompt_Download, Text Testo_Info_Download, Button Bottone_Conferma, Button Bottone_Annulla)
     {
         string dbName = "mydatabase.db";
 
 
         string destinationPath = Path.Combine(Application.persistentDataPath, dbName);
+        Debug.Log("allora:" + destinationPath);
         try
         {
-            // 1. Ricomposizione dei Chunk
-            StartCoroutine(DownloadAndCopyRoutine(destinationPath, "https://www.macerataturismo.it/wp-content/blogs.dir/1/files/2025/12/mydatabase.db.bytes", loadingBar, loadingChunkBar, italiano, inglese, NonChiedereNuovamente, Canvas_Errore_connessione, Canvas_DB_Corrotto, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla));
+            string _path = "https://www.macerataturismo.it/wp-content/blogs.dir/1/files/2025/12/mydatabase_minimo.db.bytes";
+
+            Debug.Log("quindi:" + _path);
+            StartCoroutine(DownloadAndCopyRoutine(destinationPath, _path, loadingBar, loadingChunkBar, italiano, inglese, NonChiedereNuovamente, Canvas_Errore_connessione, Canvas_DB_Corrotto, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla));
 
 
         }
@@ -357,76 +373,246 @@ public class CreateTable : MonoBehaviour
         string sourcePath = Path.Combine(Application.streamingAssetsPath, dbName);
         conn = "URI=file:" + destinationPath;
 
-        /*
-        string dbName = "mydatabase.db.zip";
-        string destinationPath = Path.Combine(Application.persistentDataPath, dbName);
-        string sourcePath = Path.Combine(Application.streamingAssetsPath, dbName);
-        loadingBar.gameObject.SetActive(true);
-        italiano.gameObject.SetActive(false);
-        inglese.gameObject.SetActive(false);
-        NonChiedereNuovamente.gameObject.SetActive(false);
-        //Debug.Log(destinationPath);
-        // Check if database already exists in the writable path
 
+    }
+*/
 
+    public void copyDB(
+    Slider loadingBar,
+    Slider loadingChunkBar,
+    Button italiano,
+    Button inglese,
+    Toggle NonChiedereNuovamente,
+    Canvas Canvas_DB_Corrotto,
+    Canvas Canvas_Errore_connessione,
+    Canvas Canvas_Manca_Spazio,
+    Canvas Canvas_Prompt_Download,
+    Text Testo_Info_Download,
+    Button Bottone_Conferma,
+    Button Bottone_Annulla)
+    {
+        string dbName = "mydatabase.db";
 
-        string fileName = "comune_selected.txt";
-        string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
+        string destinationPath =
+            Path.Combine(Application.persistentDataPath, dbName);
 
-#if UNITY_ANDROID
-        Debug.Log("Database - Android");
-        StartCoroutine(CopyDatabaseRoutineAndroid(dbName, loadingBar, italiano, inglese, NonChiedereNuovamente));
-        StartCoroutine(ReadSettings(fileName));
-#else
-        string comune_selected_result;
-        var copia = false;
-        if (!File.Exists(destinationPath.Replace(".zip", "")))
-            copia = true;
-        else
-        {
-            FileInfo destinatinInfo = new FileInfo(destinationPath.Replace(".zip", ""));
-            FileInfo sourceinInfo = new FileInfo(sourcePath);
-            if (destinatinInfo.Length < sourceinInfo.Length)
-                copia = true;
-        }
-        if (copia)
-        {
-            if (File.Exists(destinationPath))
-                RemovePersistent_DB();
-            // Fallback per Editor/PC/iOS dove File.Copy funziona
-            File.Copy(sourcePath, destinationPath);
-            comune_selected_result = File.ReadAllText(filePath);
-            int selected_result = 0;
-            int.TryParse(comune_selected_result, out selected_result);
-            if (selected_result > 0)
-            {
-                Debug.Log("comune_selected. resetto");
-                PlayerPrefs.SetInt("comune_selected", selected_result);
-                PlayerPrefs.Save();
-            }
-            if (destinationPath.Contains(".zip"))
-            {
-                ZipFile.ExtractToDirectory(destinationPath, Path.Combine(Application.persistentDataPath), true);
-
-                if (File.Exists(destinationPath))
-                {
-                    File.Delete(destinationPath);
-                    Debug.Log("File ZIP rimosso con successo.");
-                }
-            }
-        }
-        OnCopyComplete(loadingBar, italiano, inglese, NonChiedereNuovamente);
-
-#endif
-        if (destinationPath.Contains(".zip"))
-        {
-            destinationPath = destinationPath.Replace(".zip", "");
-        }
-        // Open the database from the NEW writable location
         conn = "URI=file:" + destinationPath;
-        */
+
+        StartCoroutine(
+            EnsureDatabaseExists(
+                dbName,
+                destinationPath,
+                loadingBar,
+                italiano,
+                inglese,
+                NonChiedereNuovamente));
+        loadingChunkBar.gameObject.SetActive(false);
     }
 
+    private IEnumerator EnsureDatabaseExists(
+     string dbName,
+     string destinationPath,
+     Slider loadingBar,
+     Button italiano,
+     Button inglese,
+     Toggle nonChiedereNuovamente)
+    {
+        bool databaseValido = false;
+
+        // --------------------------------------------------
+        // Verifica database già esistente
+        // --------------------------------------------------
+        if (File.Exists(destinationPath))
+        {
+            FileInfo fi = new FileInfo(destinationPath);
+
+            Debug.Log("DATABASE TROVATO");
+            Debug.Log("DB PATH = " + destinationPath);
+            Debug.Log("DB SIZE = " + fi.Length);
+
+            if (fi.Length > 0)
+            {
+                try
+                {
+                    using (var connection =
+                        new SqliteConnection("URI=file:" + destinationPath))
+                    {
+                        connection.Open();
+
+                        using (var cmd = connection.CreateCommand())
+                        {
+                            cmd.CommandText =
+                                "SELECT name FROM sqlite_master WHERE type='table'";
+
+                            using (IDataReader reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    string tableName = reader.GetString(0);
+
+                                    Debug.Log("TABLE FOUND => " + tableName);
+
+                                    if (tableName == "SETTING")
+                                        databaseValido = true;
+                                }
+                            }
+                        }
+
+                        connection.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogWarning(
+                        "Database esistente non valido: " +
+                        ex.Message);
+                }
+            }
+
+            if (!databaseValido)
+            {
+                Debug.LogWarning(
+                    "Database corrotto o incompleto. Eliminazione...");
+
+                try
+                {
+                    File.Delete(destinationPath);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError(
+                        "Impossibile eliminare il DB: " +
+                        ex.Message);
+
+                    yield break;
+                }
+            }
+            else
+            {
+                Debug.Log("Database valido già presente.");
+
+                OnCopyComplete(
+                    loadingBar,
+                    italiano,
+                    inglese,
+                    nonChiedereNuovamente);
+
+                yield break;
+            }
+        }
+
+        // --------------------------------------------------
+        // Copia database da StreamingAssets
+        // --------------------------------------------------
+
+        string sourcePath =
+            Path.Combine(Application.streamingAssetsPath, dbName);
+
+        Debug.Log("STREAMING ASSETS = " + Application.streamingAssetsPath);
+        Debug.Log("PERSISTENT DATA = " + Application.persistentDataPath);
+        Debug.Log("SOURCE PATH = " + sourcePath);
+        Debug.Log("DESTINATION PATH = " + destinationPath);
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+
+    Debug.Log("COPIA DATABASE ANDROID");
+
+    using (UnityWebRequest request =
+           UnityWebRequest.Get(sourcePath))
+    {
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError(
+                "Errore lettura DB da StreamingAssets: "
+                + request.error);
+
+            yield break;
+        }
+
+        try
+        {
+            File.WriteAllBytes(
+                destinationPath,
+                request.downloadHandler.data);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError(
+                "Errore scrittura DB: "
+                + ex.Message);
+
+            yield break;
+        }
+    }
+
+#else
+
+        Debug.Log("COPIA DATABASE IOS/WINDOWS/MAC");
+
+        if (!File.Exists(sourcePath))
+        {
+            Debug.LogError(
+                "Database sorgente non trovato:\n" +
+                sourcePath);
+
+            yield break;
+        }
+
+        try
+        {
+            File.Copy(
+                sourcePath,
+                destinationPath,
+                true);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError(
+                "Errore copia DB: "
+                + ex.Message);
+
+            yield break;
+        }
+
+#endif
+
+        // --------------------------------------------------
+        // Verifica copia
+        // --------------------------------------------------
+
+        if (!File.Exists(destinationPath))
+        {
+            Debug.LogError(
+                "Database non copiato.");
+
+            yield break;
+        }
+
+        FileInfo copiedFile =
+            new FileInfo(destinationPath);
+
+        Debug.Log(
+            "DATABASE COPIATO - SIZE = "
+            + copiedFile.Length);
+
+        if (copiedFile.Length == 0)
+        {
+            Debug.LogError(
+                "Database copiato ma vuoto!");
+
+            yield break;
+        }
+
+        Debug.Log("Database copiato correttamente");
+
+        OnCopyComplete(
+            loadingBar,
+            italiano,
+            inglese,
+            nonChiedereNuovamente);
+    }
     private IEnumerator ReadSettings(string fileName)
     {
         string sourcePath = Path.Combine(Application.streamingAssetsPath, fileName);
@@ -1704,7 +1890,7 @@ public class CreateTable : MonoBehaviour
 
         return str.Substring(0, maxSize);
     }
-    public DateTime getLastUpdatedFromTable(string table)
+    public DateTime getLastUpdatedFromTable(string table, int id_sinp = 0)
     {
         DateTime ret = new DateTime();
         getConnection();
@@ -1719,12 +1905,23 @@ public class CreateTable : MonoBehaviour
             using (var dbcmd = dbconn.CreateCommand())
             {
                 sqlQuery = $"select max(mod_dte) from " + table + " where attivo = 'Y'";
+                if (id_sinp > 0 && (table == "POI" || table == "COMUNI_TEXT"))
+                    sqlQuery = sqlQuery + " and comune_id = " + id_sinp;
+                if (id_sinp > 0 && (table == "PERCORSI"))
+                    sqlQuery = sqlQuery + " and poi_id in ( select id from POI where comune_id = " + id_sinp + ")";
                 //Debug.Log(sqlQuery);
                 dbcmd.CommandText = sqlQuery;
                 IDataReader _reader = dbcmd.ExecuteReader();
                 while (_reader.Read())
                 {
-                    ret = _reader.GetDateTime(0);
+                    try
+                    {
+                        ret = _reader.GetDateTime(0);
+                    }
+                    catch
+                    {
+                        ret = DateTime.MinValue;
+                    }
                 }
             }
             dbconn.Close();
@@ -1733,7 +1930,8 @@ public class CreateTable : MonoBehaviour
     }
     public string getversione()
     {
-        string ret = "1";
+        string ret = "1"; //scarica il file mydatabase.db.bytes
+        ret = "2";//scarica il file mydatabase_minimo.db.bytes
         getConnection();
         if (Verbose)
             Debug.Log("Stablished connection to: " + conn);
@@ -2426,7 +2624,7 @@ public class CreateTable : MonoBehaviour
         }
         return ret;
     }
-    public List<COMUNE> getCOMUNI(int lingua_id, string istat = null, string nome = null, int? id = null, float? _latitudine = null, float? _longitudine = null)
+    public List<COMUNE> getCOMUNI(int lingua_id, string istat = null, string nome = null, int? id = null, float? _latitudine = null, float? _longitudine = null, bool? almeno_un_poi = null)
     {
         List<COMUNE> ret = new List<COMUNE>();
         getConnection();
@@ -2450,10 +2648,19 @@ public class CreateTable : MonoBehaviour
                     sqlQuery += $" AND istat = '{istat}'";
                 if (!string.IsNullOrEmpty(nome))
                     sqlQuery += $" AND nome_comune like '%{nome}%'";
-                sqlQuery += " ORDER BY ";
-                //if (_latitudine.HasValue && _latitudine.Value > 0)
-                //    sqlQuery += " distance ,";
-                sqlQuery += " nome_comune";
+                if (almeno_un_poi.HasValue && almeno_un_poi.Value)
+                    sqlQuery += $" AND (SELECT COUNT(*) FROM POI WHERE POI.comune_id = COMUNI.id AND POI.attivo = 'Y') > 0";
+                /*
+            sqlQuery += " ORDER BY ";
+            //if (_latitudine.HasValue && _latitudine.Value > 0)
+            //    sqlQuery += " distance ,";
+            sqlQuery += " nome_comune";
+            */
+                sqlQuery += " ORDER BY " +
+                    " CASE WHEN (SELECT COUNT(*) FROM POI " +
+                    "            WHERE POI.comune_id = COMUNI.id AND POI.attivo = 'Y') > 0 " +
+                    "      THEN 0 ELSE 1 END, " +   // prima chi ha almeno 1 POI, poi chi non ne ha
+                    " nome_comune COLLATE NOCASE";  // e dentro ogni gruppo, ordine alfabetico
                 dbcmd.CommandText = sqlQuery;
                 //Debug.Log(sqlQuery);
                 IDataReader _reader = dbcmd.ExecuteReader();
@@ -2869,6 +3076,10 @@ public class CreateTable : MonoBehaviour
         testo = testo.Replace("</span>", "");
         testo = testo.Replace("<em>", "<i>");
         testo = testo.Replace("</em>", "</i>");
+        testo = testo.Replace("<li>", "<indent=5%>• ");
+        testo = testo.Replace("</li>", "</indent>");
+        testo = testo.Replace("<ul>", "");
+        testo = testo.Replace("</ul>", "");
 
         return testo;
     }
@@ -2985,21 +3196,104 @@ public class CreateTable : MonoBehaviour
     public void exec_sql(string sql)
     {
         sql = sql.Replace('"', ' ');
+
         getConnection();
-        SqliteConnection dbconn = new SqliteConnection(conn);
-        SqliteCommand sqlQuery = new SqliteCommand(sql, dbconn);
-        dbconn.Open();
+
+        using (var dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+
+            using (var cmd = dbconn.CreateCommand())
+            {
+                cmd.CommandText = sql;
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqliteException ex)
+                {
+                    Debug.LogError(
+                        $"SQL ERROR [{ex.ErrorCode}] : {sql}"
+                    );
+                }
+            }
+        }
+    }
+
+
+
+    public void BeginSync()
+    {
+        getConnection();
+
+        _syncConnection = new SqliteConnection(conn);
+        _syncConnection.Open();
+
+        using (var cmd = _syncConnection.CreateCommand())
+        {
+            cmd.CommandText = "PRAGMA journal_mode = MEMORY;";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "PRAGMA synchronous = OFF;";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "PRAGMA temp_store = MEMORY;";
+            cmd.ExecuteNonQuery();
+        }
+
+        _syncTransaction = _syncConnection.BeginTransaction();
+
+        _syncCommand = _syncConnection.CreateCommand();
+        _syncCommand.Transaction = _syncTransaction;
+    }
+
+
+    public void ExecSqlInTransaction(string sql)
+    {
+        if (_syncCommand == null)
+        {
+            exec_sql(sql);
+            return;
+        }
+
         try
         {
-
-            // Debug.Log("-----------"+sql);
-            sqlQuery.ExecuteNonQuery();
+            _syncCommand.CommandText = sql;
+            _syncCommand.ExecuteNonQuery();
         }
-        catch (SqliteException ex)
+        catch (SQLiteException ex)
         {
-            Debug.Log("ERRORE QUERY: " + sql + "-----" + ex.ErrorCode);
+            Debug.LogError(
+                $"SQLITE ERROR {ex.Result}\n" +
+                $"MESSAGE: {ex.Message}\n" +
+                $"SQL:\n{sql}");
         }
-        dbconn.Close();
+    }
+
+    public void EndSync()
+    {
+        try
+        {
+            _syncTransaction?.Commit();
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError(ex);
+        }
+
+        _syncCommand?.Dispose();
+        _syncTransaction?.Dispose();
+
+        if (_syncConnection != null)
+        {
+            _syncConnection.Close();
+            _syncConnection.Dispose();
+        }
+
+        _syncCommand = null;
+        _syncTransaction = null;
+        _syncConnection = null;
     }
 }
 public static class ExtensionMethod
@@ -3023,4 +3317,13 @@ public static class ExtensionMethod
         RenderTexture.ReleaseTemporary(renderTex);
         return readableText;
     }
+
+
+
+
 }
+
+
+
+
+

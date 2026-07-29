@@ -30,7 +30,10 @@ public class SimpleBarcodeScanner : MonoBehaviour
             }
             if (arr_slug.Last() != "")
             {
-                List<POI> _POI = _DBClass.getPOI(null, null, null, 0, null, null, false, false, null, slug);
+                List<POI> _POI = new List<POI>();
+                _POI = _DBClass.getPOI(null, null, null, 0, null, null, false, false, null, slug);
+                if (_POI == null || _POI.Count() == 0)
+                    _POI = _DBClass.getPOI(null, null, slug, 0, null, null, false, false, null, null);
                 if (_POI != null && _POI.Count() > 0)
                 {
                     POI _poi = _POI.FirstOrDefault();

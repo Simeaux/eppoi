@@ -12,11 +12,14 @@ using Mapbox.Utils;
 using static DBClass;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using System.Data;
 
 public class DBClass : MonoBehaviour
 {
     private static GameObject _createTable;
     private static CreateTable createTable;
+    private IDbConnection _connection;
+    private IDbTransaction _transaction;
     private void Start()
     {
         Application.targetFrameRate = 60; // O 120 per schermi moderni
@@ -281,12 +284,12 @@ public class DBClass : MonoBehaviour
         public string valore;
     }
 
-    public string getLastUpdatedFromTable(string table)
+    public string getLastUpdatedFromTable(string table, int id_sinp = 0)
     {
         var ret = "";
         if (table != "VERSIONE")
         {
-            DateTime p = createTable.getLastUpdatedFromTable(table);
+            DateTime p = createTable.getLastUpdatedFromTable(table, id_sinp);
             ret = p.ToString("yyyy-MM-ddTHH:mm:ss");
         }
         else
@@ -386,7 +389,7 @@ public class DBClass : MonoBehaviour
 
         return createTable.getPERCORSI_IMMAGINI(id, percorso_id);
     }
-    public List<COMUNE> GetCOMUNI(string istat, string nome = null, int? id = null, bool? checkuserposition = null, bool? check_all = null)
+    public List<COMUNE> GetCOMUNI(string istat, string nome = null, int? id = null, bool? checkuserposition = null, bool? check_all = null, bool? _almeno_un_poi = null)
     {
         if (check_all == null || check_all == false)
         {
@@ -398,7 +401,7 @@ public class DBClass : MonoBehaviour
         {
             StartCoroutine(GetLatLonUsingGPS());
         }
-        return createTable.getCOMUNI(PlayerPrefs.GetInt("lingua_selezionata"), istat, nome, id, (float?)_latitudine, (float?)_longitudine);
+        return createTable.getCOMUNI(PlayerPrefs.GetInt("lingua_selezionata"), istat, nome, id, (float?)_latitudine, (float?)_longitudine, _almeno_un_poi);
     }
     public List<COMUNE_IMMAGINI> getCOMUNI_IMMAGINI(int? id = null, int? comune_id = null)
     {
@@ -581,7 +584,8 @@ public class DBClass : MonoBehaviour
             tex.LoadImage(bytes);
         else
             tex = Resources.Load<Texture2D>("Foto/no_images");
-        return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width / 2, tex.height / 2));
+        return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+
     }
     /*
     public Sprite getImage(byte[] arr)
@@ -667,6 +671,7 @@ public class DBClass : MonoBehaviour
     {
         return createTable.pulisciHTML(testo);
     }
+
     public void copyDB(Slider loadingBar, Slider loadingChunkBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente, Canvas Canvas_DB_Corrotto, Canvas Canvas_Errore_connessione, Canvas Canvas_Manca_Spazio, Canvas Canvas_Prompt_Download, Text Testo_Info_Download, Button Bottone_Conferma, Button Bottone_Annulla)
     {
         _createTable = new GameObject("Cool GameObject made from Code");
@@ -676,6 +681,41 @@ public class DBClass : MonoBehaviour
     public float CalculateDistance(double lat_1, double lat_2, double long_1, double long_2)
     {
         return createTable.CalculateDistance((float)lat_1, (float)lat_2, (float)long_1, (float)long_2);
+    }
+
+
+    public void BeginSync()
+    {
+        createTable.BeginSync();
+    }
+
+    public void ExecSqlInTransaction(string sql)
+    {
+        createTable.ExecSqlInTransaction(sql);
+    }
+
+    public void EndSync()
+    {
+        createTable.EndSync();
+    }
+
+
+    public void BeginTransactionFast()
+    {
+        if (_transaction == null)
+        {
+            _transaction = _connection.BeginTransaction();
+        }
+    }
+
+    public void EndTransactionFast()
+    {
+        if (_transaction != null)
+        {
+            _transaction.Commit();
+            _transaction.Dispose();
+            _transaction = null;
+        }
     }
 }
 

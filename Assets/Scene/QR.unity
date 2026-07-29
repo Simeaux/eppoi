@@ -535,11 +535,80 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532173163}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4570358f47e7e4e0284ab823acb4a264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &532173171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532173163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -311780232, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Vuforia.Unity.Engine.dll::Vuforia.Internal.Rendering.VideoBackgroundBehaviour
+--- !u!23 &532173172
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532173163}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &532173173
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532173163}
+  m_Mesh: {fileID: 0}
 --- !u!1 &829883404
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +874,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 1193668426}
+      objectReference: {fileID: 874859032}
     - target: {fileID: 5151280220038123778, guid: 9eb1aceaa0f0a402f9fa95a964908520,
         type: 3}
       propertyPath: m_Name
@@ -814,6 +883,11 @@ PrefabInstance:
     - target: {fileID: 5151280220038123778, guid: 9eb1aceaa0f0a402f9fa95a964908520,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844071129346977563, guid: 9eb1aceaa0f0a402f9fa95a964908520,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6762256249701106412, guid: 9eb1aceaa0f0a402f9fa95a964908520,
@@ -855,26 +929,22 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 532173164}
+    - targetCorrespondingSourceObject: {fileID: 662697031936091990, guid: 9eb1aceaa0f0a402f9fa95a964908520,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 532173173}
+    - targetCorrespondingSourceObject: {fileID: 662697031936091990, guid: 9eb1aceaa0f0a402f9fa95a964908520,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 532173172}
+    - targetCorrespondingSourceObject: {fileID: 662697031936091990, guid: 9eb1aceaa0f0a402f9fa95a964908520,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 532173171}
     - targetCorrespondingSourceObject: {fileID: 4797937216923630966, guid: 9eb1aceaa0f0a402f9fa95a964908520,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 852425553}
-    - targetCorrespondingSourceObject: {fileID: 4797937216923630966, guid: 9eb1aceaa0f0a402f9fa95a964908520,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 852425559}
-    - targetCorrespondingSourceObject: {fileID: 4797937216923630966, guid: 9eb1aceaa0f0a402f9fa95a964908520,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 852425558}
-    - targetCorrespondingSourceObject: {fileID: 4797937216923630966, guid: 9eb1aceaa0f0a402f9fa95a964908520,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 852425557}
-    - targetCorrespondingSourceObject: {fileID: 4797937216923630966, guid: 9eb1aceaa0f0a402f9fa95a964908520,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 852425560}
     - targetCorrespondingSourceObject: {fileID: 2425789971622426023, guid: 9eb1aceaa0f0a402f9fa95a964908520,
         type: 3}
       insertIndex: -1
@@ -959,78 +1029,90 @@ MonoBehaviour:
   mDatasetName: 
   mCastedBehaviour: {fileID: 852425546}
   mBarcodeReferencePreview: {fileID: 0}
---- !u!114 &852425557
-MonoBehaviour:
+--- !u!21 &874859032
+Material:
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852425545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -287086267, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Vuforia.Unity.Engine.dll::Vuforia.BarcodePreview
-  mObserverBehaviour: {fileID: 852425546}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: 
-  mDatasetName: 
-  mCastedBehaviour: {fileID: 852425546}
-  mBarcodeReferencePreview: {fileID: 0}
---- !u!114 &852425558
-MonoBehaviour:
+  m_Name: UI/RoundedCorners/IndependentRoundedCorners
+  m_Shader: {fileID: 4800000, guid: d3beb88e61f88ca4393acdefb005fa70, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _halfSize: {r: 79.999985, g: 233.70355, b: 0, a: 0}
+    - _r: {r: 50, g: 50, b: 50, a: 50}
+    - _rect2props: {r: 0, g: 0, b: 186.46657, a: 186.46657}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!21 &893205435
+Material:
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852425545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -287086267, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Vuforia.Unity.Engine.dll::Vuforia.BarcodePreview
-  mObserverBehaviour: {fileID: 852425546}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: 
-  mDatasetName: 
-  mCastedBehaviour: {fileID: 852425546}
-  mBarcodeReferencePreview: {fileID: 0}
---- !u!114 &852425559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852425545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -287086267, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Vuforia.Unity.Engine.dll::Vuforia.BarcodePreview
-  mObserverBehaviour: {fileID: 852425546}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: 
-  mDatasetName: 
-  mCastedBehaviour: {fileID: 852425546}
-  mBarcodeReferencePreview: {fileID: 0}
---- !u!114 &852425560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852425545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -287086267, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Vuforia.Unity.Engine.dll::Vuforia.BarcodePreview
-  mObserverBehaviour: {fileID: 852425546}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: 
-  mDatasetName: 
-  mCastedBehaviour: {fileID: 852425546}
-  mBarcodeReferencePreview: {fileID: 0}
+  m_Name: UI/RoundedCorners/IndependentRoundedCorners
+  m_Shader: {fileID: 4800000, guid: d3beb88e61f88ca4393acdefb005fa70, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _halfSize: {r: 79.999985, g: 233.70355, b: 0, a: 0}
+    - _r: {r: 50, g: 50, b: 50, a: 50}
+    - _rect2props: {r: 0, g: 0, b: 186.46657, a: 186.46657}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &1112187617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,48 +1205,6 @@ Transform:
   - {fileID: 207681221}
   m_Father: {fileID: 1877674317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1193668426
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/IndependentRoundedCorners
-  m_Shader: {fileID: 4800000, guid: d3beb88e61f88ca4393acdefb005fa70, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _halfSize: {r: 79.999985, g: 233.70355, b: 0, a: 0}
-    - _r: {r: 50, g: 50, b: 50, a: 50}
-    - _rect2props: {r: 0, g: 0, b: 186.46657, a: 186.46657}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &1357604984 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 757319183141375832, guid: 9eb1aceaa0f0a402f9fa95a964908520,

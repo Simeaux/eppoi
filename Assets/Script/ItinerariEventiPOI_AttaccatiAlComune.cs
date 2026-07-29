@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 using static DBClass;
+using WebP;
 
 public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 {
@@ -51,9 +55,15 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     private int _OLD_tipo_dettaglio_da_vedere;
     private List<POI> POIList = new List<POI>();
     private List<PERCORSO> PERCORSOList = new List<PERCORSO>();
+    private List<IEP> EventiList = new List<IEP>();
+    private bool caricamentoEventi = false;
+    private bool eventiCaricati = false;
+    private Coroutine coroutineEventi;
     private List<GameObject> POIGo = new List<GameObject>();
     private GameObject _btnComune;
+    private GameObject _btnComune_SITO;
     private GameObject _btnSeeMore;
+    private int immaginiEventiDaScaricare = 0;
 
 
     public void IncrementNumberOfRowToShow()
@@ -176,7 +186,12 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
         _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
         _istat = PlayerPrefs.GetString("istat");
+        if (string.IsNullOrWhiteSpace(_istat) && BtnEventi != null)
+        {
+            BtnEventi.enabled = false;
+        }
         _btnComune = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI");
+        _btnComune_SITO = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI_simile_al_sito");
         _btnSeeMore = (GameObject)Resources.Load("Button_SeeMore");
 
 
@@ -187,8 +202,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         if (!_check_avanzato)
         {
             BtnItinerari.enabled = (PERCORSOList != null && PERCORSOList.Count > 0) ? true : false;
-            if (BtnEventi != null)
-                BtnEventi.enabled = false;
+            //if (BtnEventi != null)
+            //    BtnEventi.enabled = false;
             if (BtnPOI != null)
                 BtnPOI.enabled = (POIList != null && POIList.Count > 0) ? true : false;
         }
@@ -211,7 +226,14 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         }
         if (BtnEventi != null)
         {
-            BtnEventi.GetComponent<BtnTabClick>().SetCliccked(false);
+            if (selected_tab.text == "3")
+            {
+                BtnEventi.GetComponent<BtnTabClick>().SetCliccked(false);
+                _tipo_dettaglio_da_vedere = 2;
+            }
+            else
+                BtnEventi.GetComponent<BtnTabClick>().SetCliccked(false);
+
         }
         if (BtnPOI != null)
         {
@@ -231,13 +253,22 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                 GameObject.FindObjectOfType<GestioneTab>().selectes_btn_index(_c);
             }
         }
+        if (!eventiCaricati && !caricamentoEventi)
+        {
+            if (BtnEventi != null)
+            {
+                BtnEventi.interactable = false;
+                BtnEventi.gameObject.SetActive(true);
+            }
+
+            StartCoroutine(CaricaEventiComune());
+        }
 
         if (_panel_link != null)
             _panel_link.SetActive(false);
     }
     private void Calcola()
     {
-
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
         string _poi_selezionato = PlayerPrefs.GetString("poi_selezionato");
         string _percorso_selezionato = PlayerPrefs.GetString("percorso_selezionato");
@@ -368,6 +399,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         if (BtnPOI != null)
             BtnPOI.onClick.RemoveListener(BtnPOIClicked);
         _tipo_dettaglio_da_vedere = 0;
+        BtnIDescrizioneClicked();
         ResetNumberOfRowToShow(false);
     }
 
@@ -386,6 +418,18 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             sr.verticalNormalizedPosition = 1f;
         }
         _OLD_tipo_dettaglio_da_vedere = _tipo_dettaglio_da_vedere = 0;
+        Transform viewportTransform = panel_list_oggetti.transform.Find("Viewport");
+
+        if (viewportTransform != null)
+        {
+            RectTransform rtViewport = viewportTransform.GetComponent<RectTransform>();
+
+            if (rtViewport != null)
+            {
+                // Modifica il Top del Viewport portandolo a 0
+                rtViewport.offsetMax = new Vector2(rtViewport.offsetMax.x, -222f);
+            }
+        }
         ResetNumberOfRowToShow();
     }
 
@@ -399,6 +443,18 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             sr.verticalNormalizedPosition = 1f;
         }
         _OLD_tipo_dettaglio_da_vedere = _tipo_dettaglio_da_vedere = 1;
+        Transform viewportTransform = panel_list_oggetti.transform.Find("Viewport");
+
+        if (viewportTransform != null)
+        {
+            RectTransform rtViewport = viewportTransform.GetComponent<RectTransform>();
+
+            if (rtViewport != null)
+            {
+                // Modifica il Top del Viewport portandolo a 0
+                rtViewport.offsetMax = new Vector2(rtViewport.offsetMax.x, -222f);
+            }
+        }
         ResetNumberOfRowToShow();
     }
     private void BtnEventiClicked()
@@ -411,6 +467,21 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             sr.verticalNormalizedPosition = 1f;
         }
         _OLD_tipo_dettaglio_da_vedere = _tipo_dettaglio_da_vedere = 2;
+
+
+
+        Transform viewportTransform = panel_list_oggetti.transform.Find("Viewport");
+
+        if (viewportTransform != null)
+        {
+            RectTransform rtViewport = viewportTransform.GetComponent<RectTransform>();
+
+            if (rtViewport != null)
+            {
+                // Modifica il Top del Viewport portandolo a 0
+                rtViewport.offsetMax = new Vector2(rtViewport.offsetMax.x, 0f);
+            }
+        }
         ResetNumberOfRowToShow();
     }
     private void BtnPOIClicked()
@@ -423,11 +494,29 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             sr.verticalNormalizedPosition = 1f;
         }
         _OLD_tipo_dettaglio_da_vedere = _tipo_dettaglio_da_vedere = 3;
+        Transform viewportTransform = panel_list_oggetti.transform.Find("Viewport");
+
+        if (viewportTransform != null)
+        {
+            RectTransform rtViewport = viewportTransform.GetComponent<RectTransform>();
+
+            if (rtViewport != null)
+            {
+                // Modifica il Top del Viewport portandolo a 0
+                rtViewport.offsetMax = new Vector2(rtViewport.offsetMax.x, -222f);
+            }
+        }
+
         ResetNumberOfRowToShow();
     }
     public class IEP
     {
         public byte[] immagine;
+        public string immagine_url;
+        public Sprite sprite_immagine;
+
+        public Image uiImage;
+
         public string nome_comune;
         public string testo;
         public string descrizione_breve;
@@ -442,9 +531,295 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         public bool logo_bici = true;
         public float distance;
         public string colore;
+        public string data_orario_inizio;
+
+        public string data_orario_fine;
+        public string link;
     }
 
+    IEnumerator ScaricaEventi(int _id_sinp, List<IEP> risultato)
+    {
+        string indirizzo =
+            "https://www.macerataturismo.it/wp-json/rest_api_ws/v1/get_eventi_per_app?";
 
+        if (_id_sinp > 0)
+            indirizzo += "&ID_SINP=" + _id_sinp;
+
+        indirizzo += "&t=" + DateTime.UtcNow.Ticks;
+
+
+        Debug.Log(indirizzo);
+
+
+        UnityWebRequest www = UnityWebRequest.Get(indirizzo);
+
+
+        yield return www.SendWebRequest();
+
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError(www.error);
+            www.Dispose();
+
+            caricamentoEventi = false;
+
+            yield break;
+        }
+
+
+        string jsonreturned = www.downloadHandler.text;
+
+
+        EventoResponse response =
+            JsonConvert.DeserializeObject<EventoResponse>(jsonreturned);
+
+
+
+        if (response != null && response.Evento != null)
+        {
+            foreach (EventoItem evento in response.Evento)
+            {
+                IEP iep = new IEP();
+
+
+                iep.id = evento.id;
+
+                iep.nome_comune = evento.title;
+
+                // ATTENZIONE:
+                // 2 = evento
+                // 3 = POI
+                iep.tipo = 2;
+
+                iep.tipo_poi = "EVENTO";
+
+
+                if (evento.descrizione_breve != null &&
+                    evento.descrizione_breve.Count > 0)
+                {
+                    iep.testo =
+                        evento.descrizione_breve[0];
+                }
+
+
+                if (evento.immagine != null &&
+                    evento.immagine.Count > 0)
+                {
+                    if (evento.immagine != null && evento.immagine.Count > 0)
+                    {
+                        iep.immagine_url = evento.immagine[0];
+                        immaginiEventiDaScaricare++;
+                        Debug.Log("Immagine evento: " + iep.immagine_url);
+                    }
+                }
+
+                if (evento.data_orario_inizio != null && evento.data_orario_inizio.Count > 0)
+                    iep.data_orario_inizio = evento.data_orario_inizio[0];
+                if (evento.data_orario_fine != null && evento.data_orario_fine.Count > 0)
+                    iep.data_orario_fine = evento.data_orario_fine[0];
+                if (!string.IsNullOrEmpty(evento.link))
+                    iep.link = evento.link;
+
+                risultato.Add(iep);
+            }
+        }
+
+
+        Debug.Log("Eventi caricati: " + risultato.Count);
+
+        eventiCaricati = true;
+
+        www.Dispose();
+    }
+
+    IEnumerator ScaricaImmagineURL(string url, Action<Sprite> callback)
+    {
+        if (string.IsNullOrEmpty(url))
+        {
+            callback(null);
+            yield break;
+        }
+
+        UnityWebRequest www = UnityWebRequest.Get(url);
+
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("Errore immagine: " + www.error);
+            Debug.LogError("URL: " + url);
+
+            callback(null);
+            yield break;
+        }
+
+        byte[] data = www.downloadHandler.data;
+
+        string contentType =
+            www.GetResponseHeader("Content-Type");
+
+        Debug.Log("Content-Type: " + contentType);
+        Debug.Log("Bytes ricevuti: " + data.Length);
+
+        Texture2D texture = null;
+
+        try
+        {
+            // JPG / PNG
+            if (contentType != null &&
+                !contentType.ToLower().Contains("webp"))
+            {
+                texture = new Texture2D(2, 2);
+
+                if (!texture.LoadImage(data))
+                {
+                    Debug.LogError("LoadImage fallita");
+                    callback(null);
+                    yield break;
+                }
+            }
+            else
+            {
+                WebP.Error error;
+
+                texture =
+                    Texture2DExt.CreateTexture2DFromWebP(
+                        data,
+                        false,   // mipmaps
+                        false,   // linear
+                        out error
+                    );
+                if (texture == null)
+                {
+                    Debug.LogError("Decodifica WEBP fallita");
+                    callback(null);
+                    yield break;
+                }
+            }
+
+            Sprite sprite = Sprite.Create(
+                texture,
+                new Rect(0, 0, texture.width, texture.height),
+                new Vector2(0.5f, 0.5f)
+            );
+
+            callback(sprite);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Eccezione WEBP: " + ex);
+            callback(null);
+        }
+
+        immaginiEventiDaScaricare--;
+
+        www.Dispose();
+    }
+
+    IEnumerator CaricaEventiComune()
+    {
+        caricamentoEventi = true;
+        eventiCaricati = false;
+
+        if (BtnEventi != null)
+            BtnEventi.interactable = false;
+
+        EventiList.Clear();
+
+
+        if (!string.IsNullOrEmpty(_istat))
+        {
+            var comuni = _DBClass.GetCOMUNI(_istat);
+
+
+            if (comuni != null)
+            {
+                foreach (var comune in comuni)
+                {
+                    yield return StartCoroutine(
+                        ScaricaEventi(
+                            comune.id,
+                            EventiList
+                        )
+                    );
+                }
+            }
+        }
+
+
+        // Eventi scaricati
+        eventiCaricati = true;
+
+
+        // Ora scarico realmente le immagini
+        foreach (IEP evento in EventiList)
+        {
+            if (!string.IsNullOrEmpty(evento.immagine_url))
+            {
+                yield return StartCoroutine(
+                    ScaricaImmagineURL(
+                        evento.immagine_url,
+                        sprite =>
+                        {
+                            evento.sprite_immagine = sprite;
+                            Debug.Log("SPRITE EVENTO CARICATO: " + evento.nome_comune + " -> " + (sprite != null));
+                        }
+                    )
+                );
+            }
+        }
+
+
+        caricamentoEventi = false;
+
+
+        // Ora posso abilitare il bottone
+        if (BtnEventi != null)
+            BtnEventi.interactable = true;
+
+        _TotalRowToExtract = EventiList.Count;
+        Debug.Log(
+            "EVENTI COMPLETI: " + EventiList.Count
+        );
+    }
+    /*
+        IEnumerator CaricaTuttiEventi(System.Action callback)
+        {
+            eventiCaricati = false;
+
+            List<Coroutine> richieste = new List<Coroutine>();
+
+            if (!string.IsNullOrEmpty(_istat))
+            {
+                var comuni = _DBClass.GetCOMUNI(_istat);
+
+                if (comuni != null)
+                {
+                    foreach (var comune in comuni)
+                    {
+                        richieste.Add(
+                            StartCoroutine(
+                                ScaricaEventi(
+                                    comune.id,
+                                    EventiList
+                                )
+                            )
+                        );
+                    }
+                }
+            }
+
+
+            while (!eventiCaricati)
+            {
+                yield return null;
+            }
+
+
+            callback?.Invoke();
+        }
+        */
     // Ritorna l'array ordinato per distanza e poi per nome
     public List<IEP> ClassiToIEP(List<POI> _POIs, List<PERCORSO> _PERCORSOs, bool check_tipo_dettaglio_da_vedere)
     {
@@ -475,11 +850,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     _IEP.testo = _poi.nome;
                     _IEP.logo_bici = false;
                     _IEP.tipo_poi = _poi.tipo_list_descrizione();
-                    if (_poi.tipoList.Count > 0)
-                    {
-                        if (_poi.tipoList[0].tipo != null)
-                            _IEP.immagine_poi = _poi.tipoList[0].tipo.group_id;
-                    }
+                    _IEP.immagine_poi = (_poi.tipoList != null && _poi.tipoList.Count > 0)
+                        ? _poi.tipoList[0].tipo.group_id : 0;
                     _IEP.tipo_percorso = "";
                     _IEP.tipo_navigazione = "";
                     _IEP.lunghezza = "";
@@ -493,23 +865,15 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             }
 
         }
-        /* Eventi
-        if ((!check_tipo_dettaglio_da_vedere || _tipo_dettaglio_da_vedere == 2) && _POIs != null && _POIs.Count > 0)
+        /* Eventi */
+        /* Eventi */
+        if (!check_tipo_dettaglio_da_vedere || _tipo_dettaglio_da_vedere == 2)
         {
-            foreach (var _poi in _POIs)
+            foreach (IEP evento in EventiList)
             {
-                IEP _IEP = new IEP();
-                _IEP.kind = 2;
-                if (_poi._images.Find(match => match.principale) != null)
-                    _IEP.immagine = _poi._images.Find(match => match.principale).image;
-                else
-                    _IEP.immagine = _poi._images[0].image;
-                _IEP.testo = _poi.nome;
-                ret.Add(_IEP);
+                ret.Add(evento);
             }
-
         }
-        */
         if ((!check_tipo_dettaglio_da_vedere || _tipo_dettaglio_da_vedere == 1) && _PERCORSOs != null && _PERCORSOs.Count > 0)
         {
             foreach (var _percorso in _PERCORSOs)
@@ -572,6 +936,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     private void OnGUI()
     {
         int altezza_prefab = 450;
+        if (_tipo_dettaglio_da_vedere == 2)
+            altezza_prefab = 720;
         if (_tipo_dettaglio_da_vedere == 0 && !_scroll_descrizione.activeSelf)
         {
             _scroll_descrizione.SetActive(true);
@@ -603,9 +969,94 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                 GUILayout.BeginVertical(GUILayout.Height(h / 5));
                 GUILayout.BeginHorizontal(GUILayout.Height(h / 5));
                 var btn = Instantiate(_btnComune);
+                if (_tipo_dettaglio_da_vedere == 2)
+                    btn = Instantiate(_btnComune_SITO);
                 var pos = btn.transform.position;
                 btn.transform.position = new Vector3(pos.x, pos.y - (altezza_prefab * _i), pos.z);
                 btn.transform.localScale = new Vector3(1, 1, 1);
+                foreach (var _component in btn.GetComponentsInChildren<TMP_Text>())
+                {
+                    if (_tipo_dettaglio_da_vedere == 2)
+                    {
+                        if (_component.name == "Text_data")
+                        {
+
+                            DateTime data_i = DateTime.MinValue;
+                            DateTime data_f = DateTime.MinValue;
+                            bool parsingRiuscito = false;
+
+                            // TENTATIVO 1: Controlla se è un formato data testuale standard
+                            string[] formatiAmmessi = new string[] { "yyyy-MM-dd HH:mm:ss,fff", "yyyy-MM-dd HH:mm:ss.fff", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm" };
+                            if (DateTime.TryParseExact(_iep.data_orario_inizio, formatiAmmessi, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out data_i) &&
+                                DateTime.TryParseExact(_iep.data_orario_fine, formatiAmmessi, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out data_f))
+                            {
+                                parsingRiuscito = true;
+                            }
+                            // TENTATIVO 2: Se fallisce, controlla se è un Timestamp Unix (numero)
+                            else if (long.TryParse(_iep.data_orario_inizio, out long unixInizio) && long.TryParse(_iep.data_orario_fine, out long unixFine))
+                            {
+                                data_i = DateTimeOffset.FromUnixTimeSeconds(unixInizio).LocalDateTime;
+                                data_f = DateTimeOffset.FromUnixTimeSeconds(unixFine).LocalDateTime;
+                                parsingRiuscito = true;
+                            }
+
+                            // Se una delle due conversioni è andata a buon fine, componiamo il testo spacchettato
+                            // ... (mantenere la parte iniziale di conversione data intatta) ...
+
+                            if (parsingRiuscito)
+                            {
+                                var culturaItaliana = new System.Globalization.CultureInfo("it-IT");
+                                DateTime adesso = DateTime.Now;
+
+                                string prefisso = "";
+                                DateTime dataDaMostrare;
+
+
+
+                                if (data_i.Date == data_f.Date)
+                                {
+                                    prefisso = "";
+                                    dataDaMostrare = data_i;
+                                }
+                                else
+                                {
+                                    if (adesso < data_i)
+                                    {
+                                        prefisso = "dal\n";
+                                        dataDaMostrare = data_i;
+                                    }
+                                    else
+                                    {
+                                        prefisso = "fino al\n";
+                                        dataDaMostrare = data_f;
+                                    }
+                                }
+
+                                // Forza l'estrazione del SINGOLO numero del giorno
+                                string giorno = dataDaMostrare.Day.ToString();
+                                string mese = dataDaMostrare.ToString("MMMM", culturaItaliana);
+                                if (!string.IsNullOrEmpty(mese))
+                                {
+                                    // Prende la prima lettera, la fa maiuscola e attacca il resto della stringa
+                                    mese = char.ToUpper(mese[0]) + mese.Substring(1);
+                                }
+                                // Colore verdino per il giorno (puoi cambiarlo se serve più scuro per lo sfondo bianco)
+                                string coloreVerdino = "#3E8E41";
+
+                                // COMPOSIZIONE: Centrato (<align=center>) e in Grassetto (<b>)
+                                string testoFinale = $"<align=center><b>{prefisso}<size=120%><color={coloreVerdino}>{giorno}</color></size>\n{mese}</b></align>";
+
+                                _component.text = testoFinale;
+                            }
+                            else
+                            {
+                                _component.text = "Data\nNon\nValida";
+                            }
+
+                        }
+                    }
+                }
+
                 foreach (var _component in btn.GetComponentsInChildren<Text>())
                 {
                     if (_component.name == "Text")
@@ -645,7 +1096,15 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     else if (_component.name == "tipologia")
                         _component.text = $"{_tipo_dettaglio_da_vedere}";
                     else if (_component.name == "id")
-                        _component.text = $"{_iep.tipo};{_iep.id}";
+                    {
+                        if (_tipo_dettaglio_da_vedere == 2)
+                        {
+                            var _comuni = _DBClass.GetCOMUNI(_istat);
+                            _component.text = $"{_comuni.FirstOrDefault()?.sito_turistico}{_iep.link}";
+                        }
+                        else
+                            _component.text = $"{_iep.tipo};{_iep.id}";
+                    }
                     else if (_component.name == "Distanza")
                         _component.text = _component.text.Replace("{0}", (_iep.distance / 1000).ToString("0.##"));
                     else if (_component.name == "NomeComune")
@@ -714,30 +1173,47 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                                 c = _c;
 
                         }
+                        if (_iep.tipo == 2)
+                        {
+                            if (ColorUtility.TryParseHtmlString("#ffffff", out _c))
+                                c = _c;
+                        }
                         _component.color = c;
                     }
                     if (_component.name == "Image")
                     {
-                        if (_iep.tipo == 3 && _iep.immagine == null)
+                        if (_iep.tipo == 2)
                         {
-                            var _lap = _DBClass.getPOI_IMMAGINI(null, _iep.id, true);
-                            POIList[_i]._images = _lap;
-                            var _ap = _lap.FirstOrDefault();
-                            if (_ap != null)
-                                _iep.immagine = _ap.image;
+                            // EVENTO
+                            if (_iep.sprite_immagine != null)
+                            {
+                                _component.sprite = _iep.sprite_immagine;
+                            }
                         }
-                        else if (_iep.tipo == 1 && _iep.immagine == null)
+                        else
                         {
-                            var _lap = _DBClass.getPERCORSI_IMMAGINI(null, (int?)_iep.id);
-                            PERCORSOList[_i].Listimages = _lap;
-                            var _ap = _lap.FirstOrDefault();
-                            if (_ap != null)
-                                _iep.immagine = _ap.image;
+                            if (_iep.tipo == 3 && _iep.immagine == null)
+                            {
+                                var _lap = _DBClass.getPOI_IMMAGINI(null, _iep.id, true);
+                                POIList[_i]._images = _lap;
+                                var _ap = _lap.FirstOrDefault();
+                                if (_ap != null)
+                                    _iep.immagine = _ap.image;
+                            }
+
+                            else if (_iep.tipo == 1 && _iep.immagine == null)
+                            {
+                                var _lap = _DBClass.getPERCORSI_IMMAGINI(null, (int?)_iep.id);
+                                PERCORSOList[_i].Listimages = _lap;
+                                var _ap = _lap.FirstOrDefault();
+                                if (_ap != null)
+                                    _iep.immagine = _ap.image;
+                            }
+                            byte[] foto = null;
+                            if (_iep.immagine != null && _iep.immagine != null && _iep.immagine.Length > 0)
+                                foto = _iep.immagine;
+                            _component.sprite = _DBClass.getSpriteFromByteArray(foto);
                         }
-                        byte[] foto = null;
-                        if (_iep.immagine != null && _iep.immagine != null && _iep.immagine.Length > 0)
-                            foto = _iep.immagine;
-                        _component.sprite = _DBClass.getSpriteFromByteArray(foto);
                         var _ratio_component = _component.GetComponent<AspectRatioFitter>();
                         if (_ratio_component != null)
                         {
@@ -830,4 +1306,28 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             }
         }
     }
+}
+
+
+
+[System.Serializable]
+public class EventoResponse
+{
+    public List<EventoItem> Evento;
+}
+
+[System.Serializable]
+public class EventoItem
+{
+    public long id;
+    public string post_name;
+    public string title;
+
+    public List<string> id_sinp;
+    public List<string> genitore_evento;
+    public List<string> immagine;
+    public List<string> data_orario_inizio;
+    public List<string> data_orario_fine;
+    public List<string> descrizione_breve;
+    public string link;
 }

@@ -269,15 +269,33 @@ public class FreeMap : MonoBehaviour
                 var touchZero = Input.GetTouch(0);
                 var touchOne = Input.GetTouch(1);
 
-                Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-                Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+                Vector2 touchZeroPrevPos =
+                    touchZero.position - touchZero.deltaPosition;
 
-                float prevMagniture = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-                float currentMagniture = (touchZero.position - touchOne.position).magnitude;
+                Vector2 touchOnePrevPos =
+                    touchOne.position - touchOne.deltaPosition;
 
-                float difference = currentMagniture - prevMagniture;
+                float prevMagnitude =
+                    (touchZeroPrevPos - touchOnePrevPos).magnitude;
 
-                pinch_zoom(difference * 0.001f);
+                float currentMagnitude =
+                    (touchZero.position - touchOne.position).magnitude;
+
+                float difference =
+                    currentMagnitude - prevMagnitude;
+
+                // centro delle due dita
+                Vector2 pinchCenter =
+                    (touchZero.position + touchOne.position) * 0.5f;
+
+                pinch_zoom(
+                    difference * 0.005f,
+                    pinchCenter
+                );
+
+                selectedzoomLast = selectedzoom;
+                Dx.text = "0";
+                Dy.text = "0";
             }
             else if (Input.GetMouseButtonUp(0))
             {
@@ -343,6 +361,8 @@ public class FreeMap : MonoBehaviour
                     {
                         if (selectedzoomLast != selectedzoom)
                         {
+                            Dx.text = "0";
+                            Dy.text = "0";
                             //GOObject.transform.position = new Vector3(0, 0, 0);
                             Ricalcola_Centro(false);
                             selectedzoomLast = selectedzoom;
@@ -362,12 +382,60 @@ public class FreeMap : MonoBehaviour
             }
         }
     }
-
-    void pinch_zoom(float increment)
+    private Vector2d ScreenToGeo(Vector2 screenPos)
     {
-        //Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, 5, 20);
+        Ray ray = Camera.main.ScreenPointToRay(screenPos);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            return abstractMap.WorldToGeoPosition(hit.point);
+        }
+
+        return new Vector2d(centerLatitude, centerLongitude);
+    }
+    void pinch_zoom(float increment, Vector2 pinchCenter)
+    {
+        // Coordinate geografiche sotto il centro delle dita
+        Vector2d geoBeforeZoom = ScreenToGeo(pinchCenter);
+
+        // Zoom attuale
         double.TryParse(zoom.text, out selectedzoom);
-        zoom.text = (selectedzoom + increment).ToString();
+
+        selectedzoom += increment;
+
+        if (selectedzoom < 5)
+            selectedzoom = 5;
+
+        if (selectedzoom > 20)
+            selectedzoom = 20;
+
+        zoom.text = selectedzoom.ToString();
+
+        // Aggiorna mappa con lo zoom nuovo
+        abstractMap.UpdateMap(
+            new Vector2d(centerLatitude, centerLongitude),
+            (float)selectedzoom
+        );
+
+        // Aspetta che Mapbox abbia aggiornato le coordinate
+        Vector2d geoAfterZoom = ScreenToGeo(pinchCenter);
+
+        // Calcolo differenza
+        double deltaLat = geoBeforeZoom.x - geoAfterZoom.x;
+        double deltaLon = geoBeforeZoom.y - geoAfterZoom.y;
+
+        // Sposto il centro della mappa
+        centerLatitude += deltaLat;
+        centerLongitude += deltaLon;
+
+        lat.text = centerLatitude.ToString();
+        lon.text = centerLongitude.ToString();
+
+        // Aggiorno nuovamente la mappa
+        abstractMap.UpdateMap(
+            new Vector2d(centerLatitude, centerLongitude),
+            (float)selectedzoom
+        );
     }
 
     public void Ricalcola_Centro(bool needredrawMap)

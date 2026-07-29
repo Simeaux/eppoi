@@ -133,6 +133,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                             }
                                         }
                                         goApp._Image = _DBClass.getSpriteFromByteArray(_img.image);
+
                                         Pois.scrollview_list_img.AddPage((RectTransform)goApp.transform);
                                         _i++;
                                     }
@@ -165,8 +166,8 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                     Pois.tipo.text = _p.tipo_list_descrizione();
                                 if (Pois.descrizione != null)
                                 {
-                                    var breve = _p.descrizione_breve();
-                                    var lunga = _p.descrizione();
+                                    var breve = _DBClass.pulisciHTML(_p.descrizione_breve());
+                                    var lunga = _DBClass.pulisciHTML(_p.descrizione());
                                     if (!string.IsNullOrEmpty(breve))
                                         Pois.descrizione.text += $"<i>{breve}</i>\n\n\n\n";
                                     if (!string.IsNullOrEmpty(lunga))
@@ -282,7 +283,8 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                     {
                         if (_p != null)
                         {
-                            Pois.descrizione.text += "\n\n\n\n\n\n\n";
+                            //Pois.descrizione.text += "\n\n\n\n\n\n\n";
+                            Pois.descrizione.text += "\n";
                             ID_selected.text = _ID;
                             DetailPOI.enabled = true;
                             if (portami_la != null)
@@ -387,9 +389,9 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                         tappe = true;
                                         TAPPE_TEXT _tt = _t.tappe_text[0];
                                         if (!string.IsNullOrEmpty(_tt.descrizione_breve))
-                                            Pois.descrizione.text += "<i>" + _tt.descrizione_breve + "</i>" + "\n\n";
+                                            Pois.descrizione.text += "<i>" + _DBClass.pulisciHTML(_tt.descrizione_breve) + "</i>" + "\n\n";
                                         if (!string.IsNullOrEmpty(_tt.descrizione))
-                                            Pois.descrizione.text += _tt.descrizione + "\n\n";
+                                            Pois.descrizione.text += _DBClass.pulisciHTML(_tt.descrizione) + "\n\n";
                                         _dimensione_foto = 1240;
                                         foreach (var _pxt in _pxtList.FindAll(p => p.tappa_id == txp.tappa_id))
                                         {
@@ -603,7 +605,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                 //Debug.Log((Pois.dettaglioItinerario.transform.localPosition.y));
                                 //Debug.Log((Pois.dettaglioItinerario.transform.localPosition.y - 2.0));
                                 int tab = 150;
-                                int altezza_pageslider = -402;
+                                int altezza_pageslider = 0;
                                 //#if UNITY_IOS
                                 //			                    altezza_pageslider = -802;
                                 //#endif
@@ -640,7 +642,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                     t += _p.lunghezza;// + " km";
                                 }
                                 if (!string.IsNullOrEmpty(t))
-                                    dettagli_da_scrivere.Add(new DettaglioItinerario() { label = _lingua_selezionata == 1 ? "Difficoltà" : "Difficulty", value = t });
+                                    dettagli_da_scrivere.Add(new DettaglioItinerario() { label = _lingua_selezionata == 1 ? "Lunghezza" : "Length", value = t });
 
                                 t = "";
                                 if (!string.IsNullOrEmpty(_p.pendenza))

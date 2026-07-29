@@ -23,6 +23,11 @@ public class Panel_Comune : MonoBehaviour
     public Text txtDescrizione;
     public Text txtItinerari;
     public Text txtPuntiDiInteresse;
+    public Text txtEventi;
+
+
+    public GameObject _scrollDesccrizione;
+    public GameObject _scrollOggetti;
 
     private int _lingua_selezionata = 1;
     private string _istat = "";
@@ -37,6 +42,7 @@ public class Panel_Comune : MonoBehaviour
         txtDescrizione.text = _lingua_selezionata == 1 ? "Descrizione" : "Description";
         txtItinerari.text = _lingua_selezionata == 1 ? "Itinerari" : "Itineraries";
         txtPuntiDiInteresse.text = _lingua_selezionata == 1 ? "Punti di interesse" : "Points of interest";
+        txtEventi.text = _lingua_selezionata == 1 ? "Eventi" : "Events";
 
     }
     private void Update()
@@ -138,6 +144,8 @@ public class Panel_Comune : MonoBehaviour
             descrizione.text += _comune.descrizione();
 
         }
+        _scrollDesccrizione.SetActive(true);
+        _scrollOggetti.SetActive(false);
     }
     private void OnDisable()
     {

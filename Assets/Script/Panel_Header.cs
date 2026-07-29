@@ -75,6 +75,10 @@ public class Panel_Header : MonoBehaviour
                     nome_comune.text = _Listcomune[0].nome_comune;
                     regione.text = _Listcomune[0].regione;
                     provincia.text = _Listcomune[0].provincia;
+                    while (_Listcomune[0].latitudine > 100)
+                        _Listcomune[0].latitudine = _Listcomune[0].latitudine / 10;
+                    while (_Listcomune[0].longitudine > 100)
+                        _Listcomune[0].longitudine = _Listcomune[0].longitudine / 10;
                     coordinate.text = _Listcomune[0].latitudine.ToString("##.#####").Replace(".", ",") + "°N - " + _Listcomune[0].longitudine.ToString("##.#####").Replace(".", ",") + (_lingua_selezionata == 1 ? "°E" : "°W");
                     altitudine.text = _Listcomune[0].altitudine.ToString("##,###").Replace(",", ".") + (_lingua_selezionata == 1 ? " m.s.l.m." : " m above s.l.");
                     abitanti.text = _Listcomune[0].abitanti.ToString("###,###").Replace(",", ".");
