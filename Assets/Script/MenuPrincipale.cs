@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -10,47 +11,479 @@ public class MenuPrincipale : MonoBehaviour
     private DBClass _DBClass;
     private Canvas _Canvas_Prompt_Download;
     public Panel_Principale pp;
-    public void ButtonCliccked(Button button)
+    public Font fontPoppins;
+    [Header("Spinner API")]
+    public GameObject spinnerPesoComune;
+    public Text testoSpinnerPesoComune;
+
+
+
+
+    [System.Serializable]
+    public class DatiDownloadZipResponse
     {
-        //var NomeComune = button.transform.Find("NomeComune").GetComponent<Text>().text.Replace(" (MC)", "");
-        var Istat = button.transform.Find("Istat").GetComponent<Text>().text;
-        _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
-        List<DBClass.COMUNE> c = _DBClass.GetCOMUNI(Istat, null, null, null, null);
-        if (c != null && c.Count > 0)
+        public bool success;
+        public int n_poi;
+        public int n_poi_immagini;
+        public int n_percorsi;
+        public string size;
+    }
+
+    private IEnumerator RecuperaDatiDownloadZip(
+    string idSinp,
+    string nomeComune,
+    System.Action<bool> onCompleted)
+    {
+        MostraSpinnerPesoComune(nomeComune);
+        string url =
+            "https://www.macerataturismo.it/wp-json/rest_api_ws/v1/dati_download_zip?ID_SINP="
+            + UnityWebRequest.EscapeURL(idSinp);
+
+        Debug.Log("[API] Chiamata: " + url);
+
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
-            int _TotalRowToExtract = _DBClass.getPOI_Count(null, null, c[0].nome_comune, null, null);
-            if (_TotalRowToExtract > 0)
-            {
-                PlayerPrefs.SetString("istat", Istat);
-                PlayerPrefs.SetString("poi_selezionato", "");
-                PlayerPrefs.SetString("percorso_selezionato", "");
+            yield return request.SendWebRequest();
 
-            }
-            else
+#if UNITY_2020_1_OR_NEWER
+            if (request.result != UnityWebRequest.Result.Success)
+#else
+        if (request.isNetworkError || request.isHttpError)
+#endif
             {
-                //qui devo far partire il download dei dati del comune
-                if (pp == null)
-                {
-                    pp = GameObject.FindFirstObjectByType<Panel_Principale>();
-                }
+                Debug.LogError("[API] Errore: " + request.error);
+                NascondiSpinnerPesoComune();
+                onCompleted?.Invoke(false);
+                yield break;
+            }
 
-                // Controllo di sicurezza: verifichiamo che il pannello esista effettivamente nella scena
-                if (pp != null)
+            string json = request.downloadHandler.text;
+
+            Debug.Log("[API] Risposta: " + json);
+
+            DatiDownloadZipResponse dati = null;
+
+            try
+            {
+                dati = JsonUtility.FromJson<DatiDownloadZipResponse>(json);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("[API] Errore parsing JSON: " + e.Message);
+
+                onCompleted?.Invoke(false);
+                yield break;
+            }
+
+            if (dati == null)
+            {
+                Debug.LogError("[API] Risposta JSON non valida.");
+
+                onCompleted?.Invoke(false);
+                yield break;
+            }
+
+            if (!dati.success)
+            {
+                Debug.LogError("[API] success=false");
+                NascondiSpinnerPesoComune();
+                onCompleted?.Invoke(false);
+                yield break;
+            }
+
+            // =====================================================
+            // RECUPERIAMO IL PANEL
+            // =====================================================
+
+            if (pp == null)
+            {
+                pp = GameObject.FindFirstObjectByType<Panel_Principale>();
+            }
+
+            if (pp == null)
+            {
+                Debug.LogError(
+                    "[API] Impossibile trovare Panel_Principale."
+                );
+
+                onCompleted?.Invoke(false);
+                yield break;
+            }
+
+            // =====================================================
+            // RECUPERIAMO IL CANVAS
+            // =====================================================
+
+            Transform canvasTransform =
+                pp.gameObject.transform.Find("Canvas_Prompt_Download");
+
+            if (canvasTransform == null)
+            {
+                Debug.LogError(
+                    "[API] Canvas_Prompt_Download non trovato."
+                );
+
+                onCompleted?.Invoke(false);
+                yield break;
+            }
+
+            _Canvas_Prompt_Download =
+                canvasTransform.GetComponent<Canvas>();
+
+            if (_Canvas_Prompt_Download == null)
+            {
+                Debug.LogError(
+                    "[API] Canvas_Prompt_Download non contiene un componente Canvas."
+                );
+
+                onCompleted?.Invoke(false);
+                yield break;
+            }
+
+            // =====================================================
+            // AGGIORNIAMO I TEXT
+            // =====================================================
+
+            Text[] tuttiTesti =
+                _Canvas_Prompt_Download.GetComponentsInChildren<Text>(true);
+
+            foreach (Text t in tuttiTesti)
+            {
+                switch (t.name)
                 {
-                    // La sync ora e' una coroutine (spinner + scrittura DB a blocchi + reload maschera).
-                    // La avviamo tramite un wrapper che aspetta la fine e poi apre il comune se ha i POI.
-                    StartCoroutine(DownloadEApriComune(c[0], button));
-                }
-                else
-                {
-                    Debug.LogError("Errore: Impossibile trovare Panel_Principale nella scena!");
+                    case "Testo_Info_Download":
+                        t.text = "Scarica " + nomeComune;
+                        break;
+
+                    case "poi":
+                        t.text = dati.n_poi.ToString() + " audioguide";
+                        break;
+
+                    case "poi_immagini":
+
+                        t.text = dati.n_poi_immagini.ToString() + " immagini e schede";
+
+                        break;
+
+                    case "percorsi":
+
+                        t.text = dati.n_percorsi.ToString() + " mappe e itinerari offline";
+
+                        break;
+
+                    case "peso":
+
+                        t.text = "Totale " + dati.size + " MB";
+
+                        break;
                 }
             }
+
+            Debug.Log(
+                "[API] Dati aggiornati - " +
+                "POI: " + dati.n_poi +
+                ", Immagini: " + dati.n_poi_immagini +
+                ", Percorsi: " + dati.n_percorsi +
+                ", Peso: " + dati.size + " MB"
+            );
+            NascondiSpinnerPesoComune();
+            // =====================================================
+            // API COMPLETATA CORRETTAMENTE
+            // =====================================================
+
+            onCompleted?.Invoke(true);
         }
-
     }
 
 
+    private void MostraSpinnerPesoComune(string nomeComune)
+    {
+        if (spinnerPesoComune == null)
+        {
+            Debug.LogWarning(
+                "[API] SpinnerPesoComune non assegnato."
+            );
+
+            return;
+        }
+
+        spinnerPesoComune.SetActive(true);
+
+        if (testoSpinnerPesoComune != null)
+        {
+            testoSpinnerPesoComune.text =
+                "Acquisizione informazioni di " +
+                nomeComune +
+                "...";
+        }
+
+        Debug.Log(
+            "[API] Spinner mostrato per il comune: " +
+            nomeComune
+        );
+    }
+
+    private void NascondiSpinnerPesoComune()
+    {
+        if (spinnerPesoComune != null)
+        {
+            spinnerPesoComune.SetActive(false);
+        }
+
+        Debug.Log(
+            "[API] Spinner nascosto."
+        );
+    }
+    public void ButtonCliccked(Button button)
+    {
+        StartCoroutine(ButtonClicckedCoroutine(button));
+    }
+
+    private IEnumerator ButtonClicckedCoroutine(Button button)
+    {
+        // =====================================================
+        // RECUPERO ISTAT
+        // =====================================================
+
+        Text istatText = button.transform.Find("Istat")?.GetComponent<Text>();
+
+        if (istatText == null)
+        {
+            Debug.LogError(
+                "[MENU] Oggetto Text 'Istat' non trovato."
+            );
+
+            yield break;
+        }
+
+        string Istat = istatText.text;
+
+        // =====================================================
+        // DATABASE
+        // =====================================================
+
+        _DBClass =
+            GameObject.FindWithTag("SQLite")
+            .GetComponent<DBClass>();
+
+        List<DBClass.COMUNE> c =
+            _DBClass.GetCOMUNI(
+                Istat,
+                null,
+                null,
+                null,
+                null
+            );
+
+        if (c == null || c.Count == 0)
+        {
+            Debug.LogError(
+                "[MENU] Comune non trovato per ISTAT: " + Istat
+            );
+
+            yield break;
+        }
+
+        DBClass.COMUNE comune = c[0];
+
+        Debug.Log(
+            "[MENU] Comune selezionato: " +
+            comune.nome_comune +
+            " - ID: " +
+            comune.id
+        );
+
+        // =====================================================
+        // 1. CHIAMATA API
+        // =====================================================
+
+        bool apiCompletata = false;
+        bool apiSuccess = false;
+
+        yield return StartCoroutine(
+            RecuperaDatiDownloadZip(
+                comune.id.ToString(),
+                comune.nome_comune,
+                (success) =>
+                {
+                    apiSuccess = success;
+                    apiCompletata = true;
+                }
+            )
+        );
+
+        // Sicurezza
+        if (!apiCompletata || !apiSuccess)
+        {
+            Debug.LogError(
+                "[MENU] Impossibile recuperare i dati del download."
+            );
+
+            yield break;
+        }
+
+        // =====================================================
+        // 2. API COMPLETATA
+        //    ADESSO MOSTRIAMO IL CANVAS
+        // =====================================================
+
+        if (_Canvas_Prompt_Download == null)
+        {
+            Debug.LogError(
+                "[MENU] Canvas_Prompt_Download non disponibile."
+            );
+
+            yield break;
+        }
+
+        _Canvas_Prompt_Download.gameObject.SetActive(true);
+
+        Debug.Log(
+            "[MENU] Canvas_Prompt_Download mostrato dopo la risposta API."
+        );
+
+        // =====================================================
+        // 3. CONTROLLO POI GIÀ PRESENTI
+        // =====================================================
+
+        int _TotalRowToExtract =
+            _DBClass.getPOI_Count(
+                null,
+                null,
+                comune.nome_comune,
+                null,
+                null
+            );
+
+        if (_TotalRowToExtract > 0)
+        {
+            // Il comune è già presente.
+            // Non serve il download.
+
+            PlayerPrefs.SetString(
+                "istat",
+                Istat
+            );
+
+            PlayerPrefs.SetString(
+                "poi_selezionato",
+                ""
+            );
+
+            PlayerPrefs.SetString(
+                "percorso_selezionato",
+                "");
+
+            _Canvas_Prompt_Download.gameObject.SetActive(false);
+
+            Debug.Log(
+                "[MENU] Il comune è già presente nel DB."
+            );
+
+            yield break;
+        }
+
+        // =====================================================
+        // 4. IL COMUNE NON HA POI
+        //    ASPETTIAMO LA RISPOSTA DELL'UTENTE
+        // =====================================================
+
+        PromptDownloadController promptScript =
+            _Canvas_Prompt_Download
+            .GetComponent<PromptDownloadController>();
+
+        if (promptScript == null)
+        {
+            Debug.LogError(
+                "[MENU] PromptDownloadController non trovato."
+            );
+
+            yield break;
+        }
+
+        // Reset del prompt
+        promptScript.InizializzaPrompt();
+
+        // Aspettiamo che l'utente prema SI o NO
+        yield return new WaitUntil(
+            () => promptScript.RispostaRicevuta
+        );
+
+        // =====================================================
+        // 5. RISPOSTA UTENTE
+        // =====================================================
+
+        if (promptScript.RisultatoScelta == false)
+        {
+            Debug.Log(
+                "[MENU] Download annullato dall'utente."
+            );
+
+            _Canvas_Prompt_Download.gameObject.SetActive(false);
+
+            yield break;
+        }
+
+        // =====================================================
+        // 6. UTENTE HA PREMUTO SI
+        // =====================================================
+
+        Debug.Log(
+            "[MENU] Download confermato dall'utente."
+        );
+
+        List<int> idSinp =
+            new List<int>
+            {
+            comune.id
+            };
+
+        yield return StartCoroutine(
+            pp.StartSync(
+                idSinp,
+                button
+            )
+        );
+
+        Debug.Log(
+            "[MENU] Download completato con successo!"
+        );
+
+        pp.EndSync(button);
+
+        _Canvas_Prompt_Download.gameObject.SetActive(false);
+
+        // =====================================================
+        // 7. VERIFICA FINALE
+        // =====================================================
+
+        int poiCount =
+            _DBClass.getPOI_Count(
+                null,
+                null,
+                comune.nome_comune,
+                null,
+                null
+            );
+
+        if (poiCount > 0)
+        {
+            PlayerPrefs.SetString(
+                "istat",
+                Istat
+            );
+
+            PlayerPrefs.SetString(
+                "poi_selezionato",
+                ""
+            );
+
+            PlayerPrefs.SetString(
+                "percorso_selezionato",
+                ""
+            );
+        }
+    }
 
     // Avvia il prompt, attende la risposta dell'utente, esegue il download e apre il comune.
     private IEnumerator DownloadEApriComune(DBClass.COMUNE comune, Button button)
@@ -176,4 +609,218 @@ public class MenuPrincipale : MonoBehaviour
         PlayerPrefs.SetString("poi_selezionato", ID.text);
     }
 
+
+    public void ButtonCancellaComune(Text id)
+    {
+        Debug.Log("-----------------------------------------------------");
+        Debug.Log("Cancella comune - id: " + id.text);
+        Debug.Log("-----------------------------------------------------");
+
+        // Creiamo il Canvas del messaggio
+        GameObject canvasObject = new GameObject("CanvasConfermaCancellazione");
+
+        Canvas canvas = canvasObject.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 999;
+
+        CanvasScaler scaler = canvasObject.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1080, 1920);
+
+        canvasObject.AddComponent<GraphicRaycaster>();
+
+        // ---------------------------------------------------------
+        // SFONDO
+        // ---------------------------------------------------------
+
+        GameObject pannello = new GameObject("Pannello");
+        pannello.transform.SetParent(canvasObject.transform, false);
+
+        Image pannelloImage = pannello.AddComponent<Image>();
+        pannelloImage.color = new Color(0f, 0f, 0f, 0.75f);
+
+        RectTransform pannelloRect =
+            pannello.GetComponent<RectTransform>();
+
+        pannelloRect.anchorMin = Vector2.zero;
+        pannelloRect.anchorMax = Vector2.one;
+        pannelloRect.offsetMin = Vector2.zero;
+        pannelloRect.offsetMax = Vector2.zero;
+
+        // ---------------------------------------------------------
+        // BOX CENTRALE
+        // ---------------------------------------------------------
+
+        GameObject box = new GameObject("BoxConferma");
+        box.transform.SetParent(pannello.transform, false);
+
+        Image boxImage = box.AddComponent<Image>();
+        boxImage.color = Color.white;
+
+        RectTransform boxRect =
+            box.GetComponent<RectTransform>();
+
+        boxRect.anchorMin = new Vector2(0.1f, 0.35f);
+        boxRect.anchorMax = new Vector2(0.9f, 0.65f);
+        boxRect.offsetMin = Vector2.zero;
+        boxRect.offsetMax = Vector2.zero;
+
+        // ---------------------------------------------------------
+        // TESTO
+        // ---------------------------------------------------------
+
+        GameObject testoObject = new GameObject("TestoConferma");
+        testoObject.transform.SetParent(box.transform, false);
+
+        Text testo = testoObject.AddComponent<Text>();
+
+        testo.text =
+            "Sei sicuro di voler cancellare questo comune?";
+
+        testo.alignment = TextAnchor.MiddleCenter;
+        testo.font = fontPoppins;
+        testo.fontSize = 36;
+        testo.color = Color.black;
+
+        RectTransform testoRect =
+            testo.GetComponent<RectTransform>();
+
+        testoRect.anchorMin = new Vector2(0.05f, 0.45f);
+        testoRect.anchorMax = new Vector2(0.95f, 0.95f);
+        testoRect.offsetMin = Vector2.zero;
+        testoRect.offsetMax = Vector2.zero;
+
+        // ---------------------------------------------------------
+        // BOTTONE ANNULLA
+        // ---------------------------------------------------------
+
+        GameObject bottoneAnnulla =
+            CreaBottone(
+                box.transform,
+                "ANNULLA",
+                new Vector2(0.05f, 0.05f),
+                new Vector2(0.45f, 0.35f)
+            );
+
+        bottoneAnnulla
+            .GetComponent<Button>()
+            .onClick.AddListener(() =>
+            {
+                Destroy(canvasObject);
+            });
+
+        // ---------------------------------------------------------
+        // BOTTONE CONFERMA
+        // ---------------------------------------------------------
+
+        GameObject bottoneConferma =
+            CreaBottone(
+                box.transform,
+                "CONFERMA",
+                new Vector2(0.55f, 0.05f),
+                new Vector2(0.95f, 0.35f)
+            );
+
+        bottoneConferma
+            .GetComponent<Button>()
+            .onClick.AddListener(() =>
+            {
+                Debug.Log(
+                    "Cancellazione confermata. ID: " +
+                    id.text
+                );
+                _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
+                _DBClass.DeleteComuneById(int.Parse(id.text));
+                // Aggiorna la lista dei comuni
+
+                CanvasStatistiche statistiche =
+                    FindFirstObjectByType<CanvasStatistiche>();
+
+                if (statistiche != null)
+                {
+                    statistiche.AggiornaListaComuni();
+                    statistiche.AggiornaPesoApp();
+                }
+                else
+                {
+                    Debug.LogWarning(
+                        "[MENU] CanvasStatistiche non trovato."
+                    );
+                }
+                Destroy(canvasObject);
+            });
+    }
+
+    private GameObject CreaBottone(
+    Transform parent,
+    string testoBottone,
+    Vector2 anchorMin,
+    Vector2 anchorMax)
+    {
+        GameObject bottone =
+            new GameObject(testoBottone);
+
+        bottone.transform.SetParent(
+            parent,
+            false
+        );
+
+        Image image =
+            bottone.AddComponent<Image>();
+
+        image.color =
+            new Color(
+                0.85f,
+                0.85f,
+                0.85f
+            );
+
+        Button button =
+            bottone.AddComponent<Button>();
+
+        RectTransform rect =
+            bottone.GetComponent<RectTransform>();
+
+        rect.anchorMin = anchorMin;
+        rect.anchorMax = anchorMax;
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
+
+        // ---------------------------------------------------------
+        // TESTO BOTTONE
+        // ---------------------------------------------------------
+
+        GameObject testoObject =
+            new GameObject("Text");
+
+        testoObject.transform.SetParent(
+            bottone.transform,
+            false
+        );
+
+        Text testo =
+            testoObject.AddComponent<Text>();
+
+        testo.text =
+            testoBottone;
+
+        testo.font = fontPoppins;
+
+        testo.fontSize = 28;
+        testo.alignment =
+            TextAnchor.MiddleCenter;
+
+        testo.color =
+            Color.black;
+
+        RectTransform testoRect =
+            testo.GetComponent<RectTransform>();
+
+        testoRect.anchorMin = Vector2.zero;
+        testoRect.anchorMax = Vector2.one;
+        testoRect.offsetMin = Vector2.zero;
+        testoRect.offsetMax = Vector2.zero;
+
+        return bottone;
+    }
 }

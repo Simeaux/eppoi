@@ -37,11 +37,11 @@ public class PanelFooter : MonoBehaviour
             if (txtMap != null)
                 txtMap.text = "Map";
             if (txtNavigatore != null)
-                txtNavigatore.text = "Start Navigation";
+                txtNavigatore.text = "Navigation";
             if (txtAudio != null)
-                txtAudio.text = "Play Audio";
+                txtAudio.text = "Audio";
             if (txtInfo != null)
-                txtInfo.text = "Info";
+                txtInfo.text = "QR Code";
             if (txtSearch != null)
                 txtSearch.text = "Search";
 

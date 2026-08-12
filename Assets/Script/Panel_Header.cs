@@ -20,6 +20,9 @@ public class Panel_Header : MonoBehaviour
     public Text abitanti;
     public InputField txtSearch;
     public bool only_blank = false;
+    public GameObject ButtonComuni_scaricati;
+    public Text NumeroComuni_scaricati;
+
 
     private int _lingua_selezionata = 1;
     private DBClass _DBClass;
@@ -52,11 +55,15 @@ public class Panel_Header : MonoBehaviour
                 {
                     CanvasComune.SetActive(true);
                     CanvasPOI.SetActive(false);
+                    ButtonComuni_scaricati.SetActive(false);
                 }
                 if (string.IsNullOrEmpty(PlayerPrefs.GetString("istat")))
                 {
+                    _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
                     CanvasComune.SetActive(false);
                     CanvasPOI.SetActive(false);
+                    ButtonComuni_scaricati.SetActive(true);
+                    NumeroComuni_scaricati.text = _DBClass.GetCOMUNI(null, null, null, null, null, true).Count.ToString();
                 }
             }
         }

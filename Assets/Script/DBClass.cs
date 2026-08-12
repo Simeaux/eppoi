@@ -18,8 +18,7 @@ public class DBClass : MonoBehaviour
 {
     private static GameObject _createTable;
     private static CreateTable createTable;
-    private IDbConnection _connection;
-    private IDbTransaction _transaction;
+
     private void Start()
     {
         Application.targetFrameRate = 60; // O 120 per schermi moderni
@@ -31,6 +30,8 @@ public class DBClass : MonoBehaviour
         createTable = _createTable.AddComponent<CreateTable>();
         StartCoroutine(GetLatLonUsingGPS());
     }
+
+
     public class POI
     {
         public long ID;
@@ -68,6 +69,8 @@ public class DBClass : MonoBehaviour
                 ap = createTable.getPOI_TEXT(1, this.ID);
             return ap.FirstOrDefault()?.descrizione;
         }
+
+
         public string descrizione_breve()
         {
 
@@ -413,6 +416,18 @@ public class DBClass : MonoBehaviour
 
         return createTable.getPOI_IMMAGINI(id, poi_id, solo_principale);
     }
+    public long GetIMMAGINI_PesoTabella()
+    {
+        return createTable.GetIMMAGINI_PesoTabella();
+    }
+    public long GetTEXT_PesoTabella()
+    {
+        return createTable.GetTEXT_PesoTabella();
+    }
+    public long getPesoComuneInDB(int comuneId)
+    {
+        return createTable.getPesoComuneInDB(comuneId);
+    }
     public List<POIXTAPPE> getPOIXTAPPE(int? id = null, long? poi_id = null, long? tappa_id = null, long? percorso_id = null)
     {
         if (createTable == null)
@@ -683,39 +698,222 @@ public class DBClass : MonoBehaviour
         return createTable.CalculateDistance((float)lat_1, (float)lat_2, (float)long_1, (float)long_2);
     }
 
+    public void DeleteComuneById(int comune_id)
+    {
+        createTable.DeleteComuneById(comune_id);
+    }
+
+
+    // ============================================================
+    // DATABASE SYNC / TRANSACTION
+    // ============================================================
+
+    /// <summary>
+    /// Inizia una sincronizzazione database.
+    /// La gestione effettiva della connessione e della transazione
+    /// viene delegata a CreateTable.
+    /// </summary>
 
     public void BeginSync()
     {
-        createTable.BeginSync();
+        try
+        {
+            if (createTable == null)
+            {
+                Debug.LogWarning(
+                    "[DBClass] BeginSync -> createTable == NULL. " +
+                    "Creo CreateTable."
+                );
+
+                if (_createTable != null)
+                {
+                    Destroy(_createTable);
+                    _createTable = null;
+                }
+
+                _createTable = new GameObject(
+                    "Cool GameObject made from Code"
+                );
+
+                createTable =
+                    _createTable.AddComponent<CreateTable>();
+            }
+
+            if (createTable == null)
+            {
+                throw new Exception(
+                    "[DBClass] Impossibile inizializzare CreateTable."
+                );
+            }
+
+            Debug.Log("[DBClass] BEGIN SYNC");
+
+            createTable.BeginSync();
+
+            Debug.Log("[DBClass] BEGIN SYNC OK");
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError(
+                "[DBClass] ERRORE BeginSync:\n" +
+                ex
+            );
+
+            throw;
+        }
     }
 
-    public void ExecSqlInTransaction(string sql)
-    {
-        createTable.ExecSqlInTransaction(sql);
-    }
 
-    public void EndSync()
-    {
-        createTable.EndSync();
-    }
-
+    // ============================================================
+    // COMPATIBILITÀ
+    //
+    // NON apre una seconda transazione.
+    //
+    // BeginSync() ha già inizializzato la sincronizzazione.
+    // ============================================================
 
     public void BeginTransactionFast()
     {
-        if (_transaction == null)
+        Debug.Log(
+            "[DBClass] BeginTransactionFast -> IGNORATO. " +
+            "La transazione è gestita da CreateTable.BeginSync()."
+        );
+    }
+
+
+    // ============================================================
+    // ESECUZIONE SQL
+    // ============================================================
+
+    public void ExecSqlInTransaction(string sql)
+    {
+        try
         {
-            _transaction = _connection.BeginTransaction();
+            if (createTable == null)
+            {
+                throw new Exception(
+                    "[DBClass] ExecSqlInTransaction -> " +
+                    "createTable == NULL."
+                );
+            }
+
+            if (string.IsNullOrWhiteSpace(sql))
+            {
+                return;
+            }
+
+            createTable.ExecSqlInTransaction(sql);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError(
+                "[DBClass] ERRORE ExecSqlInTransaction:\n" +
+                ex +
+                "\nSQL:\n" +
+                sql
+            );
+
+            throw;
         }
     }
 
-    public void EndTransactionFast()
+
+    // ============================================================
+    // FINE SYNC
+    //
+    // È QUI CHE VIENE GESTITO IL COMMIT DA CreateTable.
+    // ============================================================
+
+    public void EndSync()
     {
-        if (_transaction != null)
+        try
         {
-            _transaction.Commit();
-            _transaction.Dispose();
-            _transaction = null;
+            if (createTable == null)
+            {
+                Debug.LogWarning(
+                    "[DBClass] EndSync -> createTable == NULL."
+                );
+
+                return;
+            }
+
+            Debug.Log(
+                "[DBClass] END SYNC / COMMIT"
+            );
+
+            createTable.EndSync();
+
+            Debug.Log(
+                "[DBClass] END SYNC OK"
+            );
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError(
+                "[DBClass] ERRORE EndSync:\n" +
+                ex
+            );
+
+            throw;
         }
     }
+
+
+    // ============================================================
+    // COMPATIBILITÀ
+    //
+    // NON esegue Commit/Rollback.
+    //
+    // Il commit viene eseguito esclusivamente da EndSync().
+    // ============================================================
+
+    public void EndTransactionFast()
+    {
+        Debug.Log(
+            "[DBClass] EndTransactionFast -> IGNORATO. " +
+            "Commit gestito da CreateTable.EndSync()."
+        );
+    }
+
+
+
+
+    // ============================================================
+    // CREATE TABLE INITIALIZATION
+    // ============================================================
+
+    /// <summary>
+    /// Garantisce che CreateTable sia stata inizializzata.
+    /// Evita di creare più istanze inutili.
+    /// </summary>
+    private void EnsureCreateTable()
+    {
+        if (createTable != null)
+            return;
+
+        Debug.Log(
+            "[DBClass] CreateTable non inizializzata. Creazione..."
+        );
+
+        if (_createTable == null)
+        {
+            _createTable = new GameObject(
+                "CreateTable_Runtime"
+            );
+        }
+
+        createTable = _createTable.GetComponent<CreateTable>();
+
+        if (createTable == null)
+        {
+            createTable =
+                _createTable.AddComponent<CreateTable>();
+        }
+
+        Debug.Log(
+            "[DBClass] CreateTable inizializzata correttamente."
+        );
+    }
+
 }
 

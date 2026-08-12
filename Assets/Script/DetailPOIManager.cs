@@ -265,6 +265,13 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                 var ap = Pois.scrollview.GetComponent<RectTransform>().offsetMin;
                                 ap.y = 208;
                                 Pois.scrollview.GetComponent<RectTransform>().offsetMin = ap;
+                                Canvas.ForceUpdateCanvases();
+
+                                ScrollRect sr = Pois.scrollview.GetComponent<ScrollRect>();
+                                if (sr != null)
+                                    sr.verticalNormalizedPosition = 1f;
+
+
                             }
                         }
                     }
@@ -596,6 +603,11 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                             var ap = Pois.scrollview.GetComponent<RectTransform>().offsetMin;
                             ap.y = 200;
                             Pois.scrollview.GetComponent<RectTransform>().offsetMin = ap;
+                            Canvas.ForceUpdateCanvases();
+
+                            ScrollRect sr = Pois.scrollview.GetComponent<ScrollRect>();
+                            if (sr != null)
+                                sr.verticalNormalizedPosition = 1f;
 
                             if (Pois.dettaglioItinerario != null)
                             {

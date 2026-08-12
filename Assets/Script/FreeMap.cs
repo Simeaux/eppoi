@@ -104,45 +104,69 @@ public class FreeMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Input.location.Start();
+        Debug.Log("START GPS");
+        StartCoroutine(StartMap());
+    }
+    IEnumerator StartMap()
+    {
+        yield return StartCoroutine(FindLatLon());
 
-        lat.text = 43.144215900691755.ToString();
-        lon.text = 13.196735039064533.ToString();
-        FindLatLon();
+        double.TryParse(
+    lon.text,
+    NumberStyles.Any,
+    CultureInfo.InvariantCulture,
+    out centerLongitude);
+
+        double.TryParse(
+            lat.text,
+            NumberStyles.Any,
+            CultureInfo.InvariantCulture,
+            out centerLatitude);
+
+        selectedzoom = 15;
+
         zoom.text = "15";
 
+        planeToCameraDistance =
+            Vector3.Distance(
+                abstractMap.transform.position,
+                Camera.main.transform.position);
 
-        double.TryParse(lon.text, out centerLongitude);
-        double.TryParse(lat.text, out centerLatitude);
-        double.TryParse(zoom.text, out selectedzoom);
-        centerLongitudeLast = centerLongitude;
-        centerLatitudeLast = centerLatitude;
-        selectedzoomLast = selectedzoom;
-        planeToCameraDistance = Vector3.Distance(abstractMap.transform.position, Camera.main.transform.position);
-        screenResolution = new Vector2(Screen.width, Screen.height);
+        screenResolution =
+            new Vector2(Screen.width, Screen.height);
+
         MatchPlaneToScreenSize();
-        //if (abstractMap.GetComponent<MeshRenderer>() == null)
-        //{
-        //    abstractMap.AddComponent<MeshRenderer>();
-        //}
-        //mapMaterial = new Material(Shader.Find("Unlit/Texture"));
-        //map.GetComponent<MeshRenderer>().material = mapMaterial;
+
+
         POIGo = new List<GameObject>();
-        _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
-        _extract = GameObject.FindWithTag("SQLite").GetComponent<ExtractDataForMap>();
+
+        _DBClass =
+            GameObject.FindWithTag("SQLite")
+            .GetComponent<DBClass>();
+
+        _extract =
+            GameObject.FindWithTag("SQLite")
+            .GetComponent<ExtractDataForMap>();
+
         _extract.getstart();
-        StartCoroutine(_DBClass.GetLatLonUsingGPS());
+
+
+        yield return StartCoroutine(
+            _DBClass.GetLatLonUsingGPS()
+        );
+
+
         GetMapbox();
-        OnBtnHere();
+
     }
-    public IEnumerable FindLatLon()
+    IEnumerator FindLatLon()
     {
         // Check if the user has location service enabled.
         if (!Input.location.isEnabledByUser)
             Debug.Log("Location not enabled on device or app does not have permission to access location");
 
         // Starts the location service.
-        Input.location.Start();
+        Input.location.Start(5, 5);
 
         // Waits until the location service initializes
         int maxWait = 20;
@@ -169,29 +193,29 @@ public class FreeMap : MonoBehaviour
         {
             // If the connection succeeded, this retrieves the device's current location and displays it in the Console window.
             Debug.Log("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
-            lon.text = Input.location.lastData.longitude.ToString();
-            lat.text = Input.location.lastData.latitude.ToString();
+            lon.text = Input.location.lastData.longitude.ToString(CultureInfo.InvariantCulture);
+            lat.text = Input.location.lastData.latitude.ToString(CultureInfo.InvariantCulture);
         }
 
         // Stops the location service if there is no need to query location updates continuously.
-        Input.location.Stop();
+        //Input.location.Stop();
     }
 
 
     //Update è chiamato a ogni frame
     private double _latitudine;
     private double _longitudine;
-    private bool _gia_spostato = false;
+    private bool _markerCreato = false;
     private void Update()
     {
 
-        if (!_gia_spostato)
+        if (!_markerCreato)
         {
             StartCoroutine(_DBClass.GetLatLonUsingGPS());
-            if (_DBClass._latitudine != 43.2534828186035 && _DBClass._latitudine != 0 && _DBClass._longitudine != 13.0091695785522 && _DBClass._longitudine != 0)
+            if (_DBClass._latitudine != 0 && _DBClass._longitudine != 0)
             {
                 if (_latitudine != _DBClass._latitudine || _longitudine != _DBClass._longitudine)
-                    _gia_spostato = true;
+                    _markerCreato = true;
                 _latitudine = _DBClass._latitudine;
                 _longitudine = _DBClass._longitudine;
 
@@ -946,52 +970,32 @@ public class FreeMap : MonoBehaviour
         */
         Debug.Log("DrawCustomRoute out " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
     }
-    /*
-        public IEnumerator getPosition()
-        {
-            Debug.Log("getPosition in " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
-            // 1. Controlla se l'utente ha il GPS attivo
-            if (!Input.location.isEnabledByUser)
-            {
-                Debug.Log("GPS non attivo sul device");
-                yield break;
-            }
-
-            // 2. Avvia il servizio (accuratezza desiderata 5 metri, aggiornamento ogni 5 metri)
-            Input.location.Start(5, 5);
-
-            // 3. Attendi l'inizializzazione
-            int maxWait = 20;
-            while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
-            {
-                yield return new WaitForSeconds(1);
-                maxWait--;
-            }
-
-            if (maxWait < 1 || Input.location.status == LocationServiceStatus.Failed)
-            {
-                Debug.Log("Impossibile determinare la posizione");
-                yield break;
-            }
-
-            // 4. Posizione ottenuta!
-            _DBClass._latitudine = Input.location.lastData.latitude;
-            _DBClass._longitudine = Input.location.lastData.longitude;
-            var accuracy = Input.location.lastData.horizontalAccuracy;
-
-            Debug.Log($"Coordinate: {_DBClass._latitudine}, {_DBClass._longitudine} (Precisione: {accuracy}m)");
-            Debug.Log("getPosition out " + DateTime.Now.ToString("hh.mm.ss.ffffff"));
-        }
-    */
-
     public void OnBtnHere()
     {
-        //Location l = ARLocationManager.Instance.GetLocationForWorldPosition(Camera.main.transform.position);
-        //Location l = ARLocationProvider.Instance.CurrentLocation.ToLocation();
-        StartCoroutine(_DBClass.GetLatLonUsingGPS());
-        //StartCoroutine(getPosition());
-        SpostaCentro(_DBClass._latitudine, _DBClass._longitudine);
-        Ricalcola_Centro(false);
+        StartCoroutine(OnBtnHereCoroutine());
+    }
+
+
+    private IEnumerator OnBtnHereCoroutine()
+    {
+        yield return StartCoroutine(_DBClass.GetLatLonUsingGPS());
+
+        Debug.Log(
+            "DOVE SONO: " +
+            _DBClass._latitudine +
+            " / " +
+            _DBClass._longitudine
+        );
+
+
+        if (_DBClass._latitudine != 0 &&
+            _DBClass._longitudine != 0)
+        {
+            SpostaCentro(
+                _DBClass._latitudine,
+                _DBClass._longitudine
+            );
+        }
     }
     public void SpostaCentro(double latitudine, double longitudine)
     {

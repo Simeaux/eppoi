@@ -67,7 +67,35 @@ public class CreateTable : MonoBehaviour
             _increment_progress = false;
         }
     }
-    // string DATABASE_NAME = "db:\\mydatabase.s3db";
+
+    public string ConvertiTag(string testoDalDatabase)
+    {
+        string risultato = testoDalDatabase;
+        if (!string.IsNullOrEmpty(risultato))
+        {
+            // Sostituisce il tag <strong> con il tag <b> di Unity
+            risultato = risultato.Replace("<strong>", "<b>");
+            risultato = risultato.Replace("</strong>", "</b>");
+            // Sostituisce il div dell'alert con un tag colore (es. Celeste/Azzurro info)
+            risultato = risultato.Replace("<div class=\"alert alert-info\">", "<color=#0000FF>");
+            // Sostituisce la chiusura del div con la chiusura del colore
+            risultato = risultato.Replace("</div>", "</color>");
+            // 1. Rimpiazza le entità HTML comuni come lo spazio unificatore
+            risultato = risultato.Replace("&nbsp;", " ");
+
+            // 2. Rimuove i tag immagine e tutto il loro contenuto (TextMeshPro non li mostra comunque)
+            risultato = Regex.Replace(risultato, @"<img[^>]*>", "");
+
+            // 3. Rimuove tutti gli altri tag HTML non supportati (es. <hr>, <h4>, <p> e relativi attributi)
+            // Mantiene però il testo contenuto all'interno dei tag.
+            risultato = Regex.Replace(risultato, @"<(?!b|/b|i|/i|color|/color)[^>]+>", "");
+
+            // 4. Rimuove eventuali spazi vuoti o ritorni a capo multipli generati dalla pulizia
+            risultato = Regex.Replace(risultato, @"\n\s*\n", "\n\n");
+
+        }
+        return risultato;
+    }
     private bool _reset_db;
     public void CreateDB(bool reset_db, Slider slider)
     {
@@ -173,209 +201,7 @@ public class CreateTable : MonoBehaviour
 #else
         Application.Quit();
 #endif
-    }/*
-    private IEnumerator DownloadAndCopyRoutine(string destinationPath, string dbAddress, Slider loadingBar, Slider loadingChunkBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente, Canvas Canvas_Errore_connessione, Canvas Canvas_DB_Corrotto, Canvas Canvas_Manca_Spazio, Canvas Canvas_Prompt_Download, Text Testo_Info_Download, Button Bottone_Conferma, Button Bottone_Annulla)
-    {
-        Debug.Log(destinationPath);
-        Debug.Log(dbAddress);
-        long totalBytes = GetFileSize(dbAddress);
-        Debug.Log(totalBytes);
-        // Controllo spazio: serve il peso del file + margine (es. 10MB)
-        long requiredSpace = totalBytes + (1024 * 1024 * 10);
-
-        if (GetAvailableStorage() < requiredSpace)
-        {
-            Debug.LogError("Spazio insufficiente sul dispositivo!");
-            // Qui dovresti attivare un Canvas di errore specifico
-            Canvas_Manca_Spazio.gameObject.SetActive(true);
-            yield break;
-        }
-        // 1. ESCI SE GIÀ PRONTO
-        if (File.Exists(destinationPath) && new FileInfo(destinationPath).Length >= totalBytes)
-        {
-            Debug.Log(destinationPath);
-            Debug.Log("Database integro. Fine.");
-            italiano.gameObject.SetActive(true);
-            inglese.gameObject.SetActive(true);
-            NonChiedereNuovamente.gameObject.SetActive(true);
-            yield break;
-        }
-
-        bool userAuthorized = false;
-        bool userCancelled = false;
-
-        string readableSize = FormatBytes(totalBytes);
-
-        // Mostra il valore all'utente nel Canvas di Prompt
-        Testo_Info_Download.text = $"Per continuare è necessario scaricare risorse aggiuntive.\n\n" +
-                                   $"Spazio richiesto: {readableSize}";
-
-        Canvas_Prompt_Download.gameObject.SetActive(true);
-
-        // Assegna i listener ai bottoni del prompt
-        Bottone_Conferma.onClick.RemoveAllListeners();
-        Bottone_Conferma.onClick.AddListener(() => userAuthorized = true);
-
-        // Se hai un tasto "Annulla"
-        // Sostituisci il tuo vecchio blocco nel DownloadAndCopyRoutine:
-        Bottone_Annulla.onClick.RemoveAllListeners();
-        Bottone_Annulla.onClick.AddListener(() => StartCoroutine(QuitSafeRoutine()));
-
-
-        // Aspetta l'input dell'utente senza bloccare l'app
-        while (!userAuthorized)
-        {
-            yield return null;
-        }
-
-        Canvas_Prompt_Download.gameObject.SetActive(false);
-
-        if (userCancelled) yield break;
-
-
-        int chunkSize = 1024 * 1024 * 10; // 10MB
-        long downloadedBytes = 0;
-        int i = 0;
-
-        // 2. CALCOLO REALE DEI BYTE GIÀ SCARICATI
-        // Importante: ci fermiamo al primo chunk mancante per garantire l'ordine
-        while (File.Exists(Path.Combine(Application.persistentDataPath, $"part_{i}.tmp")))
-        {
-            downloadedBytes += new FileInfo(Path.Combine(Application.persistentDataPath, $"part_{i}.tmp")).Length;
-            i++;
-        }
-
-        // 3. DOWNLOAD DEI CHUNK MANCANTI
-        while (downloadedBytes < totalBytes)
-        {
-            italiano.gameObject.SetActive(false);
-            inglese.gameObject.SetActive(false);
-            NonChiedereNuovamente.gameObject.SetActive(false);
-            if (loadingBar != null) loadingBar.gameObject.SetActive(true);
-            string currentPartPath = Path.Combine(Application.persistentDataPath, $"part_{i}.tmp");
-            long end = Math.Min(downloadedBytes + chunkSize - 1, totalBytes - 1);
-
-            UnityWebRequest www = UnityWebRequest.Get(dbAddress);
-            www.SetRequestHeader("Range", $"bytes={downloadedBytes}-{end}");
-            www.downloadHandler = new DownloadHandlerFile(currentPartPath);
-
-            var op = www.SendWebRequest();
-            while (!op.isDone)
-            {
-                if (loadingBar != null) loadingBar.value = op.progress;
-                yield return null;
-            }
-
-            if (www.result == UnityWebRequest.Result.Success)
-            {
-                downloadedBytes += (long)www.downloadedBytes;
-                loadingChunkBar.value = (float)downloadedBytes / totalBytes * 1.0f;
-                loadingChunkBar.gameObject.SetActive(true);
-                Debug.Log($"Progresso: {(float)downloadedBytes / totalBytes * 100}%");
-                i++;
-                yield return null;
-            }
-            else
-            {
-                Canvas_Errore_connessione.gameObject.SetActive(true);
-                yield break;
-            }
-        }
-
-        // 4. UNIONE FINALE (MERGE) - Creazione file da zero
-        Debug.Log("Unione chunk in corso...");
-        if (File.Exists(destinationPath)) File.Delete(destinationPath);
-
-        using (var outputStream = File.Create(destinationPath))
-        {
-            // Usiamo 'i' che ora rappresenta il numero totale di pezzi
-            for (int _i = 0; _i < i; _i++)
-            {
-                string p = Path.Combine(Application.persistentDataPath, $"part_{_i}.tmp");
-                if (File.Exists(p))
-                {
-                    using (var inputStream = File.OpenRead(p))
-                    {
-                        inputStream.CopyTo(outputStream);
-                    }
-                    File.Delete(p); // Pulizia immediata
-                }
-            }
-        }
-
-        // Attiva UI finale
-        Debug.Log("Merge completato. Ora puoi fare l'integrity_check.");
-        Debug.Log("File salvato in: " + destinationPath);
-
-
-        // 2. Verifica Integrità SQLite
-        if (CheckSqliteIntegrity(destinationPath))
-        {
-            Debug.Log("Database pronto all'uso!");
-        }
-        else
-        {
-            Canvas_DB_Corrotto.gameObject.SetActive(true);
-            Debug.LogError("Database corrotto a livello logico.");
-        }
-        loadingChunkBar.gameObject.SetActive(false);
-        loadingBar.gameObject.SetActive(false);
-        italiano.gameObject.SetActive(true);
-        inglese.gameObject.SetActive(true);
-        NonChiedereNuovamente.gameObject.SetActive(true);
-
     }
-
-    long GetFileSize(string url)
-    {
-        // Il blocco 'using' chiama automaticamente .Dispose() alla fine
-        using (UnityWebRequest headRequest = UnityWebRequest.Head(url))
-        {
-            var operation = headRequest.SendWebRequest();
-
-            // Attenzione: questo 'while' blocca Unity. 
-            // In una Coroutine sarebbe meglio usare 'yield return operation;'
-            while (!operation.isDone) { }
-
-            if (headRequest.result != UnityWebRequest.Result.Success)
-            {
-                Debug.LogError("Errore Head Request: " + headRequest.error);
-                return 0;
-            }
-
-            string contentLength = headRequest.GetResponseHeader("Content-Length");
-            return string.IsNullOrEmpty(contentLength) ? 0 : long.Parse(contentLength);
-        } // <--- QUI il socket viene CHIUSO realmente
-    }
-    */
-    /*
-    public void copyDB(Slider loadingBar, Slider loadingChunkBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente, Canvas Canvas_DB_Corrotto, Canvas Canvas_Errore_connessione, Canvas Canvas_Manca_Spazio, Canvas Canvas_Prompt_Download, Text Testo_Info_Download, Button Bottone_Conferma, Button Bottone_Annulla)
-    {
-        string dbName = "mydatabase.db";
-
-
-        string destinationPath = Path.Combine(Application.persistentDataPath, dbName);
-        Debug.Log("allora:" + destinationPath);
-        try
-        {
-            string _path = "https://www.macerataturismo.it/wp-content/blogs.dir/1/files/2025/12/mydatabase_minimo.db.bytes";
-
-            Debug.Log("quindi:" + _path);
-            StartCoroutine(DownloadAndCopyRoutine(destinationPath, _path, loadingBar, loadingChunkBar, italiano, inglese, NonChiedereNuovamente, Canvas_Errore_connessione, Canvas_DB_Corrotto, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla));
-
-
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"Errore durante il processo: {e.Message}");
-        }
-
-        string sourcePath = Path.Combine(Application.streamingAssetsPath, dbName);
-        conn = "URI=file:" + destinationPath;
-
-
-    }
-*/
 
     public void copyDB(
     Slider loadingBar,
@@ -517,37 +343,43 @@ public class CreateTable : MonoBehaviour
 
     Debug.Log("COPIA DATABASE ANDROID");
 
-    using (UnityWebRequest request =
-           UnityWebRequest.Get(sourcePath))
+    string androidSourcePath =
+        Path.Combine(Application.streamingAssetsPath, dbName)
+        .Replace("\\", "/");
+
+    Debug.Log("ANDROID STREAMING ASSETS = " + Application.streamingAssetsPath);
+    Debug.Log("ANDROID SOURCE PATH = " + androidSourcePath);
+
+    using (UnityWebRequest request = UnityWebRequest.Get(androidSourcePath))
     {
         yield return request.SendWebRequest();
 
+        Debug.Log("REQUEST RESULT = " + request.result);
+        Debug.Log("REQUEST RESPONSE CODE = " + request.responseCode);
+        Debug.Log("REQUEST ERROR = " + request.error);
+        Debug.Log("REQUEST URL = " + androidSourcePath);
+
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.LogError(
-                "Errore lettura DB da StreamingAssets: "
-                + request.error);
-
+            Debug.LogError("Errore lettura DB da StreamingAssets");
             yield break;
         }
 
+        Debug.Log("BYTES LETTI = " + request.downloadHandler.data.Length);
+
         try
         {
-            File.WriteAllBytes(
-                destinationPath,
-                request.downloadHandler.data);
+            File.WriteAllBytes(destinationPath, request.downloadHandler.data);
         }
         catch (Exception ex)
         {
-            Debug.LogError(
-                "Errore scrittura DB: "
-                + ex.Message);
-
+            Debug.LogError("Errore scrittura DB: " + ex.Message);
             yield break;
         }
     }
 
 #else
+
 
         Debug.Log("COPIA DATABASE IOS/WINDOWS/MAC");
 
@@ -751,45 +583,7 @@ public class CreateTable : MonoBehaviour
         NonChiedereNuovamente.gameObject.SetActive(true);
 
     }
-    /*
-    private void setConnection()
-    {
-        //conn = "URI=file:mydatabase.db:";
-        string dbname = "mydatabase.db";
-        string filepath = Application.streamingAssetsPath + "/" + dbname;
-        //string filepath = Application.persistentDataPath + "/" + dbname;
 
-        if (!File.Exists(filepath))
-        {
-
-            Debug.LogWarning("File " + filepath + " does not exist.Attempting to create from " + Application.dataPath + "!/ assets /" + dbname);
-#if UNITY_ANDROID
-            var loadDb = new WWW("jar:file://" + Application.dataPath + "!/assets/" + dbname);  // this is the path to your StreamingAssets in android
-            while (!loadDb.isDone) { }  // CAREFUL here, for safety reasons you shouldn't let this while loop unattended, place a timer and error check
-            // then save to Application.persistentDataPath
-            File.WriteAllBytes(filepath, loadDb.bytes);
-#elif UNITY_IOS
-                 var loadDb = Application.dataPath + "/Raw/" + dbname;  // this is the path to your StreamingAssets in iOS
-                // then save to Application.persistentDataPath
-                File.Copy(loadDb, filepath);
-
-#else
-	var loadDb = Application.dataPath + "/StreamingAssets/" + dbname;  // this is the path to your StreamingAssets in iOS
-	// then save to Application.persistentDataPath
-	File.Copy(loadDb, filepath);
-
-#endif
-        }
-
-        //open db connection
-
-        conn = "URI = file:" +filepath;
-        //Debug.Log("Daje1 " + conn);
-        if (Verbose)
-            Debug.Log("Stablishing connection to: " + conn);
-
-    }
-    */
     private void CreateATable(bool reset_db)
     {
         _call_all_togeter = reset_db;
@@ -1008,33 +802,7 @@ public class CreateTable : MonoBehaviour
     private void ReadDataBase()
     {
         string dbname = "mydatabase.db";
-        /*
-#if UNITY_IOS
-                Debug.Log("ios");
-#else
 
-#if UNITY_ANDROID
-               string  path = "jar:file://" + Application.dataPath + "!/assets/alphabet.txt";
-                 WWW wwwfile = new WWW(path);
-                 while (!wwwfile.isDone) { }
-                 var filepath = string.Format("{0}/{1}", Application.persistentDataPath, "alphabet.t");
-                 File.WriteAllBytes(filepath, wwwfile.bytes);
- 
-                 StreamReader wr = new StreamReader(filepath);
-                     string line;
-                     while ((line = wr.ReadLine()) != null)
-                     {
-                     //your code
-                     }
-            Debug.Log("android");
-#else
-            Debug.Log("something else");
-#endif
-
-
-#endif
-        //string pathToAssetsFolder = UnityEngine.Application.dataPath.;
-        */
         string fileToCopy = "";
 #if UNITY_IOS
         fileToCopy = Application.streamingAssetsPath + dbname;
@@ -1051,36 +819,11 @@ public class CreateTable : MonoBehaviour
             myFile.Delete();
 
         File.Copy(fileToCopy, destinationDirectory);
-        /*
-        string path = "Assets/Script/JSON/dati_per_app.json";
-        //Read the text from directly from the test.txt file
-        StreamReader reader = new StreamReader(path);
-        var risposta = "{\"Risposta\": {\"\": " + reader.ReadToEnd() + "}}";
-        LoadJson(risposta);
-        */
+
     }
-    /*
-    private void ReadDataBase2()
-    {
-        Parallel.ForEach(vs_to_call, vs =>
-        {
-            //foreach (string vs in vs_to_call)
-            //{
-            string path = "Assets/Script/JSON/" + vs + ".json";
-            if (File.Exists(path))
-            {
-                //Read the text from directly from the test.txt file
-                StreamReader reader = new StreamReader(path);
-                var risposta = "{\"Risposta\": {\"" + vs + "\": " + reader.ReadToEnd() + "}}";
-                LoadJson(risposta);
-            }
-            //}
-        });
-    }
-    */
+
     private void AddData()
     {
-
         string vs = _vs;
         if (string.IsNullOrEmpty(vs))
         {
@@ -1097,23 +840,30 @@ public class CreateTable : MonoBehaviour
         }
         string indirizzo = "https://www.macerataturismo.it/wp-json/rest_api_ws/v1/get_json" + vs;
         Debug.Log(indirizzo);
-        var www = UnityWebRequest.PostWwwForm(indirizzo, "");
 
-        www.SendWebRequest();
-        while (www.result == UnityWebRequest.Result.InProgress)
-            new WaitForSeconds(0.1f);
-        if (WebRequestResultIsError(www))
+        using (var www = UnityWebRequest.Get(indirizzo))
         {
-            Debug.Log(www.error);
-            Debug.Log(indirizzo);
-        }
-        else
-        {
-            // Show results as text
-            string jsonreturned = www.downloadHandler.text;
-            LoadJson(jsonreturned);
-            //_ = MyAsyncFunction();
+            www.SendWebRequest();
 
+            while (!www.isDone)
+            {
+                System.Threading.Thread.Sleep(10); // Evita il blocco totale della CPU al 100%
+            }
+
+            if (WebRequestResultIsError(www))
+            {
+                Debug.Log(www.error);
+                Debug.Log(indirizzo);
+            }
+            else
+            {
+                string jsonreturned = www.downloadHandler.text;
+                LoadJson(jsonreturned);
+
+                // Forza la pulizia della stringa pesante
+                jsonreturned = string.Empty;
+                GC.Collect(); // Suggerisce al garbage collector di ripulire la memoria inutilizzata
+            }
         }
     }
 
@@ -2292,8 +2042,9 @@ public class CreateTable : MonoBehaviour
                 {
                     POI_TEXT comune = new POI_TEXT();
                     comune.id = _reader.GetInt32(0);
-                    comune.descrizione = !_reader.IsDBNull(1) ? Regex.Unescape(_reader.GetString(1)) : "";
-                    comune.descrizione_breve = !_reader.IsDBNull(2) ? Regex.Unescape(_reader.GetString(2)) : "";
+                    comune.descrizione = ConvertiTag(!_reader.IsDBNull(1) ? Regex.Unescape(_reader.GetString(1)) : "");
+                    comune.descrizione_breve = ConvertiTag(!_reader.IsDBNull(2) ? Regex.Unescape(_reader.GetString(2)) : "");
+
                     comune.lingua_id = lingua_id;
 
 
@@ -2344,6 +2095,339 @@ public class CreateTable : MonoBehaviour
             dbconn.Close();
         }
         return ret;
+    }
+
+    public long GetIMMAGINI_PesoTabella()
+    {
+        long pesoTotale = 0;
+
+        getConnection();
+
+        if (Verbose)
+            Debug.Log("Stablished connection to: " + conn);
+
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+
+            if (Verbose)
+                Debug.Log("Connection opened to: " + conn);
+            var tabelle = new List<string> { "COMUNI_IMMAGINI", "POI_IMMAGINI", "TAPPE_IMMAGINI", "PERCORSI_IMMAGINI" };
+
+            foreach (var tabella in tabelle)
+            {
+                using (var dbcmd = dbconn.CreateCommand())
+                {
+                    dbcmd.CommandText = $@"
+                    SELECT id, descrizione, image
+                    FROM {tabella}
+                    WHERE attivo = 'Y'
+                ";
+
+
+
+                    IDataReader reader = dbcmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        // id
+                        if (!reader.IsDBNull(0))
+                            pesoTotale += sizeof(int);
+
+                        // descrizione
+                        if (!reader.IsDBNull(1))
+                        {
+                            string descrizione = reader.GetString(1);
+
+                            pesoTotale += Encoding.UTF8.GetByteCount(
+                                descrizione
+                            );
+                        }
+
+                        // image -> BLOB
+                        if (!reader.IsDBNull(2))
+                        {
+                            byte[] image = (byte[])reader["image"];
+
+                            if (image != null)
+                                pesoTotale += image.Length;
+                        }
+
+                    }
+
+                    reader.Close();
+                }
+            }
+            dbconn.Close();
+        }
+
+        Debug.Log(
+            "[DB] Peso tabella POI_IMMAGINI: " +
+            pesoTotale +
+            " byte"
+        );
+
+        return pesoTotale;
+    }
+
+    public long GetTEXT_PesoTabella()
+    {
+        long pesoTotale = 0;
+
+        getConnection();
+
+        if (Verbose)
+            Debug.Log("Stablished connection to: " + conn);
+
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+
+            if (Verbose)
+                Debug.Log("Connection opened to: " + conn);
+            var tabelle = new List<string> { "COMUNI_TEXT", "POI_TEXT", "TAPPE_TEXT", "PERCORSI_TEXT" };
+
+            foreach (var tabella in tabelle)
+            {
+                using (var dbcmd = dbconn.CreateCommand())
+                {
+                    dbcmd.CommandText = $@"
+                    SELECT id, descrizione, descrizione_breve
+                    FROM {tabella}
+                    WHERE attivo = 'Y'
+                ";
+
+
+
+                    IDataReader reader = dbcmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        // id
+                        if (!reader.IsDBNull(0))
+                            pesoTotale += sizeof(int);
+
+                        // descrizione
+                        if (!reader.IsDBNull(1))
+                        {
+                            string descrizione = reader.GetString(1);
+
+                            pesoTotale += Encoding.UTF8.GetByteCount(
+                                descrizione
+                            );
+                        }
+
+                        // descrizione_breve
+                        if (!reader.IsDBNull(2))
+                        {
+                            string descrizione_breve = reader.GetString(2);
+
+                            pesoTotale += Encoding.UTF8.GetByteCount(
+                                descrizione_breve
+                            );
+                        }
+
+
+                    }
+
+                    reader.Close();
+                }
+            }
+
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"SELECT " +
+    "SUM(LENGTH(ifnull(PERCORSI.percorso, 0)))  " +
+    "AS bytes " +
+    "FROM  PERCORSI ";
+                dbcmd.CommandText = sqlQuery;
+                IDataReader _reader = dbcmd.ExecuteReader();
+                while (_reader.Read())
+                {
+                    pesoTotale += _reader.IsDBNull(0) ? 0 : _reader.GetInt64(0);
+                }
+            }
+            Debug.Log(
+                "[DB] Peso tabella POI_IMMAGINI: " +
+                pesoTotale +
+                " byte"
+            );
+        }
+        dbconn.Close();
+
+        return pesoTotale;
+    }
+
+    public void DeleteComuneById(int comuneId)
+    {
+        getConnection();
+        if (Verbose)
+            Debug.Log("Stablished connection to: " + conn);
+
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            if (Verbose)
+                Debug.Log("Connection opened to: " + conn);
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"DELETE FROM PERCORSI_IMMAGINI WHERE percorso_id in( select id from PERCORSI where poi_id in (SELECT id FROM POI WHERE comune_id = {comuneId}))";
+                dbcmd.CommandText = sqlQuery;
+                dbcmd.ExecuteNonQuery();
+            }
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"DELETE FROM PERCORSI_TEXT WHERE percorso_id in( select id from PERCORSI where poi_id in (SELECT id FROM POI WHERE comune_id = {comuneId}))";
+                dbcmd.CommandText = sqlQuery;
+                dbcmd.ExecuteNonQuery();
+            }
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"DELETE FROM TAPPE_TEXT where tappa_id in (SELECT tappa_id FROM TAPPEXPERCORSI WHERE percorso_id in( select id from PERCORSI where poi_id in (SELECT id FROM POI WHERE comune_id = {comuneId})))";
+                dbcmd.CommandText = sqlQuery;
+                dbcmd.ExecuteNonQuery();
+            }
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"DELETE FROM TAPPE_IMMAGINI where tappa_id in (SELECT tappa_id FROM TAPPEXPERCORSI WHERE percorso_id in( select id from PERCORSI where poi_id in (SELECT id FROM POI WHERE comune_id = {comuneId})))";
+                dbcmd.CommandText = sqlQuery;
+                dbcmd.ExecuteNonQuery();
+            }
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"DELETE FROM POIXTAPPE WHERE tappa_id in( select tappa_id from TAPPEXPERCORSI WHERE percorso_id in( select id from PERCORSI where poi_id in (SELECT id FROM POI WHERE comune_id = {comuneId})))";
+                dbcmd.CommandText = sqlQuery;
+                dbcmd.ExecuteNonQuery();
+            }
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"DELETE FROM TAPPEXPERCORSI WHERE percorso_id in( select id from PERCORSI where poi_id in (SELECT id FROM POI WHERE comune_id = {comuneId}))";
+                dbcmd.CommandText = sqlQuery;
+                dbcmd.ExecuteNonQuery();
+            }
+
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"DELETE FROM TAPPE WHERE id not in (SELECT tappa_id FROM TAPPEXPERCORSI )";
+                dbcmd.CommandText = sqlQuery;
+                dbcmd.ExecuteNonQuery();
+            }
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"DELETE FROM PERCORSI where poi_id in (SELECT id FROM POI WHERE comune_id = {comuneId})";
+                dbcmd.CommandText = sqlQuery;
+                dbcmd.ExecuteNonQuery();
+            }
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"DELETE FROM POI_IMMAGINI where poi_id in (SELECT id FROM POI WHERE comune_id = {comuneId})";
+                dbcmd.CommandText = sqlQuery;
+                dbcmd.ExecuteNonQuery();
+            }
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"DELETE FROM POI_TEXT where poi_id in (SELECT id FROM POI WHERE comune_id = {comuneId})";
+                dbcmd.CommandText = sqlQuery;
+                dbcmd.ExecuteNonQuery();
+            }
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"DELETE FROM POI WHERE comune_id = {comuneId}";
+                dbcmd.CommandText = sqlQuery;
+                dbcmd.ExecuteNonQuery();
+            }
+            dbconn.Close();
+        }
+    }
+
+    public long getPesoComuneInDB(int comuneId)
+    {
+        long pesoTotale = 0;
+
+        getConnection();
+
+        if (Verbose)
+            Debug.Log("Stablished connection to: " + conn);
+
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            if (Verbose)
+                Debug.Log("Connection opened to: " + conn);
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"SELECT " +
+    "SUM(LENGTH(ifnull(poi_immagini.image, 2))/2) + " +
+    "SUM(LENGTH(ifnull(poi_text.descrizione, 0))) + " +
+    "SUM(LENGTH(ifnull(poi_text.descrizione_breve, 0)))" +
+"AS bytes " +
+"FROM poi " +
+"LEFT JOIN poi_text " +
+"    ON poi.id = poi_text.poi_id " +
+"LEFT JOIN poi_immagini " +
+"    ON poi.id = poi_immagini.poi_id " +
+"WHERE poi.comune_id = " + comuneId + "; ";
+                dbcmd.CommandText = sqlQuery;
+                IDataReader _reader = dbcmd.ExecuteReader();
+                while (_reader.Read())
+                {
+                    pesoTotale += _reader.IsDBNull(0) ? 0 : _reader.GetInt64(0);
+                }
+            }
+
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"SELECT " +
+    "SUM(LENGTH(ifnull(PERCORSI.percorso, 2))/2) + " +
+    "SUM(LENGTH(ifnull(PERCORSI_IMMAGINI.image, 2))/2) + " +
+    "SUM(LENGTH(ifnull(PERCORSI_text.descrizione, 0))) + " +
+    "SUM(LENGTH(ifnull(PERCORSI_text.descrizione_breve, 0))) " +
+"AS bytes " +
+"FROM poi " +
+"LEFT JOIN PERCORSI " +
+"    ON poi.id = PERCORSI.poi_id " +
+"LEFT JOIN PERCORSI_TEXT " +
+"    ON PERCORSI.id = PERCORSI_TEXT.percorso_id " +
+"LEFT JOIN PERCORSI_IMMAGINI " +
+"    ON PERCORSI.id = PERCORSI_IMMAGINI.percorso_id " +
+"WHERE poi.comune_id = " + comuneId + "; ";
+                dbcmd.CommandText = sqlQuery;
+                IDataReader _reader = dbcmd.ExecuteReader();
+                while (_reader.Read())
+                {
+                    pesoTotale += _reader.IsDBNull(0) ? 0 : _reader.GetInt64(0);
+                }
+            }
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                sqlQuery = $"SELECT " +
+    "SUM(LENGTH(ifnull(TAPPE_IMMAGINI.image, 2))/2) + " +
+    "SUM(LENGTH(ifnull(TAPPE_TEXT.descrizione, 0))) + " +
+    "SUM(LENGTH(ifnull(TAPPE_TEXT.descrizione_breve, 0))) " +
+"AS bytes " +
+"FROM poi " +
+"LEFT JOIN POIXTAPPE " +
+"    ON poi.id = POIXTAPPE.poi_id " +
+"LEFT JOIN TAPPE " +
+"    ON TAPPE.id = POIXTAPPE.tappa_id " +
+"LEFT JOIN TAPPE_IMMAGINI " +
+"    ON TAPPE.id = TAPPE_IMMAGINI.tappa_id " +
+"LEFT JOIN TAPPE_TEXT " +
+"    ON TAPPE.id = TAPPE_TEXT.tappa_id " +
+"WHERE poi.comune_id = " + comuneId + "; ";
+                dbcmd.CommandText = sqlQuery;
+                IDataReader _reader = dbcmd.ExecuteReader();
+                while (_reader.Read())
+                {
+                    pesoTotale += _reader.IsDBNull(0) ? 0 : _reader.GetInt64(0);
+                }
+            }
+            dbconn.Close();
+        }
+
+        Debug.Log($"[DB] Peso totale del comune con ID {comuneId}: {pesoTotale} byte");
+
+        return pesoTotale;
     }
     public List<TIPO_POI> getTIPO_POI(string tag = null, int? group_id = null, int? id = null)
     {
@@ -2539,6 +2623,7 @@ public class CreateTable : MonoBehaviour
         using (dbconn = new SqliteConnection(conn))
         {
             dbconn.Open();
+
             if (Verbose)
                 Debug.Log("Connection opened to: " + conn);
             using (var dbcmd = dbconn.CreateCommand())
@@ -2893,8 +2978,8 @@ public class CreateTable : MonoBehaviour
                 {
                     PERCORSO_TEXT comune = new PERCORSO_TEXT();
                     comune.id = _reader.GetInt32(0);
-                    comune.descrizione_breve = !_reader.IsDBNull(1) ? Regex.Unescape(_reader.GetString(1)) : "";
-                    comune.descrizione = !_reader.IsDBNull(2) ? Regex.Unescape(_reader.GetString(2)) : "";
+                    comune.descrizione_breve = ConvertiTag(!_reader.IsDBNull(1) ? Regex.Unescape(_reader.GetString(1)) : "");
+                    comune.descrizione = ConvertiTag(!_reader.IsDBNull(2) ? Regex.Unescape(_reader.GetString(2)) : "");
                     comune.lingua_id = lingua_id;
 
 
@@ -3238,16 +3323,16 @@ public class CreateTable : MonoBehaviour
             cmd.CommandText = "PRAGMA synchronous = OFF;";
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = "PRAGMA temp_store = MEMORY;";
-            cmd.ExecuteNonQuery();
+            // NON usare temp_store = MEMORY
         }
 
         _syncTransaction = _syncConnection.BeginTransaction();
 
         _syncCommand = _syncConnection.CreateCommand();
         _syncCommand.Transaction = _syncTransaction;
-    }
 
+        Debug.Log("[DB] SQLITE TRANSACTION READY");
+    }
 
     public void ExecSqlInTransaction(string sql)
     {

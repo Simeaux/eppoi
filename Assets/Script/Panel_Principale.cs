@@ -22,6 +22,19 @@ using System.IO.Compression;
 
 public class Panel_Principale : MonoBehaviour
 {
+
+
+
+    [Serializable]
+    public class SyncZipResponse
+    {
+        public bool success;
+        public string file;
+        public string url;
+        public long size;
+    }
+
+
     public GameObject content_list_comuni;
     public Text filtro_nome;
     public GameObject _panel_poi;
@@ -42,7 +55,7 @@ public class Panel_Principale : MonoBehaviour
     // Un solo HttpClient riutilizzato per tutta l'app (evita l'esaurimento dei socket)
     private static readonly HttpClient _httpClient = new HttpClient
     {
-        Timeout = TimeSpan.FromSeconds(30)
+        Timeout = TimeSpan.FromSeconds(120)
     };
 
     private GameObject _btnComune;
@@ -54,225 +67,200 @@ public class Panel_Principale : MonoBehaviour
     public GameObject _logo;
     private bool _rotate = false;
 
-    private readonly BlockingCollection<List<string>> _sqlBatches =
-        new BlockingCollection<List<string>>(200);
-
-    private Thread _dbThread;
-
-    private long _parsedQueries = 0;
-    private long _executedQueries = 0;
-
-    private readonly BlockingCollection<string> _sqlQueue =
-        new BlockingCollection<string>(1000);
-
-    private bool _streamFinished = false;
-
-    private float _frameTime;
     private Button _currentButton;
     private GameObject _currentDownloadIcon;
 
     // Start is called before the first frame update
     private void Start()
     {
-        _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
-        _istat = "";// PlayerPrefs.GetString("istat");
-        _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
-        _btnComune = (GameObject)Resources.Load("Button_comune");
+        _lingua_selezionata =
+            PlayerPrefs.GetInt("lingua_selezionata");
 
-        txtLuoghi.text = _lingua_selezionata == 1 ? "Luoghi" : "Places";
-        txtItinerari.text = _lingua_selezionata == 1 ? "Itinerari" : "Itineraries";
-        txtPuntiDiInteresse.text = _lingua_selezionata == 1 ? "Punti di interesse" : "Points of interest";
+        _istat = "";
 
-        // Avvio del download come COROUTINE: cosi' lo spinner gira e la UI resta viva.
-        List<int> _id_sinp = new List<int>();
+        GameObject sqliteObject =
+            GameObject.FindWithTag("SQLite");
+
+        if (sqliteObject == null)
+        {
+            Debug.LogError("[START] Oggetto SQLite non trovato.");
+            return;
+        }
+
+        _DBClass =
+            sqliteObject.GetComponent<DBClass>();
+
+        if (_DBClass == null)
+        {
+            Debug.LogError("[START] DBClass non trovato.");
+            return;
+        }
+
+        _btnComune =
+            (GameObject)Resources.Load("Button_comune");
+
+        txtLuoghi.text =
+            _lingua_selezionata == 1
+                ? "Luoghi"
+                : "Places";
+
+        txtItinerari.text =
+            _lingua_selezionata == 1
+                ? "Itinerari"
+                : "Itineraries";
+
+        txtPuntiDiInteresse.text =
+            _lingua_selezionata == 1
+                ? "Punti di interesse"
+                : "Points of interest";
+
+
+        // ==========================================================
+        // COSTRUZIONE ID SINP
+        // ==========================================================
+
+        List<int> _id_sinp =
+            new List<int>();
+
         _id_sinp.Add(0);
-        _DBClass.GetCOMUNI(null, null, null, null, null, true).ForEach(c => _id_sinp.Add(c.id));
-        if (_id_sinp.Count > 0)
-            StartCoroutine(StartSync(_id_sinp, null));
 
-        if (PlayerPrefs.GetString("apri_direttamente_il_poi_selezionato") != "")
+        List<COMUNE> comuni =
+            _DBClass.GetCOMUNI(
+                null,
+                null,
+                null,
+                null,
+                null,
+                true
+            );
+
+        if (comuni != null)
+        {
+            foreach (COMUNE c in comuni)
+            {
+                if (c != null && c.id > 0)
+                    _id_sinp.Add(c.id);
+            }
+        }
+
+
+        // ==========================================================
+        // IMPORTANTE
+        //
+        // Lasciamo terminare completamente la fase iniziale
+        // prima di partire con la sincronizzazione.
+        // ==========================================================
+
+        if (_id_sinp.Count > 1)
+        {
+            StartCoroutine(StartSyncDelayed(
+                _id_sinp,
+                null
+            ));
+        }
+
+
+        // ==========================================================
+        // APERTURA POI
+        // ==========================================================
+
+        if (PlayerPrefs.GetString(
+                "apri_direttamente_il_poi_selezionato") != "")
         {
             _panel_principale.SetActive(false);
-            PlayerPrefs.SetString("poi_selezionato", PlayerPrefs.GetString("apri_direttamente_il_poi_selezionato"));
+
+            PlayerPrefs.SetString(
+                "poi_selezionato",
+                PlayerPrefs.GetString(
+                    "apri_direttamente_il_poi_selezionato"
+                )
+            );
+
             _panel_poi.SetActive(true);
         }
-        if (PlayerPrefs.HasKey("comune_selected") && PlayerPrefs.GetInt("comune_selected") > 0)
+
+
+        // ==========================================================
+        // APERTURA COMUNE
+        // ==========================================================
+
+        if (PlayerPrefs.HasKey("comune_selected") &&
+            PlayerPrefs.GetInt("comune_selected") > 0)
         {
-            var _comune = _DBClass.GetCOMUNI(null, null, PlayerPrefs.GetInt("comune_selected"));
-            if (_comune != null)
+            var _comune =
+                _DBClass.GetCOMUNI(
+                    null,
+                    null,
+                    PlayerPrefs.GetInt("comune_selected")
+                );
+
+            if (_comune != null &&
+                _comune.Count > 0)
             {
-                PlayerPrefs.SetString("istat", _comune.FirstOrDefault().istat);
+                PlayerPrefs.SetString(
+                    "istat",
+                    _comune.FirstOrDefault().istat
+                );
+
                 _panel_principale.SetActive(false);
                 _panel_comune.SetActive(true);
             }
         }
     }
 
+    private IEnumerator StartSyncDelayed(
+        List<int> id,
+        Button button)
+    {
+        // Lascia terminare Start(), OnGUI e la costruzione iniziale
+        // prima di provare ad acquisire il lock SQLite.
+        yield return null;
+
+        yield return null;
+
+        yield return StartCoroutine(
+            StartSync(id, button)
+        );
+    }
     private bool _syncRunning = false;
 
     public IEnumerator StartSync(List<int> id, Button button)
     {
-        if (_syncRunning) yield break;
-
-        yield return StartCoroutine(SyncRoutine(id, button));
-    }
-
-
-    private void StartDBWorker()
-    {
-        _dbThread = new Thread(() =>
+        if (_syncRunning)
         {
-            Debug.Log("[DB THREAD] START");
-
-            _DBClass.BeginSync();
-
-            try
-            {
-                foreach (var batch in _sqlBatches.GetConsumingEnumerable())
-                {
-                    if (batch == null || batch.Count == 0)
-                        continue;
-
-                    _DBClass.BeginTransactionFast();
-
-                    foreach (var sql in batch)
-                    {
-                        _DBClass.ExecSqlInTransaction(sql);
-
-                        Interlocked.Increment(ref _executedQueries);
-                    }
-
-                    _DBClass.EndTransactionFast();
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError(ex);
-            }
-
-            _DBClass.EndSync();
-
-            Debug.Log(
-                $"[DB THREAD] END - Executed {Interlocked.Read(ref _executedQueries)}");
-        });
-
-        _dbThread.IsBackground = true;
-        _dbThread.Start();
-    }
-
-    private IEnumerator StreamParser(
-    Stream stream,
-    long totalBytes,
-    Slider downloadSlider,
-    Text downloadText)
-    {
-        Debug.Log("[PARSER] START");
-
-        byte[] buffer = new byte[65536];
-
-        StringBuilder sb = new StringBuilder(1024 * 128);
-
-        long totalRead = 0;
-
-        List<string> batch = new List<string>(500);
-
-        while (true)
-        {
-            var readTask = stream.ReadAsync(buffer, 0, buffer.Length);
-
-            yield return new WaitUntil(() => readTask.IsCompleted);
-
-            int read = readTask.Result;
-
-            if (read <= 0)
-                break;
-
-            totalRead += read;
-
-            sb.Append(
-                Encoding.UTF8.GetString(
-                    buffer,
-                    0,
-                    read));
-
-            string current = sb.ToString();
-
-            int idx;
-
-            while ((idx = current.IndexOf(";--", StringComparison.Ordinal)) >= 0)
-            {
-                string sql = current.Substring(0, idx);
-
-                sql = sql.Trim();
-
-                if (sql.Length > 0)
-                {
-                    batch.Add(sql);
-
-                    Interlocked.Increment(ref _parsedQueries);
-
-                    if (batch.Count >= 500)
-                    {
-                        _sqlBatches.Add(batch);
-
-                        batch = new List<string>(500);
-                    }
-                }
-
-                current = current.Substring(idx + 3);
-            }
-
-            sb.Clear();
-            sb.Append(current);
-
-            if (totalBytes > 0)
-            {
-                float progress =
-                    Mathf.Clamp01(
-                        (float)totalRead / totalBytes);
-
-                downloadSlider.value = progress;
-
-                downloadText.text =
-                    $"Download {(totalRead / 1024 / 1024)} MB / {(totalBytes / 1024 / 1024)} MB";
-            }
-
-            yield return null;
-        }
-
-        if (sb.Length > 0)
-        {
-            string sql = sb.ToString().Trim();
-
-            if (sql.Length > 0)
-            {
-                batch.Add(sql);
-
-                Interlocked.Increment(ref _parsedQueries);
-            }
-        }
-
-        if (batch.Count > 0)
-        {
-            _sqlBatches.Add(batch);
-        }
-
-        Debug.Log(
-            $"[PARSER] END Parsed={Interlocked.Read(ref _parsedQueries)}");
-    }
-
-    // Chiamala anche per il download "su richiesta": StartCoroutine(SyncRoutine(idSinp));
-    public IEnumerator SyncRoutine(List<int> _id_sinp = null, Button button = null)
-    {
-        if (_id_sinp != null && _id_sinp.Count() == 1 && _id_sinp.FirstOrDefault() == 0)
-        {
+            Debug.LogWarning("[SYNC] Sincronizzazione già in corso.");
             yield break;
         }
-        _syncRunning = true;
+
+        yield return StartCoroutine(
+            SyncRoutineInternal(id, button)
+        );
+        // if (GameObject.FindObjectOfType<ItinerariEventiPOI_AttaccatiAlComune>() != null)
+        //     StartCoroutine(GameObject.FindObjectOfType<ItinerariEventiPOI_AttaccatiAlComune>().CaricaEventiComune());
+    }
+
+
+    private IEnumerator SyncRoutineInternal(
+        List<int> _id_sinp = null,
+        Button button = null)
+    {
+        if (_id_sinp != null &&
+            _id_sinp.Count == 1 &&
+            _id_sinp[0] == 0)
+        {
+            Debug.LogWarning(
+                "[SYNC] ID_SINP contiene solamente 0."
+            );
+
+            _syncRunning = false;
+
+            yield break;
+        }
+
+        _rotate = true;
 
         Debug.Log("[SYNC] INIT");
 
-        _rotate = true;
 
         bool singleComune =
             _id_sinp != null &&
@@ -284,313 +272,1373 @@ public class Panel_Principale : MonoBehaviour
             downloadSlider.gameObject.SetActive(true);
             dbSlider.gameObject.SetActive(true);
 
-            downloadSlider.value = 0;
-            dbSlider.value = 0;
+            downloadSlider.minValue = 0f;
+            downloadSlider.maxValue = 1f;
+            downloadSlider.value = 0f;
+
+            dbSlider.minValue = 0f;
+            dbSlider.maxValue = 1f;
+            dbSlider.value = 0f;
+
+            downloadText.text =
+                "Preparazione download...";
+
+            dbText.text =
+                "Preparazione database...";
         }
 
         string url =
             "https://www.macerataturismo.it/wp-json/rest_api_ws/v1/aggiorna_app_eppoi"
-            + "?VERSIONE=" + _DBClass.getLastUpdatedFromTable("VERSIONE")
-            + "&POI=" + _DBClass.getLastUpdatedFromTable("POI")
-            + "&COMUNI=" + _DBClass.getLastUpdatedFromTable("COMUNI_TEXT")
-            + "&PERCORSI=" + _DBClass.getLastUpdatedFromTable("PERCORSI");
+            + "?VERSIONE=" +
+            _DBClass.getLastUpdatedFromTable("VERSIONE")
+            + "&POI=" +
+            _DBClass.getLastUpdatedFromTable("POI")
+            + "&COMUNI=" +
+            _DBClass.getLastUpdatedFromTable("COMUNI_TEXT")
+            + "&PERCORSI=" +
+            _DBClass.getLastUpdatedFromTable("PERCORSI");
 
-        if (_id_sinp != null && _id_sinp.Count > 0)
-            url += "&ID_SINP=" + string.Join(",", _id_sinp);
+        if (_id_sinp != null &&
+            _id_sinp.Count > 0)
+        {
+            url +=
+                "&ID_SINP=" +
+                string.Join(",", _id_sinp);
+        }
 
-        url += "&t=" + DateTime.UtcNow.Ticks;
+        url +=
+            "&t=" +
+            DateTime.UtcNow.Ticks;
 
-        Debug.Log("[SYNC URL] " + url);
+        Debug.Log(
+            "[SYNC URL] " +
+            url);
 
-        string sqlScript = null;
+        string sqlFilePath = null;
+        string zipPath = null;
+
+        // ==========================================================
+        // CASO 1
+        // SINGOLO COMUNE -> JSON -> ZIP -> SQL
+        // ==========================================================
 
         if (singleComune)
         {
-            //--------------------------------------------------
-            // CASO 1: SERVER RESTITUISCE ZIP
-            //--------------------------------------------------
+            downloadText.text =
+                "Richiesta aggiornamento...";
 
-            string zipPath =
+            zipPath =
                 Path.Combine(
                     Application.persistentDataPath,
-                    $"sync_{DateTime.UtcNow.Ticks}.zip");
+                    "sync_" +
+                    DateTime.UtcNow.Ticks +
+                    ".zip");
+
+            string zipUrl = null;
+
+            // ======================================================
+            // RICHIESTA API
+            // ======================================================
+
+            using (UnityWebRequest apiRequest =
+                   UnityWebRequest.Get(url))
+            {
+                apiRequest.timeout = 60;
+
+                yield return apiRequest.SendWebRequest();
+
+#if UNITY_2020_1_OR_NEWER
+
+                if (apiRequest.result !=
+                    UnityWebRequest.Result.Success)
+
+#else
+
+            if (apiRequest.isNetworkError ||
+                apiRequest.isHttpError)
+
+#endif
+                {
+                    Debug.LogError(
+                        "[SYNC API ERROR] " +
+                        apiRequest.error);
+
+                    downloadText.text =
+                        "Errore richiesta aggiornamento";
+
+                    EndSync(button);
+
+                    yield break;
+                }
+
+                string json =
+                    apiRequest.downloadHandler.text;
+
+                Debug.Log(
+                    "[SYNC API RESPONSE] " +
+                    json);
+
+                SyncZipResponse response =
+                    JsonUtility.FromJson<SyncZipResponse>(
+                        json);
+
+                if (response == null)
+                {
+                    Debug.LogError(
+                        "[SYNC API] JSON nullo.");
+
+                    downloadText.text =
+                        "Risposta server non valida";
+
+                    EndSync(button);
+
+                    yield break;
+                }
+
+                if (!response.success)
+                {
+                    Debug.LogError(
+                        "[SYNC API] success=false");
+
+                    downloadText.text =
+                        "Aggiornamento non disponibile";
+
+                    EndSync(button);
+
+                    yield break;
+                }
+
+                if (string.IsNullOrWhiteSpace(
+                    response.url))
+                {
+                    Debug.LogError(
+                        "[SYNC API] URL ZIP mancante.");
+
+                    downloadText.text =
+                        "URL database mancante";
+
+                    EndSync(button);
+
+                    yield break;
+                }
+
+                zipUrl =
+                    response.url;
+
+                Debug.Log(
+                    "[SYNC ZIP URL] " +
+                    zipUrl);
+
+                if (response.size > 0)
+                {
+                    Debug.Log(
+                        "[SYNC SERVER ZIP SIZE] " +
+                        FormatBytes(response.size));
+                }
+            }
+
+            // ======================================================
+            // DOWNLOAD ZIP
+            // ======================================================
+
+            downloadText.text =
+                "Download database...";
+
+            bool downloadSuccess = false;
 
             yield return StartCoroutine(
                 DownloadZipCoroutine(
-                    url,
+                    zipUrl,
                     zipPath,
                     downloadSlider,
-                    downloadText));
+                    downloadText,
+                    result =>
+                    {
+                        downloadSuccess = result;
+                    }));
 
-            if (!File.Exists(zipPath))
+            if (!downloadSuccess)
             {
-                Debug.LogError("[SYNC] ZIP NON TROVATO");
+                Debug.LogError(
+                    "[SYNC] Download ZIP fallito.");
 
                 EndSync(button);
+
                 yield break;
             }
 
-            bool completed = false;
-            Exception workerException = null;
-            string tempFolderRoot = Application.temporaryCachePath;
+            if (!File.Exists(zipPath))
+            {
+                Debug.LogError(
+                    "[SYNC] ZIP non trovato.");
+
+                EndSync(button);
+
+                yield break;
+            }
+
+            FileInfo zipInfo =
+                new FileInfo(zipPath);
+
+            long zipSize =
+                zipInfo.Length;
+
+            Debug.Log(
+                "[SYNC] ZIP ricevuto: " +
+                FormatBytes(zipSize));
+
+            if (zipSize <= 0)
+            {
+                Debug.LogError(
+                    "[SYNC] ZIP vuoto.");
+
+                DeleteFileSafely(
+                    zipPath,
+                    "[ZIP DELETE]");
+
+                EndSync(button);
+
+                yield break;
+            }
+
+            // ======================================================
+            // ESTRAZIONE ZIP
+            // ======================================================
+
+            downloadText.text =
+                "Estrazione database...";
+
+            bool extractionCompleted = false;
+
+            Exception extractionException = null;
+
+            string extractedSqlPath = null;
+
+            string extractionRoot =
+                Application.temporaryCachePath;
+
             Task.Run(() =>
             {
                 try
                 {
-                    sqlScript = ExtractSqlFromZip(
-                        zipPath,
-                        tempFolderRoot);
-
-                    if (string.IsNullOrWhiteSpace(sqlScript))
-                        throw new Exception("SQL vuoto");
-
-                    completed = true;
+                    extractedSqlPath =
+                        ExtractSqlFileFromZip(
+                            zipPath,
+                            extractionRoot);
                 }
                 catch (Exception ex)
                 {
-                    workerException = ex;
-                    completed = true;
+                    extractionException = ex;
                 }
+
+                extractionCompleted = true;
             });
 
-            while (!completed)
+            while (!extractionCompleted)
+            {
                 yield return null;
-
-            try
-            {
-                File.Delete(zipPath);
-            }
-            catch
-            {
             }
 
-            if (workerException != null)
+            if (extractionException != null)
             {
-                Debug.LogException(workerException);
+                Debug.LogError(
+                    "[ZIP EXTRACTION ERROR] " +
+                    extractionException);
+
+                Debug.LogException(
+                    extractionException);
+
+                downloadText.text =
+                    "Errore estrazione database";
+
+                DeleteFileSafely(
+                    zipPath,
+                    "[ZIP DELETE]");
 
                 EndSync(button);
+
                 yield break;
             }
+
+            sqlFilePath =
+                extractedSqlPath;
+
+            if (string.IsNullOrWhiteSpace(
+                sqlFilePath))
+            {
+                Debug.LogError(
+                    "[SYNC] Percorso SQL vuoto.");
+
+                DeleteFileSafely(
+                    zipPath,
+                    "[ZIP DELETE]");
+
+                EndSync(button);
+
+                yield break;
+            }
+
+            if (!File.Exists(sqlFilePath))
+            {
+                Debug.LogError(
+                    "[SYNC] SQL estratto non trovato: " +
+                    sqlFilePath);
+
+                DeleteFileSafely(
+                    zipPath,
+                    "[ZIP DELETE]");
+
+                EndSync(button);
+
+                yield break;
+            }
+
+            FileInfo sqlInfo =
+                new FileInfo(sqlFilePath);
+
+            Debug.Log(
+                "[SYNC] SQL estratto: " +
+                FormatBytes(sqlInfo.Length));
+
+            DeleteFileSafely(
+                zipPath,
+                "[ZIP DELETE]");
+
+            zipPath = null;
         }
         else
         {
-            //--------------------------------------------------
-            // CASO 2: SERVER RESTITUISCE SQL DIRETTO
-            //--------------------------------------------------
+            // ==========================================================
+            // CASO 2
+            // SERVER -> SQL DIRETTO
+            // ==========================================================
 
-            Debug.Log("[SYNC] DOWNLOAD SQL");
+            Debug.Log(
+                "[SYNC] DOWNLOAD SQL DIRETTO");
 
-            using (UnityWebRequest req = UnityWebRequest.Get(url))
+            string sqlTempPath =
+                Path.Combine(
+                    Application.temporaryCachePath,
+                    "sync_" +
+                    DateTime.UtcNow.Ticks +
+                    ".sql");
+
+            using (UnityWebRequest req =
+                   UnityWebRequest.Get(url))
             {
-                req.SendWebRequest();
+                req.timeout = 600;
 
-                while (!req.isDone)
-                {
-                    yield return null;
-                }
+                yield return req.SendWebRequest();
 
 #if UNITY_2020_1_OR_NEWER
-                if (req.result != UnityWebRequest.Result.Success)
+
+                if (req.result !=
+                    UnityWebRequest.Result.Success)
+
 #else
-            if (req.isNetworkError || req.isHttpError)
+
+            if (req.isNetworkError ||
+                req.isHttpError)
+
 #endif
                 {
-                    Debug.LogError(req.error);
+                    Debug.LogError(
+                        "[SYNC SQL DOWNLOAD ERROR] " +
+                        req.error);
 
                     EndSync(button);
+
                     yield break;
                 }
 
-                sqlScript = req.downloadHandler.text;
-                sqlScript = sqlScript.Trim();
+                if (req.downloadHandler == null)
+                {
+                    Debug.LogError(
+                        "[SYNC] DownloadHandler SQL nullo.");
 
-                if (sqlScript.StartsWith("\""))
-                    sqlScript = sqlScript.Substring(1);
+                    EndSync(button);
 
-                if (sqlScript.EndsWith("\""))
-                    sqlScript = sqlScript.Substring(0, sqlScript.Length - 1);
+                    yield break;
+                }
+
+                File.WriteAllText(
+                    sqlTempPath,
+                    req.downloadHandler.text,
+                    Encoding.UTF8);
+
+                sqlFilePath =
+                    sqlTempPath;
             }
 
-            if (string.IsNullOrWhiteSpace(sqlScript))
+            if (string.IsNullOrWhiteSpace(
+                sqlFilePath) ||
+                !File.Exists(sqlFilePath))
             {
-                Debug.LogError("[SYNC] SQL VUOTO");
+                Debug.LogError(
+                    "[SYNC] FILE SQL NON CREATO");
 
                 EndSync(button);
+
                 yield break;
             }
         }
 
-        //--------------------------------------------------
-        // ESECUZIONE SCRIPT SQL
-        //--------------------------------------------------
+        // ==========================================================
+        // CONTROLLO FILE SQL
+        // ==========================================================
 
-        dbText.text = "Applicazione script...";
-        dbSlider.value = 0.5f;
-
-        bool dbCompleted = false;
-        Exception dbException = null;
-
-        Task.Run(() =>
+        if (string.IsNullOrWhiteSpace(
+            sqlFilePath))
         {
-            try
-            {
-                ExecuteFullScriptInSingleTransaction(sqlScript);
-
-                dbCompleted = true;
-            }
-            catch (Exception ex)
-            {
-                dbException = ex;
-
-                dbCompleted = true;
-            }
-        });
-
-        while (!dbCompleted)
-            yield return null;
-
-        if (dbException != null)
-        {
-            Debug.LogException(dbException);
+            Debug.LogError(
+                "[SYNC] Percorso SQL nullo.");
 
             EndSync(button);
+
             yield break;
         }
 
-        dbSlider.value = 1f;
-        downloadSlider.value = 1f;
+        if (!File.Exists(sqlFilePath))
+        {
+            Debug.LogError(
+                "[SYNC] File SQL non trovato: " +
+                sqlFilePath);
 
-        Debug.Log("[SYNC] COMPLETE");
+            EndSync(button);
+
+            yield break;
+        }
+
+        // ==========================================================
+        // APPLICAZIONE SQL
+        // ==========================================================
+
+        dbText.text =
+            "Applicazione database...";
+
+        dbSlider.value =
+            0f;
+
+        bool sqlCompleted = false;
+
+        Exception sqlException = null;
+
+        try
+        {
+            ExecuteSqlFileStreaming(
+                sqlFilePath,
+                progress =>
+                {
+                    if (singleComune)
+                    {
+                        dbSlider.value =
+                            Mathf.Clamp01(progress);
+                    }
+                });
+
+            sqlCompleted = true;
+        }
+        catch (Exception ex)
+        {
+            sqlException = ex;
+        }
+
+        if (!sqlCompleted ||
+            sqlException != null)
+        {
+            Debug.LogError(
+                "[SYNC] ERRORE APPLICAZIONE SQL");
+
+            if (sqlException != null)
+            {
+                Debug.LogException(
+                    sqlException);
+            }
+
+            dbText.text =
+                "Errore aggiornamento database";
+
+            DeleteFileSafely(
+                sqlFilePath,
+                "[SQL DELETE]");
+
+            EndSync(button);
+
+            yield break;
+        }
+
+        // ==========================================================
+        // AGGIORNAMENTO COMPLETATO
+        // ==========================================================
+
+        DeleteFileSafely(
+            sqlFilePath,
+            "[SQL DELETE]");
+
+        sqlFilePath = null;
+
+        if (singleComune)
+        {
+            dbSlider.value =
+                1f;
+
+            downloadSlider.value =
+                1f;
+
+            dbText.text =
+                "Database aggiornato";
+
+            downloadText.text =
+                "Aggiornamento completato";
+        }
+
+        Debug.Log(
+            "[SYNC] COMPLETE");
 
         EndSync(button);
     }
 
-
     private IEnumerator DownloadZipCoroutine(
-        string url,
-        string destinationFile,
-        Slider slider,
-        Text txt)
+     string url,
+     string destinationFile,
+     Slider slider,
+     Text txt,
+     Action<bool> completedCallback)
     {
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            Debug.LogError(
+                "[ZIP DOWNLOAD] URL vuoto.");
+
+            txt.text =
+                "URL download non valido";
+
+            completedCallback?.Invoke(false);
+
+            yield break;
+        }
+
+        if (string.IsNullOrWhiteSpace(
+            destinationFile))
+        {
+            Debug.LogError(
+                "[ZIP DOWNLOAD] Destinazione vuota.");
+
+            txt.text =
+                "Percorso download non valido";
+
+            completedCallback?.Invoke(false);
+
+            yield break;
+        }
+
+        string directory =
+            Path.GetDirectoryName(
+                destinationFile);
+
+        if (!string.IsNullOrWhiteSpace(directory) &&
+            !Directory.Exists(directory))
+        {
+            try
+            {
+                Directory.CreateDirectory(
+                    directory);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(
+                    "[ZIP DOWNLOAD] Errore creazione directory: " +
+                    ex);
+
+                txt.text =
+                    "Errore spazio temporaneo";
+
+                completedCallback?.Invoke(false);
+
+                yield break;
+            }
+        }
+
+        DeleteFileSafely(
+            destinationFile,
+            "[ZIP OLD FILE DELETE]");
+
+        slider.minValue = 0f;
+        slider.maxValue = 1f;
+        slider.value = 0f;
+
+        txt.text =
+            "Connessione al server...";
+
         using (UnityWebRequest req =
                UnityWebRequest.Get(url))
         {
+            // Nessun timeout per download molto grandi.
+            req.timeout = 0;
+
+            DownloadHandlerFile handler =
+                new DownloadHandlerFile(
+                    destinationFile);
+
+            handler.removeFileOnAbort =
+                false;
+
             req.downloadHandler =
-                new DownloadHandlerFile(destinationFile);
+                handler;
 
-            req.SendWebRequest();
+            UnityWebRequestAsyncOperation operation =
+                req.SendWebRequest();
 
-            while (!req.isDone)
+            while (!operation.isDone)
             {
-                slider.value = req.downloadProgress;
+                float progress =
+                    req.downloadProgress;
 
-                txt.text =
-                    $"Download {(req.downloadProgress * 100f):0}%";
+                if (progress >= 0f)
+                {
+                    slider.value =
+                        Mathf.Clamp01(progress);
+                }
+
+                ulong downloaded =
+                    req.downloadedBytes;
+
+                string contentLength =
+                    req.GetResponseHeader(
+                        "Content-Length");
+
+                ulong total = 0;
+
+                bool hasTotal =
+                    !string.IsNullOrWhiteSpace(
+                        contentLength) &&
+                    ulong.TryParse(
+                        contentLength,
+                        out total) &&
+                    total > 0;
+
+                if (hasTotal)
+                {
+                    txt.text =
+                        "Download " +
+                        (progress * 100f)
+                            .ToString("0") +
+                        "%  " +
+                        FormatBytes(downloaded) +
+                        " / " +
+                        FormatBytes(total);
+                }
+                else
+                {
+                    txt.text =
+                        "Download " +
+                        (progress * 100f)
+                            .ToString("0") +
+                        "%  " +
+                        FormatBytes(downloaded);
+                }
 
                 yield return null;
             }
 
 #if UNITY_2020_1_OR_NEWER
-            if (req.result != UnityWebRequest.Result.Success)
+
+            if (req.result !=
+                UnityWebRequest.Result.Success)
+
 #else
-        if (req.isNetworkError || req.isHttpError)
+
+        if (req.isNetworkError ||
+            req.isHttpError)
+
 #endif
             {
-                Debug.LogError(req.error);
+                Debug.LogError(
+                    "[ZIP DOWNLOAD ERROR] " +
+                    req.error);
+
+                txt.text =
+                    "Errore download";
+
+                DeleteFileSafely(
+                    destinationFile,
+                    "[ZIP PARTIAL DELETE]");
+
+                completedCallback?.Invoke(false);
+
+                yield break;
             }
         }
+
+        if (!File.Exists(destinationFile))
+        {
+            Debug.LogError(
+                "[ZIP DOWNLOAD] File non trovato dopo il download.");
+
+            txt.text =
+                "File ZIP non trovato";
+
+            completedCallback?.Invoke(false);
+
+            yield break;
+        }
+
+        FileInfo info =
+            new FileInfo(destinationFile);
+
+        if (info.Length <= 0)
+        {
+            Debug.LogError(
+                "[ZIP DOWNLOAD] File ZIP vuoto.");
+
+            txt.text =
+                "File ZIP vuoto";
+
+            DeleteFileSafely(
+                destinationFile,
+                "[ZIP EMPTY DELETE]");
+
+            completedCallback?.Invoke(false);
+
+            yield break;
+        }
+
+        slider.value =
+            1f;
+
+        txt.text =
+            "Download completato - " +
+            FormatBytes(info.Length);
+
+        Debug.Log(
+            "[ZIP DOWNLOAD COMPLETED] " +
+            FormatBytes(info.Length));
+
+        completedCallback?.Invoke(true);
     }
-
-
-
-    private string ExtractSqlFromZip(
+    private string ExtractSqlFileFromZip(
     string zipPath,
     string tempFolderRoot)
     {
+        if (string.IsNullOrWhiteSpace(zipPath))
+        {
+            throw new ArgumentException(
+                "zipPath vuoto.");
+        }
+
+        if (string.IsNullOrWhiteSpace(
+            tempFolderRoot))
+        {
+            throw new ArgumentException(
+                "tempFolderRoot vuoto.");
+        }
+
+        if (!File.Exists(zipPath))
+        {
+            throw new FileNotFoundException(
+                "ZIP non trovato.",
+                zipPath);
+        }
+
+        FileInfo zipInfo =
+            new FileInfo(zipPath);
+
+        if (zipInfo.Length <= 0)
+        {
+            throw new InvalidDataException(
+                "ZIP vuoto.");
+        }
+
         string extractFolder =
             Path.Combine(
                 tempFolderRoot,
-                "sync_extract_" + Guid.NewGuid());
+                "sync_extract_" +
+                Guid.NewGuid().ToString("N"));
 
-        Directory.CreateDirectory(extractFolder);
-
-        ZipFile.ExtractToDirectory(
-            zipPath,
+        Directory.CreateDirectory(
             extractFolder);
 
-        string sqlFile =
-            Directory.GetFiles(
-                extractFolder,
-                "*",
-                SearchOption.AllDirectories)
-            .FirstOrDefault();
-
-        if (string.IsNullOrEmpty(sqlFile))
-            throw new Exception("Nessun file trovato nello zip");
-
-        string sql =
-            File.ReadAllText(
-                sqlFile,
-                Encoding.UTF8);
+        Debug.Log(
+            "[ZIP] Estrazione in: " +
+            extractFolder);
 
         try
         {
-            Directory.Delete(extractFolder, true);
+            ZipFile.ExtractToDirectory(
+                zipPath,
+                extractFolder);
+
+            string[] sqlFiles =
+                Directory.GetFiles(
+                    extractFolder,
+                    "*.sql",
+                    SearchOption.AllDirectories);
+
+            if (sqlFiles == null ||
+                sqlFiles.Length == 0)
+            {
+                throw new FileNotFoundException(
+                    "Nessun file .sql trovato nello ZIP.");
+            }
+
+            string sqlFile =
+                sqlFiles
+                    .OrderByDescending(
+                        file =>
+                        new FileInfo(file).Length)
+                    .FirstOrDefault();
+
+            if (string.IsNullOrWhiteSpace(
+                sqlFile))
+            {
+                throw new FileNotFoundException(
+                    "File SQL non valido.");
+            }
+
+            FileInfo sqlInfo =
+                new FileInfo(sqlFile);
+
+            if (sqlInfo.Length <= 0)
+            {
+                throw new InvalidDataException(
+                    "File SQL vuoto.");
+            }
+
+            Debug.Log(
+                "[ZIP] SQL trovato: " +
+                sqlFile);
+
+            Debug.Log(
+                "[ZIP] SQL SIZE: " +
+                FormatBytes(sqlInfo.Length));
+
+            return sqlFile;
         }
         catch
         {
-        }
+            try
+            {
+                if (Directory.Exists(
+                    extractFolder))
+                {
+                    Directory.Delete(
+                        extractFolder,
+                        true);
+                }
+            }
+            catch (Exception cleanupEx)
+            {
+                Debug.LogWarning(
+                    "[ZIP CLEANUP ERROR] " +
+                    cleanupEx.Message);
+            }
 
-        return sql;
+            throw;
+        }
     }
 
 
 
-    private void ExecuteFullScriptInSingleTransaction(string sqlScript)
+
+
+    private void ExecuteSqlFileStreaming(
+      string sqlFile,
+      Action<float> progressCallback = null)
     {
-        Debug.Log("[DB] START");
+        Debug.Log("[DB] STREAM START");
 
-        string[] commands =
-            sqlScript.Split(
-                new[] { ";--" },
-                StringSplitOptions.RemoveEmptyEntries);
+        if (string.IsNullOrWhiteSpace(sqlFile))
+            throw new ArgumentException(
+                "Percorso SQL vuoto.",
+                nameof(sqlFile));
 
-        Debug.Log($"[DB] COMMANDS = {commands.Length}");
+        if (!File.Exists(sqlFile))
+            throw new FileNotFoundException(
+                "File SQL non trovato.",
+                sqlFile);
 
-        _DBClass.BeginSync();
+        FileInfo sqlInfo = new FileInfo(sqlFile);
+
+        long sqlFileSize = sqlInfo.Length;
+
+        if (sqlFileSize <= 0)
+            throw new InvalidDataException(
+                "Il file SQL è vuoto.");
+
+        Debug.Log(
+            "[DB] SQL SIZE: " +
+            FormatBytes(sqlFileSize));
+
+        long executed = 0;
+        long bytesRead = 0;
+
+        bool syncStarted = false;
 
         try
         {
-            int count = 0;
+            // ========================================================
+            // TRANSAZIONE
+            // ========================================================
 
-            foreach (string command in commands)
+            Debug.Log("[DB] BEGIN SYNC");
+
+            _DBClass.BeginSync();
+
+            syncStarted = true;
+
+            Debug.Log("[DB] BEGIN SYNC OK");
+
+
+            // ========================================================
+            // STREAM FILE
+            // ========================================================
+
+            using (FileStream fileStream =
+                   new FileStream(
+                       sqlFile,
+                       FileMode.Open,
+                       FileAccess.Read,
+                       FileShare.Read,
+                       1024 * 1024,
+                       FileOptions.SequentialScan))
             {
-                string sql = command.Trim();
+                // Buffer di lettura.
+                // 64 KB è sufficiente e non crea grossi picchi di memoria.
+                byte[] buffer = new byte[64 * 1024];
 
-                if (string.IsNullOrWhiteSpace(sql))
-                    continue;
+                // Query corrente.
+                StringBuilder queryBuffer =
+                    new StringBuilder(4096);
 
-                _DBClass.ExecSqlInTransaction(sql);
+                int bytesReadNow;
 
-                count++;
+                // Stato del separatore ;--
+                int separatorState = 0;
 
-                if ((count % 1000) == 0)
+
+                // ====================================================
+                // LETTURA A BLOCCHI
+                // ====================================================
+
+                while ((bytesReadNow =
+                        fileStream.Read(
+                            buffer,
+                            0,
+                            buffer.Length)) > 0)
                 {
-                    Debug.Log($"[DB] EXECUTED {count}");
+                    bytesRead += bytesReadNow;
+
+
+                    // ================================================
+                    // PROCESSA I BYTE
+                    // ================================================
+
+                    for (int i = 0; i < bytesReadNow; i++)
+                    {
+                        char c = (char)buffer[i];
+
+
+                        // =================================================
+                        // RICONOSCIMENTO SEPARATORE ;--
+                        //
+                        // ;  -> stato 1
+                        // -  -> stato 2
+                        // -  -> separatore completo
+                        // =================================================
+
+                        if (separatorState == 0)
+                        {
+                            if (c == ';')
+                            {
+                                separatorState = 1;
+                            }
+                            else
+                            {
+                                queryBuffer.Append(c);
+                            }
+                        }
+                        else if (separatorState == 1)
+                        {
+                            if (c == '-')
+                            {
+                                separatorState = 2;
+                            }
+                            else
+                            {
+                                // Il ; non faceva parte del separatore.
+                                queryBuffer.Append(';');
+
+                                if (c == ';')
+                                {
+                                    separatorState = 1;
+                                }
+                                else
+                                {
+                                    queryBuffer.Append(c);
+                                    separatorState = 0;
+                                }
+                            }
+                        }
+                        else // separatorState == 2
+                        {
+                            if (c == '-')
+                            {
+                                // =========================================
+                                // SEPARATORE TROVATO
+                                // =========================================
+
+                                separatorState = 0;
+
+                                string sql =
+                                    queryBuffer
+                                        .ToString()
+                                        .Trim();
+
+                                queryBuffer.Clear();
+
+
+                                // =========================================
+                                // ESEGUI QUERY
+                                // =========================================
+
+                                if (sql.Length > 0)
+                                {
+                                    try
+                                    {
+                                        _DBClass.ExecSqlInTransaction(sql);
+
+                                        executed++;
+
+                                        // Log delle prime 5 query
+                                        if (executed <= 5)
+                                        {
+                                            Debug.Log(
+                                                "[DB] QUERY #" +
+                                                executed +
+                                                ": " +
+                                                sql.Substring(
+                                                    0,
+                                                    Math.Min(
+                                                        sql.Length,
+                                                        500)));
+                                        }
+                                    }
+                                    catch (Exception queryEx)
+                                    {
+                                        Debug.LogError(
+                                            "[DB] ERRORE QUERY #" +
+                                            (executed + 1));
+
+                                        Debug.LogError(
+                                            "[DB] QUERY:");
+
+                                        Debug.LogError(sql);
+
+                                        Debug.LogError(
+                                            "[DB] EXCEPTION:");
+
+                                        Debug.LogError(queryEx);
+
+                                        throw;
+                                    }
+
+
+                                    // =====================================
+                                    // PROGRESSO
+                                    // =====================================
+
+                                    if (executed % 100 == 0)
+                                    {
+                                        float progress =
+                                            Mathf.Clamp01(
+                                                (float)(
+                                                    (double)bytesRead /
+                                                    sqlFileSize));
+
+                                        progressCallback?.Invoke(
+                                            progress);
+
+                                        Debug.Log(
+                                            "[DB] EXEC " +
+                                            executed +
+                                            " | Progress " +
+                                            (
+                                                (double)bytesRead /
+                                                sqlFileSize *
+                                                100.0
+                                            ).ToString("0.0") +
+                                            "%");
+                                    }
+
+
+                                    // =====================================
+                                    // GC
+                                    // =====================================
+
+                                    // NON fare Resources.UnloadUnusedAssets()
+                                    // durante l'importazione.
+                                    //
+                                    // È molto pesante e non serve per le
+                                    // stringhe .NET che stiamo gestendo.
+
+                                    if (executed % 1000 == 0)
+                                    {
+                                        GC.Collect(
+                                            0,
+                                            GCCollectionMode.Optimized);
+
+                                        Debug.Log(
+                                            "[DB] MEMORY CLEANUP - QUERY " +
+                                            executed);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                // Avevamo trovato ";-"
+                                // ma il carattere successivo non è '-'.
+
+                                queryBuffer.Append(';');
+                                queryBuffer.Append('-');
+
+                                if (c == ';')
+                                {
+                                    separatorState = 1;
+                                }
+                                else
+                                {
+                                    queryBuffer.Append(c);
+                                    separatorState = 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                // ====================================================
+                // FINE FILE
+                // ====================================================
+
+                // Se siamo rimasti nello stato 1:
+                if (separatorState == 1)
+                {
+                    queryBuffer.Append(';');
+                }
+                else if (separatorState == 2)
+                {
+                    queryBuffer.Append(';');
+                    queryBuffer.Append('-');
+                }
+
+
+                // ====================================================
+                // QUERY FINALE
+                // ====================================================
+
+                string remainingSql =
+                    queryBuffer
+                        .ToString()
+                        .Trim();
+
+                if (remainingSql.Length > 0)
+                {
+                    Debug.Log(
+                        "[DB] QUERY FINALE SENZA ;--");
+
+                    try
+                    {
+                        _DBClass.ExecSqlInTransaction(
+                            remainingSql);
+
+                        executed++;
+                    }
+                    catch (Exception queryEx)
+                    {
+                        Debug.LogError(
+                            "[DB] ERRORE QUERY FINALE");
+
+                        Debug.LogError(remainingSql);
+
+                        Debug.LogError(queryEx);
+
+                        throw;
+                    }
                 }
             }
-        }
-        finally
-        {
-            _DBClass.EndSync();
-        }
 
-        Debug.Log("[DB] END");
+
+            // ========================================================
+            // FILE COMPLETAMENTE LETTO
+            // ========================================================
+
+            Debug.Log(
+                "[DB] SQL LETTO COMPLETAMENTE.");
+
+            Debug.Log(
+                "[DB] QUERY ESEGUITE: " +
+                executed);
+
+            Debug.Log(
+                "[DB] COMMIT DATABASE");
+
+
+            // ========================================================
+            // COMMIT
+            // ========================================================
+
+            _DBClass.EndSync();
+
+            syncStarted = false;
+
+            progressCallback?.Invoke(1f);
+
+            Debug.Log(
+                "[DB] STREAM END - SQL eseguiti: " +
+                executed);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError(
+                "[DB ERROR] Query eseguite prima dell'errore: " +
+                executed);
+
+            Debug.LogError(
+                "[DB ERROR] " +
+                ex);
+
+
+            // ========================================================
+            // CHIUSURA TRANSAZIONE
+            // ========================================================
+
+            if (syncStarted)
+            {
+                try
+                {
+                    Debug.Log(
+                        "[DB] CHIUSURA SYNC DOPO ERRORE");
+
+                    _DBClass.EndSync();
+
+                    syncStarted = false;
+                }
+                catch (Exception syncEx)
+                {
+                    Debug.LogError(
+                        "[DB SYNC CLOSE ERROR] " +
+                        syncEx);
+                }
+            }
+
+            throw;
+        }
     }
 
 
 
+    private void DeleteFileSafely(
+    string filePath,
+    string logPrefix)
+    {
+        if (string.IsNullOrWhiteSpace(filePath))
+            return;
 
+        try
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+
+                Debug.Log(
+                    logPrefix +
+                    " " +
+                    filePath);
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning(
+                logPrefix +
+                " Impossibile eliminare il file: " +
+                ex.Message);
+        }
+    }
+
+    private long GetAvailableFreeSpace(string path)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(path))
+                return -1;
+
+            string fullPath =
+                Path.GetFullPath(path);
+
+            string root =
+                Path.GetPathRoot(fullPath);
+
+            if (string.IsNullOrWhiteSpace(root))
+                return -1;
+
+            DriveInfo drive =
+                new DriveInfo(root);
+
+            if (!drive.IsReady)
+                return -1;
+
+            return drive.AvailableFreeSpace;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning(
+                "[STORAGE] Impossibile leggere spazio libero: " +
+                ex.Message
+            );
+
+            return -1;
+        }
+    }
+
+    private string FormatBytes(ulong bytes)
+    {
+        const double KB = 1024.0;
+        const double MB = KB * 1024.0;
+        const double GB = MB * 1024.0;
+
+        if (bytes >= (ulong)GB)
+        {
+            return (bytes / GB)
+                .ToString("0.00") +
+                " GB";
+        }
+
+        if (bytes >= (ulong)MB)
+        {
+            return (bytes / MB)
+                .ToString("0.00") +
+                " MB";
+        }
+
+        if (bytes >= (ulong)KB)
+        {
+            return (bytes / KB)
+                .ToString("0.00") +
+                " KB";
+        }
+
+        return bytes + " B";
+    }
+
+
+    private string FormatBytes(long bytes)
+    {
+        if (bytes <= 0)
+            return "0 B";
+
+        return FormatBytes(
+            (ulong)bytes);
+    }
     public void EndSync(Button button)
     {
         _rotate = false;
@@ -598,52 +1646,119 @@ public class Panel_Principale : MonoBehaviour
         downloadSlider.gameObject.SetActive(false);
         dbSlider.gameObject.SetActive(false);
 
+        // ==========================================================
+        // IMPORTANTE:
+        // la sincronizzazione è terminata PRIMA di eseguire
+        // nuove query SQLite.
+        // ==========================================================
+
+        _syncRunning = false;
+
         if (button == null)
-        {
-            _syncRunning = false;
             return;
-        }
 
-
-        var Istat = button.transform.Find("Istat").GetComponent<Text>().text;
-        _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
-        List<DBClass.COMUNE> c = _DBClass.GetCOMUNI(Istat, null, null, null, null);
-        if (c != null && c.Count > 0)
+        try
         {
-            int n_poi = _DBClass.getPOI_Count(null, c[0].id, null, null, null);
-            if (n_poi > 0)
-            {
-                if (button != null)
-                {
-                    _currentButton = button;
+            Transform istatTransform =
+                button.transform.Find("Istat");
 
-                    if (_currentButton != null)
-                    {
-                        _currentDownloadIcon =
-                            _currentButton.transform
-                                .Find("ImmagineDownload")
-                                ?.gameObject;
-                    }
+            if (istatTransform == null)
+            {
+                Debug.LogWarning(
+                    "[SYNC END] Istat non trovato nel button."
+                );
+
+                return;
+            }
+
+            Text istatText =
+                istatTransform.GetComponent<Text>();
+
+            if (istatText == null)
+            {
+                Debug.LogWarning(
+                    "[SYNC END] Text Istat non trovato."
+                );
+
+                return;
+            }
+
+            string Istat =
+                istatText.text;
+
+            if (_DBClass == null)
+            {
+                GameObject sqliteObject =
+                    GameObject.FindWithTag("SQLite");
+
+                if (sqliteObject != null)
+                {
+                    _DBClass =
+                        sqliteObject.GetComponent<DBClass>();
+                }
+            }
+
+            if (_DBClass == null)
+            {
+                Debug.LogError(
+                    "[SYNC END] DBClass non disponibile."
+                );
+
+                return;
+            }
+
+            List<DBClass.COMUNE> c =
+                _DBClass.GetCOMUNI(
+                    Istat,
+                    null,
+                    null,
+                    null,
+                    null
+                );
+
+            if (c != null &&
+                c.Count > 0)
+            {
+                int n_poi =
+                    _DBClass.getPOI_Count(
+                        null,
+                        c[0].id,
+                        null,
+                        null,
+                        null
+                    );
+
+                if (n_poi > 0)
+                {
+                    _currentButton =
+                        button;
+
+                    _currentDownloadIcon =
+                        _currentButton.transform
+                            .Find("ImmagineDownload")
+                            ?.gameObject;
 
                     var img =
-                        button.transform.Find("ImmagineDownload");
+                        button.transform.Find(
+                            "ImmagineDownload"
+                        );
 
                     if (img != null)
                         img.gameObject.SetActive(false);
                 }
             }
         }
-        _syncRunning = false;
+        catch (Exception ex)
+        {
+            Debug.LogError(
+                "[SYNC END] Errore aggiornamento UI: " +
+                ex
+            );
+        }
     }
 
     void Update()
     {
-        _frameTime = Time.unscaledDeltaTime * 1000f;
-
-        if (_frameTime > 20f)
-        {
-            Debug.LogWarning($"[FRAME SLOW] {_frameTime}ms");
-        }
 
         var scale = _logo.transform.localScale;
         if (_rotate)
@@ -682,6 +1797,12 @@ public class Panel_Principale : MonoBehaviour
     // Update is called once per frame
     private void OnGUI()
     {
+        // Durante la sincronizzazione NON eseguire query SQLite.
+        // Potrebbero mantenere un reader/connection aperto e impedire
+        // a BeginSync() di ottenere il lock esclusivo.
+        if (_syncRunning)
+            return;
+
         if (!_towrite)
             return;
 
@@ -698,18 +1819,45 @@ public class Panel_Principale : MonoBehaviour
             POIGo.Clear();
         }
 
-        var comuni =
-            _DBClass.GetCOMUNI(
-                string.Empty,
-                filtro_nome.text,
-                null,
-                true);
+        if (_DBClass == null)
+        {
+            GameObject sqliteObject = GameObject.FindWithTag("SQLite");
+
+            if (sqliteObject == null)
+            {
+                Debug.LogError("[GUI] Oggetto SQLite non trovato.");
+                return;
+            }
+
+            _DBClass = sqliteObject.GetComponent<DBClass>();
+
+            if (_DBClass == null)
+            {
+                Debug.LogError("[GUI] DBClass non trovato.");
+                return;
+            }
+        }
+
+        var comuni = _DBClass.GetCOMUNI(
+            string.Empty,
+            filtro_nome.text,
+            null,
+            true
+        );
 
         StartCoroutine(BuildComuniList(comuni));
     }
     private IEnumerator BuildComuniList(List<COMUNE> comuni)
     {
         const int batchSize = 20;
+
+        if (comuni == null)
+            yield break;
+
+        // Se è partita una sincronizzazione, non continuare
+        // a lavorare sulla lista proveniente dal database.
+        if (_syncRunning)
+            yield break;
 
         for (int i = 0; i < comuni.Count; i++)
         {

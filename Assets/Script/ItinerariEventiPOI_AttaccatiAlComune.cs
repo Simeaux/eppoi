@@ -186,10 +186,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
         _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
         _istat = PlayerPrefs.GetString("istat");
-        if (string.IsNullOrWhiteSpace(_istat) && BtnEventi != null)
-        {
-            BtnEventi.enabled = false;
-        }
+
+
         _btnComune = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI");
         _btnComune_SITO = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI_simile_al_sito");
         _btnSeeMore = (GameObject)Resources.Load("Button_SeeMore");
@@ -269,6 +267,12 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     }
     private void Calcola()
     {
+        ScrollRect sr = _scroll_descrizione.GetComponent<ScrollRect>();
+        if (sr != null)
+            sr.verticalNormalizedPosition = 1f;
+        sr = panel_list_oggetti.GetComponent<ScrollRect>();
+        if (sr != null)
+            sr.verticalNormalizedPosition = 1f;
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
         string _poi_selezionato = PlayerPrefs.GetString("poi_selezionato");
         string _percorso_selezionato = PlayerPrefs.GetString("percorso_selezionato");
@@ -535,15 +539,25 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
         public string data_orario_fine;
         public string link;
+        public int sinp_id;
+
     }
 
-    IEnumerator ScaricaEventi(int _id_sinp, List<IEP> risultato)
+    public IEnumerator ScaricaEventi(List<int> _id_sinp = null, List<IEP> risultato = null)
     {
         string indirizzo =
             "https://www.macerataturismo.it/wp-json/rest_api_ws/v1/get_eventi_per_app?";
 
-        if (_id_sinp > 0)
-            indirizzo += "&ID_SINP=" + _id_sinp;
+        //if (_id_sinp > 0)
+        //    indirizzo += "&ID_SINP=" + _id_sinp;
+
+        if (_id_sinp != null &&
+        _id_sinp.Count > 0)
+        {
+            indirizzo +=
+                "&ID_SINP=" +
+                string.Join(",", _id_sinp);
+        }
 
         indirizzo += "&t=" + DateTime.UtcNow.Ticks;
 
@@ -620,6 +634,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     iep.data_orario_fine = evento.data_orario_fine[0];
                 if (!string.IsNullOrEmpty(evento.link))
                     iep.link = evento.link;
+                if (evento.id_sinp != null && evento.id_sinp.Count > 0)
+                    iep.sinp_id = int.Parse(evento.id_sinp[0]);
 
                 risultato.Add(iep);
             }
@@ -717,33 +733,53 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         www.Dispose();
     }
 
-    IEnumerator CaricaEventiComune()
+    public IEnumerator CaricaEventiComune()
     {
         caricamentoEventi = true;
         eventiCaricati = false;
 
-        if (BtnEventi != null)
-            BtnEventi.interactable = false;
-
         EventiList.Clear();
-
 
         if (!string.IsNullOrEmpty(_istat))
         {
+            if (BtnEventi != null)
+                BtnEventi.interactable = false;
+
+
             var comuni = _DBClass.GetCOMUNI(_istat);
 
-
+            List<int> comuneIds = new List<int>();
             if (comuni != null)
             {
                 foreach (var comune in comuni)
                 {
-                    yield return StartCoroutine(
+                    comuneIds.Add(comune.id);
+                }
+                yield return StartCoroutine(
                         ScaricaEventi(
-                            comune.id,
+                            comuneIds,
                             EventiList
                         )
                     );
+            }
+        }
+        else
+        {
+            var comuni = _DBClass.GetCOMUNI(null, null, null, null, null, true);
+
+            List<int> comuneIds = new List<int>();
+            if (comuni != null)
+            {
+                foreach (var comune in comuni)
+                {
+                    comuneIds.Add(comune.id);
                 }
+                yield return StartCoroutine(
+                        ScaricaEventi(
+                            comuneIds,
+                            EventiList
+                        )
+                    );
             }
         }
 
@@ -783,43 +819,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             "EVENTI COMPLETI: " + EventiList.Count
         );
     }
-    /*
-        IEnumerator CaricaTuttiEventi(System.Action callback)
-        {
-            eventiCaricati = false;
 
-            List<Coroutine> richieste = new List<Coroutine>();
-
-            if (!string.IsNullOrEmpty(_istat))
-            {
-                var comuni = _DBClass.GetCOMUNI(_istat);
-
-                if (comuni != null)
-                {
-                    foreach (var comune in comuni)
-                    {
-                        richieste.Add(
-                            StartCoroutine(
-                                ScaricaEventi(
-                                    comune.id,
-                                    EventiList
-                                )
-                            )
-                        );
-                    }
-                }
-            }
-
-
-            while (!eventiCaricati)
-            {
-                yield return null;
-            }
-
-
-            callback?.Invoke();
-        }
-        */
     // Ritorna l'array ordinato per distanza e poi per nome
     public List<IEP> ClassiToIEP(List<POI> _POIs, List<PERCORSO> _PERCORSOs, bool check_tipo_dettaglio_da_vedere)
     {
@@ -1099,7 +1099,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     {
                         if (_tipo_dettaglio_da_vedere == 2)
                         {
-                            var _comuni = _DBClass.GetCOMUNI(_istat);
+                            var _comuni = _DBClass.GetCOMUNI(null, null, _iep.sinp_id);
                             _component.text = $"{_comuni.FirstOrDefault()?.sito_turistico}{_iep.link}";
                         }
                         else
