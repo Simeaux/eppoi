@@ -292,6 +292,36 @@ public class MenuPrincipale : MonoBehaviour
             " - ID: " +
             comune.id
         );
+        // =====================================================
+        // 0. VERIFICA INIZIALE: IL COMUNE HA POI GIÀ PRESENTI?
+        // =====================================================
+
+        int poiCount =
+            _DBClass.getPOI_Count(
+                null,
+                null,
+                comune.nome_comune,
+                null,
+                null
+            );
+
+        if (poiCount > 0)
+        {
+            PlayerPrefs.SetString(
+                "istat",
+                Istat
+            );
+
+            PlayerPrefs.SetString(
+                "poi_selezionato",
+                ""
+            );
+
+            PlayerPrefs.SetString(
+                "percorso_selezionato",
+                ""
+            );
+        }
 
         // =====================================================
         // 1. CHIAMATA API
@@ -457,7 +487,7 @@ public class MenuPrincipale : MonoBehaviour
         // 7. VERIFICA FINALE
         // =====================================================
 
-        int poiCount =
+        poiCount =
             _DBClass.getPOI_Count(
                 null,
                 null,
