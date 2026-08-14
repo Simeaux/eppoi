@@ -156,18 +156,18 @@ public class MenuPrincipale : MonoBehaviour
                         break;
 
                     case "poi":
-                        t.text = dati.n_poi.ToString() + " audioguide";
+                        t.text = dati.n_poi.ToString() + " schede e audioguide";
                         break;
 
                     case "poi_immagini":
 
-                        t.text = dati.n_poi_immagini.ToString() + " immagini e schede";
+                        t.text = dati.n_poi_immagini.ToString() + " immagini";
 
                         break;
 
                     case "percorsi":
 
-                        t.text = dati.n_percorsi.ToString() + " mappe e itinerari offline";
+                        t.text = dati.n_percorsi.ToString() + " mappe e itinerari";
 
                         break;
 

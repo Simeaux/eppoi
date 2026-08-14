@@ -44,13 +44,11 @@ public class Panel_Principale : MonoBehaviour
     public Text txtLuoghi;
     public Text txtItinerari;
     public Text txtPuntiDiInteresse;
+    public Text txtEventi;
     public Canvas _aggiorna_app;
 
     public Slider downloadSlider;
     public Text downloadText;
-
-    public Slider dbSlider;
-    public Text dbText;
 
     // Un solo HttpClient riutilizzato per tutta l'app (evita l'esaurimento dei socket)
     private static readonly HttpClient _httpClient = new HttpClient
@@ -113,6 +111,10 @@ public class Panel_Principale : MonoBehaviour
             _lingua_selezionata == 1
                 ? "Punti di interesse"
                 : "Points of interest";
+        txtEventi.text =
+            _lingua_selezionata == 1
+                ? "Eventi"
+                : "Events";
 
 
         // ==========================================================
@@ -270,21 +272,14 @@ public class Panel_Principale : MonoBehaviour
         if (singleComune)
         {
             downloadSlider.gameObject.SetActive(true);
-            dbSlider.gameObject.SetActive(true);
 
             downloadSlider.minValue = 0f;
             downloadSlider.maxValue = 1f;
             downloadSlider.value = 0f;
 
-            dbSlider.minValue = 0f;
-            dbSlider.maxValue = 1f;
-            dbSlider.value = 0f;
 
             downloadText.text =
                 "Preparazione download...";
-
-            dbText.text =
-                "Preparazione database...";
         }
 
         string url =
@@ -713,11 +708,8 @@ public class Panel_Principale : MonoBehaviour
         // APPLICAZIONE SQL
         // ==========================================================
 
-        dbText.text =
+        downloadText.text =
             "Applicazione database...";
-
-        dbSlider.value =
-            0f;
 
         bool sqlCompleted = false;
 
@@ -729,11 +721,6 @@ public class Panel_Principale : MonoBehaviour
                 sqlFilePath,
                 progress =>
                 {
-                    if (singleComune)
-                    {
-                        dbSlider.value =
-                            Mathf.Clamp01(progress);
-                    }
                 });
 
             sqlCompleted = true;
@@ -755,7 +742,7 @@ public class Panel_Principale : MonoBehaviour
                     sqlException);
             }
 
-            dbText.text =
+            downloadText.text =
                 "Errore aggiornamento database";
 
             DeleteFileSafely(
@@ -779,14 +766,9 @@ public class Panel_Principale : MonoBehaviour
 
         if (singleComune)
         {
-            dbSlider.value =
-                1f;
 
             downloadSlider.value =
                 1f;
-
-            dbText.text =
-                "Database aggiornato";
 
             downloadText.text =
                 "Aggiornamento completato";
@@ -1142,8 +1124,8 @@ public class Panel_Principale : MonoBehaviour
 
 
     private void ExecuteSqlFileStreaming(
-      string sqlFile,
-      Action<float> progressCallback = null)
+    string sqlFile,
+    Action<float> progressCallback = null)
     {
         Debug.Log("[DB] STREAM START");
 
@@ -1202,72 +1184,70 @@ public class Panel_Principale : MonoBehaviour
                        1024 * 1024,
                        FileOptions.SequentialScan))
             {
-                // Buffer di lettura.
-                // 64 KB è sufficiente e non crea grossi picchi di memoria.
-                byte[] buffer = new byte[64 * 1024];
-
-                // Query corrente.
-                StringBuilder queryBuffer =
-                    new StringBuilder(4096);
-
-                int bytesReadNow;
-
-                // Stato del separatore ;--
-                int separatorState = 0;
-
-
                 // ====================================================
-                // LETTURA A BLOCCHI
+                // UTF-8
                 // ====================================================
+                //
+                // StreamReader gestisce automaticamente il BOM UTF-8.
+                // È fondamentale NON fare più:
+                //
+                // char c = (char)buffer[i];
+                //
+                // perché corrompe i caratteri UTF-8.
+                //
 
-                while ((bytesReadNow =
-                        fileStream.Read(
-                            buffer,
-                            0,
-                            buffer.Length)) > 0)
+                using (StreamReader reader =
+                       new StreamReader(
+                           fileStream,
+                           new System.Text.UTF8Encoding(
+                               false,
+                               true),
+                           true,
+                           64 * 1024))
                 {
-                    bytesRead += bytesReadNow;
+                    StringBuilder queryBuffer =
+                        new StringBuilder(4096);
+
+                    // ------------------------------------------------
+                    // Stato separatore ;--
+                    //
+                    // 0 = normale
+                    // 1 = trovato ;
+                    // 2 = trovato ;-
+                    // ------------------------------------------------
+
+                    int separatorState = 0;
+
+                    char[] charBuffer =
+                        new char[64 * 1024];
+
+                    int charsRead;
 
 
-                    // ================================================
-                    // PROCESSA I BYTE
-                    // ================================================
+                    // ====================================================
+                    // LETTURA A BLOCCHI
+                    // ====================================================
 
-                    for (int i = 0; i < bytesReadNow; i++)
+                    while ((charsRead =
+                            reader.Read(
+                                charBuffer,
+                                0,
+                                charBuffer.Length)) > 0)
                     {
-                        char c = (char)buffer[i];
+                        // ================================================
+                        // PROCESSA I CARATTERI
+                        // ================================================
 
-
-                        // =================================================
-                        // RICONOSCIMENTO SEPARATORE ;--
-                        //
-                        // ;  -> stato 1
-                        // -  -> stato 2
-                        // -  -> separatore completo
-                        // =================================================
-
-                        if (separatorState == 0)
+                        for (int i = 0; i < charsRead; i++)
                         {
-                            if (c == ';')
-                            {
-                                separatorState = 1;
-                            }
-                            else
-                            {
-                                queryBuffer.Append(c);
-                            }
-                        }
-                        else if (separatorState == 1)
-                        {
-                            if (c == '-')
-                            {
-                                separatorState = 2;
-                            }
-                            else
-                            {
-                                // Il ; non faceva parte del separatore.
-                                queryBuffer.Append(';');
+                            char c = charBuffer[i];
 
+                            // ============================================
+                            // STATO 0
+                            // ============================================
+
+                            if (separatorState == 0)
+                            {
                                 if (c == ';')
                                 {
                                     separatorState = 1;
@@ -1275,46 +1255,84 @@ public class Panel_Principale : MonoBehaviour
                                 else
                                 {
                                     queryBuffer.Append(c);
-                                    separatorState = 0;
                                 }
                             }
-                        }
-                        else // separatorState == 2
-                        {
-                            if (c == '-')
+
+                            // ============================================
+                            // STATO 1
+                            //
+                            // Abbiamo trovato ;
+                            // ============================================
+
+                            else if (separatorState == 1)
                             {
-                                // =========================================
-                                // SEPARATORE TROVATO
-                                // =========================================
-
-                                separatorState = 0;
-
-                                string sql =
-                                    queryBuffer
-                                        .ToString()
-                                        .Trim();
-
-                                queryBuffer.Clear();
-
-
-                                // =========================================
-                                // ESEGUI QUERY
-                                // =========================================
-
-                                if (sql.Length > 0)
+                                if (c == '-')
                                 {
-                                    try
+                                    separatorState = 2;
+                                }
+                                else
+                                {
+                                    // Il ; non era l'inizio di ;--
+
+                                    queryBuffer.Append(';');
+
+                                    if (c == ';')
                                     {
-                                        _DBClass.ExecSqlInTransaction(sql);
+                                        separatorState = 1;
+                                    }
+                                    else
+                                    {
+                                        queryBuffer.Append(c);
+                                        separatorState = 0;
+                                    }
+                                }
+                            }
 
-                                        executed++;
+                            // ============================================
+                            // STATO 2
+                            //
+                            // Abbiamo trovato ;-
+                            // ============================================
 
-                                        // Log delle prime 5 query
-                                        if (executed <= 5)
+                            else
+                            {
+                                if (c == '-')
+                                {
+                                    // ====================================
+                                    // SEPARATORE ;-- TROVATO
+                                    // ====================================
+
+                                    separatorState = 0;
+
+                                    string sql =
+                                        queryBuffer
+                                            .ToString()
+                                            .Trim();
+
+                                    queryBuffer.Clear();
+
+
+                                    // ====================================
+                                    // PULIZIA QUERY
+                                    // ====================================
+
+                                    sql = PulisciQuerySql(sql);
+
+
+                                    // ====================================
+                                    // ESEGUI QUERY
+                                    // ====================================
+
+                                    if (sql.Length > 0)
+                                    {
+                                        long queryNumero =
+                                            executed + 1;
+
+                                        if (queryNumero <= 5)
                                         {
                                             Debug.Log(
                                                 "[DB] QUERY #" +
-                                                executed +
+                                                queryNumero +
                                                 ": " +
                                                 sql.Substring(
                                                     0,
@@ -1322,147 +1340,162 @@ public class Panel_Principale : MonoBehaviour
                                                         sql.Length,
                                                         500)));
                                         }
-                                    }
-                                    catch (Exception queryEx)
-                                    {
-                                        Debug.LogError(
-                                            "[DB] ERRORE QUERY #" +
-                                            (executed + 1));
 
-                                        Debug.LogError(
-                                            "[DB] QUERY:");
+                                        try
+                                        {
+                                            _DBClass.ExecSqlInTransaction(
+                                                sql);
 
-                                        Debug.LogError(sql);
+                                            // Incrementiamo SOLO
+                                            // dopo l'esecuzione riuscita.
+                                            executed++;
+                                        }
+                                        catch (Exception queryEx)
+                                        {
+                                            Debug.LogError(
+                                                "[DB] ERRORE QUERY #" +
+                                                queryNumero);
 
-                                        Debug.LogError(
-                                            "[DB] EXCEPTION:");
+                                            Debug.LogError(
+                                                "[DB] QUERY:");
 
-                                        Debug.LogError(queryEx);
+                                            Debug.LogError(sql);
 
-                                        throw;
-                                    }
+                                            Debug.LogError(
+                                                "[DB] EXCEPTION:");
+
+                                            Debug.LogError(queryEx);
+
+                                            throw;
+                                        }
 
 
-                                    // =====================================
-                                    // PROGRESSO
-                                    // =====================================
+                                        // =================================
+                                        // PROGRESSO
+                                        // =================================
 
-                                    if (executed % 100 == 0)
-                                    {
-                                        float progress =
-                                            Mathf.Clamp01(
-                                                (float)(
+                                        bytesRead =
+                                            fileStream.Position;
+
+                                        if (executed % 100 == 0)
+                                        {
+                                            float progress =
+                                                Mathf.Clamp01(
+                                                    (float)(
+                                                        (double)bytesRead /
+                                                        sqlFileSize));
+
+                                            progressCallback?.Invoke(
+                                                progress);
+
+                                            Debug.Log(
+                                                "[DB] EXEC " +
+                                                executed +
+                                                " | Progress " +
+                                                (
                                                     (double)bytesRead /
-                                                    sqlFileSize));
+                                                    sqlFileSize *
+                                                    100.0
+                                                ).ToString("0.0") +
+                                                "%");
+                                        }
 
-                                        progressCallback?.Invoke(
-                                            progress);
 
-                                        Debug.Log(
-                                            "[DB] EXEC " +
-                                            executed +
-                                            " | Progress " +
-                                            (
-                                                (double)bytesRead /
-                                                sqlFileSize *
-                                                100.0
-                                            ).ToString("0.0") +
-                                            "%");
+                                        // =================================
+                                        // GC
+                                        // =================================
+
+                                        if (executed % 1000 == 0)
+                                        {
+                                            GC.Collect(
+                                                0,
+                                                GCCollectionMode.Optimized);
+
+                                            Debug.Log(
+                                                "[DB] MEMORY CLEANUP - QUERY " +
+                                                executed);
+                                        }
                                     }
-
-
-                                    // =====================================
-                                    // GC
-                                    // =====================================
-
-                                    // NON fare Resources.UnloadUnusedAssets()
-                                    // durante l'importazione.
-                                    //
-                                    // È molto pesante e non serve per le
-                                    // stringhe .NET che stiamo gestendo.
-
-                                    if (executed % 1000 == 0)
-                                    {
-                                        GC.Collect(
-                                            0,
-                                            GCCollectionMode.Optimized);
-
-                                        Debug.Log(
-                                            "[DB] MEMORY CLEANUP - QUERY " +
-                                            executed);
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                // Avevamo trovato ";-"
-                                // ma il carattere successivo non è '-'.
-
-                                queryBuffer.Append(';');
-                                queryBuffer.Append('-');
-
-                                if (c == ';')
-                                {
-                                    separatorState = 1;
                                 }
                                 else
                                 {
-                                    queryBuffer.Append(c);
-                                    separatorState = 0;
+                                    // ====================================
+                                    // Avevamo trovato ;-
+                                    // ma il carattere successivo
+                                    // non è -
+                                    // ====================================
+
+                                    queryBuffer.Append(';');
+                                    queryBuffer.Append('-');
+
+                                    if (c == ';')
+                                    {
+                                        separatorState = 1;
+                                    }
+                                    else
+                                    {
+                                        queryBuffer.Append(c);
+                                        separatorState = 0;
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
 
-                // ====================================================
-                // FINE FILE
-                // ====================================================
+                    // ====================================================
+                    // FINE FILE
+                    // ====================================================
 
-                // Se siamo rimasti nello stato 1:
-                if (separatorState == 1)
-                {
-                    queryBuffer.Append(';');
-                }
-                else if (separatorState == 2)
-                {
-                    queryBuffer.Append(';');
-                    queryBuffer.Append('-');
-                }
-
-
-                // ====================================================
-                // QUERY FINALE
-                // ====================================================
-
-                string remainingSql =
-                    queryBuffer
-                        .ToString()
-                        .Trim();
-
-                if (remainingSql.Length > 0)
-                {
-                    Debug.Log(
-                        "[DB] QUERY FINALE SENZA ;--");
-
-                    try
+                    if (separatorState == 1)
                     {
-                        _DBClass.ExecSqlInTransaction(
+                        queryBuffer.Append(';');
+                    }
+                    else if (separatorState == 2)
+                    {
+                        queryBuffer.Append(';');
+                        queryBuffer.Append('-');
+                    }
+
+
+                    // ====================================================
+                    // QUERY FINALE
+                    // ====================================================
+
+                    string remainingSql =
+                        queryBuffer
+                            .ToString()
+                            .Trim();
+
+                    remainingSql =
+                        PulisciQuerySql(
                             remainingSql);
 
-                        executed++;
-                    }
-                    catch (Exception queryEx)
+                    if (remainingSql.Length > 0)
                     {
-                        Debug.LogError(
-                            "[DB] ERRORE QUERY FINALE");
+                        Debug.Log(
+                            "[DB] QUERY FINALE SENZA ;--");
 
-                        Debug.LogError(remainingSql);
+                        try
+                        {
+                            _DBClass.ExecSqlInTransaction(
+                                remainingSql);
 
-                        Debug.LogError(queryEx);
+                            executed++;
+                        }
+                        catch (Exception queryEx)
+                        {
+                            Debug.LogError(
+                                "[DB] ERRORE QUERY FINALE");
 
-                        throw;
+                            Debug.LogError(
+                                remainingSql);
+
+                            Debug.LogError(
+                                queryEx);
+
+                            throw;
+                        }
                     }
                 }
             }
@@ -1535,7 +1568,54 @@ public class Panel_Principale : MonoBehaviour
         }
     }
 
+    private string PulisciQuerySql(string sql)
+    {
+        if (string.IsNullOrEmpty(sql))
+            return string.Empty;
 
+        // BOM UTF-8
+        sql = sql.TrimStart('\uFEFF');
+
+        // Zero-width characters
+        sql = sql.TrimStart(
+            '\u200B',
+            '\u200C',
+            '\u200D',
+            '\u2060');
+
+        sql = sql.Trim();
+
+        // ---------------------------------------------------------
+        // RIMUOVE EVENTUALE VIRGOLETTA APERTA PRIMA DELLA QUERY
+        // ---------------------------------------------------------
+
+        if (sql.StartsWith("\""))
+        {
+            sql = sql.Substring(1).TrimStart();
+
+            Debug.Log(
+                "[DB] Rimossa virgolette iniziale dalla query."
+            );
+        }
+
+        // ---------------------------------------------------------
+        // RIMUOVE EVENTUALE VIRGOLETTA FINALE
+        // ---------------------------------------------------------
+
+        if (sql.EndsWith("\""))
+        {
+            sql = sql.Substring(
+                0,
+                sql.Length - 1
+            ).TrimEnd();
+
+            Debug.Log(
+                "[DB] Rimossa virgolette finale dalla query."
+            );
+        }
+
+        return sql;
+    }
 
     private void DeleteFileSafely(
     string filePath,
@@ -1644,7 +1724,6 @@ public class Panel_Principale : MonoBehaviour
         _rotate = false;
 
         downloadSlider.gameObject.SetActive(false);
-        dbSlider.gameObject.SetActive(false);
 
         // ==========================================================
         // IMPORTANTE:

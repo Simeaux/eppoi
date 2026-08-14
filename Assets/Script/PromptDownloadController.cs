@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PromptDownloadController : MonoBehaviour
 {
     public Slider Slider_download;
-    public Slider Slider_DB;
+
     public Button Button_Si;
     public Button Button_No;
 
@@ -27,7 +27,6 @@ public class PromptDownloadController : MonoBehaviour
         RisultatoScelta = true;
         RispostaRicevuta = true;
         Slider_download.gameObject.SetActive(true);
-        Slider_DB.gameObject.SetActive(true);
         Button_Si.interactable = false;
         Button_No.interactable = false;
         //gameObject.SetActive(false); // Chiude il canvas del prompt

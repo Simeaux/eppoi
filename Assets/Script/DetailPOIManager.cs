@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using TMPro;
 using TS.PageSlider.Demo;
 using UnityEditor;
@@ -633,12 +634,16 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                 List<DettaglioItinerario> dettagli_da_scrivere = new List<DettaglioItinerario>();
                                 string t = "";
                                 if (!string.IsNullOrEmpty(_p.tipo_percorso))
-                                    t = _p.tipo_percorso;
+                                {
+                                    //t = _p.tipo_percorso;
+                                    t = Regex.Replace(_p.tipo_percorso, @"\b[a-z]", m => m.Value.ToUpper());
+                                    // Risultato: "CamelCase"
+                                }
                                 if (!string.IsNullOrEmpty(_p.tipo_navigazione))
                                 {
                                     if (!string.IsNullOrEmpty(t))
                                         t += ", ";
-                                    t += _p.tipo_navigazione;
+                                    t += _p.tipo_navigazione.ToUpper();
                                 }
                                 if (!string.IsNullOrEmpty(t))
                                     dettagli_da_scrivere.Add(new DettaglioItinerario() { label = _lingua_selezionata == 1 ? "Tipologia" : "Typology", value = t });

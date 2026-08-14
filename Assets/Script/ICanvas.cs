@@ -487,6 +487,13 @@ public class ICanvas : MonoBehaviour
                         if (_iep.immagine != null && _iep.immagine != null && _iep.immagine.Length > 0)
                             foto = _iep.immagine;
                         _component.sprite = _DBClass.getSpriteFromByteArray(foto);
+                        var _ratio_component = _component.GetComponent<AspectRatioFitter>();
+                        if (_ratio_component != null)
+                        {
+                            float ratio = (float)_component.sprite.rect.width / _component.sprite.rect.height;
+                            // Aggiorniamo il componente
+                            _ratio_component.aspectRatio = ratio;
+                        }
                     }
                     if (_component.name == "Image_tipo_percorso")
                     {

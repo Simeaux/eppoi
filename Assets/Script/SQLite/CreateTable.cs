@@ -68,32 +68,123 @@ public class CreateTable : MonoBehaviour
         }
     }
 
+
+
+
     public string ConvertiTag(string testoDalDatabase)
     {
         string risultato = testoDalDatabase;
+
         if (!string.IsNullOrEmpty(risultato))
         {
-            // Sostituisce il tag <strong> con il tag <b> di Unity
+            Debug.Log("Testo originale: " + risultato);
+
+            // ============================================================
+            // CERCA IL FILE AUDIO
+            // ============================================================
+
+            Match matchAudio = Regex.Match(
+                risultato,
+                @"<audio\b[^>]*data-file\s*=\s*[""'\x60]([^""'\x60]+)[""'\x60]",
+                RegexOptions.IgnoreCase
+            );
+
+            string audioUrl = "";
+
+            if (matchAudio.Success)
+            {
+                audioUrl = matchAudio.Groups[1].Value;
+            }
+            else
+            {
+                // Fallback: cerca il src del tag <source>
+                Match matchSource = Regex.Match(
+                    risultato,
+                    @"<source\b[^>]*src\s*=\s*[""'\x60]([^""'\x60]+)[""'\x60]",
+                    RegexOptions.IgnoreCase
+                );
+
+                if (matchSource.Success)
+                {
+                    audioUrl = matchSource.Groups[1].Value;
+                }
+            }
+
+            // ============================================================
+            // TRASFORMA L'AUDIO IN UN LINK TMP
+            // ============================================================
+
+            if (!string.IsNullOrEmpty(audioUrl))
+            {
+                Debug.Log("Audio trovato: " + audioUrl);
+
+                string linkAudio =
+                    "\n<link=\"" + audioUrl + "\">" +
+                    "<color=#007BFF><u>▶ Ascolta l'audio</u></color>" +
+                    "</link>\n";
+
+                risultato = Regex.Replace(
+                    risultato,
+                    @"<audio\b[^>]*>.*?</audio>",
+                    linkAudio,
+                    RegexOptions.IgnoreCase | RegexOptions.Singleline
+                );
+            }
+
+            // ============================================================
+            // CONVERSIONE HTML
+            // ============================================================
+
             risultato = risultato.Replace("<strong>", "<b>");
             risultato = risultato.Replace("</strong>", "</b>");
-            // Sostituisce il div dell'alert con un tag colore (es. Celeste/Azzurro info)
-            risultato = risultato.Replace("<div class=\"alert alert-info\">", "<color=#0000FF>");
-            // Sostituisce la chiusura del div con la chiusura del colore
-            risultato = risultato.Replace("</div>", "</color>");
-            // 1. Rimpiazza le entità HTML comuni come lo spazio unificatore
+
+            risultato = risultato.Replace(
+                "<div class=\"alert alert-info\">",
+                "<size=1><color=#FFFFFF>"
+            );
+
+            risultato = risultato.Replace(
+                "</div>",
+                "</color></size>"
+            );
+
+            risultato = risultato.Replace(
+    "<script",
+    "<size=1><color=#FFFFFF>"
+);
+
+            risultato = risultato.Replace(
+                "</script>",
+                "</color></size>"
+            );
+
+
             risultato = risultato.Replace("&nbsp;", " ");
 
-            // 2. Rimuove i tag immagine e tutto il loro contenuto (TextMeshPro non li mostra comunque)
-            risultato = Regex.Replace(risultato, @"<img[^>]*>", "");
+            // Rimuove immagini
+            risultato = Regex.Replace(
+                risultato,
+                @"<img[^>]*>",
+                "",
+                RegexOptions.IgnoreCase
+            );
 
-            // 3. Rimuove tutti gli altri tag HTML non supportati (es. <hr>, <h4>, <p> e relativi attributi)
-            // Mantiene però il testo contenuto all'interno dei tag.
-            risultato = Regex.Replace(risultato, @"<(?!b|/b|i|/i|color|/color)[^>]+>", "");
+            // Rimuove gli altri tag HTML.
+            // Manteniamo anche <link>
+            risultato = Regex.Replace(
+                risultato,
+                @"<(?!b|/b|i|/i|color|/color|link|/link)[^>]+>",
+                "",
+                RegexOptions.IgnoreCase
+            );
 
-            // 4. Rimuove eventuali spazi vuoti o ritorni a capo multipli generati dalla pulizia
-            risultato = Regex.Replace(risultato, @"\n\s*\n", "\n\n");
-
+            risultato = Regex.Replace(
+                risultato,
+                @"\n\s*\n",
+                "\n\n"
+            );
         }
+
         return risultato;
     }
     private bool _reset_db;
@@ -2112,7 +2203,7 @@ public class CreateTable : MonoBehaviour
 
             if (Verbose)
                 Debug.Log("Connection opened to: " + conn);
-            var tabelle = new List<string> { "COMUNI_IMMAGINI", "POI_IMMAGINI", "TAPPE_IMMAGINI", "PERCORSI_IMMAGINI" };
+            var tabelle = new List<string> { "POI_IMMAGINI", "TAPPE_IMMAGINI", "PERCORSI_IMMAGINI" };
 
             foreach (var tabella in tabelle)
             {
@@ -2185,7 +2276,7 @@ public class CreateTable : MonoBehaviour
 
             if (Verbose)
                 Debug.Log("Connection opened to: " + conn);
-            var tabelle = new List<string> { "COMUNI_TEXT", "POI_TEXT", "TAPPE_TEXT", "PERCORSI_TEXT" };
+            var tabelle = new List<string> { "POI_TEXT", "TAPPE_TEXT", "PERCORSI_TEXT" };
 
             foreach (var tabella in tabelle)
             {
@@ -2336,6 +2427,16 @@ public class CreateTable : MonoBehaviour
                 dbcmd.CommandText = sqlQuery;
                 dbcmd.ExecuteNonQuery();
             }
+            using (var dbcmd = dbconn.CreateCommand())
+            {
+                // Forza i file temporanei in RAM (valore 2) o nella stessa cartella (valore 1)
+                dbcmd.CommandText = "PRAGMA temp_store = 2;";
+                dbcmd.ExecuteNonQuery();
+
+                dbcmd.CommandText = "VACUUM;";
+                dbcmd.ExecuteNonQuery();
+            }
+
             dbconn.Close();
         }
     }
@@ -2347,88 +2448,357 @@ public class CreateTable : MonoBehaviour
         getConnection();
 
         if (Verbose)
-            Debug.Log("Stablished connection to: " + conn);
+            Debug.Log("[DB PESO] Connessione: " + conn);
 
-        using (dbconn = new SqliteConnection(conn))
+        using (SqliteConnection dbconnLocal =
+               new SqliteConnection(conn))
         {
-            dbconn.Open();
+            dbconnLocal.Open();
+
             if (Verbose)
-                Debug.Log("Connection opened to: " + conn);
-            using (var dbcmd = dbconn.CreateCommand())
+                Debug.Log("[DB PESO] Connessione aperta.");
+
+            // =========================================================
+            // POI
+            // =========================================================
+
+            long pesoPoi = 0;
+
+            using (SqliteCommand dbcmd =
+                   dbconnLocal.CreateCommand())
             {
-                sqlQuery = $"SELECT " +
-    "SUM(LENGTH(ifnull(poi_immagini.image, 2))/2) + " +
-    "SUM(LENGTH(ifnull(poi_text.descrizione, 0))) + " +
-    "SUM(LENGTH(ifnull(poi_text.descrizione_breve, 0)))" +
-"AS bytes " +
-"FROM poi " +
-"LEFT JOIN poi_text " +
-"    ON poi.id = poi_text.poi_id " +
-"LEFT JOIN poi_immagini " +
-"    ON poi.id = poi_immagini.poi_id " +
-"WHERE poi.comune_id = " + comuneId + "; ";
-                dbcmd.CommandText = sqlQuery;
-                IDataReader _reader = dbcmd.ExecuteReader();
-                while (_reader.Read())
+                dbcmd.CommandText = @"
+                SELECT
+                    COALESCE(SUM(LENGTH(poi_immagini.image)), 0)
+                FROM poi
+                LEFT JOIN poi_immagini
+                    ON poi.id = poi_immagini.poi_id
+                WHERE poi.comune_id = @comuneId;
+            ";
+
+                dbcmd.Parameters.Add(
+                    new SqliteParameter(
+                        "@comuneId",
+                        comuneId));
+
+                Debug.Log(
+                    "[DB PESO] Calcolo peso POI..."
+                );
+
+                object risultato =
+                    dbcmd.ExecuteScalar();
+
+                if (risultato != null &&
+                    risultato != DBNull.Value)
                 {
-                    pesoTotale += _reader.IsDBNull(0) ? 0 : _reader.GetInt64(0);
+                    pesoPoi =
+                        Convert.ToInt64(risultato);
                 }
             }
 
-            using (var dbcmd = dbconn.CreateCommand())
+            Debug.Log(
+                "[DB PESO] POI: " +
+                pesoPoi +
+                " byte"
+            );
+
+            pesoTotale += pesoPoi;
+
+            pesoPoi = 0;
+            using (SqliteCommand dbcmd =
+                               dbconnLocal.CreateCommand())
             {
-                sqlQuery = $"SELECT " +
-    "SUM(LENGTH(ifnull(PERCORSI.percorso, 2))/2) + " +
-    "SUM(LENGTH(ifnull(PERCORSI_IMMAGINI.image, 2))/2) + " +
-    "SUM(LENGTH(ifnull(PERCORSI_text.descrizione, 0))) + " +
-    "SUM(LENGTH(ifnull(PERCORSI_text.descrizione_breve, 0))) " +
-"AS bytes " +
-"FROM poi " +
-"LEFT JOIN PERCORSI " +
-"    ON poi.id = PERCORSI.poi_id " +
-"LEFT JOIN PERCORSI_TEXT " +
-"    ON PERCORSI.id = PERCORSI_TEXT.percorso_id " +
-"LEFT JOIN PERCORSI_IMMAGINI " +
-"    ON PERCORSI.id = PERCORSI_IMMAGINI.percorso_id " +
-"WHERE poi.comune_id = " + comuneId + "; ";
-                dbcmd.CommandText = sqlQuery;
-                IDataReader _reader = dbcmd.ExecuteReader();
-                while (_reader.Read())
+                dbcmd.CommandText = @"
+                SELECT
+                    COALESCE(SUM(LENGTH(poi_text.descrizione)), 0)
+                    +
+                    COALESCE(SUM(LENGTH(poi_text.descrizione_breve)), 0)
+                FROM poi
+                LEFT JOIN poi_text
+                    ON poi.id = poi_text.poi_id
+                WHERE poi.comune_id = @comuneId;
+            ";
+
+                dbcmd.Parameters.Add(
+                    new SqliteParameter(
+                        "@comuneId",
+                        comuneId));
+
+                Debug.Log(
+                    "[DB PESO] Calcolo peso POI..."
+                );
+
+                object risultato =
+                    dbcmd.ExecuteScalar();
+
+                if (risultato != null &&
+                    risultato != DBNull.Value)
                 {
-                    pesoTotale += _reader.IsDBNull(0) ? 0 : _reader.GetInt64(0);
+                    pesoPoi =
+                        Convert.ToInt64(risultato);
                 }
             }
-            using (var dbcmd = dbconn.CreateCommand())
+
+            Debug.Log(
+                "[DB PESO] POI: " +
+                pesoPoi +
+                " byte"
+            );
+
+            pesoTotale += pesoPoi;
+            // =========================================================
+            // PERCORSI
+            // =========================================================
+
+            long pesoPercorsi = 0;
+
+            // ---------------------------------------------------------
+            // 1. FILE / BLOB PERCORSI
+            // ---------------------------------------------------------
+
+            using (SqliteCommand dbcmd = dbconnLocal.CreateCommand())
             {
-                sqlQuery = $"SELECT " +
-    "SUM(LENGTH(ifnull(TAPPE_IMMAGINI.image, 2))/2) + " +
-    "SUM(LENGTH(ifnull(TAPPE_TEXT.descrizione, 0))) + " +
-    "SUM(LENGTH(ifnull(TAPPE_TEXT.descrizione_breve, 0))) " +
-"AS bytes " +
-"FROM poi " +
-"LEFT JOIN POIXTAPPE " +
-"    ON poi.id = POIXTAPPE.poi_id " +
-"LEFT JOIN TAPPE " +
-"    ON TAPPE.id = POIXTAPPE.tappa_id " +
-"LEFT JOIN TAPPE_IMMAGINI " +
-"    ON TAPPE.id = TAPPE_IMMAGINI.tappa_id " +
-"LEFT JOIN TAPPE_TEXT " +
-"    ON TAPPE.id = TAPPE_TEXT.tappa_id " +
-"WHERE poi.comune_id = " + comuneId + "; ";
-                dbcmd.CommandText = sqlQuery;
-                IDataReader _reader = dbcmd.ExecuteReader();
-                while (_reader.Read())
+                dbcmd.CommandText = @"
+        SELECT COALESCE(
+            SUM(LENGTH(PERCORSI.percorso)),
+            0
+        )
+        FROM PERCORSI
+        INNER JOIN poi
+            ON poi.id = PERCORSI.poi_id
+        WHERE poi.comune_id = @comuneId;
+    ";
+
+                dbcmd.Parameters.Add(
+                    new SqliteParameter(
+                        "@comuneId",
+                        comuneId));
+
+                Debug.Log(
+                    "[DB PESO] PERCORSI: calcolo percorso..."
+                );
+
+                object risultato =
+                    dbcmd.ExecuteScalar();
+
+                if (risultato != null &&
+                    risultato != DBNull.Value)
                 {
-                    pesoTotale += _reader.IsDBNull(0) ? 0 : _reader.GetInt64(0);
+                    pesoPercorsi +=
+                        Convert.ToInt64(risultato);
                 }
             }
-            dbconn.Close();
+
+
+            // ---------------------------------------------------------
+            // 2. IMMAGINI PERCORSI
+            // ---------------------------------------------------------
+
+            using (SqliteCommand dbcmd = dbconnLocal.CreateCommand())
+            {
+                dbcmd.CommandText = @"
+        SELECT COALESCE(
+            SUM(LENGTH(PERCORSI_IMMAGINI.image)),
+            0
+        )
+        FROM PERCORSI_IMMAGINI
+        INNER JOIN PERCORSI
+            ON PERCORSI.id =
+               PERCORSI_IMMAGINI.percorso_id
+        INNER JOIN poi
+            ON poi.id =
+               PERCORSI.poi_id
+        WHERE poi.comune_id = @comuneId;
+    ";
+
+                dbcmd.Parameters.Add(
+                    new SqliteParameter(
+                        "@comuneId",
+                        comuneId));
+
+                Debug.Log(
+                    "[DB PESO] PERCORSI: calcolo immagini..."
+                );
+
+                object risultato =
+                    dbcmd.ExecuteScalar();
+
+                if (risultato != null &&
+                    risultato != DBNull.Value)
+                {
+                    pesoPercorsi +=
+                        Convert.ToInt64(risultato);
+                }
+            }
+
+
+            // ---------------------------------------------------------
+            // 3. TESTI PERCORSI
+            // ---------------------------------------------------------
+
+            using (SqliteCommand dbcmd = dbconnLocal.CreateCommand())
+            {
+                dbcmd.CommandText = @"
+        SELECT
+            COALESCE(
+                SUM(LENGTH(PERCORSI_TEXT.descrizione)),
+                0
+            )
+            +
+            COALESCE(
+                SUM(LENGTH(PERCORSI_TEXT.descrizione_breve)),
+                0
+            )
+        FROM PERCORSI_TEXT
+        INNER JOIN PERCORSI
+            ON PERCORSI.id =
+               PERCORSI_TEXT.percorso_id
+        INNER JOIN poi
+            ON poi.id =
+               PERCORSI.poi_id
+        WHERE poi.comune_id = @comuneId;
+    ";
+
+                dbcmd.Parameters.Add(
+                    new SqliteParameter(
+                        "@comuneId",
+                        comuneId));
+
+                Debug.Log(
+                    "[DB PESO] PERCORSI: calcolo testi..."
+                );
+
+                object risultato =
+                    dbcmd.ExecuteScalar();
+
+                if (risultato != null &&
+                    risultato != DBNull.Value)
+                {
+                    pesoPercorsi +=
+                        Convert.ToInt64(risultato);
+                }
+            }
+
+            Debug.Log(
+                "[DB PESO] PERCORSI TOTALI: " +
+                pesoPercorsi +
+                " byte"
+            );
+
+            pesoTotale += pesoPercorsi;
+
+
+            // =========================================================
+            // TAPPE
+            // =========================================================
+
+            long pesoTappe = 0;
+
+            using (SqliteCommand dbcmd =
+                   dbconnLocal.CreateCommand())
+            {
+                dbcmd.CommandText = @"
+                SELECT
+                    COALESCE(SUM(LENGTH(TAPPE_TEXT.descrizione)), 0)
+                    +
+                    COALESCE(SUM(LENGTH(TAPPE_TEXT.descrizione_breve)), 0)
+                FROM poi
+                LEFT JOIN POIXTAPPE
+                    ON poi.id = POIXTAPPE.poi_id
+                LEFT JOIN TAPPE
+                    ON TAPPE.id = POIXTAPPE.tappa_id
+                LEFT JOIN TAPPE_TEXT
+                    ON TAPPE.id = TAPPE_TEXT.tappa_id
+                WHERE poi.comune_id = @comuneId;
+            ";
+
+                dbcmd.Parameters.Add(
+                    new SqliteParameter(
+                        "@comuneId",
+                        comuneId));
+
+                Debug.Log(
+                    "[DB PESO] Calcolo peso TAPPE..."
+                );
+
+                object risultato =
+                    dbcmd.ExecuteScalar();
+
+                if (risultato != null &&
+                    risultato != DBNull.Value)
+                {
+                    pesoTappe =
+                        Convert.ToInt64(risultato);
+                }
+            }
+
+            Debug.Log(
+                "[DB PESO] TAPPE: " +
+                pesoTappe +
+                " byte"
+            );
+
+            pesoTotale += pesoTappe;
+            pesoTappe = 0;
+
+            using (SqliteCommand dbcmd =
+                   dbconnLocal.CreateCommand())
+            {
+                dbcmd.CommandText = @"
+                SELECT
+                    COALESCE(SUM(LENGTH(TAPPE_IMMAGINI.image)), 0)
+                FROM poi
+                LEFT JOIN POIXTAPPE
+                    ON poi.id = POIXTAPPE.poi_id
+                LEFT JOIN TAPPE
+                    ON TAPPE.id = POIXTAPPE.tappa_id
+                LEFT JOIN TAPPE_IMMAGINI
+                    ON TAPPE.id = TAPPE_IMMAGINI.tappa_id
+                WHERE poi.comune_id = @comuneId;
+            ";
+
+                dbcmd.Parameters.Add(
+                    new SqliteParameter(
+                        "@comuneId",
+                        comuneId));
+
+                Debug.Log(
+                    "[DB PESO] Calcolo peso TAPPE..."
+                );
+
+                object risultato =
+                    dbcmd.ExecuteScalar();
+
+                if (risultato != null &&
+                    risultato != DBNull.Value)
+                {
+                    pesoTappe =
+                        Convert.ToInt64(risultato);
+                }
+            }
+
+            Debug.Log(
+                "[DB PESO] TAPPE: " +
+                pesoTappe +
+                " byte"
+            );
+
+            pesoTotale += pesoTappe;
         }
 
-        Debug.Log($"[DB] Peso totale del comune con ID {comuneId}: {pesoTotale} byte");
+        Debug.Log(
+            "[DB] Peso totale comune ID " +
+            comuneId +
+            ": " +
+            pesoTotale +
+            " byte"
+        );
 
         return pesoTotale;
     }
+
+
+
     public List<TIPO_POI> getTIPO_POI(string tag = null, int? group_id = null, int? id = null)
     {
         List<TIPO_POI> ret = new List<TIPO_POI>();

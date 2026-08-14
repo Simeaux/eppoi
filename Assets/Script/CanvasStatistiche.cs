@@ -73,14 +73,16 @@ public class CanvasStatistiche : MonoBehaviour
         // PESO TOTALE DATI APP
         // ---------------------------------------------------------
 
-        /*long dimensioneBytes =
+        long dimensioneBytes = 0;
+
+        dimensioneBytes =
             CalcolaDimensioneDirectory(
                 Application.persistentDataPath
             );
-            */
+
+        /*
         string percorsoDB = Path.Combine(Application.persistentDataPath, "mydatabase.db");
 
-        long dimensioneBytes = 0;
 
         if (File.Exists(percorsoDB))
         {
@@ -94,7 +96,7 @@ public class CanvasStatistiche : MonoBehaviour
                 percorsoDB
             );
         }
-
+      */
         string peso =
             FormattaDimensione(dimensioneBytes);
 
@@ -171,9 +173,9 @@ public class CanvasStatistiche : MonoBehaviour
         if (testoPesoImmagini != null)
         {
             testoPesoImmagini.text =
-                "Immagini: " +
+                "Comuni: " +
                 FormattaDimensione(
-                    peso_immagini
+                    peso_immagini + peso_testi
                 );
         }
 

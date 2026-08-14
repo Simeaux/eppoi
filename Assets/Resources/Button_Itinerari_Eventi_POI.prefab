@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pp: {fileID: 0}
+  fontPoppins: {fileID: 0}
+  spinnerPesoComune: {fileID: 0}
+  testoSpinnerPesoComune: {fileID: 0}
 --- !u!1 &450342085651586571
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,9 +476,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5ad74d6a0814049a3a414938793b94d8, type: 3}
+  m_Sprite: {fileID: -855298285791758126, guid: 738ec98dc92cd42a68f794c1bcf681b0,
+    type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -511,7 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.AspectRatioFitter
   m_AspectMode: 4
-  m_AspectRatio: 0.78670883
+  m_AspectRatio: 1
 --- !u!1 &3399650979546640996
 GameObject:
   m_ObjectHideFlags: 0
