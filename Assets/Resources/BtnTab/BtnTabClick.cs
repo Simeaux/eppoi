@@ -7,6 +7,7 @@ public class BtnTabClick : MonoBehaviour
 {
     public Button _btn;
     public bool _clicked = false;
+    public Image _bck_img;
     public Image _img;
     public Text _text;
 
@@ -17,26 +18,33 @@ public class BtnTabClick : MonoBehaviour
 
     private void changes()
     {
-        _img.gameObject.SetActive(_clicked);
-        Color c = new Color();
-        c = Color.black;
-        if (!_btn.enabled)
-            c = Color.grey;
-        else
+        if (_img != null)
         {
+            //_img.gameObject.SetActive(_clicked);
+            Color c = new Color();
+            Color bck = new Color();
             c = Color.black;
-            if (_clicked)
+            bck = Color.white;
+            if (!_btn.enabled)
+                c = Color.grey;
+            else
             {
-                Color _c = new Color();
-                if (ColorUtility.TryParseHtmlString("#E8531E", out _c))
-                    c = _c;
+                c = Color.black;
+                if (_clicked)
+                {
+                    Color _c = new Color();
+                    if (ColorUtility.TryParseHtmlString("#ffffff", out _c))
+                        c = _c;
+                    bck = Color.black;
+                }
             }
+            _text.color = c;
+            _img.color = c;
+            _bck_img.color = bck;
+            _text.fontStyle = _clicked ? FontStyle.Bold : FontStyle.Normal;
+            //_btn.gameObject.SetActive(!_clicked);
+            _btn.gameObject.GetComponentInChildren<Image>().color = c;
         }
-        _text.color = c;
-        _img.color = c;
-        _text.fontStyle = _clicked ? FontStyle.Bold : FontStyle.Normal;
-        //_btn.gameObject.SetActive(!_clicked);
-        _btn.gameObject.GetComponentInChildren<Image>().color = c;
     }
     public void SetCliccked(bool _click)
     {

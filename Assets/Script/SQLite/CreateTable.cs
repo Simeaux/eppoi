@@ -69,8 +69,6 @@ public class CreateTable : MonoBehaviour
     }
 
 
-
-
     public string ConvertiTag(string testoDalDatabase)
     {
         string risultato = testoDalDatabase;
@@ -82,13 +80,7 @@ public class CreateTable : MonoBehaviour
             // ============================================================
             // CERCA IL FILE AUDIO
             // ============================================================
-
-            Match matchAudio = Regex.Match(
-                risultato,
-                @"<audio\b[^>]*data-file\s*=\s*[""'\x60]([^""'\x60]+)[""'\x60]",
-                RegexOptions.IgnoreCase
-            );
-
+            Match matchAudio = Regex.Match(risultato, @"<audio\b[^>]*data-file\s*=\s*[""'\x60]([^""'\x60]+)[""'\x60]", RegexOptions.IgnoreCase);
             string audioUrl = "";
 
             if (matchAudio.Success)
@@ -97,13 +89,7 @@ public class CreateTable : MonoBehaviour
             }
             else
             {
-                // Fallback: cerca il src del tag <source>
-                Match matchSource = Regex.Match(
-                    risultato,
-                    @"<source\b[^>]*src\s*=\s*[""'\x60]([^""'\x60]+)[""'\x60]",
-                    RegexOptions.IgnoreCase
-                );
-
+                Match matchSource = Regex.Match(risultato, @"<source\b[^>]*src\s*=\s*[""'\x60]([^""'\x60]+)[""'\x60]", RegexOptions.IgnoreCase);
                 if (matchSource.Success)
                 {
                     audioUrl = matchSource.Groups[1].Value;
@@ -113,15 +99,20 @@ public class CreateTable : MonoBehaviour
             // ============================================================
             // TRASFORMA L'AUDIO IN UN LINK TMP
             // ============================================================
-
             if (!string.IsNullOrEmpty(audioUrl))
             {
-                Debug.Log("Audio trovato: " + audioUrl);
+                // NOTA: Se l'URL nel database è relativo (es. "/audio/file.mp3"), 
+                // devi trasformarlo in assoluto inserendo il dominio del tuo server qui:
+                if (audioUrl.StartsWith("/"))
+                {
+                    string tuoDominio = "https://tuosito.com"; // CAMBIA CON IL TUO DOMINIO REALIZZATO
+                    audioUrl = tuoDominio + audioUrl;
+                }
 
-                string linkAudio =
-                    "\n<link=\"" + audioUrl + "\">" +
-                    "<color=#007BFF><u>▶ Ascolta l'audio</u></color>" +
-                    "</link>\n";
+                Debug.Log("Audio URL Assoluto Generato: " + audioUrl);
+
+                // Generiamo il link pulito per TMP (Evitiamo <u> che può dare problemi a FindIntersectingLink)
+                string linkAudio = "\n<link=\"" + audioUrl + "\"><color=#007BFF>▶ Ascolta l'audio</color></link>\n";
 
                 risultato = Regex.Replace(
                     risultato,
@@ -132,57 +123,42 @@ public class CreateTable : MonoBehaviour
             }
 
             // ============================================================
-            // CONVERSIONE HTML
+            // CONVERSIONE HTML STANDARD
             // ============================================================
-
             risultato = risultato.Replace("<strong>", "<b>");
             risultato = risultato.Replace("</strong>", "</b>");
 
-            risultato = risultato.Replace(
-                "<div class=\"alert alert-info\">",
-                "<size=1><color=#FFFFFF>"
-            );
+            if (risultato.Contains("Questo è un itinerario fruibile in"))
+            {
+                risultato = risultato.Replace("<div class=\"alert alert-info\">", "<size=1><color=#FFFFFF>");
+                risultato = risultato.Replace("</div>", "</color></size>");
+            }
+            else
+            {
+                risultato = risultato.Replace("<div class=\"alert alert-info\">", "\n\n");
+                risultato = risultato.Replace("</div>", "");
+            }
 
-            risultato = risultato.Replace(
-                "</div>",
-                "</color></size>"
-            );
-
-            risultato = risultato.Replace(
-    "<script",
-    "<size=1><color=#FFFFFF>"
-);
-
-            risultato = risultato.Replace(
-                "</script>",
-                "</color></size>"
-            );
-
-
+            risultato = risultato.Replace("<script", "<size=1><color=#FFFFFF>");
+            risultato = risultato.Replace("</script>", "</color></size>");
             risultato = risultato.Replace("&nbsp;", " ");
 
             // Rimuove immagini
+            risultato = Regex.Replace(risultato, @"<img[^>]*>", "", RegexOptions.IgnoreCase);
+
+            // ============================================================
+            // PULIZIA TAG (REGEX CORRETTA)
+            // ============================================================
+            // Questa regex protegge specificamente i tag <link=...>, </link>, <b>, </b>, <i>, </i>, <color=...>, </color>
+            // eliminando in sicurezza tutto il resto dell'HTML sporco.
             risultato = Regex.Replace(
                 risultato,
-                @"<img[^>]*>",
+                @"<(?!b\b|/b>|i\b|/i>|color\b|/color>|link\b|/link>)[^>]+>",
                 "",
                 RegexOptions.IgnoreCase
             );
 
-            // Rimuove gli altri tag HTML.
-            // Manteniamo anche <link>
-            risultato = Regex.Replace(
-                risultato,
-                @"<(?!b|/b|i|/i|color|/color|link|/link)[^>]+>",
-                "",
-                RegexOptions.IgnoreCase
-            );
-
-            risultato = Regex.Replace(
-                risultato,
-                @"\n\s*\n",
-                "\n\n"
-            );
+            risultato = Regex.Replace(risultato, @"\n\s*\n", "\n\n");
         }
 
         return risultato;

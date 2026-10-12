@@ -522,6 +522,48 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!21 &480862111
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/IndependentRoundedCorners
+  m_Shader: {fileID: 4800000, guid: d3beb88e61f88ca4393acdefb005fa70, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _halfSize: {r: 79.999985, g: 233.70355, b: 0, a: 0}
+    - _r: {r: 50, g: 50, b: 50, a: 50}
+    - _rect2props: {r: 0, g: 0, b: 186.46657, a: 186.46657}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &532173163 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 662697031936091990, guid: 9eb1aceaa0f0a402f9fa95a964908520,
@@ -623,6 +665,7 @@ GameObject:
   - component: {fileID: 829883406}
   - component: {fileID: 829883405}
   - component: {fileID: 829883410}
+  - component: {fileID: 829883411}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -742,6 +785,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _longitudine: 0
   _latitudine: 0
+--- !u!114 &829883411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829883404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56dc09f22d88f4ca398e8eba98a96624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GestoreIndietro
 --- !u!1001 &852425541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -945,6 +1000,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 852425553}
+    - targetCorrespondingSourceObject: {fileID: 4797937216923630966, guid: 9eb1aceaa0f0a402f9fa95a964908520,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 852425554}
     - targetCorrespondingSourceObject: {fileID: 2425789971622426023, guid: 9eb1aceaa0f0a402f9fa95a964908520,
         type: 3}
       insertIndex: -1
@@ -1029,49 +1088,25 @@ MonoBehaviour:
   mDatasetName: 
   mCastedBehaviour: {fileID: 852425546}
   mBarcodeReferencePreview: {fileID: 0}
---- !u!21 &874859032
-Material:
-  serializedVersion: 8
+--- !u!114 &852425554
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/IndependentRoundedCorners
-  m_Shader: {fileID: 4800000, guid: d3beb88e61f88ca4393acdefb005fa70, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _halfSize: {r: 79.999985, g: 233.70355, b: 0, a: 0}
-    - _r: {r: 50, g: 50, b: 50, a: 50}
-    - _rect2props: {r: 0, g: 0, b: 186.46657, a: 186.46657}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
---- !u!21 &893205435
+  m_GameObject: {fileID: 852425545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -287086267, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Vuforia.Unity.Engine.dll::Vuforia.BarcodePreview
+  mObserverBehaviour: {fileID: 852425546}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: 
+  mDatasetName: 
+  mCastedBehaviour: {fileID: 852425546}
+  mBarcodeReferencePreview: {fileID: 0}
+--- !u!21 &874859032
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0

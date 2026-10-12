@@ -418,9 +418,17 @@ public class ICanvas : MonoBehaviour
                     {
                         if (!string.IsNullOrEmpty(_iep.lunghezza))
                             _component.text = _component.text.Replace("{0}", "{0} km");
+                        else
+                            _component.gameObject.SetActive(false);
                         _component.text = _component.text.Replace("{0}", _iep.lunghezza);
 
-                        _component.text = _component.text.Replace("{1}", _iep.dislivello);
+                    }
+                    else if (_component.name == "Dislivello")
+                    {
+                        if (!string.IsNullOrEmpty(_iep.dislivello))
+                            _component.text = _component.text.Replace("{1}", _iep.dislivello);
+                        else
+                            _component.gameObject.SetActive(false);
                     }
                 }
                 foreach (var _component in btn.GetComponentsInChildren<UnityEngine.UI.Image>())

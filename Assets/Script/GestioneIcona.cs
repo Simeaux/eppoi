@@ -29,9 +29,9 @@ public class GestioneIcona : MonoBehaviour
             {
                 Debug.Log(_cmp.name);
                 if (_cmp.name == "Distanza")
-                    _cmp.text = _cmp.text.Replace( "km dal centro", "km from the center");
+                    _cmp.text = _cmp.text.Replace("km dal centro", "km from the center");
             }
-            
+
 
         }
         //se è un poi
@@ -39,7 +39,8 @@ public class GestioneIcona : MonoBehaviour
         {
             //immagine_tipo_percorso.SetActive(false);
             //immagine_tipo_navigazione.SetActive(false);
-            distanza.SetActive(true);
+
+            //distanza.SetActive(true);
             Lunghezza.SetActive(false);
             tipo_Itinerario.SetActive(false);
             tipo_POI.SetActive(true);
@@ -53,12 +54,15 @@ public class GestioneIcona : MonoBehaviour
             tipo_Itinerario.SetActive(false);
             tipo_POI.SetActive(false);
         }
+        else if (tipologia.text == "4") //notizia
+        {
+        }
         else // itinerario
         {
             //immagine_tipo_percorso.SetActive(true);
             //immagine_tipo_navigazione.SetActive(true);
             distanza.SetActive(false);
-            Lunghezza.SetActive(true);
+            //Lunghezza.SetActive(true);
             tipo_Itinerario.SetActive(true);
             tipo_POI.SetActive(false);
         }

@@ -22,7 +22,10 @@ public class Panel_Header : MonoBehaviour
     public bool only_blank = false;
     public GameObject ButtonComuni_scaricati;
     public Text NumeroComuni_scaricati;
-
+    public Text PesoComuni_scaricati;
+    public Image imgComune_1;
+    public Image imgComune_2;
+    public Image imgComune_3;
 
     private int _lingua_selezionata = 1;
     private DBClass _DBClass;
@@ -57,17 +60,149 @@ public class Panel_Header : MonoBehaviour
                     CanvasPOI.SetActive(false);
                     ButtonComuni_scaricati.SetActive(false);
                 }
-                if (string.IsNullOrEmpty(PlayerPrefs.GetString("istat")))
+                else if (string.IsNullOrEmpty(PlayerPrefs.GetString("istat")))
                 {
                     _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
                     CanvasComune.SetActive(false);
                     CanvasPOI.SetActive(false);
                     ButtonComuni_scaricati.SetActive(true);
-                    NumeroComuni_scaricati.text = _DBClass.GetCOMUNI(null, null, null, null, null, true).Count.ToString();
+                    var _Listcomune = _DBClass.GetCOMUNI(null, null, null, null, null, true);
+                    int n_comuni = _Listcomune.Count;
+                    string testo = n_comuni.ToString() + " " + (_lingua_selezionata == 1 ? "Comuni offline" : "Offline municipalities");
+                    if (NumeroComuni_scaricati.text != testo)
+                    {
+                        NumeroComuni_scaricati.text = n_comuni.ToString() + " " + (_lingua_selezionata == 1 ? "Comuni offline" : "Offline municipalities");
+                        // ---------------------------------------------------------
+                        // PESO IMMAGINI
+                        // ---------------------------------------------------------
+
+                        long peso_immagini =
+                            _DBClass.GetIMMAGINI_PesoTabella();
+
+                        // ---------------------------------------------------------
+                        // PESO TESTI
+                        // ---------------------------------------------------------
+
+                        long peso_testi =
+                            _DBClass.GetTEXT_PesoTabella();
+                        PesoComuni_scaricati.text = _DBClass.FormattaDimensione(peso_immagini + peso_testi) + (_lingua_selezionata == 1 ? " sul telefono" : " of data");
+
+
+                        imgComune_1.gameObject.SetActive(false);
+                        imgComune_2.gameObject.SetActive(false);
+                        imgComune_3.gameObject.SetActive(false);
+
+                        if (n_comuni >= 1)
+                        {
+                            if (_Listcomune != null && _Listcomune.Count > 0)
+                            {
+                                if (_Listcomune[0].Listimages != null && _Listcomune[0].Listimages.Count > 0)
+                                {
+                                    Texture2D texture =
+                                        new Texture2D(
+                                            2,
+                                            2,
+                                            TextureFormat.RGBA32,
+                                            false
+                                        );
+
+                                    bool caricata =
+                                        texture.LoadImage(_Listcomune[0].Listimages[0].image);
+
+                                    if (caricata)
+                                    {
+                                        Sprite sprite =
+                                            Sprite.Create(
+                                                texture,
+                                                new Rect(
+                                                    0,
+                                                    0,
+                                                    texture.width,
+                                                    texture.height
+                                                ),
+                                                new Vector2(0.5f, 0.5f)
+                                            );
+                                        imgComune_1.sprite = sprite;
+                                        imgComune_1.preserveAspect = false;
+                                        imgComune_1.gameObject.SetActive(true);
+                                    }
+                                }
+                            }
+                            if (n_comuni >= 2)
+                            {
+                                if (_Listcomune[1].Listimages != null && _Listcomune[1].Listimages.Count > 0)
+                                {
+                                    Texture2D texture =
+                                        new Texture2D(
+                                            2,
+                                            2,
+                                            TextureFormat.RGBA32,
+                                            false
+                                        );
+
+                                    bool caricata =
+                                        texture.LoadImage(_Listcomune[1].Listimages[0].image);
+
+                                    if (caricata)
+                                    {
+                                        Sprite sprite =
+                                            Sprite.Create(
+                                                texture,
+                                                new Rect(
+                                                    0,
+                                                    0,
+                                                    texture.width,
+                                                    texture.height
+                                                ),
+                                                new Vector2(0.5f, 0.5f)
+                                            );
+                                        imgComune_2.sprite = sprite;
+                                        imgComune_2.preserveAspect = false;
+                                        imgComune_2.gameObject.SetActive(true);
+                                    }
+                                }
+                            }
+                            if (n_comuni >= 3)
+                            {
+                                if (_Listcomune[2].Listimages != null && _Listcomune[2].Listimages.Count > 0)
+                                {
+                                    Texture2D texture =
+                                        new Texture2D(
+                                            2,
+                                            2,
+                                            TextureFormat.RGBA32,
+                                            false
+                                        );
+
+                                    bool caricata =
+                                        texture.LoadImage(_Listcomune[2].Listimages[0].image);
+
+                                    if (caricata)
+                                    {
+                                        Sprite sprite =
+                                            Sprite.Create(
+                                                texture,
+                                                new Rect(
+                                                    0,
+                                                    0,
+                                                    texture.width,
+                                                    texture.height
+                                                ),
+                                                new Vector2(0.5f, 0.5f)
+                                            );
+                                        imgComune_3.sprite = sprite;
+                                        imgComune_3.preserveAspect = false;
+                                        imgComune_3.gameObject.SetActive(true);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
     }
+
 
     private void OnEnable()
     {

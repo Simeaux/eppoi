@@ -16,6 +16,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     public Button BtnItinerari;
     public Button BtnEventi;
     public Button BtnPOI;
+    public Button BtnNotizie;
     public GameObject panel_list_oggetti;
     public GameObject content_list_oggetti;
     public GameObject _scroll_descrizione;
@@ -33,7 +34,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     public Text gruppo_tipo_poi;
     public bool _check_avanzato = false;
     public Text selected_tab;
-
+    public Sprite immagineDefault;
 
     private string _filterName = "";
     private int _gruppo_tipo_poi = -1;
@@ -56,12 +57,17 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     private List<POI> POIList = new List<POI>();
     private List<PERCORSO> PERCORSOList = new List<PERCORSO>();
     private List<IEP> EventiList = new List<IEP>();
+    private List<IEP> NotizieList = new List<IEP>();
     private bool caricamentoEventi = false;
     private bool eventiCaricati = false;
+    private bool caricamentoNotizie = false;
+    private bool notizieCaricati = false;
     private Coroutine coroutineEventi;
+    private Coroutine coroutineNotizie;
     private List<GameObject> POIGo = new List<GameObject>();
     private GameObject _btnComune;
     private GameObject _btnComune_SITO;
+    private GameObject _btnComune_Notifica;
     private GameObject _btnSeeMore;
     private int immaginiEventiDaScaricare = 0;
 
@@ -181,6 +187,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         BtnItinerari.onClick.AddListener(BtnItinerariClicked);
         if (BtnEventi != null)
             BtnEventi.onClick.AddListener(BtnEventiClicked);
+        if (BtnNotizie != null)
+            BtnNotizie.onClick.AddListener(BtnNotizieClicked);
         if (BtnPOI != null)
             BtnPOI.onClick.AddListener(BtnPOIClicked);
 
@@ -190,6 +198,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
         _btnComune = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI");
         _btnComune_SITO = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI_simile_al_sito");
+        _btnComune_Notifica = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI_Notifica");
         _btnSeeMore = (GameObject)Resources.Load("Button_SeeMore");
 
 
@@ -200,8 +209,6 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         if (!_check_avanzato)
         {
             BtnItinerari.enabled = (PERCORSOList != null && PERCORSOList.Count > 0) ? true : false;
-            //if (BtnEventi != null)
-            //    BtnEventi.enabled = false;
             if (BtnPOI != null)
                 BtnPOI.enabled = (POIList != null && POIList.Count > 0) ? true : false;
         }
@@ -233,6 +240,17 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                 BtnEventi.GetComponent<BtnTabClick>().SetCliccked(false);
 
         }
+        if (BtnNotizie != null)
+        {
+            if (selected_tab.text == "4")
+            {
+                BtnNotizie.GetComponent<BtnTabClick>().SetCliccked(false);
+                _tipo_dettaglio_da_vedere = 4;
+            }
+            else
+                BtnNotizie.GetComponent<BtnTabClick>().SetCliccked(false);
+        }
+
         if (BtnPOI != null)
         {
             if (selected_tab.text == "2")
@@ -261,12 +279,35 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
             StartCoroutine(CaricaEventiComune());
         }
+        if (!notizieCaricati && !caricamentoNotizie)
+        {
+            if (BtnNotizie != null)
+            {
+                BtnNotizie.interactable = false;
+                BtnNotizie.gameObject.SetActive(true);
+            }
+
+            StartCoroutine(CaricaNotizieComune());
+        }
 
         if (_panel_link != null)
             _panel_link.SetActive(false);
     }
     private void Calcola()
     {
+        // Check if events are already loaded or currently loading
+        if (_tipo_dettaglio_da_vedere == 2 && (eventiCaricati || caricamentoEventi))
+        {
+            return;
+        }
+
+        // Set flag to indicate loading has started
+        caricamentoEventi = true;
+
+        // Start loading events
+        StartCoroutine(CaricaEventiComune());
+        StartCoroutine(CaricaNotizieComune());
+
         ScrollRect sr = _scroll_descrizione.GetComponent<ScrollRect>();
         if (sr != null)
             sr.verticalNormalizedPosition = 1f;
@@ -400,6 +441,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         BtnItinerari.onClick.RemoveListener(BtnItinerariClicked);
         if (BtnEventi != null)
             BtnEventi.onClick.RemoveListener(BtnEventiClicked);
+        if (BtnNotizie != null)
+            BtnNotizie.onClick.RemoveListener(BtnNotizieClicked);
         if (BtnPOI != null)
             BtnPOI.onClick.RemoveListener(BtnPOIClicked);
         _tipo_dettaglio_da_vedere = 0;
@@ -487,6 +530,12 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             }
         }
         ResetNumberOfRowToShow();
+
+        // Carica i dati solo se non sono già stati caricati
+        if (!eventiCaricati && !caricamentoEventi)
+        {
+            StartCoroutine(CaricaEventiComune());
+        }
     }
     private void BtnPOIClicked()
     {
@@ -513,6 +562,40 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
         ResetNumberOfRowToShow();
     }
+
+    private void BtnNotizieClicked()
+    {
+        //Debug.Log("vedo le notizie");
+        ScrollRect sr = panel_list_oggetti.GetComponent<ScrollRect>();
+
+        if (sr != null)
+        {
+            sr.verticalNormalizedPosition = 1f;
+        }
+        _OLD_tipo_dettaglio_da_vedere = _tipo_dettaglio_da_vedere = 4;
+        Transform viewportTransform = panel_list_oggetti.transform.Find("Viewport");
+
+        if (viewportTransform != null)
+        {
+            RectTransform rtViewport = viewportTransform.GetComponent<RectTransform>();
+
+            if (rtViewport != null)
+            {
+                // Modifica il Top del Viewport portandolo a 0
+                rtViewport.offsetMax = new Vector2(rtViewport.offsetMax.x, -0f);
+            }
+        }
+
+        ResetNumberOfRowToShow();
+
+        // Carica le notizie se non sono già state caricate
+        if (!notizieCaricati && !caricamentoNotizie)
+        {
+            caricamentoNotizie = true;
+            coroutineNotizie = StartCoroutine(CaricaNotizieComune());
+        }
+    }
+
     public class IEP
     {
         public byte[] immagine;
@@ -811,13 +894,216 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
 
         // Ora posso abilitare il bottone
-        if (BtnEventi != null)
+        if (BtnEventi != null && EventiList.Count > 0)
             BtnEventi.interactable = true;
 
         _TotalRowToExtract = EventiList.Count;
         Debug.Log(
             "EVENTI COMPLETI: " + EventiList.Count
         );
+    }
+
+
+    public IEnumerator CaricaNotizieComune()
+    {
+        var comuni = _DBClass.GetCOMUNI(_istat);
+
+        List<int> comuneIds = new List<int>();
+        if (comuni != null)
+        {
+            foreach (var comune in comuni)
+            {
+                comuneIds.Add(comune.id);
+            }
+        }
+
+        string indirizzo = "https://www.provincia.mc.it/wp-json/rest_api_ws/v1/getNotizieAPP?";
+        if (comuneIds.Count > 0)
+        {
+            indirizzo += "&blog_id=" + string.Join(",", comuneIds[0]);
+        }
+
+        indirizzo += "&t=" + DateTime.UtcNow.Ticks;
+
+
+        Debug.Log(indirizzo);
+
+
+        UnityWebRequest www = UnityWebRequest.Get(indirizzo);
+
+
+        yield return www.SendWebRequest();
+
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Errore nel caricamento delle notizie: " + www.error);
+            www.Dispose();
+
+            caricamentoEventi = false;
+
+            yield break;
+        }
+
+
+        string jsonreturned = www.downloadHandler.text;
+
+
+        //        NotizieResponse response = JsonUtility.FromJson<NotizieResponse>(jsonreturned);
+
+
+
+        // Parsiamo i dati ricevuti
+
+
+        // Deserializza direttamente nel dizionario con il doppio array
+        Dictionary<string, List<List<NotiziaItem>>> response =
+            JsonConvert.DeserializeObject<Dictionary<string, List<List<NotiziaItem>>>>(jsonreturned);
+        NotizieList = new List<IEP>();
+        // Ora puoi leggere i dati così:
+        foreach (var item in response)
+        {
+            string nomeSito = item.Key;
+            foreach (var bloccoNotizie in item.Value)
+            {
+                foreach (NotiziaItem notizia in bloccoNotizie)
+                {
+                    if (NotizieList.Any(n => n.link == notizia.link))
+                    {
+                        // Notizia già presente, salta questa iterazione
+                        continue;
+                    }
+                    IEP iep = new IEP();
+                    iep.nome_comune = notizia.titolo;
+                    iep.testo = notizia.tipo_notizia;
+                    iep.descrizione_breve = notizia.titolo;
+                    iep.link = notizia.link;
+                    iep.tipo = 4; // Tipo notizie
+
+                    if (!string.IsNullOrEmpty(notizia.immagine))
+                    {
+                        iep.immagine_url = notizia.immagine;
+                        // Carichiamo l'immagine
+                        yield return StartCoroutine(ScaricaImmagineURL(
+                            notizia.immagine,
+                            sprite =>
+                            {
+                                iep.sprite_immagine = sprite;
+                            }
+                        ));
+                    }
+                    else
+                    {
+                        // SE IL NOME/URL È VUOTO: Applica subito l'immagine di default
+                        iep.immagine_url = "default";
+                        iep.sprite_immagine = immagineDefault;
+                    }
+                    if (!NotizieList.Any(n => n.link == notizia.link))
+                    {
+                        NotizieList.Add(iep);
+                    }
+                }
+
+                // Notifica che le notizie sono state caricate
+                notizieCaricati = true;
+                caricamentoNotizie = false;
+
+                // Aggiorna l'interfaccia utente con le notizie caricate
+                StartCoroutine(UpdateUIWithNotizie());
+            }
+
+
+
+        }
+
+        caricamentoNotizie = false;
+
+
+        // Ora posso abilitare il bottone
+        if (BtnNotizie != null && NotizieList.Count > 0)
+            BtnNotizie.interactable = true;
+
+        _TotalRowToExtract = NotizieList.Count;
+        Debug.Log(
+            "NOTIZIE COMPLETI: " + NotizieList.Count
+        );
+        yield return null;
+    }
+
+    public IEnumerator UpdateUIWithNotizie()
+    {
+        // Aggiorna l'interfaccia utente dopo il caricamento delle notizie
+        if (NotizieList.Count > 0)
+        {
+            // Inserisci le notizie nella UI
+            foreach (var notizia in NotizieList)
+            {
+                if (notizia.tipo == 4) // Solo notizie
+                {
+                    // Questo codice è già presente in altre parti del file, quindi possiamo riutilizzarlo
+                }
+            }
+        }
+
+        yield return null;
+    }
+
+    public void RicaricaEventi()
+    {
+        // Reset loading flags to force reload
+        eventiCaricati = false;
+        caricamentoEventi = false;
+
+        // Clear existing events
+        EventiList.Clear();
+
+        // Reset UI
+        if (BtnEventi != null)
+        {
+            BtnEventi.interactable = false;
+            BtnEventi.gameObject.SetActive(true);
+        }
+
+        // Start loading new events
+        StartCoroutine(CaricaEventiComune());
+    }
+
+    public void RicaricaNotizie()
+    {
+        // Reset loading flags to force reload
+        notizieCaricati = false;
+        caricamentoNotizie = false;
+
+        // Clear existing notizie
+        NotizieList.Clear();
+
+        // Reset UI
+        if (BtnNotizie != null)
+        {
+            BtnNotizie.interactable = false;
+            BtnNotizie.gameObject.SetActive(true);
+        }
+
+        // Start loading new events
+        StartCoroutine(CaricaNotizieComune());
+    }
+
+    [System.Serializable]
+    public class NotizieResponse
+    {
+        public List<NotiziaItem> Notizie;
+    }
+
+    [System.Serializable]
+    public class NotiziaItem
+    {
+        public string id;
+        public string titolo;
+        public string link;
+        public string descrizione;
+        public string immagine;
+        public string tipo_notizia;
+
     }
 
     // Ritorna l'array ordinato per distanza e poi per nome
@@ -872,6 +1158,13 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             foreach (IEP evento in EventiList)
             {
                 ret.Add(evento);
+            }
+        }
+        if (!check_tipo_dettaglio_da_vedere || _tipo_dettaglio_da_vedere == 4)
+        {
+            foreach (IEP notizia in NotizieList)
+            {
+                ret.Add(notizia);
             }
         }
         if ((!check_tipo_dettaglio_da_vedere || _tipo_dettaglio_da_vedere == 1) && _PERCORSOs != null && _PERCORSOs.Count > 0)
@@ -963,6 +1256,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             var w = Screen.width;
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(0.95f * w), GUILayout.Height(h));
             int _i = 0;
+            _TotalRowToExtract = iep.Count;
             for (_i = 0; _i < iep.Count && _i < _NumberOfItemsToShow; _i++)
             {
                 IEP _iep = iep[_i];
@@ -971,6 +1265,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                 var btn = Instantiate(_btnComune);
                 if (_tipo_dettaglio_da_vedere == 2)
                     btn = Instantiate(_btnComune_SITO);
+                if (_tipo_dettaglio_da_vedere == 4)
+                    btn = Instantiate(_btnComune_Notifica);
                 var pos = btn.transform.position;
                 btn.transform.position = new Vector3(pos.x, pos.y - (altezza_prefab * _i), pos.z);
                 btn.transform.localScale = new Vector3(1, 1, 1);
@@ -1102,22 +1398,59 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                             var _comuni = _DBClass.GetCOMUNI(null, null, _iep.sinp_id);
                             _component.text = $"{_comuni.FirstOrDefault()?.sito_turistico}{_iep.link}";
                         }
+                        else if (_tipo_dettaglio_da_vedere == 4)
+                        {
+                            _component.text = _iep.link;
+                        }
                         else
                             _component.text = $"{_iep.tipo};{_iep.id}";
                     }
                     else if (_component.name == "Distanza")
-                        _component.text = _component.text.Replace("{0}", (_iep.distance / 1000).ToString("0.##"));
+                    {
+                        _component.gameObject.SetActive(false);
+                        if (_iep.distance > 0)
+                        {
+                            if (_iep.distance / 1000 < 1)
+                            {
+                                _component.text = _component.text.Replace("{0}", (_iep.distance).ToString("0.##") + " m");
+                                _component.gameObject.SetActive(true);
+                            }
+                            else
+                            {
+                                _component.text = _component.text.Replace("{0}", (_iep.distance / 1000).ToString("0.##"));
+                                _component.gameObject.SetActive(true);
+                            }
+                        }
+                    }
                     else if (_component.name == "NomeComune")
                         _component.text = _iep.nome_comune;
                     else if (_component.name == "DescrizioneBreve")
                         _component.text = _iep.descrizione_breve;
                     else if (_component.name == "Lunghezza")
                     {
-                        //if (!string.IsNullOrEmpty(_iep.lunghezza) && !_iep.lunghezza.ToLower().Contains("km"))
-                        //    _component.text = _component.text.Replace("{0}", "{0} km");
-                        _component.text = _component.text.Replace("{0}", _iep.lunghezza);
-
-                        _component.text = _component.text.Replace("{1}", _iep.dislivello);
+                        _component.gameObject.SetActive(false);
+                        if (_tipo_dettaglio_da_vedere == 1 && !string.IsNullOrEmpty(_iep.lunghezza))
+                        {
+                            _component.text = _component.text.Replace("{0}", _iep.lunghezza);
+                            _component.gameObject.SetActive(true);
+                        }
+                        if (_component.text.Contains("{0}"))
+                        {
+                            _component.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (_component.name == "Dislivello")
+                    {
+                        _component.gameObject.SetActive(false);
+                        if (_tipo_dettaglio_da_vedere == 1 && !string.IsNullOrEmpty(_iep.dislivello))
+                        {
+                            _component.text = _component.text.Replace("{1}", _iep.dislivello);
+                            _component.gameObject.SetActive(true);
+                        }
+                        if (_component.text.Contains("{1}"))
+                        {
+                            _component.gameObject.SetActive(false);
+                        }
                     }
                 }
                 foreach (var _component in btn.GetComponentsInChildren<Image>())
@@ -1182,7 +1515,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     }
                     if (_component.name == "Image")
                     {
-                        if (_iep.tipo == 2)
+                        if (_iep.tipo == 2 || _iep.tipo == 4)
                         {
                             // EVENTO
                             if (_iep.sprite_immagine != null)
@@ -1310,6 +1643,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
 
 
+
+
 [System.Serializable]
 public class EventoResponse
 {
@@ -1322,6 +1657,7 @@ public class EventoItem
     public long id;
     public string post_name;
     public string title;
+    public string link;
 
     public List<string> id_sinp;
     public List<string> genitore_evento;
@@ -1329,5 +1665,5 @@ public class EventoItem
     public List<string> data_orario_inizio;
     public List<string> data_orario_fine;
     public List<string> descrizione_breve;
-    public string link;
 }
+

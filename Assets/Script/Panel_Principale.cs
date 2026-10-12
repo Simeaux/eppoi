@@ -1921,7 +1921,7 @@ public class Panel_Principale : MonoBehaviour
             string.Empty,
             filtro_nome.text,
             null,
-            true
+            null
         );
 
         StartCoroutine(BuildComuniList(comuni));
@@ -1975,6 +1975,11 @@ public class Panel_Principale : MonoBehaviour
                     case "Istat":
 
                         text.text = comune.istat;
+
+                        break;
+                    case "PesoComune":
+
+                        text.text = _DBClass.FormattaDimensione(_DBClass.getPesoComuneInDB(comune.id)) + (_lingua_selezionata == 1 ? " sul telefono" : " of data");
 
                         break;
                 }

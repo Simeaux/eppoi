@@ -8,7 +8,27 @@ public class Button_comune_statistiche : MonoBehaviour
     public Text nomeComune;
     public Text pesoComune;
     public Text Id;
+    private DBClass _DBClass;
 
+    void Start()
+    {
+        GameObject sqliteObject =
+    GameObject.FindWithTag("SQLite");
+
+        if (sqliteObject == null)
+        {
+            Debug.LogError("[START] Oggetto SQLite non trovato.");
+            return;
+        }
+        _DBClass =
+            sqliteObject.GetComponent<DBClass>();
+
+        if (_DBClass == null)
+        {
+            Debug.LogError("[START] DBClass non trovato.");
+            return;
+        }
+    }
     public void ImpostaComune(
         string nome,
         long peso,
@@ -32,7 +52,7 @@ public class Button_comune_statistiche : MonoBehaviour
         if (pesoComune != null)
         {
             pesoComune.text =
-                FormattaDimensione(peso);
+                _DBClass.FormattaDimensione(peso);
         }
 
         // Foto
@@ -80,28 +100,5 @@ public class Button_comune_statistiche : MonoBehaviour
                 );
             }
         }
-    }
-
-    private string FormattaDimensione(long bytes)
-    {
-        if (bytes < 1024)
-            return bytes + " B";
-
-        double kb =
-            bytes / 1024.0;
-
-        if (kb < 1024)
-            return kb.ToString("F2") + " KB";
-
-        double mb =
-            kb / 1024.0;
-
-        if (mb < 1024)
-            return mb.ToString("F2") + " MB";
-
-        double gb =
-            mb / 1024.0;
-
-        return gb.ToString("F2") + " GB";
     }
 }

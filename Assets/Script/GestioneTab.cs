@@ -46,6 +46,9 @@ public class GestioneTab : MonoBehaviour
                             case "EVENTI":
                                 _cmp.text = "EVENTS";
                                 break;
+                            case "NOTIZIE":
+                                _cmp.text = "NEWS";
+                                break;
                         }
                     }
                 }
@@ -131,6 +134,7 @@ public class GestioneTab : MonoBehaviour
         PlayerPrefs.SetInt($"show_itinerari", 0);
         PlayerPrefs.SetInt($"show_poi", 0);
         PlayerPrefs.SetInt($"show_eventi", 0);
+        PlayerPrefs.SetInt($"show_notizie", 0);
 
         //luoghi/descrizione
         if (i == 0)
@@ -154,6 +158,11 @@ public class GestioneTab : MonoBehaviour
         {
             //Debug.Log("poi");
             PlayerPrefs.SetInt($"show_eventi", 1);
+        }
+        if (i == 4)
+        {
+            //Debug.Log("poi");
+            PlayerPrefs.SetInt($"show_notizie", 1);
         }
         if (_readForMe != null)
         {

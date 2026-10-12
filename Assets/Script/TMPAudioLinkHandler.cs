@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -104,8 +105,26 @@ public class TMPAudioLinkHandler : MonoBehaviour
 
         string url = linkInfo.GetLinkID();
 
+        // 1. Controllo di base: stringa non vuota
         if (string.IsNullOrEmpty(url))
             return;
+
+        // 2. Controllo sintattico: l'URL ha un formato valido?
+        // UriKind.Absolute controlla indirizzi web completi (es. http://..., https://...)
+        // Se usi percorsi locali o relativi, puoi usare UriKind.RelativeOrAbsolute
+        if (!Uri.TryCreate(url, UriKind.Absolute, out Uri resultUri))
+        {
+            Debug.LogWarning($"URL non valido sintatticamente: {url}");
+            return;
+        }
+
+        // 3. (Opzionale) Controllo sul tipo di file o protocollo
+        // Ad esempio, se vuoi assicurarti che sia un file audio specifico o un protocollo web
+        if (resultUri.Scheme != Uri.UriSchemeHttp && resultUri.Scheme != Uri.UriSchemeHttps)
+        {
+            Debug.LogWarning($"Protocollo non supportato (usa solo HTTP/HTTPS): {url}");
+            return;
+        }
 
         Debug.Log("Audio cliccato: " + url);
 

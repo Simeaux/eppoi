@@ -915,5 +915,40 @@ public class DBClass : MonoBehaviour
         );
     }
 
+    /// <summary>
+    /// Converte i byte in B / KB / MB / GB.
+    /// </summary>
+    public string FormattaDimensione(
+        long bytes)
+    {
+        if (bytes < 1024)
+        {
+            return bytes + " B";
+        }
+
+        double kb =
+            bytes / 1024.0;
+
+        if (kb < 1024)
+        {
+            return kb.ToString("F2") +
+                   " KB";
+        }
+
+        double mb =
+            kb / 1024.0;
+
+        if (mb < 1024)
+        {
+            return mb.ToString("F2") +
+                   " MB";
+        }
+
+        double gb =
+            mb / 1024.0;
+
+        return gb.ToString("F2") +
+               " GB";
+    }
 }
 

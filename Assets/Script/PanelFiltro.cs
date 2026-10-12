@@ -12,8 +12,8 @@ public class PanelFiltro : MonoBehaviour
 
     void Start()
     {
-        var _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
-        txtSearch_Placeholder.text = _lingua_selezionata == 1 ? "Dove andare? Cosa fare?" : "Where to go? What to do?";
+        //var _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
+        txtSearch_Placeholder.text = ""; //_lingua_selezionata == 1 ? "Dove andare? Cosa fare?" : "Where to go? What to do?";
         // Create a temporary reference to the current scene.
         Scene currentScene = SceneManager.GetActiveScene();
         // Retrieve the name of this scene.
@@ -26,5 +26,5 @@ public class PanelFiltro : MonoBehaviour
             btn_activate_Search.SetActive(false);
     }
 
-    
+
 }

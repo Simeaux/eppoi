@@ -106,6 +106,12 @@ public class PanelFooter : MonoBehaviour
 
     private void btnHomeCliccked()
     {
+        PlayerPrefs.SetString("istat", "");
+        PlayerPrefs.SetString("poi_selezionato", "");
+        PlayerPrefs.SetString("percorso_selezionato", "");
+        PlayerPrefs.SetString("percorso_selezionato_nome", "");
+        PlayerPrefs.SetString("poi_selezionato_nome", "");
+        PlayerPrefs.SetInt("comune_selected", 0);
         change.Load_Menu();
         //GameObject.FindObjectOfType<ChangeScene>().Load_Menu();
         //gameObject.AddComponent<ChangeScene>().Load_Menu();

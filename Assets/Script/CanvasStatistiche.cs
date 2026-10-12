@@ -98,7 +98,7 @@ public class CanvasStatistiche : MonoBehaviour
         }
       */
         string peso =
-            FormattaDimensione(dimensioneBytes);
+           _DBClass.FormattaDimensione(dimensioneBytes);
 
         Debug.Log(
             "[STATISTICHE] Dimensione dati app: " +
@@ -148,7 +148,7 @@ public class CanvasStatistiche : MonoBehaviour
         {
             testoPesoSistema.text =
                 "Sistema: " +
-                FormattaDimensione(
+               _DBClass.FormattaDimensione(
                     peso_sistema
                 );
         }
@@ -161,7 +161,7 @@ public class CanvasStatistiche : MonoBehaviour
         {
             testoPesoTesti.text =
                 "Testi: " +
-                FormattaDimensione(
+                _DBClass.FormattaDimensione(
                     peso_testi
                 );
         }
@@ -174,7 +174,7 @@ public class CanvasStatistiche : MonoBehaviour
         {
             testoPesoImmagini.text =
                 "Comuni: " +
-                FormattaDimensione(
+                _DBClass.FormattaDimensione(
                     peso_immagini + peso_testi
                 );
         }
@@ -385,41 +385,7 @@ public class CanvasStatistiche : MonoBehaviour
         return dimensioneTotale;
     }
 
-    /// <summary>
-    /// Converte i byte in B / KB / MB / GB.
-    /// </summary>
-    private string FormattaDimensione(
-        long bytes)
-    {
-        if (bytes < 1024)
-        {
-            return bytes + " B";
-        }
 
-        double kb =
-            bytes / 1024.0;
-
-        if (kb < 1024)
-        {
-            return kb.ToString("F2") +
-                   " KB";
-        }
-
-        double mb =
-            kb / 1024.0;
-
-        if (mb < 1024)
-        {
-            return mb.ToString("F2") +
-                   " MB";
-        }
-
-        double gb =
-            mb / 1024.0;
-
-        return gb.ToString("F2") +
-               " GB";
-    }
     public void AggiornaListaComuni()
     {
         if (_DBClass == null)

@@ -24,6 +24,7 @@ public class Panel_Comune : MonoBehaviour
     public Text txtItinerari;
     public Text txtPuntiDiInteresse;
     public Text txtEventi;
+    public Text txtNotizie;
 
 
     public GameObject _scrollDesccrizione;
@@ -43,7 +44,7 @@ public class Panel_Comune : MonoBehaviour
         txtItinerari.text = _lingua_selezionata == 1 ? "Itinerari" : "Itineraries";
         txtPuntiDiInteresse.text = _lingua_selezionata == 1 ? "Punti di interesse" : "Points of interest";
         txtEventi.text = _lingua_selezionata == 1 ? "Eventi" : "Events";
-
+        txtNotizie.text = _lingua_selezionata == 1 ? "Notizie" : "News";
     }
     private void Update()
     {
@@ -89,6 +90,28 @@ public class Panel_Comune : MonoBehaviour
             if (_comune.Listimages != null && _comune.Listimages.Count > 0 && _comune.Listimages[0].image != null && _comune.Listimages[0].image.Length > 0)
             {
                 descrizione.text = "\n\n\n\n\n\n\n";
+
+                descrizione.text += _lingua_selezionata == 1 ? "Regione" : "Region";
+                descrizione.text += " <b>" + (_comune.regione).ToString() + "</b>";
+                descrizione.text += "\n";
+                descrizione.text += _lingua_selezionata == 1 ? "Provincia" : "Province";
+                descrizione.text += " <b>" + _comune.provincia + "</b>";
+                descrizione.text += "\n";
+                descrizione.text += _lingua_selezionata == 1 ? "Coordinate" : "Coordinates";
+                while (_comune.latitudine > 100)
+                    _comune.latitudine = _comune.latitudine / 10;
+                while (_comune.longitudine > 100)
+                    _comune.longitudine = _comune.longitudine / 10;
+                descrizione.text += " <b>" + _comune.latitudine.ToString("##.#####").Replace(".", ",") + "°N - " + _comune.longitudine.ToString("##.#####").Replace(".", ",") + (_lingua_selezionata == 1 ? "°E" : "°W") + "</b>";
+                descrizione.text += "\n";
+                descrizione.text += _lingua_selezionata == 1 ? "Altitudine" : "Altitude";
+                descrizione.text += " <b>" + _comune.altitudine.ToString("##,###").Replace(",", ".") + (_lingua_selezionata == 1 ? " m.s.l.m." : " m above s.l.") + "</b>";
+                descrizione.text += "\n";
+                descrizione.text += _lingua_selezionata == 1 ? "Abitanti" : "Inhabitants";
+                descrizione.text += " <b>" + _comune.abitanti.ToString("###,###").Replace(",", ".") + "</b>";
+                descrizione.text += "\n";
+                descrizione.text += "\n";
+
                 foto_comune.gameObject.SetActive(true);
                 float _dimensione_foto = 1240;
                 if (GOList != null && GOList.Count > 0)

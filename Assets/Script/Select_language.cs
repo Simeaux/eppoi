@@ -20,6 +20,7 @@ public class Select_language : MonoBehaviour
 {
     public Button BtnItaliano;
     public Button BtnInglese;
+    public Button BtnContinua;
     public Button BtnCancella_DB;
     public Button BtnGetPersistentDB;
     public Toggle conferma;
@@ -93,25 +94,33 @@ public class Select_language : MonoBehaviour
         BtnItaliano.onClick.AddListener(onSelectLanguageItaliano);
         BtnInglese.onClick.AddListener(onSelectLanguageInglese);
         BtnCancella_DB.onClick.AddListener(onCancellaDB);
+        BtnContinua.onClick.AddListener(onContinua);
     }
     private void OnDisable()
     {
         BtnItaliano.onClick.RemoveListener(onSelectLanguageItaliano);
         BtnInglese.onClick.RemoveListener(onSelectLanguageInglese);
         BtnCancella_DB.onClick.RemoveListener(onCancellaDB);
+        BtnContinua.onClick.RemoveListener(onContinua);
     }
-    private void onSelectLanguageItaliano()
+    public void onSelectLanguageItaliano()
     {
         PlayerPrefs.SetInt("lingua_selezionata", 1);
         if (conferma.isOn)
             _DBClass.setSetting_LinguaSelezionata(1);
-        goOn();
+        //goOn();
     }
-    private void onSelectLanguageInglese()
+    public void onSelectLanguageInglese()
     {
         PlayerPrefs.SetInt("lingua_selezionata", 2);
         if (conferma.isOn)
             _DBClass.setSetting_LinguaSelezionata(2);
+        //goOn();
+    }
+    public void onContinua()
+    {
+        if (PlayerPrefs.GetInt("lingua_selezionata") == 0)
+            _DBClass.setSetting_LinguaSelezionata(1);
         goOn();
     }
     public void onCancellaDB()
