@@ -85,7 +85,16 @@ public class Panel_Header : MonoBehaviour
 
                         long peso_testi =
                             _DBClass.GetTEXT_PesoTabella();
-                        PesoComuni_scaricati.text = _DBClass.FormattaDimensione(peso_immagini + peso_testi) + (_lingua_selezionata == 1 ? " sul telefono" : " of data");
+                        if (peso_immagini + peso_testi > 0)
+                        {
+                            PesoComuni_scaricati.gameObject.SetActive(true);
+                            PesoComuni_scaricati.text = _DBClass.FormattaDimensione(peso_immagini + peso_testi) + (_lingua_selezionata == 1 ? " sul telefono" : " of data");
+                        }
+                        else
+                        {
+                            PesoComuni_scaricati.gameObject.SetActive(false);
+                        }
+
 
 
                         imgComune_1.gameObject.SetActive(false);

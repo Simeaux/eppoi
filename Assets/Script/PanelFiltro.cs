@@ -13,7 +13,7 @@ public class PanelFiltro : MonoBehaviour
     void Start()
     {
         //var _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
-        txtSearch_Placeholder.text = ""; //_lingua_selezionata == 1 ? "Dove andare? Cosa fare?" : "Where to go? What to do?";
+        txtSearch_Placeholder.text = PlayerPrefs.GetInt("lingua_selezionata") == 1 ? "Cerca in questa pagina" : "Search this page";
         // Create a temporary reference to the current scene.
         Scene currentScene = SceneManager.GetActiveScene();
         // Retrieve the name of this scene.

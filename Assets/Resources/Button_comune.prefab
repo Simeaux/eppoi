@@ -955,8 +955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f480888e0b7e94540b6395eab7a4ae50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ARLocation.Utils.RotateObject
-  Speed: 10
-  Axis: {x: 0, y: 0, z: 1}
+  Speed: 100
+  Axis: {x: 0, y: 0, z: -1}
 --- !u!1 &5423744386614294037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,11 +1398,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cfa34b519ee0243ab887ac63bd2bbf24, type: 3}
-    m_FontSize: 40
+    m_Font: {fileID: 12800000, guid: be7c68f304b11463883e4c62a3df771a, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 40
+    m_MinSize: 30
     m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0

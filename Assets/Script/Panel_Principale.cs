@@ -1978,8 +1978,13 @@ public class Panel_Principale : MonoBehaviour
 
                         break;
                     case "PesoComune":
-
-                        text.text = _DBClass.FormattaDimensione(_DBClass.getPesoComuneInDB(comune.id)) + (_lingua_selezionata == 1 ? " sul telefono" : " of data");
+                        var _peso = _DBClass.getPesoComuneInDB(comune.id);
+                        if (_peso <= 0)
+                        {
+                            text.text = "";
+                        }
+                        else
+                            text.text = _DBClass.FormattaDimensione(_peso) + (_lingua_selezionata == 1 ? " sul telefono" : " of data");
 
                         break;
                 }

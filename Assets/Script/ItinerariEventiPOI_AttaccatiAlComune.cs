@@ -22,7 +22,6 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     public GameObject _scroll_descrizione;
     public GameObject scrollviewFotoComune;
     public GameObject contentDescrizione;
-    public GameObject _panel_link;
     public Text filterName;
     public Toggle manifatturiero;
     public Toggle enogastronomico;
@@ -66,6 +65,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     private Coroutine coroutineNotizie;
     private List<GameObject> POIGo = new List<GameObject>();
     private GameObject _btnComune;
+    private GameObject _btnItinerari;
+    private GameObject _btnPOI;
     private GameObject _btnComune_SITO;
     private GameObject _btnComune_Notifica;
     private GameObject _btnSeeMore;
@@ -197,6 +198,9 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
 
         _btnComune = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI");
+
+        _btnPOI = (GameObject)Resources.Load("Button_POI");
+        _btnItinerari = (GameObject)Resources.Load("Button_Itinerari");
         _btnComune_SITO = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI_simile_al_sito");
         _btnComune_Notifica = (GameObject)Resources.Load("Button_Itinerari_Eventi_POI_Notifica");
         _btnSeeMore = (GameObject)Resources.Load("Button_SeeMore");
@@ -269,6 +273,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                 GameObject.FindObjectOfType<GestioneTab>().selectes_btn_index(_c);
             }
         }
+        /*
         if (!eventiCaricati && !caricamentoEventi)
         {
             if (BtnEventi != null)
@@ -289,9 +294,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
             StartCoroutine(CaricaNotizieComune());
         }
+        */
 
-        if (_panel_link != null)
-            _panel_link.SetActive(false);
     }
     private void Calcola()
     {
@@ -300,13 +304,13 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         {
             return;
         }
+        _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
 
-        // Set flag to indicate loading has started
-        caricamentoEventi = true;
+
 
         // Start loading events
-        StartCoroutine(CaricaEventiComune());
-        StartCoroutine(CaricaNotizieComune());
+        //        StartCoroutine(CaricaEventiComune());
+        //        StartCoroutine(CaricaNotizieComune());
 
         ScrollRect sr = _scroll_descrizione.GetComponent<ScrollRect>();
         if (sr != null)
@@ -314,7 +318,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         sr = panel_list_oggetti.GetComponent<ScrollRect>();
         if (sr != null)
             sr.verticalNormalizedPosition = 1f;
-        _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
+
         string _poi_selezionato = PlayerPrefs.GetString("poi_selezionato");
         string _percorso_selezionato = PlayerPrefs.GetString("percorso_selezionato");
         //Debug.Log($"ItinerariEventiPOI_calcola poi:{_poi_selezionato} percorso:{_percorso_selezionato}");
@@ -872,6 +876,8 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
 
         // Ora scarico realmente le immagini
+        Debug.Log("Inizio scaricamento immagini eventi");
+
         foreach (IEP evento in EventiList)
         {
             if (!string.IsNullOrEmpty(evento.immagine_url))
@@ -889,7 +895,6 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             }
         }
 
-
         caricamentoEventi = false;
 
 
@@ -901,6 +906,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         Debug.Log(
             "EVENTI COMPLETI: " + EventiList.Count
         );
+        BtnEventiClicked();
     }
 
 
@@ -1027,6 +1033,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         Debug.Log(
             "NOTIZIE COMPLETI: " + NotizieList.Count
         );
+        BtnNotizieClicked();
         yield return null;
     }
 
@@ -1222,15 +1229,16 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     }
 
     private Vector2 scrollPosition = Vector2.zero;
-    public void ShowHidePanelLink()
-    {
-        _panel_link.SetActive(!_panel_link.activeSelf);
-    }
+
     private void OnGUI()
     {
         int altezza_prefab = 450;
+        if (_tipo_dettaglio_da_vedere == 1)
+            altezza_prefab = 780;
         if (_tipo_dettaglio_da_vedere == 2)
             altezza_prefab = 720;
+        if (_tipo_dettaglio_da_vedere == 3)
+            altezza_prefab = 600;
         if (_tipo_dettaglio_da_vedere == 0 && !_scroll_descrizione.activeSelf)
         {
             _scroll_descrizione.SetActive(true);
@@ -1257,16 +1265,23 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(0.95f * w), GUILayout.Height(h));
             int _i = 0;
             _TotalRowToExtract = iep.Count;
+            var btn = new GameObject();
             for (_i = 0; _i < iep.Count && _i < _NumberOfItemsToShow; _i++)
             {
                 IEP _iep = iep[_i];
                 GUILayout.BeginVertical(GUILayout.Height(h / 5));
                 GUILayout.BeginHorizontal(GUILayout.Height(h / 5));
-                var btn = Instantiate(_btnComune);
-                if (_tipo_dettaglio_da_vedere == 2)
+
+                if (_tipo_dettaglio_da_vedere == 1)
+                    btn = Instantiate(_btnItinerari);
+                else if (_tipo_dettaglio_da_vedere == 2)
                     btn = Instantiate(_btnComune_SITO);
-                if (_tipo_dettaglio_da_vedere == 4)
+                else if (_tipo_dettaglio_da_vedere == 3)
+                    btn = Instantiate(_btnPOI);
+                else if (_tipo_dettaglio_da_vedere == 4)
                     btn = Instantiate(_btnComune_Notifica);
+                else
+                    btn = Instantiate(_btnComune);
                 var pos = btn.transform.position;
                 btn.transform.position = new Vector3(pos.x, pos.y - (altezza_prefab * _i), pos.z);
                 btn.transform.localScale = new Vector3(1, 1, 1);
@@ -1358,10 +1373,10 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     if (_component.name == "Text")
                         _component.text = _iep.testo;
                     else if (_component.name == "TipoItinerario")
-                        _component.text = $"{_iep.tipo_poi}";
+                        _component.text = $"{_iep.nome_comune.ToUpper()} - {_iep.tipo_poi.ToUpper()}";
                     else if (_component.name == "TipoPOI")
                     {
-                        _component.text = $"{_iep.tipo_poi}";
+                        //_component.text = $"{_iep.tipo_poi}";
                         foreach (var _component2 in _component.GetComponentsInChildren<Image>())
                         {
                             if (_component2.name == "ImagePOI")
@@ -1369,22 +1384,60 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                                 var _gruppo = _DBClass.getGROUP_TIPO_POI(_iep.immagine_poi).FirstOrDefault();
                                 if (_gruppo != null)
                                 {
+                                    string hexColor = "#E0501F";
                                     if (_gruppo.value == "accoglienza-e-ricettivita")
+                                    {
                                         _component2.sprite = Resources.Load<Sprite>("Icone/ACCOGLIENZA-bianco");
+                                        hexColor = "#E0501F";
+                                    }
                                     if (_gruppo.value == "enogastronomico")
+                                    {
                                         _component2.sprite = Resources.Load<Sprite>("Icone/enogastronomico");
+                                        hexColor = "#E0501F";
+                                    }
                                     if (_gruppo.value == "manifatturiero")
+                                    {
                                         _component2.sprite = Resources.Load<Sprite>("Icone/manifatturiero");
+                                        hexColor = "#0E9E74";
+                                    }
                                     if (_gruppo.value == "naturalistico")
+                                    {
                                         _component2.sprite = Resources.Load<Sprite>("Icone/naturalistico");
+                                        hexColor = "#0E9E74";
+                                    }
                                     if (_gruppo.value == "religioso")
+                                    {
                                         _component2.sprite = Resources.Load<Sprite>("Icone/religioso");
+                                        hexColor = "#3E4EA0";
+                                    }
                                     if (_gruppo.value == "storico-artistico")
+                                    {
                                         _component2.sprite = Resources.Load<Sprite>("Icone/storico_artistico");
+                                        hexColor = "#C81820";
+                                    }
                                     if (_gruppo.value == "tempo-libero-e-sport")
+                                    {
                                         _component2.sprite = Resources.Load<Sprite>("Icone/tempo_libero_e_sport_bianco");
+                                        hexColor = "#3E4EA0";
+                                    }
                                     if (_gruppo.value == "varie")
+                                    {
                                         _component2.sprite = Resources.Load<Sprite>("Icone/varie-bianco");
+                                        hexColor = "#0E9E74";
+                                    }
+                                    // Crei una variabile colore vuota
+                                    Color myColor;
+
+                                    // Se la conversione va a buon fine, 'myColor' conterrà il tuo colore rosso/arancione
+                                    if (ColorUtility.TryParseHtmlString(hexColor, out myColor))
+                                    {
+                                        _component2.color = myColor;
+                                    }
+
+                                }
+                                else
+                                {
+                                    _component.gameObject.SetActive(false);
                                 }
                             }
                         }
@@ -1429,28 +1482,60 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                     else if (_component.name == "Lunghezza")
                     {
                         _component.gameObject.SetActive(false);
-                        if (_tipo_dettaglio_da_vedere == 1 && !string.IsNullOrEmpty(_iep.lunghezza))
+
+                        // Cerco il nuovo componente testo figlio (chiamato text nella gerarchia)
+                        List<Text> _testoFiglio = _component.GetComponentsInChildren<Text>().ToList();
+
+                        if (_testoFiglio != null)
                         {
-                            _component.text = _component.text.Replace("{0}", _iep.lunghezza);
-                            _component.gameObject.SetActive(true);
-                        }
-                        if (_component.text.Contains("{0}"))
-                        {
-                            _component.gameObject.SetActive(false);
+                            if (_tipo_dettaglio_da_vedere == 1 && !string.IsNullOrEmpty(_iep.lunghezza))
+                            {
+                                foreach (var testoFiglio in _testoFiglio)
+                                {
+                                    // Modifico il testo del figlio, non del componente principale
+                                    testoFiglio.text = testoFiglio.text.Replace("{0}", _iep.lunghezza);
+                                    _component.gameObject.SetActive(true);
+                                    // Controllo se il testo del figlio contiene ancora il placeholder
+                                    if (testoFiglio.text.Contains("{0}"))
+                                    {
+                                        _component.gameObject.SetActive(false);
+                                    }
+
+                                }
+                            }
+                            else
+                                _component.gameObject.SetActive(false);
+
                         }
                     }
                     else if (_component.name == "Dislivello")
                     {
                         _component.gameObject.SetActive(false);
-                        if (_tipo_dettaglio_da_vedere == 1 && !string.IsNullOrEmpty(_iep.dislivello))
+
+                        // Cerco il nuovo componente testo figlio (chiamato text nella gerarchia)
+                        List<Text> _testoFiglio = _component.GetComponentsInChildren<Text>().ToList();
+
+                        if (_testoFiglio != null)
                         {
-                            _component.text = _component.text.Replace("{1}", _iep.dislivello);
-                            _component.gameObject.SetActive(true);
+                            if (_tipo_dettaglio_da_vedere == 1 && !string.IsNullOrEmpty(_iep.dislivello))
+                            {
+                                foreach (var testoFiglio in _testoFiglio)
+                                {
+                                    // Modifico il testo del figlio, non del componente principale
+                                    testoFiglio.text = testoFiglio.text.Replace("{1}", _iep.dislivello);
+                                    _component.gameObject.SetActive(true);
+                                    // Controllo se il testo del figlio contiene ancora il placeholder
+                                    if (testoFiglio.text.Contains("{1}"))
+                                    {
+                                        _component.gameObject.SetActive(false);
+                                    }
+
+                                }
+                            }
+                            else
+                                _component.gameObject.SetActive(false);
                         }
-                        if (_component.text.Contains("{1}"))
-                        {
-                            _component.gameObject.SetActive(false);
-                        }
+
                     }
                 }
                 foreach (var _component in btn.GetComponentsInChildren<Image>())
@@ -1458,8 +1543,9 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
                     if (_component.name == "Image_background_scritte")
                     {
-                        Color c = Color.black;
-                        Color _c = Color.black;
+                        Color c = Color.white;
+                        Color _c = Color.white;
+                        /*
                         if (_iep.tipo == 3)
                         {
                             Debug.Log(_iep.immagine_poi);
@@ -1498,11 +1584,12 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                                         c = _c;
                             }
                         }
-                        else if (_iep.tipo == 1)
+                        else 
+                        if (_iep.tipo == 1)
                         {
                             //if (ColorUtility.TryParseHtmlString(_iep.colore, out _c))
                             //    c = _c;
-                            if (ColorUtility.TryParseHtmlString("#5c5c5c", out _c))
+                            if (ColorUtility.TryParseHtmlString("#ffffff", out _c))
                                 c = _c;
 
                         }
@@ -1511,6 +1598,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                             if (ColorUtility.TryParseHtmlString("#ffffff", out _c))
                                 c = _c;
                         }
+                        */
                         _component.color = c;
                     }
                     if (_component.name == "Image")
@@ -1610,7 +1698,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             {
                 GUILayout.BeginVertical(GUILayout.Height(h / 5));
                 GUILayout.BeginHorizontal(GUILayout.Height(h / 5));
-                var btn = Instantiate(_btnSeeMore);
+                btn = Instantiate(_btnSeeMore);
                 var pos = btn.transform.position;
                 btn.transform.position = new Vector3(pos.x, pos.y - (altezza_prefab * _i), pos.z);
                 btn.transform.localScale = new Vector3(1, 1, 1);

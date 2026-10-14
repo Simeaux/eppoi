@@ -25,6 +25,7 @@ public class PanelFooter : MonoBehaviour
 
     private int _lingua_selezionata = 1;
     private Color lightgray = new Color(0.8f, 0.8f, 0.8f, 1.0f);
+    private Color myColor = new Color(0.97f, 0.95f, 0.91f, 1.0f);
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,9 @@ public class PanelFooter : MonoBehaviour
                 txtSearch.text = "Search";
 
         }
+        var hexColor = "#B0A695";
+        // Se la conversione va a buon fine, 'myColor' conterrà il tuo colore rosso/arancione
+        ColorUtility.TryParseHtmlString(hexColor, out myColor);
     }
     private void OnEnable()
     {
@@ -80,10 +84,10 @@ public class PanelFooter : MonoBehaviour
             btnNavigatore.gameObject.GetComponentInChildren<Image>().color = lightgray;
             txtNavigatore.color = lightgray;
         }
-        else if (btnNavigatore.enabled && btnNavigatore.gameObject.GetComponentInChildren<Image>().color != Color.black)
+        else if (btnNavigatore.enabled && btnNavigatore.gameObject.GetComponentInChildren<Image>().color != myColor)
         {
-            btnNavigatore.gameObject.GetComponentInChildren<Image>().color = Color.black;
-            txtNavigatore.color = Color.black;
+            btnNavigatore.gameObject.GetComponentInChildren<Image>().color = myColor;
+            txtNavigatore.color = myColor;
         }
         if (txtMap != null)
         {

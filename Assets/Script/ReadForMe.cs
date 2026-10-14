@@ -53,8 +53,15 @@ public class ReadForMe : MonoBehaviour
             }
             else
             {
-                Container.gameObject.GetComponentInParent<Image>().color = Color.black;
-                txtLabel.color = Color.black;
+                var hexColor = "#B0A695";
+                Color myColor;
+
+                // Se la conversione va a buon fine, 'myColor' conterrà il tuo colore rosso/arancione
+                if (ColorUtility.TryParseHtmlString(hexColor, out myColor))
+                {
+                    Container.gameObject.GetComponentInParent<Image>().color = myColor;
+                    txtLabel.color = myColor;
+                }
             }
         }
     }

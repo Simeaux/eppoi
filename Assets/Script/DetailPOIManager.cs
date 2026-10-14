@@ -110,7 +110,7 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                 float _dimensione_foto = 1240;
                                 if (_p._images != null && _p._images.Count > 0)
                                 {
-                                    Pois.descrizione.text = "\n\n\n\n\n\n\n";
+                                    Pois.descrizione.text = "\n\n\n\n\n\n\n\n\n\n";
 
                                     Debug.Log($"foto da visualizzare {_p._images.Count}");
                                     int _i = 0;
@@ -143,6 +143,22 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                     //    delta = (_dimensione_foto * (_i - 1));
                                     //Pois.content_list_img.GetComponent<RectTransform>().sizeDelta = new Vector2(delta, 0);
                                     Pois.immagine.gameObject.SetActive(false);
+
+
+
+                                    var _panelLink = Pois.scrollview_list_img.gameObject.transform.Find("PanelLink");
+                                    if (_panelLink != null)
+                                    {
+                                        _panelLink.gameObject.SetActive(true);
+                                        RectTransform rect = _panelLink.GetComponent<RectTransform>();
+
+                                        if (rect != null)
+                                        {
+                                            // 3. Modifica la anchoredPosition (sottrai 430 sulla Y per andare in basso)
+                                            rect.anchoredPosition += new Vector2(0, -430f);
+                                        }
+                                    }
+
                                     Pois.scrollview_list_img.transform.SetParent(Pois.descrizione.transform, false);
 
 
@@ -291,7 +307,6 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                     {
                         if (_p != null)
                         {
-                            //Pois.descrizione.text += "\n\n\n\n\n\n\n";
                             Pois.descrizione.text += "\n";
                             ID_selected.text = _ID;
                             DetailPOI.enabled = true;
@@ -334,6 +349,19 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                     goApp._Image = _DBClass.getSpriteFromByteArray(_img.image);
                                     Pois.scrollview_list_img.AddPage((RectTransform)goApp.transform);
 
+                                    var _panelLink = Pois.scrollview_list_img.gameObject.transform.Find("PanelLink");
+                                    if (_panelLink != null)
+                                    {
+                                        _panelLink.gameObject.SetActive(true);
+                                        RectTransform rect = _panelLink.GetComponent<RectTransform>();
+
+                                        if (rect != null)
+                                        {
+                                            // 3. Modifica la anchoredPosition (sottrai 430 sulla Y per andare in basso)
+                                            rect.anchoredPosition += new Vector2(0, -430f);
+                                        }
+                                    }
+
                                     _i++;
                                 }
                                 //float delta = 0;
@@ -352,7 +380,6 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                                 //Pois.scrollview_list_img.transform.SetParent(Pois.descrizione.transform, false);
                                 Pois.scrollview_list_img.gameObject.SetActive(false);
                             }
-
 
 
                             //Location loc = new Location(_p.latitudine, _p.longitudine);

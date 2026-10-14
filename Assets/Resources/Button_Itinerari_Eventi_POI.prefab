@@ -1372,6 +1372,8 @@ GameObject:
   - component: {fileID: 493210295835286100}
   - component: {fileID: 34576809963678540}
   - component: {fileID: 4259572734776784497}
+  - component: {fileID: 8791615489891914682}
+  - component: {fileID: 6950903963025366880}
   m_Layer: 5
   m_Name: Button_Itinerari_Eventi_POI
   m_TagString: Untagged
@@ -1399,8 +1401,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 426.251}
+  m_AnchoredPosition: {x: 12, y: 0}
+  m_SizeDelta: {x: -24, y: 426.251}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7392819800657767643
 CanvasRenderer:
@@ -1417,7 +1419,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4928221172594276352}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1517,6 +1519,35 @@ MonoBehaviour:
   tipo_Itinerario: {fileID: 3730651043317062606}
   tipo_POI: {fileID: 4971867800215525866}
   immagine_tipo_poi: {fileID: 7514474692113706093}
+--- !u!114 &8791615489891914682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928221172594276352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
+  radius: 40
+  image: {fileID: 493210295835286100}
+--- !u!114 &6950903963025366880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928221172594276352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
+  m_EffectColor: {r: 0.23529412, g: 0.1764706, b: 0.09803922, a: 0.5}
+  m_EffectDistance: {x: 11, y: -11}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4971867800215525866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,7 +2193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithIndependentRoundedCorners
   r: {x: 45, y: 0, z: 0, w: 45}
-  rect2props: {x: 22.5, y: -0.000030517578, z: 134.7926, w: 134.7926}
+  rect2props: {x: 22.499992, y: -0.000030517578, z: 130.54996, w: 130.54996}
   image: {fileID: 8173376619786780126}
 --- !u!1 &9132754526696101516
 GameObject:

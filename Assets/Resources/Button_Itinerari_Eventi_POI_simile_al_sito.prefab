@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pp: {fileID: 0}
+  fontPoppins: {fileID: 0}
+  spinnerPesoComune: {fileID: 0}
+  testoSpinnerPesoComune: {fileID: 0}
 --- !u!1 &450342085651586571
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +64,7 @@ GameObject:
   - component: {fileID: 2376310923453629347}
   - component: {fileID: 6718512303622950976}
   - component: {fileID: 7567784618311739617}
+  - component: {fileID: 8417068994047670182}
   m_Layer: 5
   m_Name: Image_background_scritte
   m_TagString: Untagged
@@ -137,8 +141,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0
+  radius: 45
   image: {fileID: 6718512303622950976}
+--- !u!114 &8417068994047670182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450342085651586571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
+  m_EffectColor: {r: 0.23529412, g: 0.1764706, b: 0.09803922, a: 0.11764706}
+  m_EffectDistance: {x: 11, y: -11}
+  m_UseGraphicAlpha: 1
 --- !u!1 &669551504659433728
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   r: {x: 45, y: 45, z: 45, w: 45}
-  rect2props: {x: -0.0000038146973, y: -0.0000076293945, z: 18.318907, w: 18.318907}
+  rect2props: {x: -0.0000076293945, y: -0.000009536743, z: 16.28244, w: 16.28244}
   image: {fileID: 563024125718449562}
 --- !u!114 &2155449446167359331
 MonoBehaviour:
@@ -452,7 +471,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.1
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -772,8 +791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109c41f08973846429af681aea0a30c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  r: {x: 0, y: 0, z: 0, w: 0}
-  rect2props: {x: 0, y: -0.000030517578, z: 167.1291, w: 167.1291}
+  r: {x: 45, y: 45, z: 0, w: 0}
+  rect2props: {x: -0.0000076293945, y: -22.50003, z: 142.73392, w: 142.73392}
   image: {fileID: 2151397087672712963}
 --- !u!114 &917671495503024476
 MonoBehaviour:
@@ -1247,8 +1266,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.2}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 12, y: 0}
+  m_SizeDelta: {x: -24, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &7941587904017393978
 CanvasRenderer:
@@ -1382,6 +1401,8 @@ GameObject:
   - component: {fileID: 493210295835286100}
   - component: {fileID: 34576809963678540}
   - component: {fileID: 4259572734776784497}
+  - component: {fileID: 7837751343161518176}
+  - component: {fileID: 3576863478278485464}
   m_Layer: 5
   m_Name: Button_Itinerari_Eventi_POI_simile_al_sito
   m_TagString: Untagged
@@ -1409,8 +1430,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 705.541}
+  m_AnchoredPosition: {x: 12, y: 0}
+  m_SizeDelta: {x: -24, y: 705.541}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7392819800657767643
 CanvasRenderer:
@@ -1427,7 +1448,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4928221172594276352}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1527,6 +1548,35 @@ MonoBehaviour:
   tipo_Itinerario: {fileID: 3730651043317062606}
   tipo_POI: {fileID: 4971867800215525866}
   immagine_tipo_poi: {fileID: 7514474692113706093}
+--- !u!114 &7837751343161518176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928221172594276352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
+  m_EffectColor: {r: 0.23529412, g: 0.1764706, b: 0.09803922, a: 0.11764706}
+  m_EffectDistance: {x: 11, y: -11}
+  m_UseGraphicAlpha: 1
+--- !u!114 &3576863478278485464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928221172594276352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
+  radius: 45
+  image: {fileID: 493210295835286100}
 --- !u!1 &4971867800215525866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,8 +1936,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.2}
   m_AnchorMax: {x: 1, y: 0.33}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 12, y: 0}
+  m_SizeDelta: {x: -24, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &6830194991206700899
 CanvasRenderer:
@@ -2110,8 +2160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109c41f08973846429af681aea0a30c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithIndependentRoundedCorners
-  r: {x: 0, y: 0, z: 0, w: 0}
-  rect2props: {x: 0, y: -0.000030517578, z: 167.1291, w: 167.1291}
+  r: {x: 45, y: 45, z: 0, w: 0}
+  rect2props: {x: -0.0000076293945, y: -22.50003, z: 142.73392, w: 142.73392}
   image: {fileID: 8173376619786780126}
 --- !u!1 &9132754526696101516
 GameObject:

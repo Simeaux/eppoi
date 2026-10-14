@@ -41,9 +41,12 @@ public class GestioneIcona : MonoBehaviour
             //immagine_tipo_navigazione.SetActive(false);
 
             //distanza.SetActive(true);
-            Lunghezza.SetActive(false);
-            tipo_Itinerario.SetActive(false);
-            tipo_POI.SetActive(true);
+            if (Lunghezza != null)
+                Lunghezza.SetActive(false);
+            if (tipo_Itinerario != null)
+                tipo_Itinerario.SetActive(false);
+            if (tipo_POI != null)
+                tipo_POI.SetActive(false);
         }
         else if (tipologia.text == "2") //evento
         {
@@ -61,10 +64,12 @@ public class GestioneIcona : MonoBehaviour
         {
             //immagine_tipo_percorso.SetActive(true);
             //immagine_tipo_navigazione.SetActive(true);
-            distanza.SetActive(false);
+            if (distanza != null)
+                distanza.SetActive(false);
             //Lunghezza.SetActive(true);
             tipo_Itinerario.SetActive(true);
-            tipo_POI.SetActive(false);
+            if (tipo_POI != null)
+                tipo_POI.SetActive(false);
         }
     }
 }
