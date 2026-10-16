@@ -126,7 +126,7 @@ public class ICanvas : MonoBehaviour
             new Dropdown.OptionData() { text = testo}
         };
         _comuni_id.Add(0);
-        foreach (var _comune in _DBClass.GetCOMUNI(string.Empty, string.Empty, null))
+        foreach (var _comune in _DBClass.GetCOMUNI(string.Empty, string.Empty, null, null, null, true))
         {
             _list_comuni.Add(new Dropdown.OptionData() { text = _comune.nome_comune + $" ({_comune.provincia})" });
             _comuni_id.Add(_comune.id);
