@@ -26,7 +26,7 @@ public class DBClass : MonoBehaviour
     }
     private void Awake()
     {
-        _createTable = new GameObject("Cool GameObject made from Code");
+        _createTable = new GameObject("Cool GameObject made from Code 1");
         createTable = _createTable.AddComponent<CreateTable>();
         StartCoroutine(GetLatLonUsingGPS());
     }
@@ -460,26 +460,26 @@ public class DBClass : MonoBehaviour
 
     public void CreateDB(Slider slider)
     {
-        _createTable = new GameObject("Cool GameObject made from Code");
+        _createTable = new GameObject("Cool GameObject made from Code 2");
         createTable = _createTable.AddComponent<CreateTable>();
         createTable.CreateDB(true, slider);
     }
     public void RemovePersistent_DB(Slider slider, Slider sliderchunk, Button italiano, Button inglese, Toggle NonChiedereNuovamente, Canvas Canvas_DB_Corrotto, Canvas Canvas_Errore_connessione, Canvas Canvas_Manca_Spazio, Canvas Canvas_Prompt_Download, Text Testo_Info_Download, Button Bottone_Conferma, Button Bottone_Annulla)
     {
-        _createTable = new GameObject("Cool GameObject made from Code");
+        _createTable = new GameObject("Cool GameObject made from Code 3");
         createTable = _createTable.AddComponent<CreateTable>();
         createTable.RemovePersistent_DB();
         createTable.copyDB(slider, sliderchunk, italiano, inglese, NonChiedereNuovamente, Canvas_DB_Corrotto, Canvas_Errore_connessione, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla);
     }
     public void PersistentToStraming_DB()
     {
-        _createTable = new GameObject("Cool GameObject made from Code");
+        _createTable = new GameObject("Cool GameObject made from Code 4");
         createTable = _createTable.AddComponent<CreateTable>();
         createTable.PersistentToStraming_DB();
     }
     public void UpdateDB(Slider slider)
     {
-        _createTable = new GameObject("Cool GameObject made from Code");
+        _createTable = new GameObject("Cool GameObject made from Code 5");
         createTable = _createTable.AddComponent<CreateTable>();
         createTable.CreateDB(false, slider);
     }
@@ -689,7 +689,7 @@ public class DBClass : MonoBehaviour
 
     public void copyDB(Slider loadingBar, Slider loadingChunkBar, Button italiano, Button inglese, Toggle NonChiedereNuovamente, Canvas Canvas_DB_Corrotto, Canvas Canvas_Errore_connessione, Canvas Canvas_Manca_Spazio, Canvas Canvas_Prompt_Download, Text Testo_Info_Download, Button Bottone_Conferma, Button Bottone_Annulla)
     {
-        _createTable = new GameObject("Cool GameObject made from Code");
+        _createTable = new GameObject("Cool GameObject made from Code 6");
         createTable = _createTable.AddComponent<CreateTable>();
         createTable.copyDB(loadingBar, loadingChunkBar, italiano, inglese, NonChiedereNuovamente, Canvas_DB_Corrotto, Canvas_Errore_connessione, Canvas_Manca_Spazio, Canvas_Prompt_Download, Testo_Info_Download, Bottone_Conferma, Bottone_Annulla);
     }
@@ -732,7 +732,7 @@ public class DBClass : MonoBehaviour
                 }
 
                 _createTable = new GameObject(
-                    "Cool GameObject made from Code"
+                    "Cool GameObject made from Code 7"
                 );
 
                 createTable =

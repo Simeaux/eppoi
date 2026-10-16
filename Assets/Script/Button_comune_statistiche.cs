@@ -36,6 +36,19 @@ public class Button_comune_statistiche : MonoBehaviour
         int id
     )
     {
+        GameObject sqliteObject = GameObject.FindWithTag("SQLite");
+
+        if (sqliteObject == null)
+        {
+            Debug.LogError("[START] Oggetto SQLite non trovato.");
+            return;
+        }
+        _DBClass = sqliteObject.GetComponent<DBClass>();
+        if (_DBClass == null)
+        {
+            Debug.LogError("[START] DBClass non trovato.");
+            return;
+        }
         // Nome
         if (nomeComune != null)
         {

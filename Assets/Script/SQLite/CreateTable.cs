@@ -130,7 +130,7 @@ public class CreateTable : MonoBehaviour
 
             if (risultato.Contains("Questo è un itinerario fruibile in"))
             {
-                risultato = risultato.Replace("<div class=\"alert alert-info\">", "<size=1><color=#FFFFFF>");
+                risultato = risultato.Replace("<div class=\"alert alert-info\">", "<size=1><color=#F7F3EC>");
                 risultato = risultato.Replace("</div>", "</color></size>");
             }
             else
@@ -138,8 +138,7 @@ public class CreateTable : MonoBehaviour
                 risultato = risultato.Replace("<div class=\"alert alert-info\">", "\n\n");
                 risultato = risultato.Replace("</div>", "");
             }
-
-            risultato = risultato.Replace("<script", "<size=1><color=#FFFFFF>");
+            risultato = risultato.Replace("<script", "<size=1><color=#F7F3EC>");
             risultato = risultato.Replace("</script>", "</color></size>");
             risultato = risultato.Replace("&nbsp;", " ");
 

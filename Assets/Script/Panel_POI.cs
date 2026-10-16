@@ -198,13 +198,6 @@ public class Panel_POI : MonoBehaviour
         else if (PlayerPrefs.GetString("percorso_selezionato") != "")
         {
 
-            // Verifica se è già carica, altrimenti la aggiunge
-            if (!PlayerPrefs.HasKey("loaded_map") && !SceneManager.GetSceneByName("Map").isLoaded)
-            {
-                PlayerPrefs.SetInt("loaded_map", 1);
-                if (SceneManager.GetActiveScene().name == "Menu")
-                    StartCoroutine(LoadSceneInvisible("Map"));
-            }
             id_selected.text = PlayerPrefs.GetString("percorso_selezionato");
             if (!string.IsNullOrEmpty(id_selected.text))
                 _panel_poi.GetComponent<DetailPOIManager>().OpenDetailAtID(id_selected.text, false, true, 1);

@@ -80,37 +80,112 @@ public class Panel_Comune : MonoBehaviour
         var _Listcomune = _DBClass.GetCOMUNI(_istat);
         descrizione.text = string.Empty;
         scrollviewFotoComune.gameObject.SetActive(true);
+
+
+
+
         if (_Listcomune != null && _Listcomune.Count > 0)
         {
             var _comune = _Listcomune[0];
             scrollviewFotoComune.transform.SetParent(descrizione.transform, false);
             _selected_comune = _comune;
-            //
+
+
+            var _panelLink = scrollviewFotoComune.gameObject.transform.Find("PanelLink");
+            if (_panelLink != null)
+            {
+                _panelLink.gameObject.SetActive(false);
+            }
+            var _panelItinerario = scrollviewFotoComune.gameObject.transform.Find("PanelItinerario");
+            if (_panelItinerario != null)
+                _panelItinerario.gameObject.SetActive(false);
+            var _panelComune = scrollviewFotoComune.gameObject.transform.Find("PanelComune");
+            if (_panelComune != null)
+            {
+                _panelComune.gameObject.SetActive(true);
+                RectTransform rect = _panelComune.GetComponent<RectTransform>();
+                if (rect != null)
+                {
+                    rect.anchoredPosition = new Vector2(0, -430f);
+                }
+                var _oggetticomune = _panelComune.gameObject.transform.Find("regione");
+                if (_comune.regione != null && !string.IsNullOrEmpty(_comune.regione))
+                {
+                    if (_oggetticomune != null)
+                    {
+                        Text _textLabel = _oggetticomune.gameObject.transform.Find("Label").GetComponent<Text>();
+                        if (_textLabel != null)
+                            _textLabel.text = _lingua_selezionata == 1 ? "REGIONE" : "REGION";
+                        Text _textTitolo = _oggetticomune.gameObject.transform.Find("Titolo").GetComponent<Text>();
+                        if (_textTitolo != null)
+                            _textTitolo.text = _comune.regione;
+                    }
+                }
+                _oggetticomune = _panelComune.gameObject.transform.Find("provincia");
+                if (_comune.provincia != null && !string.IsNullOrEmpty(_comune.provincia))
+                {
+                    if (_oggetticomune != null)
+                    {
+                        Text _textLabel = _oggetticomune.gameObject.transform.Find("Label").GetComponent<Text>();
+                        if (_textLabel != null)
+                            _textLabel.text = _lingua_selezionata == 1 ? "PROVINCIA" : "PROVINCE";
+                        Text _textTitolo = _oggetticomune.gameObject.transform.Find("Titolo").GetComponent<Text>();
+                        if (_textTitolo != null)
+                            _textTitolo.text = _comune.provincia;
+                    }
+                }
+                _oggetticomune = _panelComune.gameObject.transform.Find("coordinate");
+                if (_comune.latitudine > 0)
+                {
+                    if (_oggetticomune != null)
+                    {
+                        Text _textLabel = _oggetticomune.gameObject.transform.Find("Label").GetComponent<Text>();
+                        if (_textLabel != null)
+                            _textLabel.text = _lingua_selezionata == 1 ? "COORDINATE" : "COORDINATES";
+                        Text _textTitolo = _oggetticomune.gameObject.transform.Find("Titolo").GetComponent<Text>();
+
+                        while (_comune.latitudine > 100)
+                            _comune.latitudine = _comune.latitudine / 10;
+                        while (_comune.longitudine > 100)
+                            _comune.longitudine = _comune.longitudine / 10;
+                        var _descrizione = _comune.latitudine.ToString("##.#####").Replace(".", ",") + "°N - " + _comune.longitudine.ToString("##.#####").Replace(".", ",") + (_lingua_selezionata == 1 ? "°E" : "°W");
+
+                        if (_textTitolo != null)
+                            _textTitolo.text = _descrizione;
+                    }
+                }
+                _oggetticomune = _panelComune.gameObject.transform.Find("altitudine");
+                if (_comune.altitudine > 0)
+                {
+                    if (_oggetticomune != null)
+                    {
+                        Text _textLabel = _oggetticomune.gameObject.transform.Find("Label").GetComponent<Text>();
+                        if (_textLabel != null)
+                            _textLabel.text = _lingua_selezionata == 1 ? "ALTITUDINE" : "ALTITUDE";
+                        Text _textTitolo = _oggetticomune.gameObject.transform.Find("Titolo").GetComponent<Text>();
+                        if (_textTitolo != null)
+                            _textTitolo.text = _comune.altitudine.ToString("##,###").Replace(",", ".") + (_lingua_selezionata == 1 ? " m.s.l.m." : " m above s.l.");
+                    }
+                }
+                _oggetticomune = _panelComune.gameObject.transform.Find("abitanti");
+                if (_comune.altitudine > 0)
+                {
+                    if (_oggetticomune != null)
+                    {
+                        Text _textLabel = _oggetticomune.gameObject.transform.Find("Label").GetComponent<Text>();
+                        if (_textLabel != null)
+                            _textLabel.text = _lingua_selezionata == 1 ? "ABITANTI" : "INHABITANTS";
+                        Text _textTitolo = _oggetticomune.gameObject.transform.Find("Titolo").GetComponent<Text>();
+                        if (_textTitolo != null)
+                            _textTitolo.text = _comune.abitanti.ToString("###,###").Replace(",", ".");
+                    }
+                }
+
+            }
 
             if (_comune.Listimages != null && _comune.Listimages.Count > 0 && _comune.Listimages[0].image != null && _comune.Listimages[0].image.Length > 0)
             {
-                descrizione.text = "\n\n\n\n\n\n\n";
-
-                descrizione.text += _lingua_selezionata == 1 ? "Regione" : "Region";
-                descrizione.text += " <b>" + (_comune.regione).ToString() + "</b>";
-                descrizione.text += "\n";
-                descrizione.text += _lingua_selezionata == 1 ? "Provincia" : "Province";
-                descrizione.text += " <b>" + _comune.provincia + "</b>";
-                descrizione.text += "\n";
-                descrizione.text += _lingua_selezionata == 1 ? "Coordinate" : "Coordinates";
-                while (_comune.latitudine > 100)
-                    _comune.latitudine = _comune.latitudine / 10;
-                while (_comune.longitudine > 100)
-                    _comune.longitudine = _comune.longitudine / 10;
-                descrizione.text += " <b>" + _comune.latitudine.ToString("##.#####").Replace(".", ",") + "°N - " + _comune.longitudine.ToString("##.#####").Replace(".", ",") + (_lingua_selezionata == 1 ? "°E" : "°W") + "</b>";
-                descrizione.text += "\n";
-                descrizione.text += _lingua_selezionata == 1 ? "Altitudine" : "Altitude";
-                descrizione.text += " <b>" + _comune.altitudine.ToString("##,###").Replace(",", ".") + (_lingua_selezionata == 1 ? " m.s.l.m." : " m above s.l.") + "</b>";
-                descrizione.text += "\n";
-                descrizione.text += _lingua_selezionata == 1 ? "Abitanti" : "Inhabitants";
-                descrizione.text += " <b>" + _comune.abitanti.ToString("###,###").Replace(",", ".") + "</b>";
-                descrizione.text += "\n";
-                descrizione.text += "\n";
+                descrizione.text = "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
                 foto_comune.gameObject.SetActive(true);
                 float _dimensione_foto = 1240;
@@ -167,8 +242,8 @@ public class Panel_Comune : MonoBehaviour
             descrizione.text += _comune.descrizione();
 
         }
-        _scrollDesccrizione.SetActive(true);
-        _scrollOggetti.SetActive(false);
+        _scrollDesccrizione.SetActive(false);
+        _scrollOggetti.SetActive(true);
     }
     private void OnDisable()
     {
@@ -184,7 +259,7 @@ public class Panel_Comune : MonoBehaviour
         scrollviewFotoComune.Clear();
 
     }
-    void backBtnPressed()
+    public void backBtnPressed()
     {
         PlayerPrefs.SetString("istat", "");
         PlayerPrefs.SetString("poi_selezionato", "");

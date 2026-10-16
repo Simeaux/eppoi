@@ -154,10 +154,16 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
 
                                         if (rect != null)
                                         {
-                                            // 3. Modifica la anchoredPosition (sottrai 430 sulla Y per andare in basso)
-                                            rect.anchoredPosition += new Vector2(0, -430f);
+                                            rect.anchoredPosition = new Vector2(0, -430f);
                                         }
                                     }
+                                    var _panelItinerario = Pois.scrollview_list_img.gameObject.transform.Find("PanelItinerario");
+                                    if (_panelItinerario != null)
+                                        _panelItinerario.gameObject.SetActive(false);
+                                    var _panelComune = Pois.scrollview_list_img.gameObject.transform.Find("PanelComune");
+                                    if (_panelComune != null)
+                                        _panelComune.gameObject.SetActive(false);
+
 
                                     Pois.scrollview_list_img.transform.SetParent(Pois.descrizione.transform, false);
 
@@ -307,7 +313,8 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                     {
                         if (_p != null)
                         {
-                            Pois.descrizione.text += "\n";
+                            Pois.descrizione.text += "\n\n\n\n\n";
+
                             ID_selected.text = _ID;
                             DetailPOI.enabled = true;
                             if (portami_la != null)
@@ -351,16 +358,84 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
 
                                     var _panelLink = Pois.scrollview_list_img.gameObject.transform.Find("PanelLink");
                                     if (_panelLink != null)
+                                        _panelLink.gameObject.SetActive(false);
+                                    var _panelItinerario = Pois.scrollview_list_img.gameObject.transform.Find("PanelItinerario");
+                                    if (_panelItinerario != null)
                                     {
-                                        _panelLink.gameObject.SetActive(true);
-                                        RectTransform rect = _panelLink.GetComponent<RectTransform>();
-
+                                        _panelItinerario.gameObject.SetActive(true);
+                                        RectTransform rect = _panelItinerario.GetComponent<RectTransform>();
                                         if (rect != null)
+                                            rect.anchoredPosition = new Vector2(0, -430f);
+                                        var _oggettiItinerario = _panelItinerario.gameObject.transform.Find("distanza");
+                                        if (_p.lunghezza != null && !string.IsNullOrEmpty(_p.lunghezza))
                                         {
-                                            // 3. Modifica la anchoredPosition (sottrai 430 sulla Y per andare in basso)
-                                            rect.anchoredPosition += new Vector2(0, -430f);
+                                            if (_oggettiItinerario != null)
+                                            {
+                                                Text _textDistanza = _oggettiItinerario.gameObject.transform.Find("Titolo").GetComponent<Text>();
+                                                if (_textDistanza != null)
+                                                    _textDistanza.text = _p.lunghezza;
+                                            }
+                                        }
+                                        _oggettiItinerario = _panelItinerario.gameObject.transform.Find("dislivello");
+                                        if (_p.dislivello != null && !string.IsNullOrEmpty(_p.dislivello))
+                                        {
+
+                                            if (_oggettiItinerario != null)
+                                            {
+                                                Text _textDislivello = _oggettiItinerario.gameObject.transform.Find("Titolo").GetComponent<Text>();
+                                                if (_textDislivello != null)
+                                                    _textDislivello.text = _p.dislivello;
+                                            }
+                                        }
+                                        _oggettiItinerario = _panelItinerario.gameObject.transform.Find("tipo");
+                                        if (_oggettiItinerario != null)
+                                            _oggettiItinerario.gameObject.SetActive(false);
+                                        if (_p.tipo_percorso != null && !string.IsNullOrEmpty(_p.tipo_percorso))
+                                        {
+                                            if (_oggettiItinerario != null)
+                                            {
+                                                UnityEngine.UI.Image _img_ = _oggettiItinerario.gameObject.transform.Find("Icona").GetComponent<UnityEngine.UI.Image>();
+                                                if (_img_ != null)
+                                                {
+                                                    IconaPerTipo(_p.tipo_percorso, _img_);
+                                                    _oggettiItinerario.gameObject.SetActive(true);
+                                                }
+                                            }
+                                        }
+                                        _oggettiItinerario = _panelItinerario.gameObject.transform.Find("tecnologia");
+                                        if (_oggettiItinerario != null)
+                                            _oggettiItinerario.gameObject.SetActive(false);
+                                        if (_p.tipo_navigazione != null && !string.IsNullOrEmpty(_p.tipo_navigazione))
+                                        {
+                                            if (_oggettiItinerario != null)
+                                            {
+                                                UnityEngine.UI.Image _img_ = _oggettiItinerario.gameObject.transform.Find("Icona").GetComponent<UnityEngine.UI.Image>();
+                                                if (_img_ != null)
+                                                {
+                                                    IconaPerTipo(_p.tipo_navigazione, _img_);
+                                                    _oggettiItinerario.gameObject.SetActive(true);
+                                                }
+                                            }
+                                        }
+                                        _oggettiItinerario = _panelItinerario.gameObject.transform.Find("difficolta");
+                                        if (_oggettiItinerario != null)
+                                            _oggettiItinerario.gameObject.SetActive(false);
+                                        if (_p.accessibilita != null && !string.IsNullOrEmpty(_p.accessibilita))
+                                        {
+                                            if (_oggettiItinerario != null)
+                                            {
+                                                Text _txt_ = _oggettiItinerario.gameObject.transform.Find("Titolo").GetComponent<Text>();
+                                                if (_txt_ != null)
+                                                {
+                                                    _txt_.text = _p.accessibilita;
+                                                    _oggettiItinerario.gameObject.SetActive(true);
+                                                }
+                                            }
                                         }
                                     }
+                                    var _panelComune = Pois.scrollview_list_img.gameObject.transform.Find("PanelComune");
+                                    if (_panelComune != null)
+                                        _panelComune.gameObject.SetActive(false);
 
                                     _i++;
                                 }
@@ -756,6 +831,71 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
         }
     }
 
+
+    private static void IconaPerTipo(string _p, UnityEngine.UI.Image _img_)
+    {
+        string hexColor = "#E0501F";
+        if (_p == "accoglienza-e-ricettivita")
+        {
+            _img_.sprite = Resources.Load<Sprite>("Icone/ACCOGLIENZA-bianco");
+            hexColor = "#E0501F";
+        }
+        if (_p == "enogastronomico")
+        {
+            _img_.sprite = Resources.Load<Sprite>("Icone/enogastronomico");
+            hexColor = "#E0501F";
+        }
+        if (_p == "manifatturiero")
+        {
+            _img_.sprite = Resources.Load<Sprite>("Icone/manifatturiero");
+            hexColor = "#0E9E74";
+        }
+        if (_p == "naturalistico")
+        {
+            _img_.sprite = Resources.Load<Sprite>("Icone/naturalistico");
+            hexColor = "#0E9E74";
+        }
+        if (_p == "religioso")
+        {
+            _img_.sprite = Resources.Load<Sprite>("Icone/religioso");
+            hexColor = "#3E4EA0";
+        }
+        if (_p == "storico-artistico")
+        {
+            _img_.sprite = Resources.Load<Sprite>("Icone/storico_artistico");
+            hexColor = "#C81820";
+        }
+        if (_p == "tempo-libero-e-sport")
+        {
+            _img_.sprite = Resources.Load<Sprite>("Icone/tempo_libero_e_sport_bianco");
+            hexColor = "#3E4EA0";
+        }
+        if (_p == "varie")
+        {
+            _img_.sprite = Resources.Load<Sprite>("Icone/varie-bianco");
+            hexColor = "#0E9E74";
+        }
+        if (_p == "ar-vr")
+        {
+            _img_.sprite = Resources.Load<Sprite>("Icone/ar");
+            hexColor = "#000000";
+        }
+        if (_p == "iot")
+        {
+
+            _img_.sprite = Resources.Load<Sprite>("Icone/iot");
+            hexColor = "#000000";
+        }
+        // Crei una variabile colore vuota
+        Color myColor;
+
+        // Se la conversione va a buon fine, 'myColor' conterrà il tuo colore rosso/arancione
+        if (ColorUtility.TryParseHtmlString(hexColor, out myColor))
+        {
+            _img_.color = myColor;
+        }
+    }
+
     public void BuildSpriteAssetFromDB(List<Texture2D> dbTextures, TMP_Text myText)
     {
         if (dbTextures == null || myText == null) return;
@@ -858,13 +998,6 @@ public class DetailPOIManager : MonoBehaviour, IPointerClickHandler
                 GameObject.FindObjectOfType<ICanvas>().panel_all_White.SetActive(_from_search_filter);
             }
         }
-        /*
-        else
-        {
-            ChangeScene cs = new ChangeScene();
-            cs.Load_Map();
-        }
-        */
         //if(PanelDownOfPanlMap != null)
         //    PanelDownOfPanlMap.SetActive(true);
         DetailPOI.enabled = false;

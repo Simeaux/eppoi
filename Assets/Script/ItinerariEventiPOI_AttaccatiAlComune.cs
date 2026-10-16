@@ -19,6 +19,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     public Button BtnNotizie;
     public GameObject panel_list_oggetti;
     public GameObject content_list_oggetti;
+    public int tab_da_visualizzare_all_apertura = 0;
     public GameObject _scroll_descrizione;
     public GameObject scrollviewFotoComune;
     public GameObject contentDescrizione;
@@ -91,7 +92,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     {
         _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
         ResetNumberOfRowToShow();
-        _tipo_dettaglio_da_vedere = 0;
+        _tipo_dettaglio_da_vedere = tab_da_visualizzare_all_apertura;
 
     }
     IEnumerator Wait()
@@ -208,7 +209,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
 
         _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
         BtnIDescrizione.GetComponent<BtnTabClick>().SetCliccked(true);
-        _tipo_dettaglio_da_vedere = 0;
+        _tipo_dettaglio_da_vedere = tab_da_visualizzare_all_apertura;
         Calcola();
         if (!_check_avanzato)
         {
@@ -273,28 +274,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
                 GameObject.FindObjectOfType<GestioneTab>().selectes_btn_index(_c);
             }
         }
-        /*
-        if (!eventiCaricati && !caricamentoEventi)
-        {
-            if (BtnEventi != null)
-            {
-                BtnEventi.interactable = false;
-                BtnEventi.gameObject.SetActive(true);
-            }
 
-            StartCoroutine(CaricaEventiComune());
-        }
-        if (!notizieCaricati && !caricamentoNotizie)
-        {
-            if (BtnNotizie != null)
-            {
-                BtnNotizie.interactable = false;
-                BtnNotizie.gameObject.SetActive(true);
-            }
-
-            StartCoroutine(CaricaNotizieComune());
-        }
-        */
 
     }
     private void Calcola()
@@ -449,7 +429,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             BtnNotizie.onClick.RemoveListener(BtnNotizieClicked);
         if (BtnPOI != null)
             BtnPOI.onClick.RemoveListener(BtnPOIClicked);
-        _tipo_dettaglio_da_vedere = 0;
+        _tipo_dettaglio_da_vedere = tab_da_visualizzare_all_apertura;
         BtnIDescrizioneClicked();
         ResetNumberOfRowToShow(false);
     }
@@ -469,6 +449,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
             sr.verticalNormalizedPosition = 1f;
         }
         _OLD_tipo_dettaglio_da_vedere = _tipo_dettaglio_da_vedere = 0;
+
         Transform viewportTransform = panel_list_oggetti.transform.Find("Viewport");
 
         if (viewportTransform != null)
@@ -825,6 +806,16 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         caricamentoEventi = true;
         eventiCaricati = false;
 
+        var _btn_loading = GameObject.Find("Button_loading");
+        if (_btn_loading != null)
+        {
+            _btn_loading.GetComponentInChildren<Text>().text = "Loading...";
+            foreach (var _app in _btn_loading.GetComponentsInChildren<Image>())
+            {
+                if (_app.name == "Image_loading")
+                    _app.gameObject.SetActive(true);
+            }
+        }
         EventiList.Clear();
 
         if (!string.IsNullOrEmpty(_istat))
@@ -871,8 +862,7 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         }
 
 
-        // Eventi scaricati
-        eventiCaricati = true;
+
 
 
         // Ora scarico realmente le immagini
@@ -906,6 +896,23 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         Debug.Log(
             "EVENTI COMPLETI: " + EventiList.Count
         );
+        if (EventiList.Count == 0)
+        {
+            if (_btn_loading != null)
+            {
+                _btn_loading.GetComponentInChildren<Text>().text = _lingua_selezionata == 1 ? "Nessun evento caricato al momento!" : "No events loaded at the moment!";
+                foreach (var _app in _btn_loading.GetComponentsInChildren<Image>())
+                {
+                    if (_app.name == "Image_loading")
+                        _app.gameObject.SetActive(false);
+                }
+            }
+            BtnEventi.enabled = false;
+        }
+        else
+        {
+            eventiCaricati = true;
+        }
         BtnEventiClicked();
     }
 
@@ -913,6 +920,17 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
     public IEnumerator CaricaNotizieComune()
     {
         var comuni = _DBClass.GetCOMUNI(_istat);
+
+        var _btn_loading = GameObject.Find("Button_loading");
+        if (_btn_loading != null)
+        {
+            _btn_loading.GetComponentInChildren<Text>().text = "Loading...";
+            foreach (var _app in _btn_loading.GetComponentsInChildren<Image>())
+            {
+                if (_app.name == "Image_loading")
+                    _app.gameObject.SetActive(true);
+            }
+        }
 
         List<int> comuneIds = new List<int>();
         if (comuni != null)
@@ -1033,6 +1051,21 @@ public class ItinerariEventiPOI_AttaccatiAlComune : MonoBehaviour
         Debug.Log(
             "NOTIZIE COMPLETI: " + NotizieList.Count
         );
+
+        if (NotizieList.Count == 0)
+        {
+            if (_btn_loading != null)
+            {
+                _btn_loading.GetComponentInChildren<Text>().text = _lingua_selezionata == 1 ? "Nessuna notizia caricata al momento!" : "No news loaded at the moment!";
+                foreach (var _app in _btn_loading.GetComponentsInChildren<Image>())
+                {
+                    if (_app.name == "Image_loading")
+                        _app.gameObject.SetActive(false);
+                }
+            }
+            BtnNotizie.enabled = false;
+        }
+
         BtnNotizieClicked();
         yield return null;
     }

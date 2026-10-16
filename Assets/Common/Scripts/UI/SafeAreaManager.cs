@@ -28,12 +28,12 @@ public class SafeAreaManager : MonoBehaviour
     [SerializeField] Color bottomAreaColor;
     [Tooltip("Safe Area Margin reduces the Safe Area by the specified amount at the Top/Bottom boundaries. " +
              "It is useful for testing Safe Area Behaviour in PlayMode.")]
-    [Range(0,100)] // Max range value is arbitrary for example purposes
+    [Range(0, 100)] // Max range value is arbitrary for example purposes
     [SerializeField] int SafeAreaMargin = 0;
 
     [Header("Apply Safe Area Constraints to RectTransforms")]
     [SerializeField] SafeAreaRect[] safeAreaRects = null;
-    
+
     ScreenOrientation mLastOrientation;
     Rect mLastSafeArea = new Rect(0, 0, 0, 0);
     Rect mSafeArea;
@@ -48,16 +48,17 @@ public class SafeAreaManager : MonoBehaviour
             Debug.LogWarning("Either topArea or bottomArea is null. Programmatically getting the required references.");
             SetAreaRectTransforms();
         }
-        
+
         // cache our unsafe area image components
         mTopAreaImage = topArea.GetComponent<Image>();
         mBottomAreaImage = bottomArea.GetComponent<Image>();
 
         // Set the unsafe area colors using Inspector values
         SetAreaColors(topAreaColor, bottomAreaColor);
-        
+
         mSafeArea = GetSafeArea();
     }
+
 
     void SetAreaRectTransforms()
     {
@@ -71,13 +72,13 @@ public class SafeAreaManager : MonoBehaviour
         topArea = images[0].rectTransform;
         bottomArea = images[1].rectTransform;
     }
-    
+
     Rect GetSafeArea()
     {
         return new Rect(
-            Screen.safeArea.x, 
+            Screen.safeArea.x,
             Screen.safeArea.y + SafeAreaMargin,
-            Screen.safeArea.width, 
+            Screen.safeArea.width,
             Screen.safeArea.height - (SafeAreaMargin * 2));
     }
 
@@ -136,7 +137,7 @@ public class SafeAreaManager : MonoBehaviour
             }
         }
     }
-    
+
     void UpdateUnsafeArea()
     {
         var anchorMin = mSafeArea.position;
@@ -148,7 +149,7 @@ public class SafeAreaManager : MonoBehaviour
         anchorMax.y /= Screen.height;
 
         SetUnsafeAreaSizes(anchorMin.y, anchorMax.y);
-        
+
         SetAreaColors(topAreaColor, bottomAreaColor);
     }
 

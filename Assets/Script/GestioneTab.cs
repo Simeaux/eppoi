@@ -149,12 +149,12 @@ public class GestioneTab : MonoBehaviour
             PlayerPrefs.SetInt($"show_itinerari", 1);
         }
         //
-        if (i == 2)
+        if (i == 3)
         {
             //Debug.Log("poi");
             PlayerPrefs.SetInt($"show_poi", 1);
         }
-        if (i == 3)
+        if (i == 2)
         {
             //Debug.Log("poi");
             PlayerPrefs.SetInt($"show_eventi", 1);

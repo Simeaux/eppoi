@@ -11,7 +11,9 @@ public class SearchItinerari : MonoBehaviour
     void Start()
     {
         var _lingua_selezionata = PlayerPrefs.GetInt("lingua_selezionata");
-        txtRadioPercorso.text = _lingua_selezionata == 1 ? "Tipo" : "Path";
-        txtRadioNavigazione.text = _lingua_selezionata == 1 ? "Tecnologia" : "Technology";
+        if (txtRadioPercorso != null)
+            txtRadioPercorso.text = _lingua_selezionata == 1 ? "Tipo" : "Path";
+        if (txtRadioNavigazione != null)
+            txtRadioNavigazione.text = _lingua_selezionata == 1 ? "Tecnologia" : "Technology";
     }
 }

@@ -173,7 +173,9 @@ public class FirebaseManager : MonoBehaviour
 
     void OnDestroy()
     {
+        /*
         FirebaseMessaging.MessageReceived -= OnMessageReceived;
         FirebaseMessaging.TokenReceived -= OnTokenReceived;
+        */
     }
 }

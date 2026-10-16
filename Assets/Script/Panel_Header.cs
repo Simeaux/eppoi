@@ -58,18 +58,22 @@ public class Panel_Header : MonoBehaviour
                 {
                     CanvasComune.SetActive(true);
                     CanvasPOI.SetActive(false);
-                    ButtonComuni_scaricati.SetActive(false);
+                    if (ButtonComuni_scaricati != null)
+                        ButtonComuni_scaricati.SetActive(false);
                 }
                 else if (string.IsNullOrEmpty(PlayerPrefs.GetString("istat")))
                 {
                     _DBClass = GameObject.FindWithTag("SQLite").GetComponent<DBClass>();
                     CanvasComune.SetActive(false);
                     CanvasPOI.SetActive(false);
-                    ButtonComuni_scaricati.SetActive(true);
+                    if (ButtonComuni_scaricati != null)
+                    {
+                        ButtonComuni_scaricati.SetActive(true);
+                    }
                     var _Listcomune = _DBClass.GetCOMUNI(null, null, null, null, null, true);
                     int n_comuni = _Listcomune.Count;
                     string testo = n_comuni.ToString() + " " + (_lingua_selezionata == 1 ? "Comuni offline" : "Offline municipalities");
-                    if (NumeroComuni_scaricati.text != testo)
+                    if (NumeroComuni_scaricati != null && NumeroComuni_scaricati.text != testo && imgComune_1 != null && imgComune_2 != null && imgComune_3 != null)
                     {
                         NumeroComuni_scaricati.text = n_comuni.ToString() + " " + (_lingua_selezionata == 1 ? "Comuni offline" : "Offline municipalities");
                         // ---------------------------------------------------------
@@ -85,14 +89,17 @@ public class Panel_Header : MonoBehaviour
 
                         long peso_testi =
                             _DBClass.GetTEXT_PesoTabella();
-                        if (peso_immagini + peso_testi > 0)
+                        if (PesoComuni_scaricati != null)
                         {
-                            PesoComuni_scaricati.gameObject.SetActive(true);
-                            PesoComuni_scaricati.text = _DBClass.FormattaDimensione(peso_immagini + peso_testi) + (_lingua_selezionata == 1 ? " sul telefono" : " of data");
-                        }
-                        else
-                        {
-                            PesoComuni_scaricati.gameObject.SetActive(false);
+                            if (peso_immagini + peso_testi > 0)
+                            {
+                                PesoComuni_scaricati.gameObject.SetActive(true);
+                                PesoComuni_scaricati.text = _DBClass.FormattaDimensione(peso_immagini + peso_testi) + (_lingua_selezionata == 1 ? " sul telefono" : " of data");
+                            }
+                            else
+                            {
+                                PesoComuni_scaricati.gameObject.SetActive(false);
+                            }
                         }
 
 

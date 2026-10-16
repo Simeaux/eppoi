@@ -156,8 +156,8 @@ MonoBehaviour:
   ButtonComuni_scaricati: {fileID: 989204535613820785}
   NumeroComuni_scaricati: {fileID: 6213792546889271392}
   PesoComuni_scaricati: {fileID: 8856827527677331474}
-  imgComune_1: {fileID: 902768908177510366}
-  imgComune_2: {fileID: 4719350817859840662}
+  imgComune_1: {fileID: 4719350817859840662}
+  imgComune_2: {fileID: 902768908177510366}
   imgComune_3: {fileID: 5356577159026866538}
 --- !u!1 &99608460835666352
 GameObject:
@@ -979,7 +979,6 @@ GameObject:
   m_Component:
   - component: {fileID: 361810344728514414}
   - component: {fileID: 3358987171487189932}
-  - component: {fileID: 538496647856869863}
   - component: {fileID: 7081960048814854442}
   m_Layer: 5
   m_Name: ButtonComuniScaricati
@@ -987,7 +986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &361810344728514414
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1024,36 +1023,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989204535613820785}
   m_CullTransparentMesh: 0
---- !u!114 &538496647856869863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989204535613820785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.23921569, g: 0.5764706, b: 0.4, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 72f62b5e8814846e7a9db62d42621e0d, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.01
 --- !u!114 &7081960048814854442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,7 +1063,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 538496647856869863}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -1245,7 +1214,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4064062768902562162}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -1257,19 +1226,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4213918729397465725}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -3256,7 +3213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
   m_EffectColor: {r: 0.05490196, g: 0.61960787, b: 0.45490196, a: 1}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
 --- !u!114 &366288356235501451
 MonoBehaviour:
@@ -5438,31 +5395,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4213918729397465725}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -8462,11 +8395,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 678769660539306659, guid: 04c8d655dc83b41f6b647ad1f9b1b537,
         type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 67
-      objectReference: {fileID: 0}
-    - target: {fileID: 678769660539306659, guid: 04c8d655dc83b41f6b647ad1f9b1b537,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -8761,13 +8689,25 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3534493268225156050}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4064062768902562162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 678769660539306656, guid: 04c8d655dc83b41f6b647ad1f9b1b537,
+    type: 3}
+  m_PrefabInstance: {fileID: 3534493268225156050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4213918729397465725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 826360111718470063, guid: 04c8d655dc83b41f6b647ad1f9b1b537,
+    type: 3}
+  m_PrefabInstance: {fileID: 3534493268225156050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8162498660450776884 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4632532408016884966, guid: 04c8d655dc83b41f6b647ad1f9b1b537,
     type: 3}
   m_PrefabInstance: {fileID: 3534493268225156050}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4213918729397465725}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}

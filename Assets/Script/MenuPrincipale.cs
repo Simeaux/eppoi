@@ -321,6 +321,12 @@ public class MenuPrincipale : MonoBehaviour
                 "percorso_selezionato",
                 ""
             );
+            PlayerPrefs.SetInt($"show_poi", 1);
+
+            if (GameObject.FindObjectOfType<GestioneTab>() != null)
+            {
+                GameObject.FindObjectOfType<GestioneTab>().selectes_btn_index(3);
+            }
         }
 
         // =====================================================

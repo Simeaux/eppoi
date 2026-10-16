@@ -504,8 +504,8 @@ RectTransform:
   - {fileID: 6149809702874004898}
   m_Father: {fileID: 4567883403732736368}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.4}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1020,8 +1020,8 @@ RectTransform:
   - {fileID: 5047912306297162105}
   m_Father: {fileID: 4567883403732736368}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0.4}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0}
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithIndependentRoundedCorners
   r: {x: 45, y: 0, z: 0, w: 45}
-  rect2props: {x: 22.5, y: -0.000030517578, z: 134.7926, w: 134.7926}
+  rect2props: {x: 22.5, y: -0.0000076293945, z: 74.51159, w: 74.51159}
   image: {fileID: 8173376619786780126}
 --- !u!1 &9162521928172111094
 GameObject:

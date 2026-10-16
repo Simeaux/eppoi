@@ -50,15 +50,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NFC QR
       objectReference: {fileID: 0}
-    - target: {fileID: 221593230225652189, guid: 6ec972619a79a44db8b997b7c8bea1ff,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 167
-      objectReference: {fileID: 0}
     - target: {fileID: 661049227675494277, guid: 6ec972619a79a44db8b997b7c8bea1ff,
         type: 3}
       propertyPath: rect2props.w
-      value: 129.89804
+      value: 113.22446
       objectReference: {fileID: 0}
     - target: {fileID: 661049227675494277, guid: 6ec972619a79a44db8b997b7c8bea1ff,
         type: 3}
@@ -73,17 +68,7 @@ PrefabInstance:
     - target: {fileID: 661049227675494277, guid: 6ec972619a79a44db8b997b7c8bea1ff,
         type: 3}
       propertyPath: rect2props.z
-      value: 129.89804
-      objectReference: {fileID: 0}
-    - target: {fileID: 1734954137742301213, guid: 6ec972619a79a44db8b997b7c8bea1ff,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -39.1671
-      objectReference: {fileID: 0}
-    - target: {fileID: 1734954137742301213, guid: 6ec972619a79a44db8b997b7c8bea1ff,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 19.5836
+      value: 113.22446
       objectReference: {fileID: 0}
     - target: {fileID: 1742007191961026295, guid: 6ec972619a79a44db8b997b7c8bea1ff,
         type: 3}
@@ -300,6 +285,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5536835789034287394, guid: 6ec972619a79a44db8b997b7c8bea1ff,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1842501702162633535, guid: 0a0f1ca6b6d964ccfaf1a914434259e3,
+        type: 3}
     - target: {fileID: 5542101924697954865, guid: 6ec972619a79a44db8b997b7c8bea1ff,
         type: 3}
       propertyPath: m_Sprite
